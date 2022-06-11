@@ -115,8 +115,9 @@ export default function Account({ user }: { user: User }) {
           <div className="text-xl mt-8 mb-4 font-semibold">
             {userDetails ? (
               `${
-                userDetails.full_name ??
-                `${userDetails.first_name} ${userDetails.last_name}`
+                /* userDetails.full_name ??
+                `${userDetails.first_name} ${userDetails.last_name}` */
+                `${userDetails?.full_name}`
               }`
             ) : (
               <div className="h-8 mb-6">

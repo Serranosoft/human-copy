@@ -2,7 +2,6 @@ import Link from 'next/link';
 import s from './Footer.module.css';
 
 import Logo from 'components/icons/Logo';
-import GitHub from 'components/icons/GitHub';
 
 export default function Footer() {
   return (
@@ -72,16 +71,6 @@ export default function Footer() {
               </Link>
             </li>
           </ul>
-        </div>
-        <div className="col-span-1 lg:col-span-6 flex items-start lg:justify-end text-white">
-          <div className="flex space-x-6 items-center h-10">
-            <a
-              aria-label="Github Repository"
-              href="https://github.com/vercel/nextjs-subscription-payments"
-            >
-              <GitHub />
-            </a>
-          </div>
         </div>
       </div>
       <div className="py-12 flex flex-col md:flex-row justify-between items-center space-y-4 bg-zinc-900">
