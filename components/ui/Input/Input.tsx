@@ -1,5 +1,4 @@
 import React, { InputHTMLAttributes, ChangeEvent } from 'react';
-import cn from 'classnames';
 import s from './Input.module.css';
 
 interface Props extends Omit<InputHTMLAttributes<any>, 'onChange'> {
@@ -8,8 +7,6 @@ interface Props extends Omit<InputHTMLAttributes<any>, 'onChange'> {
 }
 const Input = (props: Props) => {
   const { className, children, onChange, ...rest } = props;
-
-  const rootClassName = cn(s.root, {}, className);
 
   const handleOnChange = (e: ChangeEvent<HTMLInputElement>) => {
     if (onChange) {
@@ -21,7 +18,7 @@ const Input = (props: Props) => {
   return (
     <label>
       <input
-        className={rootClassName}
+        className={s.root}
         onChange={handleOnChange}
         autoComplete="off"
         autoCorrect="off"

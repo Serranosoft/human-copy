@@ -1,4 +1,4 @@
-import s from './LoadingDots.module.css';
+import s from '../../../styles/css/LoadingDots.module.css';
 
 const LoadingDots = () => {
   return (
