@@ -109,7 +109,6 @@ export default function Pricing({ products }: Props) {
                                         </span>
                                     </p>
                                     <Button
-                                        variant="slim"
                                         type="button"
                                         disabled={isLoading}
                                         loading={priceIdLoading === price!.id}

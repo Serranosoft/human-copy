@@ -1,6 +1,5 @@
 import Link from 'next/link';
-import s from './Footer.module.css';
-
+import s from '../../../styles/css/Footer.module.css';
 import Logo from 'components/icons/Logo';
 
 export default function Footer() {

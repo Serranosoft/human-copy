@@ -1,1 +1,12 @@
-/* No CSS */
+.root {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  gap: 2rem;
+  padding: 1.5rem 0;
+  background-color: #000000;
+}

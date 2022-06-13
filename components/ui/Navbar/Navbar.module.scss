@@ -1,3 +1,31 @@
 .root {
-    
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    padding: 1.5rem 0;
+    background-color: #000000;
+    & > div {
+        width: 100%;
+        max-width: 1120px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        & > div:first-child  {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            nav {
+                display: flex;
+                gap: 1rem;
+            }
+        }
+        a {
+            color: white;
+            text-decoration: none;
+            svg {
+                display: block;
+            }
+        }
+    }
 }
