@@ -81,7 +81,6 @@ export default function Account({ user }: { user: User }) {
                                 Manage your subscription on Stripe.
                             </p>
                             <Button
-                                variant="slim"
                                 loading={loading}
                                 disabled={loading || !subscription}
                                 onClick={redirectToCustomerPortal}

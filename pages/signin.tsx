@@ -81,7 +81,6 @@ const SignIn = () => {
                         />
                         <Button
                             className="mt-1"
-                            variant="slim"
                             type="submit"
                             loading={loading}
                             disabled={!password.length || !email.length}
