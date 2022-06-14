@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 
 export default function Account({ users }: any) {
     const [userId, setUserId] = useState<any[]>([]);
-    const [selectedRequest, setSelectedRequest] = useState<any>(null);
+    const [selectedRequest, setSelectedRequest] = useState<string>("");
     const [requests, setRequests] = useState<any>(null);
 
     // Carga los usuarios cuando recibe el objeto users
@@ -70,10 +70,10 @@ export default function Account({ users }: any) {
         reader.onload = async function () {
             blob = reader.result;
             if (blob) {
-                console.log(selectedRequest.id);
+                console.log(selectedRequest);
                 const { data, error } = await supabase.from('requests').update(
                     [{ download: blob, finished: true }])
-                    .match({ id: selectedRequest.id });
+                    .match({ id: selectedRequest });
                 if (!error) {
                     alert("El PDF se ha subido correctamente");
                 } else {
