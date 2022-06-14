@@ -35,7 +35,6 @@ export default function Pricing({ products }: Props) {
                 url: '/api/create-checkout-session',
                 data: { price }
             });
-            console.log(sessionId);
             const stripe = await getStripe();
             stripe?.redirectToCheckout({ sessionId });
         } catch (error) {
