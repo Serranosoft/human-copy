@@ -6,32 +6,28 @@ import { useEffect, useState } from 'react';
 export interface Request {
     finished: boolean | undefined;
     title: string | undefined;
+    description: string | undefined;
     download: string | undefined;
 }
 
-export default function Texts({ user }: { user: User }) {
-    const initialValue: Request[] = [
-        {
-            finished: false,
-            title: "Cargando...",
-            download: "/"
-        }
-    ]
+export default function Requests({ user }: { user: User }) {
+    const initialValue: Request = {
+        finished: false,
+        title: "Cargando...",
+        description: "",
+        download: "/"
+    }
 
-    const [text, setTexts] = useState<Request[]>(initialValue);
-    const [req, setReq] = useState({
-        title: "",
-        description: ""
-    });
-
+    const [request, setRequest] = useState<Request>(initialValue);
+    const [allRequests, setAllRequests] = useState<Request[]>();
     useEffect(() => {
         getReq();
     }, [user])
 
 
     async function getReq() {
-        const { data, error }: { data: any; error: any } = await supabase.from('requests').select('finished, download').eq("user_id", user.id);
-        setTexts(data);
+        const { data, error }: { data: any; error: any } = await supabase.from('requests').select('title, finished, download').eq("user_id", user.id);
+        setAllRequests(data);
     }
 
     async function submitReq(e: any) {
@@ -39,20 +35,19 @@ export default function Texts({ user }: { user: User }) {
         const { data, error }: { data: any; error: any } = await supabase.from('requests').insert([{
             id: Date.now(),
             user_id: user.id,
-            title: req.title,
-            description: req.description,
+            title: request.title,
+            description: request.description,
             finished: false
         }]);
-        console.log(data);
-        console.log(error);
-        getReq();
+        if (!error) {
+            getReq();
+        }
     }
 
     function handleChange(evt: any) {
         const value = evt.target.value;
-        console.log(value);
-        setReq({
-            ...req,
+        setRequest({
+            ...request,
             [evt.target.name]: value
         });
     }
@@ -68,7 +63,7 @@ export default function Texts({ user }: { user: User }) {
             </div>
             <div>
                 {
-                    text && text.map(pdf => {
+                    allRequests && allRequests.map(pdf => {
                         return (
                             <a download={pdf.title !== null ? pdf.title : "PDF"} href={pdf.download} title='Descargar PDF'>Descargar {pdf.title !== null ? pdf.title : "PDF sin nombre (Ponte en contacto con soporte@dominio.com"}</a>
                         )
