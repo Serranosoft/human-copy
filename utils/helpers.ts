@@ -41,3 +41,11 @@ export const toDateTime = (secs: number) => {
     t.setSeconds(secs);
     return t;
 };
+
+export const removeChildElements = (parent: HTMLElement) => {
+    let child = parent.lastElementChild;
+    while (child) {
+        parent.removeChild(child);
+        child = parent.lastElementChild;
+    }
+}
