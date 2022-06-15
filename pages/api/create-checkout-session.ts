@@ -22,7 +22,24 @@ const createCheckoutSession = async (
         email: user?.email || ''
       });
 
-      const session = await stripe.checkout.sessions.create({
+      const subSession = await stripe.checkout.sessions.create({
+        payment_method_types: ['card'],
+        billing_address_collection: 'required',
+        customer,
+        line_items: [
+          {
+            price: price.id,
+            quantity
+          }
+        ],
+        mode: "payment",
+        allow_promotion_codes: true,
+
+        success_url: `${getURL()}/account`,
+        cancel_url: `${getURL()}/`
+      });
+
+      const paySession = await stripe.checkout.sessions.create({
         payment_method_types: ['card'],
         billing_address_collection: 'required',
         customer,
@@ -42,7 +59,7 @@ const createCheckoutSession = async (
         cancel_url: `${getURL()}/`
       });
 
-      return res.status(200).json({ sessionId: session.id });
+      return res.status(200).json({ sessionId: mode != "payment" ? subSession.id : paySession.id });
     } catch (err: any) {
       console.log(err);
       res
