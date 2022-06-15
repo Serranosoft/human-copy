@@ -10,19 +10,17 @@ import { AppProps } from 'next/app';
 import { MyUserContextProvider } from 'utils/useUser';
 
 export default function MyApp({ Component, pageProps }: AppProps) {
-  useEffect(() => {
-    document.body.classList?.remove('loading');
-  }, []);
+    useEffect(() => {
+        document.body.classList?.remove('loading');
+    }, []);
 
-  return (
-    <div className="bg-black">
-      <UserProvider supabaseClient={supabaseClient}>
-        <MyUserContextProvider supabaseClient={supabaseClient}>
-          <Layout>
-            <Component {...pageProps} />
-          </Layout>
-        </MyUserContextProvider>
-      </UserProvider>
-    </div>
-  );
+    return (
+        <UserProvider supabaseClient={supabaseClient}>
+            <MyUserContextProvider supabaseClient={supabaseClient}>
+                <Layout>
+                    <Component {...pageProps} />
+                </Layout>
+            </MyUserContextProvider>
+        </UserProvider>
+    );
 }
