@@ -21,6 +21,10 @@ export default function Pricing({ products }: Props) {
     const [priceIdLoading, setPriceIdLoading] = useState<string>();
     const { user, isLoading, subscription } = useUser();
 
+
+    const [range, applyRange] = useState(0);
+    const [productPrice, applyProductPrice] = useState<number | undefined>(10);
+
     const handleCheckout = async (price: Price) => {
         setPriceIdLoading(price.id);
         if (!user) {
@@ -44,8 +48,36 @@ export default function Pricing({ products }: Props) {
         }
     };
 
+    function handleChange(e: any) {
+        let product = products.find(product => product.prices!.length > 1);
+        applyRange(e.target.value)
+        applyProductPrice(product!.prices![e.target.value].unit_amount! / 100);
+    }
+
     return (
-        <section className="bg-black">
+        <section>
+                <input 
+                    id="typeinp" 
+                    type="range" 
+                    min="0"
+                    max="4" 
+                    value={range} 
+                    onChange={handleChange}
+                    step="1"
+                />
+                <span>{productPrice}</span>
+                {products.map((product) => {
+                    return (
+                        <div>
+                            <span>{product.name}</span>
+                            <p>{product.description}</p>
+                            <p>{product.prices!.length > 1 ? productPrice : product!.prices![0].unit_amount! / 100}</p>
+                        </div>
+                    )
+                })}
+        </section>
+    )
+        {/* <section className="bg-black">
             <div className="max-w-6xl mx-auto py-8 sm:py-24 px-4 sm:px-6 lg:px-8">
                 <div className="sm:flex sm:flex-col sm:align-center">
                     <h1 className="text-4xl font-extrabold text-white sm:text-center sm:text-6xl">
@@ -124,6 +156,6 @@ export default function Pricing({ products }: Props) {
                     })}
                 </div>
             </div>
-        </section>
-    );
+        </section> */}
+
 }
