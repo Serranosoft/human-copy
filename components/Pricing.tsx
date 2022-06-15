@@ -56,28 +56,39 @@ export default function Pricing({ products }: Props) {
 
     return (
         <section>
-                <input 
-                    id="typeinp" 
-                    type="range" 
-                    min="0"
-                    max="4" 
-                    value={range} 
-                    onChange={handleChange}
-                    step="1"
-                />
-                <span>{productPrice}</span>
-                {products.map((product) => {
-                    return (
-                        <div>
-                            <span>{product.name}</span>
-                            <p>{product.description}</p>
-                            <p>{product.prices!.length > 1 ? productPrice : product!.prices![0].unit_amount! / 100}</p>
-                        </div>
-                    )
-                })}
+            <input
+                id="typeinp"
+                type="range"
+                min="0"
+                max="4"
+                value={range}
+                onChange={handleChange}
+                step="1"
+            />
+            <span>{productPrice}</span>
+            {products.map((product) => { 
+                return (
+                    <div>
+                        <span>{product.name}</span>
+                        <p>{product.description}</p>
+                        <p>{product.prices!.length > 1 ? productPrice : product!.prices![0].unit_amount! / 100}</p>
+                        <Button
+                            type="button"
+                            disabled={isLoading}
+                            /* loading={priceIdLoading === product.prices!.length > 1 ? product.prices![range].id : product.prices![0].id} */
+                            onClick={() => handleCheckout(product.prices!.length > 1 ? product.prices![range] : product.prices![0])}
+                            className="mt-8 block w-full rounded-md py-2 text-sm font-semibold text-white text-center hover:bg-zinc-900"
+                        >
+                            {product.name === subscription?.prices?.products?.name
+                                ? 'Gestionar suscripción'
+                                : 'Suscribirse'}
+                        </Button>
+                    </div>
+                )
+            })}
         </section>
     )
-        {/* <section className="bg-black">
+    {/* <section className="bg-black">
             <div className="max-w-6xl mx-auto py-8 sm:py-24 px-4 sm:px-6 lg:px-8">
                 <div className="sm:flex sm:flex-col sm:align-center">
                     <h1 className="text-4xl font-extrabold text-white sm:text-center sm:text-6xl">
