@@ -22,7 +22,7 @@ const createCheckoutSession = async (
         email: user?.email || ''
       });
 
-      const subSession = await stripe.checkout.sessions.create({
+      const paySession = await stripe.checkout.sessions.create({
         payment_method_types: ['card'],
         billing_address_collection: 'required',
         customer,
@@ -38,7 +38,7 @@ const createCheckoutSession = async (
         cancel_url: `${getURL()}/`
       });
 
-      const paySession = await stripe.checkout.sessions.create({
+      const subSession = await stripe.checkout.sessions.create({
         payment_method_types: ['card'],
         billing_address_collection: 'required',
         customer,
