@@ -12,7 +12,7 @@ const createCheckoutSession = async (
   res: NextApiResponse
 ) => {
   if (req.method === 'POST') {
-    const { price, quantity = 1, metadata = {} } = req.body;
+    const { price, quantity = 1, metadata = {}, mode } = req.body;
 
     try {
       const { user } = await getUser({ req, res });
@@ -32,7 +32,7 @@ const createCheckoutSession = async (
             quantity
           }
         ],
-        mode: 'subscription',
+        mode: /* 'subscription' */mode,
         allow_promotion_codes: true,
         subscription_data: {
           trial_from_plan: true,

@@ -25,7 +25,7 @@ export default function Pricing({ products }: Props) {
     const [range, applyRange] = useState(0);
     const [productPrice, applyProductPrice] = useState<number | undefined>(10);
 
-    const handleCheckout = async (price: Price) => {
+    const handleCheckout = async (price: Price, mode: string) => {
         setPriceIdLoading(price.id);
         if (!user) {
             return router.push('/signin');
@@ -37,7 +37,7 @@ export default function Pricing({ products }: Props) {
         try {
             const { sessionId } = await postData({
                 url: '/api/create-checkout-session',
-                data: { price }
+                data: { price, mode }
             });
             const stripe = await getStripe();
             stripe?.redirectToCheckout({ sessionId });
@@ -76,7 +76,7 @@ export default function Pricing({ products }: Props) {
                             type="button"
                             disabled={isLoading}
                             /* loading={priceIdLoading === product.prices!.length > 1 ? product.prices![range].id : product.prices![0].id} */
-                            onClick={() => handleCheckout(product.prices!.length > 1 ? product.prices![range] : product.prices![0])}
+                            onClick={() => handleCheckout(product.prices!.length > 1 ? product.prices![range] : product.prices![0], product.prices!.length > 1 ? "subscription" : "payment")}
                             className="mt-8 block w-full rounded-md py-2 text-sm font-semibold text-white text-center hover:bg-zinc-900"
                         >
                             {product.name === subscription?.prices?.products?.name
