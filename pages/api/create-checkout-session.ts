@@ -34,7 +34,6 @@ const createCheckoutSession = async (
         ],
         mode: "payment",
         allow_promotion_codes: true,
-
         success_url: `${getURL()}/account`,
         cancel_url: `${getURL()}/`
       });
@@ -49,7 +48,7 @@ const createCheckoutSession = async (
             quantity
           }
         ],
-        mode: /* 'subscription' */mode,
+        mode: 'subscription',
         allow_promotion_codes: true,
         subscription_data: {
           trial_from_plan: true,
