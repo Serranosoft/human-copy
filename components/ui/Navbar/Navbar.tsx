@@ -8,7 +8,7 @@ import { useRouter } from 'next/router';
 const Navbar = () => {
     const { user } = useUser();
     const router = useRouter();
-
+    console.log(user);
     return (
         <header className={s.root}>
             <div>
@@ -19,22 +19,34 @@ const Navbar = () => {
                         </a>
                     </Link>
                     <nav>
-                        <Link href="/">
-                            <a className={s.link}>Pricing</a>
-                        </Link>
+                    {user && (
                         <Link href="/account">
-                            <a className={s.link}>Account</a>
+                            <a className={s.link}>Mi cuenta</a>
+                        </Link>)}
+                        {user && (
+                        <Link href="/mis-textos">
+                            <a className={s.link}>Mis textos</a>
+                        </Link>)}
+                        {!user && (
+                            <Link href="/">
+                                <a className={s.link}>Precios</a>
+                            </Link>
+                        )}
+                        {user && user.id === "53597006-79cf-4428-9bab-131fd11e3b43" && (
+                        <Link href="/admin">
+                            <a className={s.link}>Administración</a>
                         </Link>
+                    )}
                     </nav>
                 </div>
                 <span>
                     {user ? (
                         <Link href="/api/auth/logout">
-                            <a className={s.link}>Sign out</a>
+                            <a className={s.link}>Cerrar sesión</a>
                         </Link>
                     ) : (
                         <Link href="/signin">
-                            <a className={s.link}>Sign in</a>
+                            <a className={s.link}>Iniciar sesión</a>
                         </Link>
                     )}
                 </span>
