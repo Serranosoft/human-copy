@@ -49,3 +49,7 @@
 .root > div a svg {
   display: block;
 }
+
+.root > div a:hover {
+  text-decoration: underline;
+}

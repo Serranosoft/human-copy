@@ -97,7 +97,7 @@ const SignUp = () => {
                     <span className="pt-1 text-center text-sm">
                         <span className="text-zinc-200">¿Tienes una cuenta?</span>
                         {` `}
-                        <Link href="/signin">
+                        <Link href="/iniciar-sesion">
                             <a className="text-accent-9 font-bold hover:underline cursor-pointer">
                                 Inicia sesión.
                             </a>

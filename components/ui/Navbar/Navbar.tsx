@@ -45,7 +45,7 @@ const Navbar = () => {
                             <a className={s.link}>Cerrar sesión</a>
                         </Link>
                     ) : (
-                        <Link href="/signin">
+                        <Link href="/iniciar-sesion">
                             <a className={s.link}>Iniciar sesión</a>
                         </Link>
                     )}

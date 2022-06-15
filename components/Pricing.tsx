@@ -21,7 +21,7 @@ export default function Pricing({ products }: Props) {
     const handleCheckout = async (price: Price, mode: string) => {
         setPriceIdLoading(price.id);
         if (!user) {
-            return router.push('/signin');
+            return router.push('/iniciar-sesion');
         }
         if (subscription) {
             return router.push('/account');
