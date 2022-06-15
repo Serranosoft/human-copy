@@ -35,6 +35,7 @@ export default function Pricing({ products }: Props) {
         }
 
         try {
+            console.log(mode);
             const { sessionId } = await postData({
                 url: '/api/create-checkout-session',
                 data: { price, mode }
@@ -76,7 +77,7 @@ export default function Pricing({ products }: Props) {
                             type="button"
                             disabled={isLoading}
                             /* loading={priceIdLoading === product.prices!.length > 1 ? product.prices![range].id : product.prices![0].id} */
-                            onClick={() => handleCheckout(product.prices!.length > 1 ? product.prices![range] : product.prices![0], product.prices!.length > 1 ? "subscription" : "payment")}
+                            onClick={() => handleCheckout(product.prices!.length > 1 ? product.prices![range] : product.prices![0], product.prices!.length > 1 ? "payment" : "subscription")}
                             className="mt-8 block w-full rounded-md py-2 text-sm font-semibold text-white text-center hover:bg-zinc-900"
                         >
                             {product.name === subscription?.prices?.products?.name
