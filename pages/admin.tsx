@@ -65,11 +65,6 @@ export default function Account({ users }: any) {
         setSelectedRequest(e.target.value);
     }
 
-    useEffect(() => {
-        console.log(requests);
-        console.log(userId);
-    })
-
     // Función encargada de actualizar la request con el PDF y en estado finalizado
     async function onSubmit(e: any) {
         e.preventDefault();

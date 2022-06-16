@@ -1,7 +1,5 @@
-import React, { forwardRef, useRef, SelectHTMLAttributes } from 'react';
+import React, { forwardRef, SelectHTMLAttributes } from 'react';
 import s from '../../../styles/css/Select.module.css';
-
-import LoadingDots from 'components/ui/LoadingDots';
 
 interface Props extends SelectHTMLAttributes<HTMLSelectElement> {
     active?: boolean;
