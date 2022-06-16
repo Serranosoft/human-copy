@@ -1,0 +1,14 @@
+.root {
+  font-family: 'DM Sans', sans-serif;
+  width: 100%;
+  padding: 0.45rem 0.3rem;
+  background-color: transparent;
+  color: #e6e6e6;
+  outline: none;
+  border: 1px solid white;
+  font-size: 1rem;
+}
+
+.root option {
+  background-color: #0a0a0a;
+}

@@ -1,6 +1,9 @@
+import Select from '@/components/ui/Select';
 import { removeChildElements } from '@/utils/helpers';
 import { supabase } from '@/utils/supabase-client';
+import { Button } from '@supabase/ui';
 import { useEffect, useState } from 'react';
+import s from '../styles/css/Admin.module.css';
 
 export default function Account({ users }: any) {
     const [userId, setUserId] = useState<any[]>([]);
@@ -10,6 +13,9 @@ export default function Account({ users }: any) {
     // Carga los usuarios cuando recibe el objeto users
     useEffect(() => {
         let select = document.getElementById("upload-file-uuids")! as HTMLSelectElement;
+        let option = document.createElement("option");
+        option.textContent = `Elige un usuario`;
+        select.appendChild(option);
         users.forEach((el: { full_name: any; id: string; }) => {
             let option = document.createElement("option");
             option.textContent = `${el.full_name} con el ID: ${el.id}`;
@@ -37,7 +43,7 @@ export default function Account({ users }: any) {
         if (requests && requests.length > 0) {
             let select = document.getElementById("upload-file-req-ids")! as HTMLSelectElement;
             let option = document.createElement("option");
-            option.textContent = `Elige un usuario`;
+            option.textContent = `Elige una petición`;
             select.appendChild(option);
             requests.forEach((el: { title: any; id: string; user_id: string }) => {
                 let option = document.createElement("option");
@@ -58,6 +64,11 @@ export default function Account({ users }: any) {
     function setSelectedReq(e: any) {
         setSelectedRequest(e.target.value);
     }
+
+    useEffect(() => {
+        console.log(requests);
+        console.log(userId);
+    })
 
     // Función encargada de actualizar la request con el PDF y en estado finalizado
     async function onSubmit(e: any) {
@@ -83,19 +94,27 @@ export default function Account({ users }: any) {
         }
     }
 
+    // IDEA: CARGAR LAS OPCIONES COMO UN STATE, AL ACTUALIZARLO LAS OPCIONES SE CARGAN DE NUEVO (?)
     return (
-        <>
+        <section className={s.root}>
             <form onSubmit={onSubmit}>
-                <select onChange={setSelectedUser} id="upload-file-uuids">
-                    <option>Elige un usuario</option>
-                </select>
-                <select onChange={setSelectedReq} id="upload-file-req-ids">
-                    <option>Elige un usuario</option>
-                </select>
+                <Select 
+                    onChange={setSelectedUser} 
+                    id="upload-file-uuids"
+                    disabled={userId ? false : true}
+                >
+                </Select>
+                <Select 
+                    onChange={setSelectedReq} 
+                    id="upload-file-req-ids"
+                    disabled={requests === null || requests.length < 1 ? true : false}
+                >
+                </Select>
+                
                 <input id="pdf-file" type="file" />
-                <input type="submit" value="Enviar" />
+                <Button>Enviar</Button>
             </form>
-        </>
+        </section>
     )
 
 }

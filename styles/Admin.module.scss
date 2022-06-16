@@ -1,0 +1,19 @@
+.root {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 70vh;
+    & > form {
+        width: 100%;
+        max-width: 530px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+        button {
+            font-size: 1.1rem;
+            padding: 0.8rem 2.3rem;
+        }
+    }
+}
