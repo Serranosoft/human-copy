@@ -76,7 +76,6 @@ export default function Account({ users }: any) {
         reader.onload = async function () {
             blob = reader.result;
             if (blob) {
-                console.log(selectedRequest);
                 const { data, error } = await supabase.from('requests').update(
                     [{ download: blob, finished: true }])
                     .match({ id: selectedRequest });

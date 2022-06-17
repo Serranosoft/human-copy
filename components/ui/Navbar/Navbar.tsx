@@ -8,7 +8,6 @@ import { useRouter } from 'next/router';
 const Navbar = () => {
     const { user } = useUser();
     const router = useRouter();
-    console.log(user);
     return (
         <header className={s.root}>
             <div>

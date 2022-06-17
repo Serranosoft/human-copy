@@ -20,13 +20,18 @@
             font-size: 1.25rem;
             margin: 2rem 0;
         }
-
-        button {
-            background-color: #6ece9d;
-            padding-left: 1.85rem;
-            padding-right: 1.85rem;
-            &:hover {
-                background-color: #50b17f;
+        & > div {
+            display: flex;
+            gap: 0.5rem;
+            button {
+                padding-left: 1.85rem;
+                padding-right: 1.85rem;
+                &:first-child {
+                    background-color: #6ece9d;
+                }
+                &:hover {
+                    background-color: #50b17f;
+                }
             }
         }
     }

@@ -92,7 +92,7 @@ export default function Requests({ user }: { user: User }) {
                         <Button onClick={submitReq}>Enviar artículo</Button>
                     </div>
                 </ModalComponent>
-                <button onClick={openModal}>Abrir modal</button>
+                <Button onClick={openModal}>Envíar un artículo</Button>
                 <div className={s.dashboard}>
                     {
                         allRequests && allRequests.map(pdf => {

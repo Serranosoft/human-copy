@@ -38,12 +38,22 @@
   margin: 2rem 0;
 }
 
-.root .hero button {
-  background-color: #6ece9d;
+.root .hero > div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 0.5rem;
+}
+
+.root .hero > div button {
   padding-left: 1.85rem;
   padding-right: 1.85rem;
 }
 
-.root .hero button:hover {
+.root .hero > div button:first-child {
+  background-color: #6ece9d;
+}
+
+.root .hero > div button:hover {
   background-color: #50b17f;
 }
