@@ -7,3 +7,7 @@
   color: lightgray;
   font-family: 'DM Sans', sans-serif;
 }
+
+.root:focus {
+  border: 1px solid #6ece9d;
+}

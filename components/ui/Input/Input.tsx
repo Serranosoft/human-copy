@@ -8,15 +8,15 @@ interface Props extends Omit<InputHTMLAttributes<any>, 'onChange'> {
 const Input = (props: Props) => {
     const { className, children, onChange, ...rest } = props;
 
-    const handleOnChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const handleOnChange = (e: any) => {
         if (onChange) {
-            onChange(e.target.value);
+            onChange(e);
         }
         return null;
     };
 
     return (
-        <label>
+        <>
             <input
                 className={s.root}
                 onChange={handleOnChange}
@@ -26,7 +26,7 @@ const Input = (props: Props) => {
                 spellCheck="false"
                 {...rest}
             />
-        </label>
+        </>
     );
 };
 

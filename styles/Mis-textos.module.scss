@@ -1,0 +1,51 @@
+.root {
+    width: 100%;
+    min-height: 950px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 7rem 0;
+    & > div {
+        width: 100%;
+        max-width: 300px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .dashboard {
+        max-width: 1220px;
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 2rem;
+        margin-top: 4rem;
+        border-radius: 6px;
+        & > div {
+            display: grid;
+            gap: 1rem;
+            padding: 1.5rem 2rem 0.5rem 2rem;
+            border-radius: 12px;
+            text-align: center;
+            background-color: black;
+            span {
+                justify-self: flex-start;
+            }
+            div.download {
+                justify-self: flex-end;
+                display: flex;
+                align-items: center;
+                & > span {
+                    font-size: 0.75rem;
+                    margin-right: 0.2rem;
+                }
+                i span {
+                    color: white;
+                }
+            }
+            a.download {
+                justify-self: flex-end;
+                color: #6ece9d;
+            }
+        }
+    }
+
+}

@@ -43,3 +43,7 @@
   padding-left: 1.85rem;
   padding-right: 1.85rem;
 }
+
+.root .hero button:hover {
+  background-color: #50b17f;
+}

@@ -1,0 +1,74 @@
+.root {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 500px;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  background-color: black;
+  color: white;
+  border-radius: 15px;
+  padding: 1rem 2rem;
+  display: -ms-grid;
+  display: grid;
+}
+
+.root > span {
+  font-size: 1.25rem;
+  justify-self: flex-end;
+  margin-bottom: 1rem;
+  cursor: pointer;
+}
+
+.root form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 2.5rem;
+}
+
+.root form > div {
+  display: -ms-grid;
+  display: grid;
+}
+
+.root form > div label {
+  font-size: 0.9rem;
+  margin-bottom: 0.35rem;
+}
+
+.root form > div input {
+  width: 100%;
+  margin-bottom: 0.35rem;
+}
+
+.root form > div > span {
+  color: #afafaf;
+  font-size: 0.7rem;
+  justify-self: flex-end;
+}
+
+.root > div {
+  margin-top: 3rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-left: auto;
+  gap: 1rem;
+}
+
+.root > div button {
+  font-size: 1.1rem;
+}
+
+.root > div button:last-child {
+  background-color: #6ece9d;
+}
+
+.root > div button:last-child:hover {
+  background-color: #50b17f;
+}

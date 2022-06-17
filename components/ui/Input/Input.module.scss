@@ -6,4 +6,7 @@
     font-size: 1rem;
     color: lightgray;
     font-family: 'DM Sans', sans-serif;
+    &:focus {
+        border: 1px solid #6ece9d;
+    }
 }
