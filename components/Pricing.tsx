@@ -6,6 +6,7 @@ import { postData } from 'utils/helpers';
 import { getStripe } from 'utils/stripe-client';
 import { useUser } from 'utils/useUser';
 import { Price, ProductWithPrice } from 'types';
+import { updateUserWords } from '@/utils/supabase-client';
 
 interface Props {
     products: ProductWithPrice[];
@@ -34,6 +35,7 @@ export default function Pricing({ products }: Props) {
             });
             const stripe = await getStripe();
             stripe?.redirectToCheckout({ sessionId });
+            await updateUserWords(user, 0);
         } catch (error) {
             return alert((error as Error)?.message);
         } finally {

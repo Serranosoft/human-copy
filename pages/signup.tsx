@@ -7,7 +7,7 @@ import { supabaseClient } from '@supabase/supabase-auth-helpers/nextjs';
 import Button from 'components/ui/Button';
 import Input from 'components/ui/Input';
 import Logo from 'components/icons/Logo';
-import { updateUserName } from 'utils/supabase-client';
+import { updateUserName, updateUserWords } from 'utils/supabase-client';
 import { User } from '@supabase/gotrue-js';
 
 const SignUp = () => {
@@ -25,7 +25,9 @@ const SignUp = () => {
 
     const handleSignup = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-
+        console.log(email);
+        console.log(password);
+        console.log(name);
         setLoading(true);
         setMessage({});
         const { error, user: createdUser } = await supabaseClient.auth.signUp({
@@ -37,6 +39,7 @@ const SignUp = () => {
         } else {
             if (createdUser) {
                 await updateUserName(createdUser, name);
+                await updateUserWords(createdUser, 0);
                 setNewUser(createdUser);
             } else {
                 setMessage({
@@ -88,7 +91,7 @@ const SignUp = () => {
                         <Button
                             type="submit"
                             loading={loading}
-                            disabled={loading || !email.length || !password.length}
+                            // disabled={loading || !email.length || !password.length}
                         >
                             Registrate
                         </Button>

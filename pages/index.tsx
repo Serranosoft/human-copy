@@ -3,12 +3,14 @@ import { Product } from 'types';
 import { GetStaticPropsResult } from 'next';
 import s from '../styles/css/Home.module.css';
 import Button from '@/components/ui/Button';
+import Pricing from '@/components/Pricing';
 
 interface Props {
     products: Product[];
 }
 
 export default function Home({ products }: Props) {
+    console.log(products);
     return (
         <>
             <section className={s.root}>
@@ -61,7 +63,9 @@ export default function Home({ products }: Props) {
                     
                 </div>
             </section>
-        
+            <Pricing 
+                products={products}
+            />
         </>
     
     )

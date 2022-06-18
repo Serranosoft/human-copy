@@ -26,7 +26,7 @@ export default function Requests({ user }: { user: User }) {
     const [request, setRequest] = useState<Request>(initialValue);
     const [allRequests, setAllRequests] = useState<Request[]>();
     const [open, setModal] = useState(false);
-
+    const [range, applyRange] = useState(0);
 
     useEffect(() => {
         getReq();
@@ -69,6 +69,10 @@ export default function Requests({ user }: { user: User }) {
         setModal(false);
     }
 
+    function handleWords(e: any) {
+        applyRange(e.target.value)
+    }
+
     return (
         <>
             <section className={s.root}>
@@ -81,6 +85,22 @@ export default function Requests({ user }: { user: User }) {
                             <label>Título del artículo (h1)</label>
                             <Input name="title" placeholder="¿Cómo arreglar el transmisor de la radio de mi coche?" onChange={handleChange}></Input>
                             <span className={s.muted}>Si no tienes claro un título, nosotros nos encargamos de redactar el más adecuado para el artículo</span>
+                        </div>
+                        <div>
+                            <label>Cantidad de palabras en el artículo</label>
+                            <span>{range}</span>
+                            <input
+                                type="range"
+                                min="0"
+                                max="4"
+                                value={range}
+                                onChange={handleWords}
+                                step="1"
+                            />
+                        </div>
+                        <div>
+                            <label>Temática del artículo</label>
+                            <Input name="categoria" placeholder="Finanzas, informática, marketing..." onChange={handleChange}></Input>
                         </div>
                         <div>
                             <label>Descripción del artículo</label>

@@ -10,7 +10,7 @@ const Input = (props: Props) => {
 
     const handleOnChange = (e: any) => {
         if (onChange) {
-            onChange(e);
+            onChange(e.target.value);
         }
         return null;
     };
