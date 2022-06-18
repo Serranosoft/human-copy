@@ -122,34 +122,6 @@ export default function Requests({ user }: { user: User }) {
                             <LoadingDots />
                         </i>
                 }
-
-
-
-                {/* <div className={s.dashboard}>
-                    {
-                        allRequests ?
-                            allRequests.map(pdf => {
-                                return (
-                                    <div>
-                                        <span>{pdf.title !== null ? pdf.title : "Sin nombre"}</span>
-                                        {
-                                            pdf.download !== null ?
-                                                <a className={s.download} download={pdf.title !== null ? pdf.title : "Sin nombre"} href={pdf.download} title={`Descargar ${pdf.title} en PDF`}>Descargar</a>
-                                                :
-                                                <div className={s.download}>
-                                                    <span>Pendiente</span>
-                                                    <i>
-                                                        <LoadingDots />
-                                                    </i>
-                                                </div>
-                                        }
-                                    </div>)
-                            }) :
-                            <i>
-                                <LoadingDots />
-                            </i>
-                    }
-                </div> */}
             </section>
         </>
     )

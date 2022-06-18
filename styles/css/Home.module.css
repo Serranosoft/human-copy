@@ -25,6 +25,7 @@
   -webkit-box-align: start;
       -ms-flex-align: start;
           align-items: flex-start;
+  margin: 3rem 0 5rem 0;
 }
 
 .root .hero .title {
@@ -56,4 +57,90 @@
 
 .root .hero > div button:hover {
   background-color: #50b17f;
+}
+
+.root .bigImg {
+  width: 100%;
+  padding: 2rem;
+  max-width: 1550px;
+  margin: 5rem 0;
+  border: 2px solid #474747;
+  border-radius: 16px;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (minmax(400px, 1fr))[auto-fit];
+      grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: 3rem 1rem;
+}
+
+.root .bigImg > div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.root .bigImg > div > div {
+  width: 100%;
+  height: 180px;
+  position: relative;
+  background-size: 100% 100%;
+}
+
+.root .bigImg > div > div:hover:after {
+  opacity: 1;
+}
+
+.root .bigImg > div > div::after {
+  content: "";
+  display: block;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  background: rgba(0, 0, 0, 0.83);
+}
+
+.root .bigImg > div > div:hover > span {
+  width: 100%;
+  display: inline;
+}
+
+.root .bigImg > div > div > span {
+  display: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  color: white;
+  font-weight: bold;
+  font-size: 1.4rem;
+  text-align: center;
+}
+
+.root .bigImg > div > div > span > span.highlight {
+  color: #6ece9d;
+}
+
+.root .bigImg > div > span {
+  padding: 1rem;
+  border-left: 2px solid #474747;
+  border-bottom: 2px solid #474747;
+  border-right: 2px solid #474747;
+  text-align: center;
+  border-bottom-left-radius: 16px;
+  border-bottom-right-radius: 16px;
+  font-size: 0.85rem;
+}
+
+.root .bigImg > span {
+  grid-column: 1 / -1;
+  -ms-grid-column-align: center;
+      justify-self: center;
+  padding-bottom: 0.35rem;
+  border-bottom: 3px solid #6ece9d;
+  font-size: 1.35rem;
 }

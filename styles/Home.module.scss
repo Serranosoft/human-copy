@@ -9,7 +9,7 @@
         display: flex;
         flex-direction: column;
         align-items: flex-start;
-
+        margin: 3rem 0 5rem 0;
         .title {
             font-size: 5.5rem;
             letter-spacing: -2px;
@@ -33,6 +33,76 @@
                     background-color: #50b17f;
                 }
             }
+        }
+    }
+    .bigImg {
+        width: 100%;
+        padding: 2rem;
+        max-width: 1550px;
+        margin: 5rem 0;
+        border: 2px solid rgb(71, 71, 71);
+        border-radius: 16px;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+        gap: 3rem 1rem;
+        & > div {
+            display: flex;
+            flex-direction: column;
+            & > div {
+                width: 100%;
+                height: 180px;
+                position: relative;
+                // background-image: url("/sc-db.jpg");
+                background-size: 100% 100%;
+                &:hover:after {
+                    opacity: 1;
+                }
+                &::after {
+                    content: "";
+                    display: block;
+                    height: 100%;
+                    width: 100%;
+                    opacity: 0;
+                    background: rgba(0,0,0,.83);
+                }
+                &:hover {
+                    & > span {
+                        width: 100%;
+                        display: inline;
+                    }
+                }
+                & > span {
+                    display: none;
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                    color: white;
+                    font-weight: bold;
+                    font-size: 1.4rem;
+                    text-align: center;
+                    & > span.highlight {
+                        color: #6ece9d;
+                    }
+                }
+            }
+            & > span {
+                padding: 1rem;
+                border-left: 2px solid rgb(71, 71, 71);
+                border-bottom: 2px solid rgb(71, 71, 71);
+                border-right: 2px solid rgb(71, 71, 71);
+                text-align: center;
+                border-bottom-left-radius: 16px;
+                border-bottom-right-radius: 16px;
+                font-size: 0.85rem;
+            }
+        }
+        & > span {
+            grid-column: 1 / -1;
+            justify-self: center;
+            padding-bottom: 0.35rem;
+            border-bottom: 3px solid #6ece9d;
+            font-size: 1.35rem;
         }
     }
 }
