@@ -77,3 +77,12 @@
   justify-self: flex-end;
   color: #6ece9d;
 }
+
+.root > i {
+  margin-top: 15rem;
+}
+
+.root > i span {
+  color: white;
+  font-size: 80px;
+}

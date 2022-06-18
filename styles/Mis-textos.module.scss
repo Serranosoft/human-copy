@@ -47,5 +47,11 @@
             }
         }
     }
-
+    & > i {
+        margin-top: 15rem;
+        span {
+            color: white;
+            font-size: 80px;
+        }
+    }
 }
