@@ -100,14 +100,9 @@ const webhookHandler = async (req: NextApiRequest, res: NextApiResponse) => {
                                 checkoutSession.customer as string,
                                 true
                             );
+                            await supabase.from('users').update({suscrito: true}).match({ email: checkoutSession.customer_details!.email });
                         } else {
-                            // Agregar a la columna plan de users el plan que ha escogido
-                            /* const { data, error } = await supabase
-                            .from<Customer>('customers')
-                            .select('id')
-                            .eq('email', checkoutSession.email); */
                             await supabase.from('users').update({plan: plan}).match({ email: checkoutSession.customer_details!.email });
-                            // throw new Error(`${data}`);
                         }
                         break;
                     default:
