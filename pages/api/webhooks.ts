@@ -2,7 +2,7 @@ import { stripe } from 'utils/stripe';
 import {
     upsertProductRecord,
     upsertPriceRecord,
-    // manageSubscriptionStatusChange
+    manageSubscriptionStatusChange
 } from 'utils/supabase-admin';
 import { NextApiRequest, NextApiResponse } from 'next';
 import Stripe from 'stripe';
@@ -12,21 +12,21 @@ import { supabase } from '@/utils/supabase-client';
 import { Customer } from 'types';
 
 // Stripe requires the raw body to construct the event.
-/* export const config = {
+export const config = {
     api: {
         bodyParser: false
     }
 };
- */
-/* async function buffer(readable: Readable) {
+
+async function buffer(readable: Readable) {
     const chunks = [];
     for await (const chunk of readable) {
         chunks.push(typeof chunk === 'string' ? Buffer.from(chunk) : chunk);
     }
     return Buffer.concat(chunks);
-} */
+}
 
-/* const relevantEvents = new Set([
+const relevantEvents = new Set([
     'product.created',
     'product.updated',
     'price.created',
@@ -35,9 +35,9 @@ import { Customer } from 'types';
     'customer.subscription.created',
     'customer.subscription.updated',
     'customer.subscription.deleted'
-]); */
+]);
 
-/* const webhookHandler = async (req: NextApiRequest, res: NextApiResponse) => {
+const webhookHandler = async (req: NextApiRequest, res: NextApiResponse) => {
     if (req.method === 'POST') {
         const buf = await buffer(req);
         const sig = req.headers['stripe-signature'];
@@ -126,6 +126,6 @@ import { Customer } from 'types';
         res.setHeader('Allow', 'POST');
         res.status(405).end('Method Not Allowed');
     }
-}; */
-/* 
-export default webhookHandler; */
+};
+
+export default webhookHandler;

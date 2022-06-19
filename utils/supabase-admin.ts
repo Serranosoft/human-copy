@@ -110,13 +110,11 @@ const copyBillingDetailsToCustomer = async (
     if (error) throw error;
 };
 
-/* const manageSubscriptionStatusChange = async (
+const manageSubscriptionStatusChange = async (
     subscriptionId: string,
     customerId: string,
     createAction = false
 ) => {
-
-    console.log("AAAAAAAJODEEEEEEEEEEEEEEEEEEER");
     // Get customer's UUID from mapping table.
     const { data: customerData, error: noCustomerError } = await supabaseAdmin
         .from<Customer>('customers')
@@ -175,11 +173,11 @@ const copyBillingDetailsToCustomer = async (
             uuid,
             subscription.default_payment_method as Stripe.PaymentMethod
         );
-}; */
+};
 
 export {
     upsertProductRecord,
     upsertPriceRecord,
-    createOrRetrieveCustomer/* ,
-    manageSubscriptionStatusChange */
+    createOrRetrieveCustomer,
+    manageSubscriptionStatusChange
 };
