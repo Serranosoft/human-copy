@@ -106,7 +106,8 @@ const webhookHandler = async (req: NextApiRequest, res: NextApiResponse) => {
                             .from<Customer>('customers')
                             .select('id')
                             .eq('stripe_customer_id', checkoutSession.customer?.toString());
-                            await supabase.from('users').update({plan: plan}).match({ id: "5e9d5204-a792-44c9-b8d6-b4e1e52af543" });
+                            // await supabase.from('users').update({plan: plan}).match({ id: "5e9d5204-a792-44c9-b8d6-b4e1e52af543" });
+                            throw new Error(`${data}`);
                         }
                         break;
                     default:
