@@ -6,7 +6,6 @@ import {
 import { createOrRetrieveCustomer } from 'utils/supabase-admin';
 import { getURL } from 'utils/helpers';
 import { NextApiRequest, NextApiResponse } from 'next';
-import { updateUserWords } from '@/utils/supabase-client';
 
 const createCheckoutSession = async (
     req: NextApiRequest,
@@ -80,7 +79,6 @@ const createCheckoutSession = async (
                             words = 5500
                             break;                        
                     }
-                    await updateUserWords(user, words);
                 }
             }
 
