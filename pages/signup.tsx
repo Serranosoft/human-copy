@@ -7,7 +7,7 @@ import { supabaseClient } from '@supabase/supabase-auth-helpers/nextjs';
 import Button from 'components/ui/Button';
 import Input from 'components/ui/Input';
 import Logo from 'components/icons/Logo';
-import { updateUserName } from 'utils/supabase-client';
+import { updateEmail, updateUserName } from 'utils/supabase-client';
 import { User } from '@supabase/gotrue-js';
 
 const SignUp = () => {
@@ -36,6 +36,7 @@ const SignUp = () => {
         } else {
             if (createdUser) {
                 await updateUserName(createdUser, name);
+                await updateEmail(createdUser, email);
                 setNewUser(createdUser);
             } else {
                 setMessage({

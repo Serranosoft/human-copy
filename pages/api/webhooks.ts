@@ -102,12 +102,12 @@ const webhookHandler = async (req: NextApiRequest, res: NextApiResponse) => {
                             );
                         } else {
                             // Agregar a la columna plan de users el plan que ha escogido
-                            const { data, error } = await supabase
+                            /* const { data, error } = await supabase
                             .from<Customer>('customers')
                             .select('id')
-                            .eq('stripe_customer_id', checkoutSession.customer?.toString());
-                            // await supabase.from('users').update({plan: plan}).match({ id: "5e9d5204-a792-44c9-b8d6-b4e1e52af543" });
-                            throw new Error(`${data}`);
+                            .eq('email', checkoutSession.email); */
+                            await supabase.from('users').update({plan: plan}).match({ email: checkoutSession.customer_details!.email });
+                            // throw new Error(`${data}`);
                         }
                         break;
                     default:

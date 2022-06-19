@@ -30,3 +30,12 @@ export const updateUserName = async (user: User, name: string) => {
     })
     .eq('id', user.id);
 };
+
+export const updateEmail = async (user: User, email: string) => {
+  await supabase
+    .from<UserDetails>('users')
+    .update({
+      email: email
+    })
+    .eq('id', user.id);
+};
