@@ -10,7 +10,7 @@ interface Props {
 }
 
 export default function Home({ products }: Props) {
-    console.log(products);
+
     return (
         <>
             <section className={s.root}>

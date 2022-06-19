@@ -59,27 +59,6 @@ const createCheckoutSession = async (
                     success_url: `${getURL()}/account`,
                     cancel_url: `${getURL()}/`
                 });
-
-                if (customer) {
-                    let words: number = 0;
-                    switch(price.id) {
-                        // 30€
-                        case "price_1LCLYLCwSqNzkEvBBIUsRUXD":
-                            console.log("AAA");
-                            words = 3000
-                            break;
-                            // 45€
-                            case "price_1LCLYLCwSqNzkEvBz83O5TL3":
-                            console.log("bbb");
-                            words = 4500
-                            break;
-                            // 60€
-                            case "price_1LCMBFCwSqNzkEvBAV1TCtw2":
-                            console.log("CCC");
-                            words = 5500
-                            break;                        
-                    }
-                }
             }
 
             return res.status(200).json({ sessionId: session.id });

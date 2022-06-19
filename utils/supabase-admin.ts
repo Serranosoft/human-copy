@@ -77,28 +77,9 @@ const createOrRetrieveCustomer = async ({
         if (email) customerData.email = email;
         const customer = await stripe.customers.create(customerData);
         // Now insert the customer ID into our Supabase mapping table.
-        let plan = "";
-        if (mode === "payment") {
-            switch(priceId) {
-                // 30€
-                case "price_1LCLYLCwSqNzkEvBBIUsRUXD":
-                    plan = "Artículo de 3000 palabras"
-                    break;
-                    // 45€
-                    case "price_1LCLYLCwSqNzkEvBz83O5TL3":
-                    plan = "Artículo de 4500 palabras"
-                    break;
-                    // 60€
-                    case "price_1LCMBFCwSqNzkEvBAV1TCtw2":
-                    plan = "Artículo de 6000 palabras"
-                    break;                        
-            }
-        } else {
-            plan = "Suscripción";
-        }
         const { error: supabaseError } = await supabaseAdmin
             .from('customers')
-            .insert([{ id: uuid, stripe_customer_id: customer.id, plan: plan}]);
+            .insert([{ id: uuid, stripe_customer_id: customer.id}]);
         if (supabaseError) throw supabaseError;
         console.log(`New customer created and inserted for ${uuid}.`);
         return customer.id;
@@ -129,11 +110,13 @@ const copyBillingDetailsToCustomer = async (
     if (error) throw error;
 };
 
-const manageSubscriptionStatusChange = async (
+/* const manageSubscriptionStatusChange = async (
     subscriptionId: string,
     customerId: string,
     createAction = false
 ) => {
+
+    console.log("AAAAAAAJODEEEEEEEEEEEEEEEEEEER");
     // Get customer's UUID from mapping table.
     const { data: customerData, error: noCustomerError } = await supabaseAdmin
         .from<Customer>('customers')
@@ -192,11 +175,11 @@ const manageSubscriptionStatusChange = async (
             uuid,
             subscription.default_payment_method as Stripe.PaymentMethod
         );
-};
+}; */
 
 export {
     upsertProductRecord,
     upsertPriceRecord,
-    createOrRetrieveCustomer,
-    manageSubscriptionStatusChange
+    createOrRetrieveCustomer/* ,
+    manageSubscriptionStatusChange */
 };

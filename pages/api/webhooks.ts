@@ -1,105 +1,131 @@
 import { stripe } from 'utils/stripe';
 import {
-  upsertProductRecord,
-  upsertPriceRecord,
-  manageSubscriptionStatusChange
+    upsertProductRecord,
+    upsertPriceRecord,
+    // manageSubscriptionStatusChange
 } from 'utils/supabase-admin';
 import { NextApiRequest, NextApiResponse } from 'next';
 import Stripe from 'stripe';
 import { Readable } from 'node:stream';
+import { supabaseClient } from '@supabase/supabase-auth-helpers/nextjs';
+import { supabase } from '@/utils/supabase-client';
+import { Customer } from 'types';
 
 // Stripe requires the raw body to construct the event.
-export const config = {
-  api: {
-    bodyParser: false
-  }
-};
-
-async function buffer(readable: Readable) {
-  const chunks = [];
-  for await (const chunk of readable) {
-    chunks.push(typeof chunk === 'string' ? Buffer.from(chunk) : chunk);
-  }
-  return Buffer.concat(chunks);
-}
-
-const relevantEvents = new Set([
-  'product.created',
-  'product.updated',
-  'price.created',
-  'price.updated',
-  'checkout.session.completed',
-  'customer.subscription.created',
-  'customer.subscription.updated',
-  'customer.subscription.deleted'
-]);
-
-const webhookHandler = async (req: NextApiRequest, res: NextApiResponse) => {
-  if (req.method === 'POST') {
-    const buf = await buffer(req);
-    const sig = req.headers['stripe-signature'];
-    const webhookSecret =
-      process.env.STRIPE_WEBHOOK_SECRET_LIVE ??
-      process.env.STRIPE_WEBHOOK_SECRET;
-    let event: Stripe.Event;
-
-    try {
-      if (!sig || !webhookSecret) return;
-      event = stripe.webhooks.constructEvent(buf, sig, webhookSecret);
-    } catch (err: any) {
-      console.log(`❌ Error message: ${err.message}`);
-      return res.status(400).send(`Webhook Error: ${err.message}`);
+/* export const config = {
+    api: {
+        bodyParser: false
     }
+};
+ */
+/* async function buffer(readable: Readable) {
+    const chunks = [];
+    for await (const chunk of readable) {
+        chunks.push(typeof chunk === 'string' ? Buffer.from(chunk) : chunk);
+    }
+    return Buffer.concat(chunks);
+} */
 
-    if (relevantEvents.has(event.type)) {
-      try {
-        switch (event.type) {
-          case 'product.created':
-          case 'product.updated':
-            await upsertProductRecord(event.data.object as Stripe.Product);
-            break;
-          case 'price.created':
-          case 'price.updated':
-            await upsertPriceRecord(event.data.object as Stripe.Price);
-            break;
-          case 'customer.subscription.created':
-          case 'customer.subscription.updated':
-          case 'customer.subscription.deleted':
-            const subscription = event.data.object as Stripe.Subscription;
-            await manageSubscriptionStatusChange(
-              subscription.id,
-              subscription.customer as string,
-              event.type === 'customer.subscription.created'
-            );
-            break;
-          case 'checkout.session.completed':
-            const checkoutSession = event.data
-              .object as Stripe.Checkout.Session;
-            if (checkoutSession.mode === 'subscription') {
-              const subscriptionId = checkoutSession.subscription;
-              await manageSubscriptionStatusChange(
-                subscriptionId as string,
-                checkoutSession.customer as string,
-                true
-              );
-            }
-            break;
-          default:
-            throw new Error('Unhandled relevant event!');
+/* const relevantEvents = new Set([
+    'product.created',
+    'product.updated',
+    'price.created',
+    'price.updated',
+    'checkout.session.completed',
+    'customer.subscription.created',
+    'customer.subscription.updated',
+    'customer.subscription.deleted'
+]); */
+
+/* const webhookHandler = async (req: NextApiRequest, res: NextApiResponse) => {
+    if (req.method === 'POST') {
+        const buf = await buffer(req);
+        const sig = req.headers['stripe-signature'];
+        const webhookSecret =
+            process.env.STRIPE_WEBHOOK_SECRET_LIVE ??
+            process.env.STRIPE_WEBHOOK_SECRET;
+        let event: Stripe.Event;
+
+        try {
+            if (!sig || !webhookSecret) return;
+            event = stripe.webhooks.constructEvent(buf, sig, webhookSecret);
+        } catch (err: any) {
+            console.log(`❌ Error message: ${err.message}`);
+            return res.status(400).send(`Webhook Error: ${err.message}`);
         }
-      } catch (error) {
-        console.log(error);
-        return res
-          .status(400)
-          .send('Webhook error: "Webhook handler failed. View logs."');
-      }
+
+        console.log("No entiendo de vd");
+        if (relevantEvents.has(event.type)) {
+            console.log(event.type);
+
+            try {
+                switch (event.type) {
+                    case 'product.created':
+                    case 'product.updated':
+                        await upsertProductRecord(event.data.object as Stripe.Product);
+                        break;
+                    case 'price.created':
+                    case 'price.updated':
+                        await upsertPriceRecord(event.data.object as Stripe.Price);
+                        break;
+                    case 'customer.subscription.created':
+                    case 'customer.subscription.updated':
+                    case 'customer.subscription.deleted':
+                        const subscription = event.data.object as Stripe.Subscription;
+                        await manageSubscriptionStatusChange(
+                            subscription.id,
+                            subscription.customer as string,
+                            event.type === 'customer.subscription.created'
+                        );
+                        break;
+                    case 'checkout.session.completed':
+                        const checkoutSession = event.data
+                            .object as Stripe.Checkout.Session;
+                        let plan = "";
+                        switch (checkoutSession.amount_total! / 100) {
+                            case 30:
+                                plan = "Artículo de 3000 palabras"
+                                break;
+                            case 45:
+                                plan = "Artículo de 4000 palabras"
+                                break;
+                            case 60:
+                                plan = "Artículo de 5000 palabras"
+                                break;
+                        }
+                        if (checkoutSession.mode === 'subscription') {
+                            const subscriptionId = checkoutSession.subscription;
+                            await manageSubscriptionStatusChange(
+                                subscriptionId as string,
+                                checkoutSession.customer as string,
+                                true
+                            );
+                        } else {
+                            // Agregar a la columna plan de users el plan que ha escogido
+                            const { data, error } = await supabase
+                            .from<Customer>('customers')
+                            .select('id')
+                            .eq('stripe_customer_id', checkoutSession.customer?.toString());
+                            console.log(data);
+                            await supabase.from('users').update({plan: plan}).match({ id: data });
+                        }
+                        break;
+                    default:
+                        throw new Error('Unhandled relevant event!');
+                }
+            } catch (error) {
+                console.log(error);
+                return res
+                    .status(400)
+                    .send('Webhook error: "Webhook handler failed. View logs."');
+            }
+        }
+
+        res.json({ received: true });
+    } else {
+        res.setHeader('Allow', 'POST');
+        res.status(405).end('Method Not Allowed');
     }
-
-    res.json({ received: true });
-  } else {
-    res.setHeader('Allow', 'POST');
-    res.status(405).end('Method Not Allowed');
-  }
-};
-
-export default webhookHandler;
+}; */
+/* 
+export default webhookHandler; */
