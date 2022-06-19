@@ -31,7 +31,10 @@ export const updateUserName = async (user: User, name: string) => {
     .eq('id', user.id);
 };
 
-export const updateUserWords = async (user: User | any, words: number) => {
+export const updateUserWords = async (user: User | any, words: number | null) => {
+    console.log(user);
+    console.log(user.id);
+    console.log(words);
     await supabase
       .from<UserDetails>('users')
       .update({

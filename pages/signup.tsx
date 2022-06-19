@@ -39,7 +39,7 @@ const SignUp = () => {
         } else {
             if (createdUser) {
                 await updateUserName(createdUser, name);
-                await updateUserWords(createdUser, 0);
+                await updateUserWords(createdUser, null);
                 setNewUser(createdUser);
             } else {
                 setMessage({

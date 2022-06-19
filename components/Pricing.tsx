@@ -17,7 +17,7 @@ export default function Pricing({ products }: Props) {
     const [priceIdLoading, setPriceIdLoading] = useState<string>();
     const { user, isLoading, subscription } = useUser();
     const [range, applyRange] = useState(0);
-    const [productPrice, applyProductPrice] = useState<number | undefined>(10);
+    const [productPrice, applyProductPrice] = useState<number | undefined>(30);
 
     const handleCheckout = async (price: Price, mode: string) => {
         setPriceIdLoading(price.id);
@@ -55,13 +55,13 @@ export default function Pricing({ products }: Props) {
                 id="typeinp"
                 type="range"
                 min="0"
-                max="4"
+                max="2"
                 value={range}
                 onChange={handleChange}
                 step="1"
             />
             <span>{productPrice}</span>
-            {products.map((product) => { 
+            {products.map((product) => {
                 let id = product.prices!.length > 1 ? product.prices![range].id : product.prices![0].id;
                 let price = product.prices!.length > 1 ? product.prices![range] : product.prices![0];
                 let mode = product.prices!.length > 1 ? "payment" : "subscription";
