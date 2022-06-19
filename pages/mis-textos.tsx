@@ -16,6 +16,7 @@ export interface Request {
 }
 
 export default function Requests({ user }: { user: User }) {
+    
     const initialValue: Request = {
         finished: false,
         title: "Cargando...",
@@ -27,12 +28,17 @@ export default function Requests({ user }: { user: User }) {
     const [allRequests, setAllRequests] = useState<Request[]>();
     const [open, setModal] = useState(false);
     const [range, applyRange] = useState(0);
+    const [plan, setPlan] = useState(null);
 
     useEffect(() => {
         getReq();
+        getPlan();
     }, [user])
-
-
+    
+    async function getPlan() {
+        const { data, error }: { data: any; error: any } = await supabase.from('users').select('plan').eq("user_id", user.id).single();
+        plan ? setPlan(data.plan) : setPlan(data);
+    }
     async function getReq() {
         const { data, error }: { data: any; error: any } = await supabase.from('requests').select('title, finished, download').eq("user_id", user.id);
         setAllRequests(data);
@@ -112,6 +118,7 @@ export default function Requests({ user }: { user: User }) {
                         <Button onClick={submitReq}>Enviar artículo</Button>
                     </div>
                 </ModalComponent>
+                <span>{plan ? `Contratado: ${plan}` : "No hay ningún plan contratado"}</span>
                 <Button onClick={openModal}>Envíar un artículo</Button>
                 {
                     allRequests ?

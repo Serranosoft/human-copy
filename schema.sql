@@ -11,7 +11,7 @@ create table users (
   billing_address jsonb,
   -- Stores your customer's payment instruments.
   payment_method jsonb,
-  words number
+  plan text
 );
 alter table users enable row level security;
 create policy "Can view own user data." on users for select using (auth.uid() = id);
