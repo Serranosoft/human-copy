@@ -4,5 +4,9 @@
     align-items: center;
     padding: 3.3rem 0;
     width: 100%;
-    border: 2px solid red;
+    .planLayout {
+        display: flex;
+        gap: 3rem;
+        margin-top: 5rem;
+    }
 }

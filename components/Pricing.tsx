@@ -8,6 +8,7 @@ import { useUser } from 'utils/useUser';
 import { Price, ProductWithPrice } from 'types';
 import s from '../styles/css/Pricing.module.css';
 import Range from './ui/Range';
+import PlanCard from './PlanCard';
 
 interface Props {
     products: ProductWithPrice[];
@@ -46,7 +47,7 @@ export default function Pricing({ products }: Props) {
 
     useEffect(() => {
         if (productPrice) {
-            switch(productPrice) {
+            switch (productPrice) {
                 case 30:
                     setWordsPerPrice(3000);
                     break;
@@ -68,16 +69,7 @@ export default function Pricing({ products }: Props) {
 
     return (
         <section className={s.root}>
-            {/* <input
-                id="typeinp"
-                type="range"
-                min="0"
-                max="2"
-                value={range}
-                onChange={handleChange}
-                step="1"
-            /> */}
-            <Range 
+            <Range
                 min="0"
                 max="2"
                 value={range}
@@ -85,39 +77,35 @@ export default function Pricing({ products }: Props) {
                 step="1"
             />
             <span>{wordsPerPrice} palabras</span>
-            {products.map((product) => {
-                console.log(subscription);
-                let id = product.prices!.length > 1 ? product.prices![range].id : product.prices![0].id;
-                let price = product.prices!.length > 1 ? product.prices![range] : product.prices![0];
-                let mode = product.prices!.length > 1 ? "payment" : "subscription";
-                let buttonText = "";
-                if (product.prices!.length > 1) {
-                    buttonText = "Contratar"
-                } else {
-                    if (product.name === subscription?.prices?.products?.name) {
-                        buttonText = "Gestionar suscripción";
+            <div id="lol" className={s.planLayout}>
+                {products.map((product) => {
+                    let id = product.prices!.length > 1 ? product.prices![range].id : product.prices![0].id;
+                    let paymentType = product.prices!.length > 1 ? "payment" : "subscription";
+                    let buttonText = "";
+                    if (product.prices!.length > 1) {
+                        buttonText = "Contratar"
                     } else {
-                        buttonText = "Suscribirse";
+                        if (product.name === subscription?.prices?.products?.name) {
+                            buttonText = "Gestionar suscripción";
+                        } else {
+                            buttonText = "Suscribirse";
+                        }
                     }
-                }
 
-                return (
-                    <div>
-                        <span>{product.name}</span>
-                        <p>{product.description}</p>
-                        <p>{product.prices!.length > 1 ? productPrice : product!.prices![0].unit_amount! / 100}</p>
-                        <Button
-                            type="button"
-                            disabled={isLoading}
-                            loading={priceIdLoading === id}
-                            onClick={() => handleCheckout(price, mode)}
-                            className=""
-                        >
-                            {buttonText}
-                        </Button>
-                    </div>
-                )
-            })}
+                    return (
+                        <PlanCard
+                            product={product}
+                            productPrice={productPrice}
+                            isLoading={isLoading}
+                            priceIdLoading={priceIdLoading}
+                            handleCheckout={handleCheckout}
+                            buttonText={buttonText}
+                            priceId={id}
+                            paymentType={paymentType}
+                        />
+                    )
+                })}
+            </div>
         </section>
     )
 }
