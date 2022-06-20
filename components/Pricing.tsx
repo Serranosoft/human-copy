@@ -60,9 +60,21 @@ export default function Pricing({ products }: Props) {
             />
             <span>{productPrice}</span>
             {products.map((product) => {
+                console.log(subscription);
                 let id = product.prices!.length > 1 ? product.prices![range].id : product.prices![0].id;
                 let price = product.prices!.length > 1 ? product.prices![range] : product.prices![0];
                 let mode = product.prices!.length > 1 ? "payment" : "subscription";
+                let buttonText = "";
+                if (product.prices!.length > 1) {
+                    buttonText = "Contratar"
+                } else {
+                    if (product.name === subscription?.prices?.products?.name) {
+                        buttonText = "Gestionar suscripción";
+                    } else {
+                        buttonText = "Suscribirse";
+                    }
+                }
+
                 return (
                     <div>
                         <span>{product.name}</span>
@@ -75,9 +87,7 @@ export default function Pricing({ products }: Props) {
                             onClick={() => handleCheckout(price, mode)}
                             className=""
                         >
-                            {product.name === subscription?.prices?.products?.name
-                                ? 'Gestionar suscripción'
-                                : 'Suscribirse'}
+                            {buttonText}
                         </Button>
                     </div>
                 )
