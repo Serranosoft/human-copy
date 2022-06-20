@@ -56,18 +56,18 @@ export default function Account({ user }: { user: User }) {
         }).format((subscription?.prices?.unit_amount || 0) / 100);
 
     return (
-        <section className="bg-black mb-32">
-            <div className="max-w-6xl mx-auto pt-8 sm:pt-24 pb-8 px-4 sm:px-6 lg:px-8">
-                <div className="sm:flex sm:flex-col sm:align-center">
-                    <h1 className="text-4xl font-extrabold text-white sm:text-center sm:text-6xl">
-                        Account
+        <section>
+            <div>
+                <div>
+                    <h1>
+                        Cuenta
                     </h1>
-                    <p className="mt-5 text-xl text-zinc-200 sm:text-center sm:text-2xl max-w-2xl m-auto">
+                    <p>
                         We partnered with Stripe for a simplified billing.
                     </p>
                 </div>
             </div>
-            <div className="p-4">
+            <div>
                 <Card
                     title="Your Plan"
                     description={
@@ -76,8 +76,8 @@ export default function Account({ user }: { user: User }) {
                             : ''
                     }
                     footer={
-                        <div className="flex items-start justify-between flex-col sm:flex-row sm:items-center">
-                            <p className="pb-4 sm:pb-0">
+                        <div>
+                            <p>
                                 Manage your subscription on Stripe.
                             </p>
                             <Button
@@ -90,9 +90,9 @@ export default function Account({ user }: { user: User }) {
                         </div>
                     }
                 >
-                    <div className="text-xl mt-8 mb-4 font-semibold">
+                    <div>
                         {isLoading ? (
-                            <div className="h-12 mb-6">
+                            <div>
                                 <LoadingDots />
                             </div>
                         ) : subscription ? (
@@ -109,10 +109,10 @@ export default function Account({ user }: { user: User }) {
                     description="Please enter your full name, or a display name you are comfortable with."
                     footer={<p>Please use 64 characters at maximum.</p>}
                 >
-                    <div className="text-xl mt-8 mb-4 font-semibold">
+                    <div>
                         {userDetails ? (`${userDetails?.full_name}`) :
                             (
-                                <div className="h-8 mb-6">
+                                <div>
                                     <LoadingDots />
                                 </div>
                             )}
@@ -123,7 +123,7 @@ export default function Account({ user }: { user: User }) {
                     description="Please enter the email address you want to use to login."
                     footer={<p>We will email you to verify the change.</p>}
                 >
-                    <p className="text-xl mt-8 mb-4 font-semibold">
+                    <p>
                         {user ? user.email : undefined}
                     </p>
                 </Card>

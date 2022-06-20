@@ -7,9 +7,7 @@ import {
 import { NextApiRequest, NextApiResponse } from 'next';
 import Stripe from 'stripe';
 import { Readable } from 'node:stream';
-import { supabaseClient } from '@supabase/supabase-auth-helpers/nextjs';
 import { supabase } from '@/utils/supabase-client';
-import { Customer } from 'types';
 
 // Stripe requires the raw body to construct the event.
 export const config = {

@@ -18,9 +18,7 @@ const createCheckoutSession = async (
 
             const customer = await createOrRetrieveCustomer({
                 uuid: user?.id || '',
-                email: user?.email || '',
-                mode: mode,
-                priceId: price.id
+                email: user?.email || ''
             });
             let session = null;
             if (mode == "payment") {
@@ -36,7 +34,7 @@ const createCheckoutSession = async (
                     ],
                     mode: "payment",
                     allow_promotion_codes: true,
-                    success_url: `${getURL()}/account`,
+                    success_url: `${getURL()}/`,
                     cancel_url: `${getURL()}/`
                 });
             } else {
@@ -56,7 +54,7 @@ const createCheckoutSession = async (
                         trial_from_plan: true,
                         metadata
                     },
-                    success_url: `${getURL()}/account`,
+                    success_url: `${getURL()}/`,
                     cancel_url: `${getURL()}/`
                 });
             }

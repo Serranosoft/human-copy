@@ -1,16 +1,13 @@
-import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useEffect, useState, FormEvent } from 'react';
 import { useUser } from '@supabase/supabase-auth-helpers/react';
 import { supabaseClient } from '@supabase/supabase-auth-helpers/nextjs';
-
 import Button from 'components/ui/Button';
 import Input from 'components/ui/Input';
-import Logo from 'components/icons/Logo';
 import { updateEmail, updateUserName } from 'utils/supabase-client';
 import { User } from '@supabase/gotrue-js';
 
-const SignUp = () => {
+const Registro = () => {
     const [newUser, setNewUser] = useState<User | null>(null);
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -50,13 +47,57 @@ const SignUp = () => {
 
     useEffect(() => {
         if (newUser || user) {
-            router.replace('/account');
+            router.replace('/cuenta');
         }
     }, [newUser, user]);
 
     return (
-        <div className="flex justify-center height-screen-helper">
-            <div className="flex flex-col justify-between max-w-lg p-3 m-auto w-80 ">
+        <div>
+            <div>
+                <p>Crear una cuenta</p>
+                {message.content && (
+                    <span
+                       /*  className={`${message.type === 'error' ? 'text-pink-500' : 'text-green-500'
+                            } border ${message.type === 'error'
+                                ? 'border-pink-500'
+                                : 'border-green-500'
+                            } p-3`} */
+                    >
+                        {message.content === "Invalid login credentials" ? "Correo electrónico o contraseña incorrecta" : message.content}
+                    </span>
+                )}
+                <form onSubmit={handleSignup} className="flex flex-col space-y-4">
+                    <Input
+                        type="email"
+                        placeholder="Correo electrónico"
+                        value={email}
+                        onChange={setEmail}
+                        required
+                    />
+                    <Input
+                        type="name"
+                        placeholder="Nombre / Agencia"
+                        value={name}
+                        onChange={setName}
+                        required
+                    />
+                    <Input
+                        type="password"
+                        placeholder="Contraseña"
+                        value={password}
+                        onChange={setPassword}
+                        required
+                    />
+                    <Button
+                        type="submit"
+                        loading={loading}
+                        disabled={!password.length || !email.length}
+                    >
+                        Registro
+                    </Button>
+                </form>
+            </div>
+            {/* <div className="flex flex-col justify-between max-w-lg p-3 m-auto w-80 ">
                 <div className="flex justify-center pb-12 ">
                     <Logo width="64px" height="64px" />
                 </div>
@@ -104,9 +145,9 @@ const SignUp = () => {
                         </Link>
                     </span>
                 </form>
-            </div>
+            </div> */}
         </div>
     );
 };
 
-export default SignUp;
+export default Registro;

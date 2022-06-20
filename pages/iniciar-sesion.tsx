@@ -39,7 +39,7 @@ const SignIn = () => {
 
     useEffect(() => {
         if (user) {
-            router.replace('/account');
+            router.replace('/cuenta');
         }
     }, [user]);
 
@@ -50,16 +50,16 @@ const SignIn = () => {
                     <p>Iniciar sesión</p>
                     {message.content && (
                         <span
-                            className={`${message.type === 'error' ? 'text-pink-500' : 'text-green-500'
+                            /* className={`${message.type === 'error' ? 'text-pink-500' : 'text-green-500'
                                 } border ${message.type === 'error'
                                     ? 'border-pink-500'
                                     : 'border-green-500'
-                                } p-3`}
+                                } p-3`} */
                         >
                             {message.content === "Invalid login credentials" ? "Correo electrónico o contraseña incorrecta" : message.content}
                         </span>
                     )}
-                    <form onSubmit={handleSignin} className="flex flex-col space-y-4">
+                    <form onSubmit={handleSignin}>
                         <Input
                             type="email"
                             placeholder="Correo electrónico"
@@ -84,64 +84,11 @@ const SignIn = () => {
                         </Button>
                     </form>
                 </div>
-                {/* <div>
-                <div>
-                    <Logo width="64px" height="64px" />
-                </div>
-                <div className="flex flex-col space-y-4">
-                    {message.content && (
-                        <div
-                            className={`${message.type === 'error' ? 'text-pink-500' : 'text-green-500'
-                                } border ${message.type === 'error'
-                                    ? 'border-pink-500'
-                                    : 'border-green-500'
-                                } p-3`}
-                        >
-                            {message.content}
-                        </div>
-                    )}
-
-                    <form onSubmit={handleSignin} className="flex flex-col space-y-4">
-                        <Input
-                            type="email"
-                            placeholder="Correo electrónico"
-                            value={email}
-                            onChange={setEmail}
-                            required
-                        />
-                        <Input
-                            type="password"
-                            placeholder="Contraseña"
-                            value={password}
-                            onChange={setPassword}
-                            required
-                        />
-                        <Button
-                            className="mt-1"
-                            type="submit"
-                            loading={loading}
-                            disabled={!password.length || !email.length}
-                        >
-                            Iniciar sesión
-                        </Button>
-                    </form>
-
-                    <span className="pt-1 text-center text-sm">
-                        <span className="text-zinc-200">¿No tienes una cuenta?</span>
-                        {` `}
-                        <Link href="/signup">
-                            <a className="text-accent-9 font-bold hover:underline cursor-pointer">
-                                Registrate.
-                            </a>
-                        </Link>
-                    </span>
-                </div>
-            </div> */}
             </div>
         );
 
     return (
-        <div className="m-6">
+        <div>
             <LoadingDots />
         </div>
     );
