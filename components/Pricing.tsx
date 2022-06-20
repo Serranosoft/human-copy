@@ -1,11 +1,13 @@
 import { useRouter } from 'next/router';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import Button from 'components/ui/Button';
 import { postData } from 'utils/helpers';
 import { getStripe } from 'utils/stripe-client';
 import { useUser } from 'utils/useUser';
 import { Price, ProductWithPrice } from 'types';
+import s from '../styles/css/Pricing.module.css';
+import Range from './ui/Range';
 
 interface Props {
     products: ProductWithPrice[];
@@ -17,6 +19,7 @@ export default function Pricing({ products }: Props) {
     const { user, isLoading, subscription } = useUser();
     const [range, applyRange] = useState(0);
     const [productPrice, applyProductPrice] = useState<number | undefined>(30);
+    const [wordsPerPrice, setWordsPerPrice] = useState(3000);
 
     const handleCheckout = async (price: Price, mode: string) => {
         setPriceIdLoading(price.id);
@@ -41,6 +44,22 @@ export default function Pricing({ products }: Props) {
         }
     };
 
+    useEffect(() => {
+        if (productPrice) {
+            switch(productPrice) {
+                case 30:
+                    setWordsPerPrice(3000);
+                    break;
+                case 45:
+                    setWordsPerPrice(4000);
+                    break;
+                case 60:
+                    setWordsPerPrice(5000);
+                    break;
+            }
+        }
+    }, [productPrice])
+
     function handleChange(e: any) {
         let product = products.find(product => product.prices!.length > 1);
         applyRange(e.target.value)
@@ -48,8 +67,8 @@ export default function Pricing({ products }: Props) {
     }
 
     return (
-        <section>
-            <input
+        <section className={s.root}>
+            {/* <input
                 id="typeinp"
                 type="range"
                 min="0"
@@ -57,8 +76,15 @@ export default function Pricing({ products }: Props) {
                 value={range}
                 onChange={handleChange}
                 step="1"
+            /> */}
+            <Range 
+                min="0"
+                max="2"
+                value={range}
+                onChange={handleChange}
+                step="1"
             />
-            <span>{productPrice}</span>
+            <span>{wordsPerPrice} palabras</span>
             {products.map((product) => {
                 console.log(subscription);
                 let id = product.prices!.length > 1 ? product.prices![range].id : product.prices![0].id;
