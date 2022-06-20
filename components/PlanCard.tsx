@@ -11,9 +11,10 @@ interface Props {
     buttonText: string;
     priceId: string;
     paymentType: string;
+    wordsPerPrice: number
 }
 
-export default function PlanCard({ product, productPrice, isLoading, priceIdLoading, handleCheckout, buttonText, priceId, paymentType }: Props) {
+export default function PlanCard({ product, productPrice, isLoading, priceIdLoading, handleCheckout, buttonText, priceId, paymentType, wordsPerPrice }: Props) {
 
     const [price, setPrice] = useState<any>();
     console.log(product
@@ -31,7 +32,7 @@ export default function PlanCard({ product, productPrice, isLoading, priceIdLoad
 
     return (
         <div className={ `${s.root} ${product.prices!.length > 1 ? s.payment : s.subscription}`}>
-            <span className={s.name}>{product.name}</span>
+            <span className={s.name}>{product.name == "Artículo único" ? `${product.name} de ${wordsPerPrice} palabras` : product.name}</span>
             <p className={s.description}>{product.description}</p>
             <p className={s.price}>{price}</p>
             <Button

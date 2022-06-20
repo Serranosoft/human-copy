@@ -55,10 +55,6 @@
   background-color: #6ece9d;
 }
 
-.root .hero > div button:hover {
-  background-color: #50b17f;
-}
-
 .root .bigImg {
   width: 100%;
   padding: 2rem;

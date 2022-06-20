@@ -9,14 +9,53 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  padding: 3.3rem 0;
   width: 100%;
+  margin-bottom: 5rem;
+}
+
+.root .wordsPerPrice {
+  margin-top: 0.8rem;
 }
 
 .root .planLayout {
+  width: 100%;
+  max-width: 920px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   gap: 3rem;
   margin-top: 5rem;
+}
+
+.root .info {
+  max-width: 920px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-top: 3.5rem;
+  gap: 10rem;
+}
+
+.root .info table {
+  width: 100%;
+  margin: 0.5rem auto;
+  font-size: 1.1rem;
+  border-spacing: 0;
+}
+
+.root .info table thead th {
+  text-align: start;
+  padding: 0.8rem 2rem;
+  font-size: 1.4rem;
+  border-bottom: 2px solid #6ece9d;
+}
+
+.root .info table tbody tr td {
+  padding: 0.6em 2rem;
 }

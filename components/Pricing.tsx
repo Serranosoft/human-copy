@@ -76,7 +76,7 @@ export default function Pricing({ products }: Props) {
                 onChange={handleChange}
                 step="1"
             />
-            <span>{wordsPerPrice} palabras</span>
+            <span className={s.wordsPerPrice}>{wordsPerPrice} palabras</span>
             <div id="lol" className={s.planLayout}>
                 {products.map((product) => {
                     let id = product.prices!.length > 1 ? product.prices![range].id : product.prices![0].id;
@@ -91,20 +91,63 @@ export default function Pricing({ products }: Props) {
                             buttonText = "Suscribirse";
                         }
                     }
-
                     return (
-                        <PlanCard
-                            product={product}
-                            productPrice={productPrice}
-                            isLoading={isLoading}
-                            priceIdLoading={priceIdLoading}
-                            handleCheckout={handleCheckout}
-                            buttonText={buttonText}
-                            priceId={id}
-                            paymentType={paymentType}
-                        />
+                        <>
+                            <PlanCard
+                                product={product}
+                                productPrice={productPrice}
+                                isLoading={isLoading}
+                                priceIdLoading={priceIdLoading}
+                                handleCheckout={handleCheckout}
+                                buttonText={buttonText}
+                                priceId={id}
+                                paymentType={paymentType}
+                                wordsPerPrice={wordsPerPrice}
+                            />
+                        </>
                     )
                 })}
+            </div>
+            <div className={s.info}>
+                <p>* Al ser escrito por personas y no por IA, los textos tardan en entregarse un tiempo variable dependiendo de la cantidad de palabras que solicites</p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Palabras</th>
+                            <th>Tiempo</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1000</td>
+                            <td>1 día</td>
+                        </tr>
+                        <tr>
+                            <td>2000</td>
+                            <td>1 día</td>
+                        </tr>
+                        <tr>
+                            <td>3000</td>
+                            <td>2 días</td>
+                        </tr>
+                        <tr>
+                            <td>4000</td>
+                            <td>2 - 3 días</td>
+                        </tr>
+                        <tr>
+                            <td>5000</td>
+                            <td>3 días</td>
+                        </tr>
+                        <tr>
+                            <td>6000</td>
+                            <td>4-5 días</td>
+                        </tr>
+                        <tr>
+                            <td>+6000</td>
+                            <td>+6 días</td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </section>
     )
