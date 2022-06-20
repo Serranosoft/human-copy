@@ -19,7 +19,7 @@ const Navbar = () => {
                     </Link>
                     <nav>
                     {user && (
-                        <Link href="/account">
+                        <Link href="/cuenta">
                             <a className={s.link}>Mi cuenta</a>
                         </Link>)}
                         {user && (

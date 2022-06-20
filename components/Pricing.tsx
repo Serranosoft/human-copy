@@ -24,7 +24,7 @@ export default function Pricing({ products }: Props) {
             return router.push('/iniciar-sesion');
         }
         if (subscription) {
-            return router.push('/account');
+            return router.push('/cuenta');
         }
 
         try {
