@@ -1,0 +1,40 @@
+.root {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 5rem;
+    .wordsPerPrice {
+        margin-top: 0.8rem;
+    }
+    .planLayout {
+        width: 100%;
+        max-width: 920px;
+        display: flex;
+        justify-content: space-between;
+        gap: 3rem;
+        margin-top: 5rem;
+    }
+    .info {
+        max-width: 920px;
+        display: flex;
+        align-items: center;
+        margin-top: 3.5rem;
+        gap: 10rem;
+        table {
+            width: 100%;
+            margin: 0.5rem auto;
+            font-size: 1.1rem;
+            border-spacing: 0;
+            thead th {
+                text-align: start;
+                padding: 0.8rem 2rem;
+                font-size: 1.4rem;
+                border-bottom: 2px solid #6ece9d;
+            }
+            tbody tr td {
+                padding: 0.6em 2rem;
+            }
+        }
+    }
+}

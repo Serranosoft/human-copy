@@ -1,0 +1,33 @@
+.root {
+    display: grid;
+    padding: 2rem;
+    background-color: #18181b;
+    border-radius: 12px;
+    gap: 1rem;
+    max-width: 375px;
+    &.subscription {
+        order: 1;
+        border: 3px solid #50b17f;
+    }
+    &.payment {
+        transform: scale(0.85);
+    }
+    .name {
+        font-size: 1.65rem;
+        justify-self: flex-start;
+        font-weight: bold;
+    }
+    .description {
+        margin-top: 2rem;
+    }
+    .price {
+        font-size: 3.75rem;
+        font-weight: bold;
+        .period {
+            font-size: 1.1rem;
+        }
+    }
+    button {
+        margin-top: 0.5rem;
+    }
+}

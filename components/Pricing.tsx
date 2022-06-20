@@ -1,11 +1,14 @@
 import { useRouter } from 'next/router';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import Button from 'components/ui/Button';
 import { postData } from 'utils/helpers';
 import { getStripe } from 'utils/stripe-client';
 import { useUser } from 'utils/useUser';
 import { Price, ProductWithPrice } from 'types';
+import s from '../styles/css/Pricing.module.css';
+import Range from './ui/Range';
+import PlanCard from './PlanCard';
 
 interface Props {
     products: ProductWithPrice[];
@@ -17,6 +20,7 @@ export default function Pricing({ products }: Props) {
     const { user, isLoading, subscription } = useUser();
     const [range, applyRange] = useState(0);
     const [productPrice, applyProductPrice] = useState<number | undefined>(30);
+    const [wordsPerPrice, setWordsPerPrice] = useState(3000);
 
     const handleCheckout = async (price: Price, mode: string) => {
         setPriceIdLoading(price.id);
@@ -41,6 +45,22 @@ export default function Pricing({ products }: Props) {
         }
     };
 
+    useEffect(() => {
+        if (productPrice) {
+            switch (productPrice) {
+                case 30:
+                    setWordsPerPrice(3000);
+                    break;
+                case 45:
+                    setWordsPerPrice(4000);
+                    break;
+                case 60:
+                    setWordsPerPrice(5000);
+                    break;
+            }
+        }
+    }, [productPrice])
+
     function handleChange(e: any) {
         let product = products.find(product => product.prices!.length > 1);
         applyRange(e.target.value)
@@ -48,40 +68,87 @@ export default function Pricing({ products }: Props) {
     }
 
     return (
-        <section>
-            <input
-                id="typeinp"
-                type="range"
+        <section className={s.root}>
+            <Range
                 min="0"
                 max="2"
                 value={range}
                 onChange={handleChange}
                 step="1"
             />
-            <span>{productPrice}</span>
-            {products.map((product) => {
-                let id = product.prices!.length > 1 ? product.prices![range].id : product.prices![0].id;
-                let price = product.prices!.length > 1 ? product.prices![range] : product.prices![0];
-                let mode = product.prices!.length > 1 ? "payment" : "subscription";
-                return (
-                    <div>
-                        <span>{product.name}</span>
-                        <p>{product.description}</p>
-                        <p>{product.prices!.length > 1 ? productPrice : product!.prices![0].unit_amount! / 100}</p>
-                        <Button
-                            type="button"
-                            disabled={isLoading}
-                            loading={priceIdLoading === id}
-                            onClick={() => handleCheckout(price, mode)}
-                            className=""
-                        >
-                            {product.name === subscription?.prices?.products?.name
-                                ? 'Gestionar suscripción'
-                                : 'Suscribirse'}
-                        </Button>
-                    </div>
-                )
-            })}
+            <span className={s.wordsPerPrice}>{wordsPerPrice} palabras</span>
+            <div id="lol" className={s.planLayout}>
+                {products.map((product) => {
+                    let id = product.prices!.length > 1 ? product.prices![range].id : product.prices![0].id;
+                    let paymentType = product.prices!.length > 1 ? "payment" : "subscription";
+                    let buttonText = "";
+                    if (product.prices!.length > 1) {
+                        buttonText = "Contratar"
+                    } else {
+                        if (product.name === subscription?.prices?.products?.name) {
+                            buttonText = "Gestionar suscripción";
+                        } else {
+                            buttonText = "Suscribirse";
+                        }
+                    }
+                    return (
+                        <>
+                            <PlanCard
+                                product={product}
+                                productPrice={productPrice}
+                                isLoading={isLoading}
+                                priceIdLoading={priceIdLoading}
+                                handleCheckout={handleCheckout}
+                                buttonText={buttonText}
+                                priceId={id}
+                                paymentType={paymentType}
+                                wordsPerPrice={wordsPerPrice}
+                            />
+                        </>
+                    )
+                })}
+            </div>
+            <div className={s.info}>
+                <p>* Al ser escrito por personas y no por IA, los textos tardan en entregarse un tiempo variable dependiendo de la cantidad de palabras que solicites</p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Palabras</th>
+                            <th>Tiempo</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1000</td>
+                            <td>1 día</td>
+                        </tr>
+                        <tr>
+                            <td>2000</td>
+                            <td>1 día</td>
+                        </tr>
+                        <tr>
+                            <td>3000</td>
+                            <td>2 días</td>
+                        </tr>
+                        <tr>
+                            <td>4000</td>
+                            <td>2 - 3 días</td>
+                        </tr>
+                        <tr>
+                            <td>5000</td>
+                            <td>3 días</td>
+                        </tr>
+                        <tr>
+                            <td>6000</td>
+                            <td>4-5 días</td>
+                        </tr>
+                        <tr>
+                            <td>+6000</td>
+                            <td>+6 días</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </section>
     )
 }

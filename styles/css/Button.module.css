@@ -8,3 +8,7 @@
   font-family: 'DM Sans', sans-serif;
   cursor: pointer;
 }
+
+.root:hover {
+  background-color: #50b17f;
+}
