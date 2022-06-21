@@ -52,10 +52,8 @@ const webhookHandler = async (req: NextApiRequest, res: NextApiResponse) => {
             return res.status(400).send(`Webhook Error: ${err.message}`);
         }
 
-        console.log("No entiendo de vd");
         if (relevantEvents.has(event.type)) {
-            console.log(event.type);
-
+            
             try {
                 switch (event.type) {
                     case 'product.created':
@@ -80,6 +78,15 @@ const webhookHandler = async (req: NextApiRequest, res: NextApiResponse) => {
                         const checkoutSession = event.data
                             .object as Stripe.Checkout.Session;
                         let plan = "";
+                        let currentPlan = 0;
+                        await supabase.from("users").select("plan").eq("email", checkoutSession.customer_details!.email).then(({data, error}) => {
+                            if (data) {
+                                // @ts-ignore
+                                currentPlan = parseInt(data.plan);
+                            } else {
+                                currentPlan = 0;
+                            }
+                        })
                         switch (checkoutSession.amount_total! / 100) {
                             case 30:
                                 plan = "3000"
@@ -102,14 +109,8 @@ const webhookHandler = async (req: NextApiRequest, res: NextApiResponse) => {
                             await supabase.from('users').update({plan: "ilimitado"}).match({ email: checkoutSession.customer_details!.email });
                         } else {
                             // Sumar el plan que va a comprar al que ya tiene (si ya tiene alguno, claro)
-                            await supabase
-                                .from("users")
-                                .select("plan").eq("email", checkoutSession.customer_details!.email).then(async ({data, error}) => {
-                                    // @ts-ignore
-                                    let currentPlan = data !== null ? parseInt(data.plan) : 0;
-                                    let resultPlan = parseInt(plan) + currentPlan;
-                                    await supabase.from('users').update({plan: resultPlan}).match({ email: checkoutSession.customer_details!.email });
-                                });
+                            let resultPlan = parseInt(plan) + currentPlan;
+                            await supabase.from('users').update({plan: resultPlan}).match({ email: checkoutSession.customer_details!.email });
                         }
                         break;
                     default:
