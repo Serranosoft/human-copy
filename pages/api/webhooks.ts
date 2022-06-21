@@ -102,14 +102,13 @@ const webhookHandler = async (req: NextApiRequest, res: NextApiResponse) => {
                             await supabase.from('users').update({plan: "ilimitado"}).match({ email: checkoutSession.customer_details!.email });
                         } else {
                             // Sumar el plan que va a comprar al que ya tiene (si ya tiene alguno, claro)
-                            await supabase
+                            const { data, error } = await supabase
                                 .from("users")
-                                .select("plan").then(async ({data, error}) => {
-                                    // @ts-ignore
-                                    let currentPlan = data !== null ? parseInt(data.plan) : 0;
-                                    let resultPlan = parseInt(plan) + currentPlan;
-                                    await supabase.from('users').update({plan: resultPlan}).match({ email: checkoutSession.customer_details!.email });
-                                });
+                                .select("plan").eq("email", checkoutSession.customer_details!.email);
+                            // @ts-ignore
+                            let currentPlan = data !== null ? parseInt(data.plan) : 0;
+                            let resultPlan = parseInt(plan) + currentPlan;
+                            await supabase.from('users').update({plan: resultPlan}).match({ email: checkoutSession.customer_details!.email });
                         }
                         break;
                     default:
