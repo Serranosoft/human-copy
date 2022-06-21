@@ -77,7 +77,7 @@ const webhookHandler = async (req: NextApiRequest, res: NextApiResponse) => {
                     case 'checkout.session.completed':
                         const checkoutSession = event.data
                             .object as Stripe.Checkout.Session;
-                        let plan = "";
+                        let plan = 0;
                         let currentPlan = 0;
                         await supabase.from("users").select("plan").eq("email", checkoutSession.customer_details!.email).then(({data, error}) => {
                             if (data) {
@@ -89,13 +89,13 @@ const webhookHandler = async (req: NextApiRequest, res: NextApiResponse) => {
                         })
                         switch (checkoutSession.amount_total! / 100) {
                             case 30:
-                                plan = "3000"
+                                plan = 3000
                                 break;
                             case 45:
-                                plan = "4000"
+                                plan = 4000
                                 break;
                             case 60:
-                                plan = "5000"
+                                plan = 5000
                                 break;
                         }
                         if (checkoutSession.mode === 'subscription') {
@@ -109,8 +109,8 @@ const webhookHandler = async (req: NextApiRequest, res: NextApiResponse) => {
                             await supabase.from('users').update({plan: "ilimitado"}).match({ email: checkoutSession.customer_details!.email });
                         } else {
                             // Sumar el plan que va a comprar al que ya tiene (si ya tiene alguno, claro)
-                            let resultPlan = parseInt(plan) + currentPlan;
-                            await supabase.from('users').update({plan: 987456321}).match({ email: checkoutSession.customer_details!.email });
+                            let resultPlan = plan + currentPlan;
+                            await supabase.from('users').update({plan: resultPlan}).match({ email: checkoutSession.customer_details!.email });
                         }
                         break;
                     default:
