@@ -18,10 +18,7 @@ export default function Pricing({ products }: Props) {
     const router = useRouter();
     const [priceIdLoading, setPriceIdLoading] = useState<string>();
     const { user, isLoading, subscription } = useUser();
-    const [range, applyRange] = useState(0);
-    const [productPrice, applyProductPrice] = useState<number | undefined>(30);
-    const [wordsPerPrice, setWordsPerPrice] = useState(3000);
-
+    
     const handleCheckout = async (price: Price, mode: string) => {
         setPriceIdLoading(price.id);
         if (!user) {
@@ -45,41 +42,12 @@ export default function Pricing({ products }: Props) {
         }
     };
 
-    useEffect(() => {
-        if (productPrice) {
-            switch (productPrice) {
-                case 30:
-                    setWordsPerPrice(3000);
-                    break;
-                case 45:
-                    setWordsPerPrice(4000);
-                    break;
-                case 60:
-                    setWordsPerPrice(5000);
-                    break;
-            }
-        }
-    }, [productPrice])
-
-    function handleChange(e: any) {
-        let product = products.find(product => product.prices!.length > 1);
-        applyRange(e.target.value)
-        applyProductPrice(product!.prices![e.target.value].unit_amount! / 100);
-    }
-
     return (
         <section className={s.root}>
-            <Range
-                min="0"
-                max="2"
-                value={range}
-                onChange={handleChange}
-                step="1"
-            />
-            <span className={s.wordsPerPrice}>{wordsPerPrice} palabras</span>
-            <div id="lol" className={s.planLayout}>
+            <h2>Plan de Precios</h2>
+            <div className={s.planLayout}>
                 {products.map((product) => {
-                    let id = product.prices!.length > 1 ? product.prices![range].id : product.prices![0].id;
+                    /* let id = product.prices!.length > 1 ? product.prices![range].id : product.prices![0].id; */
                     let paymentType = product.prices!.length > 1 ? "payment" : "subscription";
                     let buttonText = "";
                     if (product.prices!.length > 1) {
@@ -95,14 +63,14 @@ export default function Pricing({ products }: Props) {
                         <>
                             <PlanCard
                                 product={product}
-                                productPrice={productPrice}
+                                /* productPrice={productPrice} */
                                 isLoading={isLoading}
                                 priceIdLoading={priceIdLoading}
                                 handleCheckout={handleCheckout}
                                 buttonText={buttonText}
-                                priceId={id}
+                                /* priceId={id} */
                                 paymentType={paymentType}
-                                wordsPerPrice={wordsPerPrice}
+                                /* wordsPerPrice={wordsPerPrice} */
                             />
                         </>
                     )

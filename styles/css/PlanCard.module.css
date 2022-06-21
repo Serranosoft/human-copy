@@ -1,44 +1,89 @@
 .root {
+  max-width: 375px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.root.subscription {
+  -webkit-box-ordinal-group: 0;
+      -ms-flex-order: -1;
+          order: -1;
+  border: 3px solid #50b17f;
+  border-radius: 12px;
+}
+
+.root .wordsPerPrice {
+  margin: 0.8rem auto 0 auto;
+  font-size: 0.8rem;
+}
+
+.root .rangeWrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color: #18181b;
+  padding: 0 1rem;
+  border-radius: 6px;
+  width: 100%;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.root .rangeWrapper input[type=range] {
+  width: 100%;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  padding: 0.25rem 0.5rem;
+}
+
+.root .rangeWrapper span {
+  font-size: 0.7rem;
+  color: lightgray;
+}
+
+.root > div {
   display: -ms-grid;
   display: grid;
   padding: 2rem;
   background-color: #18181b;
   border-radius: 12px;
   gap: 1rem;
-  max-width: 375px;
 }
 
-.root.subscription {
-  -webkit-box-ordinal-group: 2;
-      -ms-flex-order: 1;
-          order: 1;
-  border: 3px solid #50b17f;
-}
-
-.root.payment {
-  -webkit-transform: scale(0.85);
-          transform: scale(0.85);
-}
-
-.root .name {
+.root > div .name {
   font-size: 1.65rem;
   justify-self: flex-start;
   font-weight: bold;
 }
 
-.root .description {
+.root > div .description {
   margin-top: 2rem;
 }
 
-.root .price {
+.root > div .price {
   font-size: 3.75rem;
   font-weight: bold;
 }
 
-.root .price .period {
+.root > div .price .period {
   font-size: 1.1rem;
 }
 
-.root button {
+.root > div button {
   margin-top: 0.5rem;
 }

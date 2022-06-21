@@ -4,23 +4,26 @@
     align-items: center;
     width: 100%;
     margin-bottom: 5rem;
-    .wordsPerPrice {
-        margin-top: 0.8rem;
+    h2 {
+        font-size: 2.4rem;
+        margin: 1rem 0;
     }
     .planLayout {
         width: 100%;
         max-width: 920px;
         display: flex;
         justify-content: space-between;
+        align-items: flex-end;
         gap: 3rem;
-        margin-top: 5rem;
+        margin-top: 1.5rem;
     }
     .info {
         max-width: 920px;
         display: flex;
+        flex-direction: column;
         align-items: center;
+        justify-content: center;
         margin-top: 3.5rem;
-        gap: 10rem;
         table {
             width: 100%;
             margin: 0.5rem auto;
