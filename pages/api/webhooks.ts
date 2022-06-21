@@ -82,13 +82,13 @@ const webhookHandler = async (req: NextApiRequest, res: NextApiResponse) => {
                         let plan = "";
                         switch (checkoutSession.amount_total! / 100) {
                             case 30:
-                                plan = "Artículo de 3000 palabras"
+                                plan = "3000"
                                 break;
                             case 45:
-                                plan = "Artículo de 4000 palabras"
+                                plan = "4000"
                                 break;
                             case 60:
-                                plan = "Artículo de 5000 palabras"
+                                plan = "5000"
                                 break;
                         }
                         if (checkoutSession.mode === 'subscription') {
@@ -99,8 +99,16 @@ const webhookHandler = async (req: NextApiRequest, res: NextApiResponse) => {
                                 true
                             );
                             await supabase.from('users').update({suscrito: true}).match({ email: checkoutSession.customer_details!.email });
+                            await supabase.from('users').update({plan: "ilimitado"}).match({ email: checkoutSession.customer_details!.email });
                         } else {
-                            await supabase.from('users').update({plan: plan}).match({ email: checkoutSession.customer_details!.email });
+                            // Sumar el plan que va a comprar al que ya tiene (si ya tiene alguno, claro)
+                            const { data, error } = await supabase
+                                .from("users")
+                                .select("plan");
+                            // @ts-ignore
+                            let currentPlan = data !== null ? parseInt(data.plan) : 0;
+                            let resultPlan = parseInt(plan) + currentPlan;
+                            await supabase.from('users').update({plan: resultPlan}).match({ email: checkoutSession.customer_details!.email });
                         }
                         break;
                     default:

@@ -26,7 +26,7 @@ export default function PlanCard({ product, /* productPrice,  */isLoading, price
     useEffect(() => {
         if (productPrice) {
             if (product.prices!.length > 1) {
-                setPrice(<span>{productPrice}€<span className={s.period}>/artículo</span></span>)
+                setPrice(<span>{productPrice}€<span className={s.period}>/pago único</span></span>)
             } else {
                 setPrice(<span>{product!.prices![0].unit_amount! / 100}€<span className={s.period}>/mes</span></span>)
             }
@@ -87,7 +87,7 @@ export default function PlanCard({ product, /* productPrice,  */isLoading, price
                     type="button"
                     disabled={isLoading}
                     loading={priceIdLoading === priceId}
-                    onClick={() => handleCheckout(price, paymentType)}
+                    onClick={() => handleCheckout(priceId, paymentType)}
                 >
                     {buttonText}
                 </Button>

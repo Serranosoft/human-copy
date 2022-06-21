@@ -7,11 +7,26 @@ import Input from 'components/ui/Input';
 import { updateEmail, updateUserName } from 'utils/supabase-client';
 import { User } from '@supabase/gotrue-js';
 
+export interface UserData {
+    email: string;
+    password: string;
+    name: string;
+}
+
 const Registro = () => {
+
+    const initialValue: UserData = {
+        email: "",
+        password: "",
+        name: "",
+    }
+
     const [newUser, setNewUser] = useState<User | null>(null);
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-    const [name, setName] = useState('');
+    const [userData, setUserData] = useState<UserData | any>(initialValue);
+    // const [email, setEmail] = useState('');
+    // const [password, setPassword] = useState('');
+    // const [name, setName] = useState('');
+    
     const [loading, setLoading] = useState(false);
     const [message, setMessage] = useState<{ type?: string; content?: string }>({
         type: '',
@@ -24,6 +39,8 @@ const Registro = () => {
         e.preventDefault();
         setLoading(true);
         setMessage({});
+
+        const {email, password, name} = userData;
         const { error, user: createdUser } = await supabaseClient.auth.signUp({
             email,
             password
@@ -33,7 +50,7 @@ const Registro = () => {
         } else {
             if (createdUser) {
                 await updateUserName(createdUser, name);
-                await updateEmail(createdUser, email);
+                await updateEmail(createdUser, userData.email);
                 setNewUser(createdUser);
             } else {
                 setMessage({
@@ -50,6 +67,14 @@ const Registro = () => {
             router.replace('/cuenta');
         }
     }, [newUser, user]);
+
+    function handleChange(e: any) {
+        const value = e.target.value;
+        setUserData({
+            ...userData,
+            [e.target.name]: value
+        });
+    }
 
     return (
         <div>
@@ -70,28 +95,31 @@ const Registro = () => {
                     <Input
                         type="email"
                         placeholder="Correo electrónico"
-                        value={email}
-                        onChange={setEmail}
+                        // value={email}
+                        onChange={handleChange}
+                        name="email"
                         required
                     />
                     <Input
                         type="name"
                         placeholder="Nombre / Agencia"
-                        value={name}
-                        onChange={setName}
+                        // value={name}
+                        onChange={handleChange}
+                        name="name"
                         required
                     />
                     <Input
                         type="password"
                         placeholder="Contraseña"
-                        value={password}
-                        onChange={setPassword}
+                        // value={password}
+                        onChange={handleChange}
+                        name="password"
                         required
                     />
                     <Button
                         type="submit"
                         loading={loading}
-                        disabled={!password.length || !email.length}
+                        disabled={!userData.password.length || !userData.email.length}
                     >
                         Registro
                     </Button>

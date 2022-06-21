@@ -27,8 +27,8 @@ export default function Requests({ user }: { user: User }) {
     const [request, setRequest] = useState<Request>(initialValue);
     const [allRequests, setAllRequests] = useState<Request[]>();
     const [open, setModal] = useState(false);
-    const [range, applyRange] = useState(0);
-    const [plan, setPlan] = useState(null);
+    const [range, applyRange] = useState(500);
+    const [plan, setPlan] = useState();
 
     useEffect(() => {
         getReq();
@@ -94,14 +94,14 @@ export default function Requests({ user }: { user: User }) {
                         </div>
                         <div>
                             <label>Cantidad de palabras en el artículo</label>
-                            <span>{range}</span>
+                            <span>{range} palabras</span>
                             <input
                                 type="range"
-                                min="0"
-                                max="4"
+                                min="500"
+                                max={plan !== "ilimitado" ? plan : "999999999999999999999999999999"}
                                 value={range}
                                 onChange={handleWords}
-                                step="1"
+                                step="500"
                             />
                         </div>
                         <div>
