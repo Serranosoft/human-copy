@@ -10,9 +10,21 @@ import Logo from 'components/icons/Logo';
 import { getURL } from '@/utils/helpers';
 import s from '../styles/css/Iniciar-sesion.module.css';
 
+export interface UserData {
+    email: string;
+    password: string;
+}
+
 const SignIn = () => {
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
+
+    const initialValue: UserData = {
+        email: "",
+        password: "",
+    }
+
+    // const [email, setEmail] = useState('');
+    // const [password, setPassword] = useState('');
+    const [userData, setUserData] = useState<UserData | any>(initialValue);
     const [loading, setLoading] = useState(false);
     const [message, setMessage] = useState<{ type?: string; content?: string }>({
         type: '',
@@ -26,7 +38,7 @@ const SignIn = () => {
 
         setLoading(true);
         setMessage({});
-
+        const { email, password } = userData;
         const { error } = await supabaseClient.auth.signIn(
             { email, password },
             { redirectTo: getURL() }
@@ -42,6 +54,14 @@ const SignIn = () => {
             router.replace('/cuenta');
         }
     }, [user]);
+
+    function handleChange(e: any) {
+        const value = e.target.value;
+        setUserData({
+            ...userData,
+            [e.target.name]: value
+        });
+    }
 
     if (!user)
         return (
@@ -63,22 +83,22 @@ const SignIn = () => {
                         <Input
                             type="email"
                             placeholder="Correo electrónico"
-                            value={email}
-                            onChange={setEmail}
+                            // value={email}
+                            onChange={handleChange}
                             required
                         />
                         <Input
                             type="password"
                             placeholder="Contraseña"
-                            value={password}
-                            onChange={setPassword}
+                            // value={password}
+                            onChange={handleChange}
                             required
                         />
                         <Button
                             className="mt-1"
                             type="submit"
                             loading={loading}
-                            disabled={!password.length || !email.length}
+                            disabled={!userData.password.length || !userData.email.length}
                         >
                             Iniciar sesión
                         </Button>

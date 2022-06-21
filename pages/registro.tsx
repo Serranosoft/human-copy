@@ -23,9 +23,6 @@ const Registro = () => {
 
     const [newUser, setNewUser] = useState<User | null>(null);
     const [userData, setUserData] = useState<UserData | any>(initialValue);
-    // const [email, setEmail] = useState('');
-    // const [password, setPassword] = useState('');
-    // const [name, setName] = useState('');
     
     const [loading, setLoading] = useState(false);
     const [message, setMessage] = useState<{ type?: string; content?: string }>({
