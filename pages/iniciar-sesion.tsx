@@ -83,15 +83,15 @@ const SignIn = () => {
                         <Input
                             type="email"
                             placeholder="Correo electrónico"
-                            // value={email}
                             onChange={handleChange}
+                            name="email"
                             required
                         />
                         <Input
                             type="password"
                             placeholder="Contraseña"
-                            // value={password}
                             onChange={handleChange}
+                            name="password"
                             required
                         />
                         <Button

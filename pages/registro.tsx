@@ -92,7 +92,6 @@ const Registro = () => {
                     <Input
                         type="email"
                         placeholder="Correo electrónico"
-                        // value={email}
                         onChange={handleChange}
                         name="email"
                         required
@@ -100,7 +99,6 @@ const Registro = () => {
                     <Input
                         type="name"
                         placeholder="Nombre / Agencia"
-                        // value={name}
                         onChange={handleChange}
                         name="name"
                         required
@@ -108,7 +106,6 @@ const Registro = () => {
                     <Input
                         type="password"
                         placeholder="Contraseña"
-                        // value={password}
                         onChange={handleChange}
                         name="password"
                         required
