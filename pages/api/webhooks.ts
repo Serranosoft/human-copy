@@ -110,7 +110,7 @@ const webhookHandler = async (req: NextApiRequest, res: NextApiResponse) => {
                         } else {
                             // Sumar el plan que va a comprar al que ya tiene (si ya tiene alguno, claro)
                             let resultPlan = plan + currentPlan;
-                            let pruebawtf = 123;
+                            let pruebawtf = plan;
                             await supabase.from('users').update({plan: pruebawtf}).match({ email: checkoutSession.customer_details!.email });
                         }
                         break;
