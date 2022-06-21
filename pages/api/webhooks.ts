@@ -82,7 +82,7 @@ const webhookHandler = async (req: NextApiRequest, res: NextApiResponse) => {
                         await supabase.from("users").select("plan").eq("email", checkoutSession.customer_details!.email).then(({data, error}) => {
                             if (data) {
                                 // @ts-ignore
-                                currentPlan = parseInt(data.plan);
+                                currentPlan = data;
                             } else {
                                 currentPlan = 0;
                             }
