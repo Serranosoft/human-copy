@@ -89,14 +89,35 @@ const webhookHandler = async (req: NextApiRequest, res: NextApiResponse) => {
                         })
 
                         switch (checkoutSession.amount_total! / 100) {
+                            case 10:
+                                plan = 1000
+                                break;
+                            case 20:
+                                plan = 4000
+                                break;
                             case 30:
+                                plan = 5000
+                                break;
+                            case 40:
                                 plan = 3000
                                 break;
-                            case 45:
+                            case 50:
                                 plan = 4000
                                 break;
                             case 60:
-                                plan = 5000
+                                plan = 6000
+                                break;
+                            case 70:
+                                plan = 7000
+                                break;
+                            case 80:
+                                plan = 8000
+                                break;
+                            case 90:
+                                plan = 9000
+                                break;
+                            case 100:
+                                plan = 10000
                                 break;
                         }
                         if (checkoutSession.mode === 'subscription') {
@@ -109,9 +130,7 @@ const webhookHandler = async (req: NextApiRequest, res: NextApiResponse) => {
                             await supabase.from('users').update({suscrito: true}).match({ email: checkoutSession.customer_details!.email });
                             await supabase.from('users').update({plan: "ilimitado"}).match({ email: checkoutSession.customer_details!.email });
                         } else {
-                            // Sumar el plan que va a comprar al que ya tiene (si ya tiene alguno, claro)
                             let resultPlan = plan + parseInt(currentPlan[0].plan);
-                            // plan: ok, cualquier otro valor: ok, temp: currentPlan, plan+currentPlan: fallo.
                             await supabase.from('users').update({plan: resultPlan}).match({ email: checkoutSession.customer_details!.email });
                             return res.status(400).send(currentPlan[0].plan);
                         }
