@@ -4,7 +4,7 @@ import { useUser } from '@supabase/supabase-auth-helpers/react';
 import { supabaseClient } from '@supabase/supabase-auth-helpers/nextjs';
 import Button from 'components/ui/Button';
 import Input from 'components/ui/Input';
-import { updateEmail, updateUserName } from 'utils/supabase-client';
+import { updateEmail, updateUserName, updatePlan } from 'utils/supabase-client';
 import { User } from '@supabase/gotrue-js';
 
 export interface UserData {
@@ -48,6 +48,7 @@ const Registro = () => {
             if (createdUser) {
                 await updateUserName(createdUser, name);
                 await updateEmail(createdUser, userData.email);
+                await updatePlan(createdUser, 0);
                 setNewUser(createdUser);
             } else {
                 setMessage({
@@ -78,13 +79,7 @@ const Registro = () => {
             <div>
                 <p>Crear una cuenta</p>
                 {message.content && (
-                    <span
-                       /*  className={`${message.type === 'error' ? 'text-pink-500' : 'text-green-500'
-                            } border ${message.type === 'error'
-                                ? 'border-pink-500'
-                                : 'border-green-500'
-                            } p-3`} */
-                    >
+                    <span>
                         {message.content === "Invalid login credentials" ? "Correo electrónico o contraseña incorrecta" : message.content}
                     </span>
                 )}
