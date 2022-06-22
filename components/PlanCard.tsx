@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+ import { useEffect, useState } from 'react';
 import s from '../styles/css/PlanCard.module.css';
 import Button from './ui/Button';
 import Range from './ui/Range';
@@ -12,7 +12,7 @@ interface Props {
     paymentType: string;
 }
 
-export default function PlanCard({ product, isLoading, priceIdLoading, handleCheckout, buttonText, paymentType}: Props) {
+/*export default function PlanCard({ product, isLoading, priceIdLoading, handleCheckout, buttonText, paymentType}: Props) {
 
     const [price, setPrice] = useState<any>();
     const [range, applyRange] = useState(5);
@@ -95,7 +95,7 @@ export default function PlanCard({ product, isLoading, priceIdLoading, handleChe
                         </div>
                     </>
                 }
-            <div /* className={} */>
+            <div className={}>
                 <span className={s.name}>{product.name == "Palabras" ? `${wordsPerPrice} ${product.name}` : product.name}</span>
                 <p className={s.description}>{product.description}</p>
                 <p className={s.price}>{price}</p>
@@ -111,3 +111,4 @@ export default function PlanCard({ product, isLoading, priceIdLoading, handleChe
         </div>
     )
 }
+ */

@@ -1,14 +1,12 @@
 import { useRouter } from 'next/router';
-import { useEffect, useState } from 'react';
-
-import Button from 'components/ui/Button';
+import { useState } from 'react';
 import { postData } from 'utils/helpers';
 import { getStripe } from 'utils/stripe-client';
 import { useUser } from 'utils/useUser';
 import { Price, ProductWithPrice } from 'types';
 import s from '../styles/css/Pricing.module.css';
-import Range from './ui/Range';
-import PlanCard from './PlanCard';
+import PaymentPlanCard from './PaymentPlanCard';
+import SubscriptionPlanCard from './SubscriptionPlanCard';
 
 interface Props {
     products: ProductWithPrice[];
@@ -20,8 +18,7 @@ export default function Pricing({ products }: Props) {
     const { user, isLoading, subscription } = useUser();
     
     const handleCheckout = async (price: Price, mode: string) => {
-        setPriceIdLoading(price.id);
-        console.log(price);
+        setPriceIdLoading(price.id);;
         if (!user) {
             return router.push('/iniciar-sesion');
         }
@@ -47,35 +44,21 @@ export default function Pricing({ products }: Props) {
         <section className={s.root}>
             <h2>Plan de Precios</h2>
             <div className={s.planLayout}>
-                {products.map((product) => {
-                    /* let id = product.prices!.length > 1 ? product.prices![range].id : product.prices![0].id; */
-                    let paymentType = product.prices!.length > 1 ? "payment" : "subscription";
-                    let buttonText = "";
-                    if (product.prices!.length > 1) {
-                        buttonText = "Contratar"
-                    } else {
-                        if (product.name === subscription?.prices?.products?.name) {
-                            buttonText = "Gestionar suscripción";
-                        } else {
-                            buttonText = "Suscribirse";
-                        }
-                    }
-                    return (
-                        <>
-                            <PlanCard
-                                product={product}
-                                /* productPrice={productPrice} */
-                                isLoading={isLoading}
-                                priceIdLoading={priceIdLoading}
-                                handleCheckout={handleCheckout}
-                                buttonText={buttonText}
-                                /* priceId={id} */
-                                paymentType={paymentType}
-                                /* wordsPerPrice={wordsPerPrice} */
-                            />
-                        </>
-                    )
-                })}
+
+                <PaymentPlanCard 
+                    product={products[0]}
+                    isLoading={isLoading}
+                    handleCheckout={handleCheckout}
+                    priceIdLoading={priceIdLoading}
+                />
+
+                <SubscriptionPlanCard
+                    product={products[1]}
+                    isLoading={isLoading}
+                    handleCheckout={handleCheckout}
+                    priceIdLoading={priceIdLoading}
+                />
+
             </div>
             <div className={s.info}>
                 <p>* Al ser escrito por personas y no por IA, los textos tardan en entregarse un tiempo variable dependiendo de la cantidad de palabras que solicites</p>

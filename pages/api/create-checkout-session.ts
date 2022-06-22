@@ -28,7 +28,7 @@ const createCheckoutSession = async (
                     customer,
                     line_items: [
                         {
-                            price: price,
+                            price: price.id,
                             quantity
                         }
                     ],
