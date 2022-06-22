@@ -51,7 +51,7 @@ const SignIn = () => {
 
     useEffect(() => {
         if (user) {
-            router.replace('/cuenta');
+            router.replace('/');
         }
     }, [user]);
 

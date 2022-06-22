@@ -4,13 +4,15 @@ import { GetStaticPropsResult } from 'next';
 import s from '../styles/css/Home.module.css';
 import Button from '@/components/ui/Button';
 import Pricing from '@/components/Pricing';
+import Link from 'next/link';
+import { useUser } from 'utils/useUser';
 
 interface Props {
     products: Product[];
 }
 
 export default function Home({ products }: Props) {
-
+    const { user, isLoading, subscription } = useUser();
     return (
         <>
             <section className={s.root}>
@@ -19,7 +21,7 @@ export default function Home({ products }: Props) {
                     <span>Pirsch is a simple, cookie-free, and open-source web analytics solution that easily integrates into your website or backend.</span>
                     <div>
                         <Button>Ver los planes</Button>
-                        <Button>Prueba una demo gratuita</Button>
+                        { !user && <Button><Link href="/iniciar-sesion"><a>Prueba una demo gratuita</a></Link></Button>}
                     </div>
                 </div>
                 <div className={s.bigImg}>

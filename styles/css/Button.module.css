@@ -12,3 +12,8 @@
 .root:hover {
   background-color: #50b17f;
 }
+
+.root a {
+  text-decoration: none;
+  color: black;
+}
