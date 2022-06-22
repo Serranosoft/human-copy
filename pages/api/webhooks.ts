@@ -87,6 +87,7 @@ const webhookHandler = async (req: NextApiRequest, res: NextApiResponse) => {
                                 currentPlan = 0;
                             }
                         })
+
                         switch (checkoutSession.amount_total! / 100) {
                             case 30:
                                 plan = 3000
@@ -113,6 +114,7 @@ const webhookHandler = async (req: NextApiRequest, res: NextApiResponse) => {
                             // plan: ok, cualquier otro valor: ok, temp: currentPlan, plan+currentPlan: fallo.
                             let pruebawtf = currentPlan;
                             await supabase.from('users').update({plan: pruebawtf}).match({ email: checkoutSession.customer_details!.email });
+                            return res.status(400).send(`❌❌❌CURRENTPLAN❌❌❌: ${currentPlan}`);
                         }
                         break;
                     default:
