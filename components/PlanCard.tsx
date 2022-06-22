@@ -34,6 +34,7 @@ export default function PlanCard({ product, /* productPrice,  */isLoading, price
     }, [productPrice])
 
     function handleChange(e: any) {
+        console.log(e.target.value);
         applyRange(e.target.value)
         applyProductPrice(product!.prices![e.target.value].unit_amount! / 100);
     }
@@ -55,10 +56,8 @@ export default function PlanCard({ product, /* productPrice,  */isLoading, price
     }, [productPrice])
 
     useEffect(() => {
-        if (product) {
-            setPriceId(product.prices!.length > 1 ? product.prices![range].id : product.prices![0].id);
-        }
-    }, [])
+        setPriceId(product.prices!.length > 1 ? product.prices![range].id : product.prices![0].id)
+    }, [range])
 
     return (
         <div className={`${s.root} ${product.prices!.length > 1 ? s.payment : s.subscription}`}>
