@@ -93,16 +93,16 @@ const webhookHandler = async (req: NextApiRequest, res: NextApiResponse) => {
                                 plan = 1000
                                 break;
                             case 20:
-                                plan = 4000
+                                plan = 2000
                                 break;
                             case 30:
-                                plan = 5000
-                                break;
-                            case 40:
                                 plan = 3000
                                 break;
-                            case 50:
+                            case 40:
                                 plan = 4000
+                                break;
+                            case 50:
+                                plan = 5000
                                 break;
                             case 60:
                                 plan = 6000
