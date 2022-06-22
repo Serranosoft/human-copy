@@ -78,7 +78,7 @@ const webhookHandler = async (req: NextApiRequest, res: NextApiResponse) => {
                         const checkoutSession = event.data
                             .object as Stripe.Checkout.Session;
                         let plan = 0;
-                        let currentPlan = 0;
+                        let currentPlan: number | any = 0;
                         await supabase.from("users").select("plan").eq("email", checkoutSession.customer_details!.email).then(({data, error}) => {
                             if (data) {
                                 // @ts-ignore
@@ -114,7 +114,7 @@ const webhookHandler = async (req: NextApiRequest, res: NextApiResponse) => {
                             // plan: ok, cualquier otro valor: ok, temp: currentPlan, plan+currentPlan: fallo.
                             let pruebawtf = currentPlan;
                             await supabase.from('users').update({plan: pruebawtf}).match({ email: checkoutSession.customer_details!.email });
-                            return res.status(400).send(currentPlan);
+                            return res.status(400).send(currentPlan.plan);
                         }
                         break;
                     default:
