@@ -9,6 +9,7 @@
     border-radius: 15px;
     padding: 1rem 2rem;
     display: grid;
+    border: 1px solid white;
     & > span {
         font-size: 1.25rem;
         justify-self: flex-end;
@@ -31,7 +32,7 @@
             }
             & > span {
                 color: rgb(175, 175, 175);
-                font-size: 0.7rem;
+                font-size: 0.8rem;
                 justify-self: flex-end;
             }
         }

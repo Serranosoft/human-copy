@@ -9,7 +9,7 @@ export default function ModalComponent(props: any) {
             <Modal
                 className={s.root}
                 isOpen={props.open}
-                contentLabel="Example Modal"
+                contentLabel="Enviar un artículo"
                 ariaHideApp={false}
             >
                 <span onClick={props.closeModal}>x</span>

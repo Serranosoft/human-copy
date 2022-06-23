@@ -6,52 +6,89 @@
     align-items: center;
     padding: 7rem 2rem;
     & > div {
-        width: 100%;
-        max-width: 300px;
         display: flex;
         flex-direction: column;
-        align-items: center;
-    }
-    .dashboard {
         max-width: 1220px;
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-        gap: 2rem;
-        margin-top: 4rem;
-        border-radius: 6px;
-        & > div {
-            display: grid;
-            gap: 1rem;
-            padding: 1.5rem 2rem 0.5rem 2rem;
-            border-radius: 12px;
-            text-align: center;
-            background-color: black;
+        & > p {
+            margin: 0;
             span {
-                justify-self: flex-start;
-            }
-            div.download {
-                justify-self: flex-end;
-                display: flex;
-                align-items: center;
-                & > span {
-                    font-size: 0.75rem;
-                    margin-right: 0.2rem;
-                }
-                i span {
-                    color: white;
-                }
-            }
-            a.download {
-                justify-self: flex-end;
-                color: #6ece9d;
+                font-size: 1.2rem;
+                font-weight: bold;
             }
         }
-    }
-    & > i {
-        margin-top: 15rem;
-        span {
-            color: white;
-            font-size: 80px;
+        button {
+            margin-top: 1rem;
+            align-self: flex-start;
+        }
+        .dashboard {
+            max-width: 1220px;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 4rem;
+            border-radius: 6px;
+            & > div {
+                display: grid;
+                // gap: 1rem;
+                padding: 1.5rem 2rem 0.5rem 2rem;
+                border-radius: 12px;
+                text-align: center;
+                background-color: black;
+                .title {
+                    justify-self: center;
+                    font-size: 1.3rem;
+                    border-bottom: 2px solid #6ece9d;;
+                }
+                .words {
+                    justify-self: flex-end;
+                    font-size: .85rem;
+                    margin: 0.25rem 0 1.2rem 0;
+                }
+                .topic {
+                    font-size: 1.1rem;
+                    justify-self: flex-start;
+                    display: -webkit-box;
+                    max-width: 100%;
+                    -webkit-line-clamp: 1;
+                    -webkit-box-orient: vertical;
+                    overflow: hidden;
+                    margin-bottom: 1.2rem;
+                }
+                .description {
+                    justify-self: flex-start;
+                    text-align: start;
+                    font-size: 0.8rem;
+                    display: -webkit-box;
+                    max-width: 100%;
+                    -webkit-line-clamp: 5;
+                    -webkit-box-orient: vertical;
+                    overflow: hidden;
+                    margin-bottom: 1.2rem;
+                }
+                div.download {
+                    justify-self: flex-end;
+                    display: flex;
+                    align-items: center;
+                    & > span {
+                        font-size: 0.75rem;
+                        margin-right: 0.2rem;
+                    }
+                    i span {
+                        color: #6ece9d;
+                    }
+                }
+                a.download {
+                    justify-self: flex-end;
+                    color: #6ece9d;
+                }
+            }
+        }
+        & > i {
+            margin-top: 15rem;
+            span {
+                color: white;
+                font-size: 80px;
+            }
         }
     }
 }

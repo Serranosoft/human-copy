@@ -15,8 +15,6 @@
 }
 
 .root > div {
-  width: 100%;
-  max-width: 300px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -24,12 +22,25 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  max-width: 1220px;
 }
 
-.root .dashboard {
+.root > div > p {
+  margin: 0;
+}
+
+.root > div > p span {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.root > div button {
+  margin-top: 1rem;
+  -ms-flex-item-align: start;
+      align-self: flex-start;
+}
+
+.root > div .dashboard {
   max-width: 1220px;
   display: -ms-grid;
   display: grid;
@@ -40,21 +51,52 @@
   border-radius: 6px;
 }
 
-.root .dashboard > div {
+.root > div .dashboard > div {
   display: -ms-grid;
   display: grid;
-  gap: 1rem;
   padding: 1.5rem 2rem 0.5rem 2rem;
   border-radius: 12px;
   text-align: center;
   background-color: black;
 }
 
-.root .dashboard > div span {
-  justify-self: flex-start;
+.root > div .dashboard > div .title {
+  -ms-grid-column-align: center;
+      justify-self: center;
+  font-size: 1.3rem;
+  border-bottom: 2px solid #6ece9d;
 }
 
-.root .dashboard > div div.download {
+.root > div .dashboard > div .words {
+  justify-self: flex-end;
+  font-size: .85rem;
+  margin: 0.25rem 0 1.2rem 0;
+}
+
+.root > div .dashboard > div .topic {
+  font-size: 1.1rem;
+  justify-self: flex-start;
+  display: -webkit-box;
+  max-width: 100%;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  margin-bottom: 1.2rem;
+}
+
+.root > div .dashboard > div .description {
+  justify-self: flex-start;
+  text-align: start;
+  font-size: 0.8rem;
+  display: -webkit-box;
+  max-width: 100%;
+  -webkit-line-clamp: 5;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  margin-bottom: 1.2rem;
+}
+
+.root > div .dashboard > div div.download {
   justify-self: flex-end;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -64,25 +106,25 @@
           align-items: center;
 }
 
-.root .dashboard > div div.download > span {
+.root > div .dashboard > div div.download > span {
   font-size: 0.75rem;
   margin-right: 0.2rem;
 }
 
-.root .dashboard > div div.download i span {
-  color: white;
+.root > div .dashboard > div div.download i span {
+  color: #6ece9d;
 }
 
-.root .dashboard > div a.download {
+.root > div .dashboard > div a.download {
   justify-self: flex-end;
   color: #6ece9d;
 }
 
-.root > i {
+.root > div > i {
   margin-top: 15rem;
 }
 
-.root > i span {
+.root > div > i span {
   color: white;
   font-size: 80px;
 }

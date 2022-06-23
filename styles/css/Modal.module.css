@@ -11,6 +11,7 @@
   padding: 1rem 2rem;
   display: -ms-grid;
   display: grid;
+  border: 1px solid white;
 }
 
 .root > span {
@@ -48,7 +49,7 @@
 
 .root form > div > span {
   color: #afafaf;
-  font-size: 0.7rem;
+  font-size: 0.8rem;
   justify-self: flex-end;
 }
 
