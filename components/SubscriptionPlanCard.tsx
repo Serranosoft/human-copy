@@ -16,7 +16,7 @@ export default function SubscriptionPlanCard({ product, isLoading, handleCheckou
             <div>
                 <span className={s.name}>{product.name}</span>
                 <p className={s.description}>{product.description}</p>
-                <p className={s.price}>{product.prices![0].unit_amount / 100}<span className={s.period}>/mes</span></p>
+                <p className={s.price}>{product.prices![0].unit_amount / 100}€<span className={s.period}>/mes</span></p>
                 <Button
                     type="button"
                     disabled={isLoading}
