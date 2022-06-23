@@ -7,6 +7,7 @@ import ModalComponent from '@/components/ui/Modal/ModalComponent';
 import Input from '@/components/ui/Input';
 import Button from '@/components/ui/Button';
 import LoadingDots from '@/components/ui/LoadingDots';
+import Range from '@/components/ui/Range';
 
 export interface Request {
     finished: boolean | undefined;
@@ -29,8 +30,8 @@ export default function Requests({ user }: { user: User }) {
     const [open, setModal] = useState(false);
     const [range, applyRange] = useState<number>(0);
     const [plan, setPlan] = useState<number>();
+    const [initialPlan, setInitialPlan] = useState<number>();
 
-    const [tempPlan, setTempPlan] = useState<number>();
     useEffect(() => {
         getReq();
         getPlan();
@@ -38,7 +39,8 @@ export default function Requests({ user }: { user: User }) {
     
     async function getPlan() {
         const { data, error }: { data: any; error: any } = await supabase.from('users').select('plan').eq("id", user.id)
-        setPlan(data[0].plan)
+        setPlan(data[0].plan);
+        setInitialPlan(data[0].plan);
     }
     async function getReq() {
         const { data, error }: { data: any; error: any } = await supabase.from('requests').select('title, finished, download').eq("user_id", user.id);
@@ -77,22 +79,15 @@ export default function Requests({ user }: { user: User }) {
     }
 
     function handleWords(e: any) {
-        console.log(plan);
-        console.log(range);
-        console.log(parseInt(e.target.value));
+        e.preventDefault();
         // Restar cuando sube el rango y devolver el valor al plan cuando disminuye el rango
-
-        if (range < parseInt(e.target.value) ) {
-            setTempPlan(plan! - parseInt(e.target.value!));
-        } else {
-            setTempPlan(plan! + parseInt(e.target.value!));
-        }
+        setPlan(initialPlan!-parseInt(e.target.value));
         applyRange(parseInt(e.target.value))
-        
     }
 
     return (
         <>
+        {plan !== undefined && plan !== null && initialPlan !== undefined && initialPlan !== undefined ?
             <section className={s.root}>
                 <ModalComponent
                     open={open}
@@ -100,7 +95,7 @@ export default function Requests({ user }: { user: User }) {
                 >
                     <form>
                         <div>
-                            <span>Palabras disponibles: {tempPlan}</span>
+                            <span>Palabras disponibles: {plan}</span>
                         </div>
                         <div>
                             <label>Título del artículo (h1)</label>
@@ -109,11 +104,12 @@ export default function Requests({ user }: { user: User }) {
                         </div>
                         <div>
                             <label>Cantidad de palabras en el artículo</label>
+                            
                             <span>{range} palabras</span>
-                            <input
+                            <Range
                                 type="range"
                                 min="0"
-                                max="8000"
+                                max={initialPlan !== -1 ? initialPlan!.toString() : "100000"}
                                 value={range}
                                 onChange={handleWords}
                                 step="500"
@@ -165,6 +161,11 @@ export default function Requests({ user }: { user: User }) {
                         </i>
                 }
             </section>
+            :
+            <i>
+                <LoadingDots />
+            </i>
+        }
         </>
     )
 

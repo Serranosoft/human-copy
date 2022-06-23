@@ -128,7 +128,7 @@ const webhookHandler = async (req: NextApiRequest, res: NextApiResponse) => {
                                 true
                             );
                             await supabase.from('users').update({suscrito: true}).match({ email: checkoutSession.customer_details!.email });
-                            await supabase.from('users').update({plan: "ilimitado"}).match({ email: checkoutSession.customer_details!.email });
+                            await supabase.from('users').update({plan: -1}).match({ email: checkoutSession.customer_details!.email });
                         } else {
                             let resultPlan = plan + parseInt(currentPlan[0].plan);
                             await supabase.from('users').update({plan: resultPlan}).match({ email: checkoutSession.customer_details!.email });
