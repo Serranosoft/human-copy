@@ -9,6 +9,7 @@ import Button from '@/components/ui/Button';
 import LoadingDots from '@/components/ui/LoadingDots';
 import Range from '@/components/ui/Range';
 import RequestCard from '@/components/RequestCard';
+import Select from '@/components/ui/Select';
 
 export interface Request {
     finished: boolean | undefined;
@@ -17,6 +18,7 @@ export interface Request {
     description: string | undefined;
     download: string | undefined;
     words: string | undefined;
+    priority: boolean;
 }
 
 export default function Requests({ user }: { user: User }) {
@@ -28,7 +30,8 @@ export default function Requests({ user }: { user: User }) {
         topic: "Cargando...",
         description: "",
         download: "/",
-        words: "0"
+        words: "0",
+        priority: false
     }
 
     // Objeto request para cargar una request a la bd
@@ -59,7 +62,7 @@ export default function Requests({ user }: { user: User }) {
 
     // Obtenemos las requests del usuario
     async function getReq() {
-        const { data, error }: { data: any; error: any } = await supabase.from('requests').select('title, topic, description, finished, words, download').eq("user_id", user.id);
+        const { data, error }: { data: any; error: any } = await supabase.from('requests').select('title, topic, description, finished, words, priority, download').eq("user_id", user.id);
         setAllRequests(data);
     }
 
@@ -73,7 +76,8 @@ export default function Requests({ user }: { user: User }) {
             topic: request.topic,
             description: request.description,
             finished: false,
-            words: request.words
+            words: request.words,
+            priority: request.priority
         }]);
 
         await supabase.from("users").update([{
@@ -98,7 +102,12 @@ export default function Requests({ user }: { user: User }) {
 
     // Función para obtener los valores de los campos de una request
     function handleChange(e: any) {
-        const value = e.target.value;
+        let value = e.target.value;
+        if (value === "true") {
+            value = true;
+        } else if (value === "false") {
+            value = false;
+        }
         setRequest({
             ...request,
             [e.target.name]: value
@@ -163,6 +172,17 @@ export default function Requests({ user }: { user: User }) {
                             <div>
                                 <label>Descripción del artículo</label>
                                 <textarea name="description" onChange={handleChange}></textarea>
+                            </div>
+                            <div>
+                                <label>Prioridad</label>
+                                <Select
+                                    onChange={handleChange} 
+                                    name="priority"
+                                >
+                                    <option value="true">Si</option>
+                                    <option value="false" selected>No</option>
+                                </Select>
+                                <span className={s.muted}>Si eliges 'Si', tendrémos en cuenta que el artículo es prioritario y será de los primeros textos en escribirse.</span>
                             </div>
                         </form>
                         <div>

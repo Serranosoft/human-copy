@@ -1,0 +1,57 @@
+.checkbox {
+    & > label {
+        display: grid;
+        grid-template-columns: auto 1fr;
+        align-items: center;
+        gap: 0.5rem;
+        color: $placeholder-static-text-color;
+        font-size: $placeholder-font-size;
+    }
+
+    // Custom input
+    input[type="checkbox"] {
+        -webkit-appearance: none;
+        appearance: none;
+        display: grid;
+        align-items: center;
+        justify-content: center;
+        margin: 0;
+        width: 1.9rem;
+        height: 1.9rem;
+        border-radius: $placeholder-corner-radius;
+        background-color: $placeholder-background-color;
+        outline: none;
+        cursor: pointer;
+        & + span {
+            cursor: pointer;
+        }
+    }
+
+    input[type="checkbox"]:disabled {
+        background-color: $placeholder-inactive-background-color;
+        cursor: default;
+        & + span {
+            cursor: default;
+        }
+    }
+
+    // Tick del checkbox
+    input[type="checkbox"]::before {
+        content: "";
+        width: 1rem;
+        height: 0.85rem;
+        clip-path: polygon(14% 40%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
+        transform: scale(0);
+        transform-origin: bottom left;
+        transition: 120ms transform ease-in-out;
+        background-color: $text-color;
+    }
+
+    input[type="checkbox"]:checked + span {
+        color: $text-color;
+    }
+
+    input[type="checkbox"]:checked::before {
+        transform: scale(1);
+    }
+}
