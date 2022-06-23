@@ -27,17 +27,18 @@ export default function Requests({ user }: { user: User }) {
     const [request, setRequest] = useState<Request>(initialValue);
     const [allRequests, setAllRequests] = useState<Request[]>();
     const [open, setModal] = useState(false);
-    const [range, applyRange] = useState(500);
-    const [plan, setPlan] = useState();
+    const [range, applyRange] = useState<number>(0);
+    const [plan, setPlan] = useState<number>();
 
+    const [tempPlan, setTempPlan] = useState<number>();
     useEffect(() => {
         getReq();
         getPlan();
     }, [user])
     
     async function getPlan() {
-        const { data, error }: { data: any; error: any } = await supabase.from('users').select('plan').eq("user_id", user.id).single();
-        plan ? setPlan(data.plan) : setPlan(data);
+        const { data, error }: { data: any; error: any } = await supabase.from('users').select('plan').eq("id", user.id)
+        setPlan(data[0].plan)
     }
     async function getReq() {
         const { data, error }: { data: any; error: any } = await supabase.from('requests').select('title, finished, download').eq("user_id", user.id);
@@ -76,7 +77,18 @@ export default function Requests({ user }: { user: User }) {
     }
 
     function handleWords(e: any) {
-        applyRange(e.target.value)
+        console.log(plan);
+        console.log(range);
+        console.log(parseInt(e.target.value));
+        // Restar cuando sube el rango y devolver el valor al plan cuando disminuye el rango
+
+        if (range < parseInt(e.target.value) ) {
+            setTempPlan(plan! - parseInt(e.target.value!));
+        } else {
+            setTempPlan(plan! + parseInt(e.target.value!));
+        }
+        applyRange(parseInt(e.target.value))
+        
     }
 
     return (
@@ -88,6 +100,9 @@ export default function Requests({ user }: { user: User }) {
                 >
                     <form>
                         <div>
+                            <span>Palabras disponibles: {tempPlan}</span>
+                        </div>
+                        <div>
                             <label>Título del artículo (h1)</label>
                             <Input name="title" placeholder="¿Cómo arreglar el transmisor de la radio de mi coche?" onChange={handleChange}></Input>
                             <span className={s.muted}>Si no tienes claro un título, nosotros nos encargamos de redactar el más adecuado para el artículo</span>
@@ -97,8 +112,8 @@ export default function Requests({ user }: { user: User }) {
                             <span>{range} palabras</span>
                             <input
                                 type="range"
-                                min="500"
-                                max={plan !== "ilimitado" ? plan : "999999999999999999999999999999"}
+                                min="0"
+                                max="8000"
                                 value={range}
                                 onChange={handleWords}
                                 step="500"
@@ -118,7 +133,7 @@ export default function Requests({ user }: { user: User }) {
                         <Button onClick={submitReq}>Enviar artículo</Button>
                     </div>
                 </ModalComponent>
-                <span>{plan ? `Contratado: ${plan}` : "No hay ningún plan contratado"}</span>
+                <span>{plan ? `Contratado: ${plan} palabras` : "No hay ningún plan contratado"}</span>
                 <Button onClick={openModal}>Envíar un artículo</Button>
                 {
                     allRequests ?
