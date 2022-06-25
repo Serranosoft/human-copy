@@ -47,8 +47,16 @@
             margin-bottom: 0.25rem;
         }
     }
-    button {
-        margin: 0;
-        align-self: flex-start;
+    & > div:last-child {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        button {
+            margin: 0;
+            align-self: flex-start;
+        }
+        span {
+            color: rgb(158, 142, 0);
+        }
     }
 }

@@ -10,6 +10,7 @@ export interface Request {
     download: string | undefined;
     words: string | undefined;
     deliver_date: string | undefined;
+    priority: boolean;
 }
 
 export default function RequestCard({request}: { request: Request }) {
@@ -26,7 +27,7 @@ export default function RequestCard({request}: { request: Request }) {
                         </i>
                 }
                 </div>
-                <p className={s.date}>{request.deliver_date !== null ? `Entrega: ${request.deliver_date} /est.` : "Tiempo de entrega sin definir"}</p>
+                <p className={s.date}>{request.deliver_date !== null ? `Entrega est. ${request.deliver_date}` : "Tiempo de entrega sin definir"}</p>
             </div>
             <div className={s.info}>
                 <p className={s.title}>{request.title}</p>
@@ -36,7 +37,10 @@ export default function RequestCard({request}: { request: Request }) {
                 <p>Descripción</p>
                 <p>{request.description}</p>
             </div>
-            <Button disabled={request.download === null || request.download === ""}>DESCARGAR</Button>
+            <div>
+                <Button disabled={request.download === null || request.download === ""}>DESCARGAR</Button>
+                <span>{request.priority === true && "Artículo prioritario"}</span>
+            </div>
         </div>
     )
 }

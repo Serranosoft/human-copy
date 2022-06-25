@@ -205,9 +205,9 @@ export default function Requests({ user }: { user: User }) {
     }
 
     return (
-        <>
-        {plan !== undefined && plan !== null && initialPlan !== undefined && initialPlan !== undefined ?
-            <section className={s.root}>
+        
+    <section className={s.root}>
+        {plan !== undefined && plan !== null && initialPlan !== undefined && initialPlan !== undefined && allRequests !== null ?
                 <div>
                     <ModalComponent
                         open={open}
@@ -266,7 +266,7 @@ export default function Requests({ user }: { user: User }) {
                     <p>Cantidad de palabras restantes: <span>{initialPlan === -1 ? "Infinito" : plan}</span></p>
                     <Button onClick={openModal}>Envíar un artículo</Button>
                     {
-                        allRequests ?
+                        allRequests &&
                             <div className={s.dashboard}>
                                 {
                                     allRequests.map(request => {
@@ -274,24 +274,18 @@ export default function Requests({ user }: { user: User }) {
                                             <RequestCard
                                                 request={request}
                                             />
-                                            
                                         )
                                     })
                                 }
-                            </div>
-                            :
-                            <i>
-                                <LoadingDots />
-                            </i>
+                            </div>                            
                     }
                 </div>
-            </section>
             :
             <i>
                 <LoadingDots />
             </i>
         }
-        </>
+    </section>
     )
 
 }

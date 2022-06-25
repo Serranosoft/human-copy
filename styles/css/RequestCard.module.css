@@ -74,8 +74,24 @@
   margin-bottom: 0.25rem;
 }
 
-.root button {
+.root > div:last-child {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.root > div:last-child button {
   margin: 0;
   -ms-flex-item-align: start;
       align-self: flex-start;
+}
+
+.root > div:last-child span {
+  color: #9e8e00;
 }
