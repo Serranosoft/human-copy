@@ -1,6 +1,6 @@
 .root {
   width: 100%;
-  min-height: 950px;
+  min-height: 1120px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -22,7 +22,7 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  max-width: 1220px;
+  max-width: 1120px;
 }
 
 .root > div > p {
@@ -34,18 +34,18 @@
   font-weight: bold;
 }
 
-.root > div button {
+.root > div > button {
   margin-top: 1rem;
   -ms-flex-item-align: start;
       align-self: flex-start;
 }
 
 .root > div .dashboard {
-  max-width: 1220px;
+  max-width: 1120px;
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: (minmax(300px, 1fr))[auto-fill];
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  -ms-grid-columns: (minmax(450px, 1fr))[auto-fill];
+      grid-template-columns: repeat(auto-fill, minmax(450px, 1fr));
   gap: 2rem;
   margin-top: 4rem;
   border-radius: 6px;
