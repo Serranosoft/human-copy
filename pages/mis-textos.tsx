@@ -153,7 +153,6 @@ export default function Requests({ user }: { user: User }) {
     // Función para obtener los valores de los campos de una request
     function handleChange(e: any) {
         clearErrors();
-        console.log(e.target.value);
         let value = e.target.value;
         if (value === "true") {
             value = true;
@@ -270,7 +269,7 @@ export default function Requests({ user }: { user: User }) {
                         allRequests ?
                             <div className={s.dashboard}>
                                 {
-                                    allRequests.reverse().map(request => {
+                                    allRequests.map(request => {
                                         return (
                                             <RequestCard
                                                 request={request}
