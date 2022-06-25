@@ -26,8 +26,8 @@ export default function Requests({ user }: { user: User }) {
     // Objeto con datos iniciales para cargar en las requests
     const initialValue: Request = {
         finished: false,
-        title: "Cargando...",
-        topic: "Cargando...",
+        title: "",
+        topic: "",
         description: "",
         download: "/",
         words: "0",
@@ -69,39 +69,53 @@ export default function Requests({ user }: { user: User }) {
     // Enviamos una request a la base de datos
     async function submitReq(e: any) {
         e.preventDefault();
-        const { data, error }: { data: any; error: any } = await supabase.from('requests').insert([{
-            id: Date.now(),
-            user_id: user.id,
-            title: request.title,
-            topic: request.topic,
-            description: request.description,
-            finished: false,
-            words: request.words,
-            priority: request.priority
-        }]);
+        if (request.words === "0") {
+            setError(document.getElementById("request-words-error")!);
+        } else if (request.topic === "") {
+            setError(document.getElementById("request-topic-error")!);
+        } else if (request.description === "") {
+            setError(document.getElementById("request-description-error")!);
+        } else {
+            // Limpiar errores
+            clearErrors();
 
-        await supabase.from("users").update([{
-            plan: plan
-        }]).match({ id: user.id }).then(({data, error}) => {
-            if (!data || error) {
+            const { data, error }: { data: any; error: any } = await supabase.from('requests').insert([{
+                id: Date.now(),
+                user_id: user.id,
+                title: request.title !== "" ? request.title : "HumanCopy redactará un título para este artículo",
+                topic: request.topic,
+                description: request.description,
+                finished: false,
+                words: request.words,
+                priority: request.priority
+            }]);
+    
+            await supabase.from("users").update([{
+                plan: plan
+            }]).match({ id: user.id }).then(({data, error}) => {
+                if (!data || error) {
+                    // WIP: Modal de error.
+                } else {
+                    setInitialPlan(data![0].plan)
+                }
+            });
+    
+            if (!error) {
+                setModal(false)
+                getReq();
+                getPlan();
+                setRequest(initialValue);
+            } else{
                 // WIP: Modal de error.
-            } else {
-                setInitialPlan(data![0].plan)
             }
-        });
-
-        if (!error) {
-            setModal(false)
-            getReq();
-            getPlan();
-            setRequest(initialValue);
-        } else{
-            // WIP: Modal de error.
         }
+
     }
 
     // Función para obtener los valores de los campos de una request
     function handleChange(e: any) {
+        clearErrors();
+        console.log(e.target.value);
         let value = e.target.value;
         if (value === "true") {
             value = true;
@@ -133,6 +147,26 @@ export default function Requests({ user }: { user: User }) {
         handleChange(e);
     }
 
+    function setError(element: HTMLElement) {
+        if (element.id === "request-words-error") {
+            element.classList.remove("hide");
+            element.classList.add("show");
+        } else if (element.id === "request-topic-error") {
+            element.classList.remove("hide");
+            element.classList.add("show");
+        } else if (element.id === "request-description-error") {
+            element.classList.remove("hide");
+            element.classList.add("show");
+        }
+    }
+
+    function clearErrors() {
+        document.querySelectorAll("span.error").forEach(span => {
+            span.classList.add("hide");
+            span.classList.remove("show");
+        })
+    }
+
     return (
         <>
         {plan !== undefined && plan !== null && initialPlan !== undefined && initialPlan !== undefined ?
@@ -153,9 +187,9 @@ export default function Requests({ user }: { user: User }) {
                             </div>
                             <div>
                                 <label>Cantidad de palabras en el artículo</label>
-                                
                                 <span>{range} palabras</span>
                                 <Range
+                                    id="request-words"
                                     type="range"
                                     min="0"
                                     max={initialPlan !== -1 ? initialPlan!.toString() : "10000"}
@@ -164,14 +198,17 @@ export default function Requests({ user }: { user: User }) {
                                     step="500"
                                     name="words"
                                 />
+                                <span id="request-words-error" className="hide error">Como mínimo debe tener 500 palabras</span>
                             </div>
                             <div>
                                 <label>Temática del artículo</label>
                                 <Input name="topic" placeholder="Finanzas, informática, marketing..." onChange={handleChange}></Input>
+                                <span id="request-topic-error" className="hide error">Debes especificar una temática</span>
                             </div>
                             <div>
                                 <label>Descripción del artículo</label>
                                 <textarea name="description" onChange={handleChange}></textarea>
+                                <span id="request-description-error" className="hide error">Debes especificar una descripción</span>
                             </div>
                             <div>
                                 <label>Prioridad</label>

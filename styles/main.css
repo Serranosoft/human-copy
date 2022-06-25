@@ -58,3 +58,16 @@ textarea {
 textarea:focus {
     border: 3px solid #6ece9d;
 }
+
+.error {
+    color: red !important;
+    font-size: 0.75rem !important;
+}
+
+.show {
+    display: inline;
+}
+
+.hide {
+    display: none;
+}

@@ -28,7 +28,7 @@ export default function RequestCard({request}: { request: Request }) {
                 <p className={s.date}><span>28-06-22</span><span> /aprox.</span></p>
             </div>
             <div className={s.info}>
-                <p className={s.title}>{request.title !== null ? request.title : "(HumanCopy redactará un título)"}</p>
+                <p className={s.title}>{request.title}</p>
                 <p className={s.words}>{request.words} palabras</p>
             </div>
             <div className={s.description}>
