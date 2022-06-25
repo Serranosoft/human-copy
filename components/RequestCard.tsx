@@ -9,6 +9,7 @@ export interface Request {
     description: string | undefined;
     download: string | undefined;
     words: string | undefined;
+    deliver_date: string | undefined;
 }
 
 export default function RequestCard({request}: { request: Request }) {
@@ -25,7 +26,7 @@ export default function RequestCard({request}: { request: Request }) {
                         </i>
                 }
                 </div>
-                <p className={s.date}><span>28-06-22</span><span> /aprox.</span></p>
+                <p className={s.date}>{request.deliver_date !== null ? `Entrega: ${request.deliver_date} /est.` : "Tiempo de entrega sin definir"}</p>
             </div>
             <div className={s.info}>
                 <p className={s.title}>{request.title}</p>
