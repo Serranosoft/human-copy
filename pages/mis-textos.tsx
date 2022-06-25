@@ -232,7 +232,7 @@ export default function Requests({ user }: { user: User }) {
                         allRequests ?
                             <div className={s.dashboard}>
                                 {
-                                    allRequests.map(request => {
+                                    allRequests.reverse().map(request => {
                                         return (
                                             <RequestCard
                                                 request={request}
