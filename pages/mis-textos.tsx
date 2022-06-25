@@ -110,7 +110,7 @@ export default function Requests({ user }: { user: User }) {
                 case "5500":
                     days = 6;
                     break;
-                case "6000":
+                default:
                     days = -1;
                     break;
             }
@@ -125,7 +125,7 @@ export default function Requests({ user }: { user: User }) {
                 finished: false,
                 words: request.words,
                 priority: request.priority,
-                deliver_date: days !== -1 ? deliver_date : "+ 5 días"
+                deliver_date: days !== -1 ? deliver_date : "más de 6 días"
             }]);
     
             await supabase.from("users").update([{
@@ -178,10 +178,12 @@ export default function Requests({ user }: { user: User }) {
     // Función para manipular la cantidad de palabras que el usuario ha elegido para un artículo, a su vez, actualiza el plan restante.z
     function handleWords(e: any) {
         e.preventDefault();
-        // Restar cuando sube el rango y devolver el valor al plan cuando disminuye el rango
-        setPlan(initialPlan!-parseInt(e.target.value));
         applyRange(parseInt(e.target.value))
         handleChange(e);
+        if (initialPlan !== -1) {
+            // Restar cuando sube el rango y devolver el valor al plan cuando disminuye el rango
+            setPlan(initialPlan!-parseInt(e.target.value));
+        }
     }
 
     function setError(element: HTMLElement) {
@@ -215,7 +217,7 @@ export default function Requests({ user }: { user: User }) {
                     >
                         <form onSubmit={submitReq}>
                             <div>
-                                <span>Palabras disponibles: {initialPlan === -1 ? "Infinito" : plan}</span>
+                                <span>Palabras disponibles: {initialPlan === -1 ? "Ilimitado" : plan}</span>
                             </div>
                             <div>
                                 <label>Título del artículo (h1)</label>
@@ -263,7 +265,7 @@ export default function Requests({ user }: { user: User }) {
                             <Button type="submit" onClick={submitReq}>Enviar artículo</Button>
                         </div>
                     </ModalComponent>
-                    <p>Cantidad de palabras restantes: <span>{initialPlan === -1 ? "Infinito" : plan}</span></p>
+                    <p>Cantidad de palabras restantes: <span>{initialPlan === -1 ? "Ilimitado" : plan}</span></p>
                     <Button onClick={openModal}>Envíar un artículo</Button>
                     {
                         allRequests &&

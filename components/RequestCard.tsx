@@ -27,7 +27,7 @@ export default function RequestCard({request}: { request: Request }) {
                         </i>
                 }
                 </div>
-                <p className={s.date}>{request.deliver_date !== null ? `Entrega est. ${request.deliver_date}` : "Tiempo de entrega sin definir"}</p>
+                <p className={s.date}>{`Entrega est. ${request.deliver_date}`}</p>
             </div>
             <div className={s.info}>
                 <p className={s.title}>{request.title}</p>
