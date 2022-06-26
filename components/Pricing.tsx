@@ -42,7 +42,7 @@ export default function Pricing({ products }: Props) {
 
     return (
         <section className={s.root}>
-            <h2>Plan de Precios</h2>
+            <h2>Escoge un plan</h2>
             <div className={s.planLayout}>
 
                 <PaymentPlanCard 

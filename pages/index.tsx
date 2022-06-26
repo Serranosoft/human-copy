@@ -74,9 +74,9 @@ export default function Home({ products }: Props) {
                     <h1>¿Cómo funciona HumanCopy?</h1>
                     <div>
                         <div>
-                            <img src="/prueba.jpg" alt="Vercel.com Logo" />
+                            <img src="/step1-home.jpg" alt="Vercel.com Logo" />
                             <div>
-                                <p>Título del paso número 1</p>
+                                <p>Escoge un plan</p>
                                 <span>
                                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi purus quam, semper id nulla nec, interdum interdum nulla. Sed efficitur orci in sem maximus vehicula. Vestibulum euismod ante velit.
                                 </span>
@@ -85,18 +85,18 @@ export default function Home({ products }: Props) {
                         <RightLine className={s.stepLine} />
                         <div>
                             <div>
-                                <p>Título del paso número 2</p>
+                                <p>Haz un pedido</p>
                                 <span>
                                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi purus quam, semper id nulla nec, interdum interdum nulla. Sed efficitur orci in sem maximus vehicula. Vestibulum euismod ante velit.
                                 </span>
                             </div>
-                            <img src="/prueba.jpg" alt="Vercel.com Logo" />
+                            <img src="/step24-home.jpg" alt="Vercel.com Logo" />
                         </div>
                         <LeftLine className={s.stepLine} />
                         <div>
-                            <img src="/prueba.jpg" alt="Vercel.com Logo" />
+                            <img src="/step3-home.jpg" alt="Vercel.com Logo" />
                             <div>
-                                <p>Título del paso número 3</p>
+                                <p>Supervisa y descarga tus pedidos</p>
                                 <span>
                                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi purus quam, semper id nulla nec, interdum interdum nulla. Sed efficitur orci in sem maximus vehicula. Vestibulum euismod ante velit.
                                 </span>

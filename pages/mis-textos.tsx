@@ -221,7 +221,7 @@ export default function Requests({ user }: { user: User }) {
                             </div>
                             <div>
                                 <label>Título del artículo (h1)</label>
-                                <Input name="title" placeholder="¿Cómo arreglar el transmisor de la radio de mi coche?" onChange={handleChange}></Input>
+                                <Input name="title" onChange={handleChange}></Input>
                                 <span className={s.muted}>Si no tienes claro un título, nosotros nos encargamos de redactar el más adecuado para el artículo</span>
                             </div>
                             <div>
