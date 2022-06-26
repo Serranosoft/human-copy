@@ -15,7 +15,7 @@ interface Props {
 }
 
 export default function Home({ products }: Props) {
-    const { user, isLoading, subscription } = useUser();
+    const { user, isLoading } = useUser();
     return (
         <>
             <section className={s.root}>
@@ -103,6 +103,10 @@ export default function Home({ products }: Props) {
                             </div>
                         </div>
                         <MiddleLine className={s.stepLine} />
+                        <div>
+                            <p>¡Listo!</p>
+                            <span>AAAAAAAAAAAAAA</span>
+                        </div>
                     </div>
                 </div>
             </section>

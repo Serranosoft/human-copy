@@ -15,14 +15,14 @@ interface Props {
 export default function Pricing({ products }: Props) {
     const router = useRouter();
     const [priceIdLoading, setPriceIdLoading] = useState<string>();
-    const { user, isLoading, subscription } = useUser();
+    const { user, isLoading, userDetails } = useUser();
     
     const handleCheckout = async (price: Price, mode: string) => {
         setPriceIdLoading(price.id);;
         if (!user) {
             return router.push('/iniciar-sesion');
         }
-        if (subscription) {
+        if (userDetails!.plan === -1) {
             return router.push('/');
         }
 

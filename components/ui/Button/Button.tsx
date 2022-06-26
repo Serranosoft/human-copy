@@ -39,11 +39,7 @@ const Button = forwardRef<HTMLButtonElement, Props>((props, buttonRef) => {
             {...rest}
         >
             {children}
-            {loading && (
-                <i>
-                    <LoadingDots />
-                </i>
-            )}
+            {loading && (<LoadingDots />)}
         </Component>
     );
 });

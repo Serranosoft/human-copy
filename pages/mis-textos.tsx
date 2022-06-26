@@ -283,9 +283,7 @@ export default function Requests({ user }: { user: User }) {
                     }
                 </div>
             :
-            <i>
-                <LoadingDots />
-            </i>
+            <LoadingDots />
         }
     </section>
     )

@@ -224,6 +224,25 @@
   margin: 1.5rem 0;
 }
 
+.root .stepByStep > div > div:not(.stepLine):last-child {
+  margin-top: 1.5rem;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  text-align: center;
+}
+
+.root .stepByStep > div > div:not(.stepLine):last-child p, .root .stepByStep > div > div:not(.stepLine):last-child span {
+  grid-column: 1 / -1;
+}
+
+.root .stepByStep > div > div:not(.stepLine):last-child p {
+  font-size: 3rem;
+  display: inline-block;
+  -webkit-transform: rotate(-3deg);
+          transform: rotate(-3deg);
+}
+
 .root .stepByStep > div .stepLine {
   max-width: 100%;
   display: inline-block;

@@ -22,9 +22,7 @@ export default function RequestCard({request}: { request: Request }) {
                     request.download !== null && request.download !== "" ?
                         <span>✔️</span>
                         :
-                        <i>
-                            <LoadingDots />
-                        </i>
+                        <LoadingDots />
                 }
                 </div>
                 <p className={s.date}>{`Entrega est. ${request.deliver_date}`}</p>

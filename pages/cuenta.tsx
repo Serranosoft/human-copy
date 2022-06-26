@@ -1,12 +1,11 @@
-import Link from 'next/link';
 import { useState, ReactNode } from 'react';
-
 import LoadingDots from 'components/ui/LoadingDots';
 import Button from 'components/ui/Button';
 import { useUser } from 'utils/useUser';
 import { postData } from 'utils/helpers';
+import s from '../styles/css/Cuenta.module.css';
 
-import { withAuthRequired, User } from '@supabase/supabase-auth-helpers/nextjs';
+import { withAuthRequired } from '@supabase/supabase-auth-helpers/nextjs';
 
 interface Props {
     title: string;
@@ -15,24 +14,11 @@ interface Props {
     children: ReactNode;
 }
 
-function Card({ title, description, footer, children }: Props) {
-    return (
-        <div>
-            <div>
-                <h3>{title}</h3>
-                <p>{description}</p>
-                {children}
-            </div>
-            <div>{footer}</div>
-        </div>
-    );
-}
-
 export const getServerSideProps = withAuthRequired({ redirectTo: '/signin' });
 
-export default function Account({ user }: { user: User }) {
+export default function Account() {
     const [loading, setLoading] = useState(false);
-    const { isLoading, subscription, userDetails } = useUser();
+    const { userDetails } = useUser();
 
     const redirectToCustomerPortal = async () => {
         setLoading(true);
@@ -47,87 +33,35 @@ export default function Account({ user }: { user: User }) {
         setLoading(false);
     };
 
-    const subscriptionPrice =
-        subscription &&
-        new Intl.NumberFormat('en-US', {
-            style: 'currency',
-            currency: subscription?.prices?.currency,
-            minimumFractionDigits: 0
-        }).format((subscription?.prices?.unit_amount || 0) / 100);
 
     return (
-        <section>
-            <div>
-                <div>
-                    <h1>
-                        Cuenta
-                    </h1>
-                    <p>
-                        We partnered with Stripe for a simplified billing.
-                    </p>
-                </div>
-            </div>
-            <div>
-                <Card
-                    title="Your Plan"
-                    description={
-                        subscription
-                            ? `You are currently on the ${subscription?.prices?.products?.name} plan.`
-                            : ''
-                    }
-                    footer={
-                        <div>
-                            <p>
-                                Manage your subscription on Stripe.
-                            </p>
-                            <Button
-                                loading={loading}
-                                disabled={loading || !subscription}
-                                onClick={redirectToCustomerPortal}
-                            >
-                                Open customer portal
-                            </Button>
-                        </div>
-                    }
-                >
-                    <div>
-                        {isLoading ? (
-                            <div>
-                                <LoadingDots />
-                            </div>
-                        ) : subscription ? (
-                            `${subscriptionPrice}/${subscription?.prices?.interval}`
-                        ) : (
-                            <Link href="/">
-                                <a>Choose your plan</a>
-                            </Link>
-                        )}
+        <section className={s.root}>
+            <h1>Mi cuenta</h1>
+            {userDetails ?
+                <>
+                    <div className={s.info}>
+                        <p>Datos de mi cuenta</p>
+                        <p>Correo electrónico: {userDetails!.email}</p>
+                        <p>Nombre: {userDetails!.full_name}</p>
+                        <p>Plan contratado: {userDetails!.plan !== -1 ? userDetails.plan : "Suscripción ilimitada"}</p>
                     </div>
-                </Card>
-                <Card
-                    title="Your Name"
-                    description="Please enter your full name, or a display name you are comfortable with."
-                    footer={<p>Please use 64 characters at maximum.</p>}
-                >
-                    <div>
-                        {userDetails ? (`${userDetails?.full_name}`) :
-                            (
-                                <div>
-                                    <LoadingDots />
-                                </div>
-                            )}
+                    <div className={s.stripe}>
+                        <p>
+                            Ver datos de tu suscripción en HumanCopy desde <i>Stripe</i>.
+                        </p>
+                        <Button
+                            loading={loading}
+                            disabled={loading || userDetails.plan !== -1}
+                            onClick={redirectToCustomerPortal}
+                        >
+                        Abrir portal de cliente
+                        </Button>
                     </div>
-                </Card>
-                <Card
-                    title="Your Email"
-                    description="Please enter the email address you want to use to login."
-                    footer={<p>We will email you to verify the change.</p>}
-                >
-                    <p>
-                        {user ? user.email : undefined}
-                    </p>
-                </Card>
-            </div>
+                </>
+                :
+                <LoadingDots />
+                
+            }
         </section>
     );
 }
