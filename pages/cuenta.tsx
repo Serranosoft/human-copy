@@ -36,32 +36,41 @@ export default function Account() {
 
     return (
         <section className={s.root}>
-            <h1>Mi cuenta</h1>
-            {userDetails ?
-                <>
-                    <div className={s.info}>
-                        <p>Datos de mi cuenta</p>
-                        <p>Correo electrónico: {userDetails!.email}</p>
-                        <p>Nombre: {userDetails!.full_name}</p>
-                        <p>Plan contratado: {userDetails!.plan !== -1 ? userDetails.plan : "Suscripción ilimitada"}</p>
-                    </div>
-                    <div className={s.stripe}>
-                        <p>
-                            Ver datos de tu suscripción en HumanCopy desde <i>Stripe</i>.
-                        </p>
-                        <Button
-                            loading={loading}
-                            disabled={loading || userDetails.plan !== -1}
-                            onClick={redirectToCustomerPortal}
-                        >
-                        Abrir portal de cliente
-                        </Button>
-                    </div>
-                </>
-                :
-                <LoadingDots />
-                
-            }
+            <div>
+                {userDetails ?
+                    <>
+                        <h1>Datos de mi cuenta</h1>
+                        <div className={s.info}>
+                            <div>
+                                <p>Correo electrónico</p>
+                                <p>{userDetails!.email}</p>
+                            </div>
+                            <div>
+                                <p>Nombre</p>
+                                <p>{userDetails!.full_name}</p>
+                            </div>
+                            <div>
+                                <p>Plan contratado</p>
+                                <p>{userDetails!.plan !== -1 ? userDetails.plan : "Suscripción ilimitada"}</p>
+                            </div>
+                        </div>
+                        <div className={s.stripe}>
+                            <p>
+                                Ver datos de tu suscripción en HumanCopy desde <i>Stripe</i>.
+                            </p>
+                            <Button
+                                loading={loading}
+                                disabled={loading || userDetails.plan !== -1}
+                                onClick={redirectToCustomerPortal}
+                            >
+                            Abrir portal de cliente
+                            </Button>
+                        </div>
+                    </>
+                    :
+                    <LoadingDots />   
+                }
+            </div>
         </section>
     );
 }

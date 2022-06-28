@@ -12,7 +12,7 @@
 
 .root > div {
   width: 100%;
-  max-width: 1120px;
+  max-width: 1550px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -31,10 +31,10 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  gap: 2.5rem;
+  gap: 5rem;
 }
 
-.root > div > div:first-child nav {
+.root > div nav {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -48,6 +48,8 @@
 
 .root > div a svg {
   display: block;
+  height: 2.5rem;
+  margin-top: 0.32rem;
 }
 
 .root > div a:hover {

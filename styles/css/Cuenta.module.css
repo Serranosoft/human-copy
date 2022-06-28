@@ -12,18 +12,83 @@
   gap: 2rem;
 }
 
-.root .info {
-  display: -ms-grid;
-  display: grid;
-  -ms-grid-columns: (1fr)[5];
-      grid-template-columns: repeat(5, 1fr);
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+.root > div {
+  width: 100%;
+  max-width: 1250px;
+  min-height: 700px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
-.root .info p:first-child {
+.root > div > h1 {
+  font-size: 3rem;
+  margin: 5rem 0 3.5rem 0;
+}
+
+.root > div .info {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 2rem;
+}
+
+.root > div .info > div {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 1rem;
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+  background-color: #131313;
+  color: white;
+  -webkit-box-shadow: 0px 0px 6px #494949;
+          box-shadow: 0px 0px 6px #494949;
+}
+
+.root > div .info > div p:first-child {
   font-weight: bold;
-  font-size: 1.5rem;
-  grid-column: 3 / -1;
+  font-size: 1.55rem;
+  text-align: start;
+}
+
+.root > div .info > div p:not(:first-child) {
+  text-align: center;
+  margin-top: 1rem;
+  font-size: 1.185rem;
+}
+
+.root > div .stripe {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 1rem;
+  margin-top: 5rem;
+}
+
+.root > div .stripe p {
+  font-size: 1.25rem;
 }

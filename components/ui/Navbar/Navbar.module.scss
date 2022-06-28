@@ -6,24 +6,26 @@
     padding: 1.5rem 0;
     & > div {
         width: 100%;
-        max-width: 1120px;
+        max-width: 1550px;
         display: flex;
         align-items: center;
         justify-content: space-between;
         & > div:first-child  {
             display: flex;
             align-items: center;
-            gap: 2.5rem;
-            nav {
-                display: flex;
-                gap: 1.5rem;
-            }
+            gap: 5rem;
+        }
+        nav {
+            display: flex;
+            gap: 1.5rem;
         }
         a {
             color: white;
             text-decoration: none;
             svg {
                 display: block;
+                height: 2.5rem;
+                margin-top: 0.32rem;
             }
             &:hover {
                 text-decoration: underline;

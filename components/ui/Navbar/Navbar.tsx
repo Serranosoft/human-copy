@@ -17,7 +17,8 @@ const Navbar = () => {
                             <Logo />
                         </a>
                     </Link>
-                    <nav>
+                </div>
+                <nav>
                     {user && (
                         <Link href="/cuenta">
                             <a className={s.link}>Mi cuenta</a>
@@ -36,19 +37,18 @@ const Navbar = () => {
                             <a className={s.link}>Administración</a>
                         </Link>
                     )}
-                    </nav>
-                </div>
-                <span>
-                    {user ? (
-                        <Link href="/api/auth/logout">
-                            <a className={s.link}>Cerrar sesión</a>
-                        </Link>
-                    ) : (
-                        <Link href="/iniciar-sesion">
-                            <a className={s.link}>Iniciar sesión</a>
-                        </Link>
-                    )}
-                </span>
+                    <span>
+                        {user ? (
+                            <Link href="/api/auth/logout">
+                                <a className={s.link}>Cerrar sesión</a>
+                            </Link>
+                        ) : (
+                            <Link href="/iniciar-sesion">
+                                <a className={s.link}>Iniciar sesión</a>
+                            </Link>
+                        )}
+                    </span>
+                 </nav>
             </div>
         </header>
     );
