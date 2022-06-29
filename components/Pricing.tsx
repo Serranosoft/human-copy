@@ -41,7 +41,7 @@ export default function Pricing({ products }: Props) {
     };
 
     return (
-        <section className={s.root}>
+        <section id="pricingPanel" className={s.root}>
             <h2>Escoge un plan</h2>
             <div className={s.planLayout}>
 

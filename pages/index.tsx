@@ -23,7 +23,7 @@ export default function Home({ products }: Props) {
                     <p className={s.title}>Lorem ipsum dolor sit amet.</p>
                     <span>Pirsch is a simple, cookie-free, and open-source web analytics solution that easily integrates into your website or backend.</span>
                     <div>
-                        <Button>Ver planes</Button>
+                        <Button><a href="#pricingPanel">Ver planes</a></Button>
                         {!user && <Button><Link href="/iniciar-sesion"><a>Prueba una demo gratuita</a></Link></Button>}
                     </div>
                 </div>
