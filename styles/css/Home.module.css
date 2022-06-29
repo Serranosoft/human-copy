@@ -28,13 +28,13 @@
 }
 
 .root .hero .title {
-  font-size: 5.5rem;
+  font-size: 5.65rem;
   letter-spacing: -2px;
 }
 
 .root .hero span {
   max-width: 768px;
-  font-size: 1.25rem;
+  font-size: 1.4rem;
   margin: 2rem 0;
 }
 
@@ -46,8 +46,19 @@
 }
 
 .root .hero > div button {
-  padding-left: 1.85rem;
-  padding-right: 1.85rem;
+  font-size: 1.62rem;
+  font-weight: 500;
+  letter-spacing: -1.4px;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  padding: 0.85rem 2.75rem;
+  -webkit-box-shadow: 6px 5px 0 #242424;
+          box-shadow: 6px 5px 0 #242424;
+}
+
+.root .hero > div button:hover {
+  -webkit-box-shadow: 8.5px 7px 0 #303030;
+          box-shadow: 8.5px 7px 0 #303030;
 }
 
 .root .hero > div button:first-child {
@@ -112,7 +123,7 @@
           transform: translate(-50%, -50%);
   color: white;
   font-weight: bold;
-  font-size: 1.4rem;
+  font-size: 1.65rem;
   text-align: center;
 }
 
@@ -128,7 +139,7 @@
   text-align: center;
   border-bottom-left-radius: 16px;
   border-bottom-right-radius: 16px;
-  font-size: 0.85rem;
+  font-size: 1rem;
   background-color: #0a0a0a;
 }
 

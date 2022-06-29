@@ -23,7 +23,7 @@ export default function Home({ products }: Props) {
                     <p className={s.title}>Lorem ipsum dolor sit amet.</p>
                     <span>Pirsch is a simple, cookie-free, and open-source web analytics solution that easily integrates into your website or backend.</span>
                     <div>
-                        <Button>Ver los planes</Button>
+                        <Button>Ver planes</Button>
                         {!user && <Button><Link href="/iniciar-sesion"><a>Prueba una demo gratuita</a></Link></Button>}
                     </div>
                 </div>
@@ -57,13 +57,13 @@ export default function Home({ products }: Props) {
                         <div style={{ backgroundImage: "url(/sc-hf.jpg)" }}>
                             <span>Página web de <span className={s.highlight}>finanzas</span></span>
                         </div>
-                        <span>Crecimiento de un 40% en impresiones/clics trimestralmente</span>
+                        <span>Crecimiento de un 40% trimestralmente</span>
                     </div>
                     <div>
                         <div style={{ backgroundImage: "url(/sc-idlt.jpg)" }}>
                             <span>Página web de <span className={s.highlight}>noticias en prensa rosa</span></span>
                         </div>
-                        <span>+1250% manteniendo artículo semanal durante 2 meses y medio</span>
+                        <span>+1250% durante 2 meses y medio</span>
                     </div>
 
                 </div>
