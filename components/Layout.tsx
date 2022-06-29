@@ -14,8 +14,8 @@ interface Props {
 export default function Layout({ children, meta: pageMeta }: Props) {
     const router = useRouter();
     const meta = {
-        title: 'Next.js Subscription Starter',
-        description: 'Brought to you by Vercel, Stripe, and Supabase.',
+        title: 'HumanCopy - Servicio de contenido ilimitado',
+        description: 'El #1 servicio de redacción premium ilimitada sin IA para empresas y emprendedores',
         cardImage: '/og.png',
         ...pageMeta
     };
@@ -23,9 +23,9 @@ export default function Layout({ children, meta: pageMeta }: Props) {
     return (
         <>
             <Head>
-                <title>{meta.title}</title>
+                <title>HumanCopy - Servicio de contenido ilimitado</title>
                 <meta name="robots" content="follow, index" />
-                <link href="/favicon.ico" rel="shortcut icon" />
+                <link href="/HC_1.svg" rel="shortcut icon" />
                 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet" /> 
                 <meta content={meta.description} name="description" />
                 <meta property="og:url" content={`https://subscription-starter.vercel.app${router.asPath}`} />

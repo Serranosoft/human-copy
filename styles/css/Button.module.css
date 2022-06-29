@@ -10,7 +10,7 @@
 
 .root:not(:disabled):hover {
   cursor: pointer;
-  background-color: #50b17f;
+  background-color: #529c76;
 }
 
 .root a {
