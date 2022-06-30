@@ -7,7 +7,6 @@ import s from '../styles/css/Cuenta.module.css';
 import { withAuthRequired } from '@supabase/supabase-auth-helpers/nextjs';
 import Head from 'next/head';
 
-
 export const getServerSideProps = withAuthRequired({ redirectTo: '/iniciar-sesion' });
 
 export default function Account() {
@@ -26,7 +25,6 @@ export default function Account() {
         }
         setLoading(false);
     };
-
 
     return (
         <>
@@ -50,7 +48,7 @@ export default function Account() {
                                 </div>
                                 <div>
                                     <p>Plan contratado</p>
-                                    <p>{userDetails!.plan !== -1 ? userDetails.plan : "Suscripción ilimitada"}</p>
+                                    <p>{userDetails!.plan !== -1 ? `${userDetails.plan} palabras restantes` : "Suscripción ilimitada"}</p>
                                 </div>
                             </div>
                             <div className={s.stripe}>
