@@ -1,4 +1,4 @@
-import React, { InputHTMLAttributes, ChangeEvent } from 'react';
+import React, { InputHTMLAttributes } from 'react';
 // import s from '../../../styles/css/Range.module.css';
 
 interface Props extends Omit<InputHTMLAttributes<any>, 'onChange'> {

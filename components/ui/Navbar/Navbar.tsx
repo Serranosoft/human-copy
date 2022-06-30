@@ -2,12 +2,9 @@ import Link from 'next/link';
 import s from '../../../styles/css/Navbar.module.css';
 import Logo from 'components/icons/Logo';
 import { useUser } from 'utils/useUser';
-import { supabaseClient } from '@supabase/supabase-auth-helpers/nextjs';
-import { useRouter } from 'next/router';
 
 const Navbar = () => {
     const { user } = useUser();
-    const router = useRouter();
     return (
         <header className={s.root}>
             <div>
@@ -28,7 +25,7 @@ const Navbar = () => {
                             <a className={s.link}>Mis textos</a>
                         </Link>)}
                         {!user && (
-                            <Link href="/">
+                            <Link href="/#pricingPanel">
                                 <a className={s.link}>Precios</a>
                             </Link>
                         )}

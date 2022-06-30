@@ -1,4 +1,3 @@
-import { useEffect, useState } from 'react';
 import s from '../styles/css/PlanCard.module.css';
 import Button from './ui/Button';
 
