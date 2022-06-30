@@ -63,19 +63,20 @@ const SignIn = () => {
         });
     }
 
+    async function signInWithGoogle() {
+        const { user, session, error } = await supabaseClient.auth.signIn({
+            provider: 'google',
+        })
+    }
+
+
     if (!user)
         return (
             <div className={s.root}>
                 <div>
                     <p>Iniciar sesión</p>
                     {message.content && (
-                        <span
-                            /* className={`${message.type === 'error' ? 'text-pink-500' : 'text-green-500'
-                                } border ${message.type === 'error'
-                                    ? 'border-pink-500'
-                                    : 'border-green-500'
-                                } p-3`} */
-                        >
+                        <span>
                             {message.content === "Invalid login credentials" ? "Correo electrónico o contraseña incorrecta" : message.content}
                         </span>
                     )}
@@ -103,6 +104,12 @@ const SignIn = () => {
                             Iniciar sesión
                         </Button>
                     </form>
+                    <div>
+                        <p>También puedes iniciar sesión con Google.</p>
+                        <Button onClick={signInWithGoogle}>
+                            Iniciar sesión con Google
+                        </Button>
+                    </div>
                 </div>
             </div>
         );
