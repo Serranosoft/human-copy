@@ -10,6 +10,7 @@
       -ms-flex-align: center;
           align-items: center;
   margin: 3rem 0;
+  padding: 0 2rem;
 }
 
 .root .hero {
@@ -77,6 +78,22 @@
   -ms-grid-columns: (minmax(400px, 1fr))[auto-fit];
       grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
   gap: 3rem 1rem;
+  position: relative;
+}
+
+.root .bigImg > svg {
+  position: absolute;
+  top: -35px;
+  left: -10px;
+  height: 4rem;
+  z-index: 1;
+  border-radius: 100%;
+  -webkit-transform: rotate(-7.5deg);
+          transform: rotate(-7.5deg);
+}
+
+.root .bigImg > svg path {
+  fill: #529c76;
 }
 
 .root .bigImg > div {
@@ -148,7 +165,6 @@
   -ms-grid-column-align: center;
       justify-self: center;
   padding-bottom: 0.35rem;
-  border-bottom: 3px solid #6ece9d;
   font-size: 1.35rem;
 }
 
@@ -170,8 +186,6 @@
   font-size: 3.35rem;
   word-spacing: 0.55rem;
   letter-spacing: -2px;
-  -webkit-transform: rotate(-1.85deg);
-          transform: rotate(-1.85deg);
   margin: 5.5rem 0;
 }
 

@@ -3,6 +3,7 @@
     flex-direction: column;
     align-items: center;
     margin: 3rem 0;
+    padding: 0 2rem;
     .hero {
         width: 100%;
         max-width: 1120px;
@@ -49,7 +50,19 @@
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
         gap: 3rem 1rem;
-        // background-color: #18181b;
+        position: relative;
+        & > svg {
+            position: absolute;
+            top: -35px;
+            left: -10px;
+            height: 4rem;
+            z-index: 1;
+            border-radius: 100%;
+            transform: rotate(-7.5deg);
+            path {
+                fill: #529c76;
+            }
+        }
         & > div {
             display: flex;
             flex-direction: column;
@@ -57,7 +70,6 @@
                 width: 100%;
                 height: 180px;
                 position: relative;
-                // background-image: url("/sc-db.jpg");
                 background-size: 100% 100%;
                 &:hover:after {
                     opacity: 1;
@@ -107,7 +119,7 @@
             grid-column: 1 / -1;
             justify-self: center;
             padding-bottom: 0.35rem;
-            border-bottom: 3px solid #6ece9d;
+            // border-bottom: 3px solid #6ece9d;
             font-size: 1.35rem;
         }
     }
@@ -120,7 +132,6 @@
             font-size: 3.35rem;
             word-spacing: 0.55rem;
             letter-spacing: -2px;
-            transform: rotate(-1.85deg);
             margin: 5.5rem 0;
         }
         & > div {

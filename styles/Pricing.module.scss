@@ -3,9 +3,9 @@
     flex-direction: column;
     align-items: center;
     width: 100%;
-    margin-bottom: 5rem;
+    margin-bottom: 5.5rem;
     h2 {
-        font-size: 2.4rem;
+        font-size: 3.35rem;
         margin: 1rem 0;
     }
     .planLayout {
@@ -16,6 +16,8 @@
         align-items: flex-end;
         gap: 3rem;
         margin-top: 1.5rem;
+        background-image: url("/shapes-pattern.svg");
+        background-size: cover;
     }
     .info {
         max-width: 650px;
@@ -23,7 +25,13 @@
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        margin-top: 3.5rem;
+        margin-top: 6rem;
+        position: relative;
+        & > div {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
         table {
             width: 100%;
             margin: 0.5rem auto;
@@ -37,6 +45,16 @@
             }
             tbody tr td {
                 padding: 0.6em 2rem;
+            }
+        }
+        svg {
+            // position: absolute;
+            // top: 0;
+            // left: 0;
+            height: 7.5rem;
+            z-index: 1;
+            path {
+                fill: #529c76;
             }
         }
     }

@@ -73,3 +73,43 @@ textarea:focus {
     display: none;
 }
 
+.highlight-short, .highlight-medium, .highlight-long {
+    position: relative;
+    z-index: 0;
+}
+
+.highlight-short::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -10px;
+    width: 224px;
+    height: 100%;
+    background-image: url('/highlight-1.svg');
+    background-repeat: no-repeat;
+    z-index: -1;
+}
+
+.highlight-medium::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -10px;
+    width: 274px;
+    height: 100%;
+    background-image: url('/highlight-3.svg');
+    background-repeat: no-repeat;
+    z-index: -1;
+}
+
+.highlight-long::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -10px;
+    width: 388px;
+    height: 100%;
+    background-image: url('/highlight-2.svg');
+    background-repeat: no-repeat;
+    z-index: -1;
+}

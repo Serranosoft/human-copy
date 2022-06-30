@@ -7,6 +7,7 @@ import { Price, ProductWithPrice } from 'types';
 import s from '../styles/css/Pricing.module.css';
 import PaymentPlanCard from './PaymentPlanCard';
 import SubscriptionPlanCard from './SubscriptionPlanCard';
+import FeatherSVG from './icons/Feather';
 
 interface Props {
     products: ProductWithPrice[];
@@ -42,7 +43,7 @@ export default function Pricing({ products }: Props) {
 
     return (
         <section id="pricingPanel" className={s.root}>
-            <h2>Escoge un plan</h2>
+            <h2>Escoge un <span className="highlight-short">plan</span></h2>
             <div className={s.planLayout}>
 
                 <PaymentPlanCard 
@@ -61,7 +62,10 @@ export default function Pricing({ products }: Props) {
 
             </div>
             <div className={s.info}>
-                <p>* Al ser escrito por personas y no por IA, los textos tardan en entregarse un tiempo variable dependiendo de la cantidad de palabras que solicites</p>
+                <div>
+                    <FeatherSVG />
+                    <p>* Al ser escrito por personas y no por IA, los textos tardan en entregarse un tiempo variable dependiendo de la cantidad de palabras que solicites</p>
+                </div>
                 <table>
                     <thead>
                         <tr>

@@ -9,6 +9,7 @@ import { useUser } from 'utils/useUser';
 import RightLine from '@/components/icons/RightLine';
 import LeftLine from '@/components/icons/LeftLine';
 import MiddleLine from '@/components/icons/MiddleLine';
+import ClipSVG from '@/components/icons/Clip';
 
 interface Props {
     products: Product[];
@@ -28,6 +29,7 @@ export default function Home({ products }: Props) {
                     </div>
                 </div>
                 <div className={s.bigImg}>
+                    <ClipSVG />
                     <div>
                         <div style={{ backgroundImage: "url(/sc-nt.jpg)" }}>
                             <span>Página web <span className={s.highlight}>warez</span></span>
@@ -46,7 +48,7 @@ export default function Home({ products }: Props) {
                         </div>
                         <span>+6000% impresiones con contenido en tendencia</span>
                     </div>
-                    <span>Pon el ratón por encima de las gráficas para conocer la temática de cada proyecto</span>
+                    <span>Pon el ratón por encima de las gráficas para conocer la <span className="highlight-medium">temática de cada proyecto</span></span>
                     <div>
                         <div style={{ backgroundImage: "url(/sc-db.jpg)" }}>
                             <span>Página web de <span className={s.highlight}>recetas</span></span>
@@ -71,7 +73,7 @@ export default function Home({ products }: Props) {
                     products={products}
                 />
                 <div className={s.stepByStep}>
-                    <h1>¿Cómo funciona HumanCopy?</h1>
+                    <h1>¿Cómo funciona <span className="highlight-long">HumanCopy?</span></h1>
                     <div>
                         <div>
                             <img src="/step1-home.jpg" alt="Vercel.com Logo" />

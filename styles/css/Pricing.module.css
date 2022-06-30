@@ -10,11 +10,11 @@
       -ms-flex-align: center;
           align-items: center;
   width: 100%;
-  margin-bottom: 5rem;
+  margin-bottom: 5.5rem;
 }
 
 .root h2 {
-  font-size: 2.4rem;
+  font-size: 3.35rem;
   margin: 1rem 0;
 }
 
@@ -32,6 +32,8 @@
           align-items: flex-end;
   gap: 3rem;
   margin-top: 1.5rem;
+  background-image: url("/shapes-pattern.svg");
+  background-size: cover;
 }
 
 .root .info {
@@ -49,7 +51,18 @@
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  margin-top: 3.5rem;
+  margin-top: 6rem;
+  position: relative;
+}
+
+.root .info > div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 1rem;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .root .info table {
@@ -68,4 +81,13 @@
 
 .root .info table tbody tr td {
   padding: 0.6em 2rem;
+}
+
+.root .info svg {
+  height: 7.5rem;
+  z-index: 1;
+}
+
+.root .info svg path {
+  fill: #529c76;
 }
