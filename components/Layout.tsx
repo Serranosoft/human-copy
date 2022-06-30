@@ -38,6 +38,7 @@ export default function Layout({ children, meta: pageMeta }: Props) {
                 <meta name="twitter:title" content={meta.title} />
                 <meta name="twitter:description" content={meta.description} />
                 <meta name="twitter:image" content={meta.cardImage} />
+                <meta name="google-site-verification" content="zbUw2omZKSJuGlQdmrEyEikPIPQnzuzZ6c0Dr_jFtlQ" />
             </Head>
             <Navbar />
             <main>
