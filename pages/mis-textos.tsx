@@ -11,6 +11,7 @@ import Range from '@/components/ui/Range';
 import RequestCard from '@/components/RequestCard';
 import Select from '@/components/ui/Select';
 import { useUser } from 'utils/useUser';
+import { Data } from '@/utils/data';
 
 export interface Request {
     finished: boolean | undefined;
@@ -24,9 +25,7 @@ export interface Request {
 }
 
 export default function Requests({ user }: { user: User }) {
-    console.log(user);
-    const {userDetails} = useUser();
-    console.log(userDetails);
+    const { userDetails } = useUser();
     // Objeto con datos iniciales para cargar en las requests
     const initialValue: Request = {
         finished: false,
@@ -42,7 +41,7 @@ export default function Requests({ user }: { user: User }) {
     // Objeto request para cargar una request a la bd
     const [request, setRequest] = useState<Request>(initialValue);
     // Objetos requests que tiene el usuario registrados
-    const [allRequests, setAllRequests] = useState<Request[]>();
+    const [allRequests, setAllRequests] = useState<Request[]>([]);
     // Evento setModal para abrir el modal
     const [open, setModal] = useState(false);
     // Variable para almacenar el rango de palabras que el usuario ha escogido para el artículo
@@ -57,7 +56,7 @@ export default function Requests({ user }: { user: User }) {
         getReq();
         getPlan();
     }, [user])
-    
+
     // Obtenemos el plan del usuario
     async function getPlan() {
         const { data, error }: { data: any; error: any } = await supabase.from('users').select('plan').eq("id", user.id)
@@ -69,6 +68,7 @@ export default function Requests({ user }: { user: User }) {
     async function getReq() {
         const { data, error }: { data: any; error: any } = await supabase.from('requests').select('title, topic, description, finished, words, priority, deliver_date, download').eq("user_id", user.id);
         setAllRequests(data);
+        console.log(allRequests);
     }
 
     // Enviamos una request a la base de datos
@@ -85,7 +85,7 @@ export default function Requests({ user }: { user: User }) {
             clearErrors();
             let date = new Date();
             let days = 0;
-            switch(request.words) {
+            switch (request.words) {
                 case "500":
                     days = 2;
                     break;
@@ -130,23 +130,23 @@ export default function Requests({ user }: { user: User }) {
                 priority: request.priority,
                 deliver_date: days !== -1 ? deliver_date : "más de 6 días"
             }]);
-    
+
             await supabase.from("users").update([{
                 plan: plan
-            }]).match({ id: user.id }).then(({data, error}) => {
+            }]).match({ id: user.id }).then(({ data, error }) => {
                 if (!data || error) {
                     // WIP: Modal de error.
                 } else {
                     setInitialPlan(data![0].plan)
                 }
             });
-    
+
             if (!error) {
                 setModal(false)
                 getReq();
                 getPlan();
                 setRequest(initialValue);
-            } else{
+            } else {
                 // WIP: Modal de error.
             }
         }
@@ -185,7 +185,7 @@ export default function Requests({ user }: { user: User }) {
         handleChange(e);
         if (initialPlan !== -1) {
             // Restar cuando sube el rango y devolver el valor al plan cuando disminuye el rango
-            setPlan(initialPlan!-parseInt(e.target.value));
+            setPlan(initialPlan! - parseInt(e.target.value));
         }
     }
 
@@ -209,10 +209,62 @@ export default function Requests({ user }: { user: User }) {
         })
     }
 
-    return (
+    function renderRequests() {
+        console.log(initialPlan);
         
-    <section className={s.root}>
-        {plan !== undefined && plan !== null && initialPlan !== undefined && initialPlan !== undefined && allRequests !== null ?
+        if (allRequests !== null && allRequests.length < 1 && initialPlan !== undefined && initialPlan < 1) {
+            // Si AllRequest no es nulo y allRequest.length < 1 entonces mostrar dummy data.
+            let dummyData = Data.DummyRequests;
+            return (
+                <>
+                    <div className={s.dashboard}>
+                        {
+                            dummyData.map(request => {
+                                return (
+                                    <RequestCard
+                                        request={request}
+                                    />
+                                )
+                            })
+                        }
+                    </div>
+                </>
+            )
+        } else if (allRequests !== null && allRequests.length > 0 || initialPlan! > 0) {
+            // Si AllRequest no es nulo y allRequest.length > 0 entonces mostrar los requests.
+            return (
+                <>
+                    {
+                        allRequests &&
+                        <div className={s.dashboard}>
+                            {
+                                allRequests.map(request => {
+                                    return (
+                                        <RequestCard
+                                            request={request}
+                                        />
+                                    )
+                                })
+                            }
+                        </div>
+                    }
+                </>
+            )
+        } else {
+            // Si AllRequest es nulo entonces loading
+            return (
+                <>
+                    <LoadingDots />
+                </>
+            )
+        }
+
+    }
+
+    return (
+
+        <section className={s.root}>
+            {plan !== undefined && plan !== null && initialPlan !== undefined && initialPlan !== undefined && allRequests !== null ?
                 <div>
                     <ModalComponent
                         open={open}
@@ -255,7 +307,7 @@ export default function Requests({ user }: { user: User }) {
                             <div>
                                 <label>Prioridad</label>
                                 <Select
-                                    onChange={handleChange} 
+                                    onChange={handleChange}
                                     name="priority"
                                 >
                                     <option value="true">Si</option>
@@ -271,24 +323,13 @@ export default function Requests({ user }: { user: User }) {
                     <p>Cantidad de palabras restantes: <span>{initialPlan === -1 ? "Ilimitado" : plan}</span></p>
                     <Button onClick={openModal}>Envíar un artículo</Button>
                     {
-                        allRequests &&
-                            <div className={s.dashboard}>
-                                {
-                                    allRequests.map(request => {
-                                        return (
-                                            <RequestCard
-                                                request={request}
-                                            />
-                                        )
-                                    })
-                                }
-                            </div>                            
+                        renderRequests()
                     }
                 </div>
-            :
-            <LoadingDots />
-        }
-    </section>
+                :
+                <LoadingDots />
+            }
+        </section>
     )
 
 }

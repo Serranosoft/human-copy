@@ -17,9 +17,13 @@ const Navbar = () => {
                 </div>
                 <nav>
                     {user && (
-                        <Link href="/cuenta">
-                            <a className={s.link}>Mi cuenta</a>
-                        </Link>)}
+                        
+                        <>
+                            
+                        
+                            <a href="/cuenta" className={s.link}>Mi cuenta</a>
+                        </>
+                       )}
                         {user && (
                         <Link href="/mis-textos">
                             <a className={s.link}>Mis textos</a>

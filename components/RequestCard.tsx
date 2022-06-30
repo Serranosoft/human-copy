@@ -13,7 +13,18 @@ export interface Request {
     priority: boolean;
 }
 
-export default function RequestCard({request}: { request: Request }) {
+export default function RequestCard({request}: 
+    { request: Request | 
+    {
+        title: string;
+        description: string;
+        topic: string;
+        words: number;
+        deliver_date: string;
+        download: string;
+        finished: boolean;
+        priority: boolean;
+    } }) {
     return (
         <div className={s.root}>
             <div className={s.header}>
