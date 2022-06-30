@@ -1,21 +1,14 @@
-import { useState, ReactNode } from 'react';
+import { useState } from 'react';
 import LoadingDots from 'components/ui/LoadingDots';
 import Button from 'components/ui/Button';
 import { useUser } from 'utils/useUser';
 import { postData } from 'utils/helpers';
 import s from '../styles/css/Cuenta.module.css';
-
 import { withAuthRequired } from '@supabase/supabase-auth-helpers/nextjs';
 import Head from 'next/head';
 
-interface Props {
-    title: string;
-    description?: string;
-    footer?: ReactNode;
-    children: ReactNode;
-}
 
-export const getServerSideProps = withAuthRequired({ redirectTo: '/signin' });
+export const getServerSideProps = withAuthRequired({ redirectTo: '/iniciar-sesion' });
 
 export default function Account() {
     const [loading, setLoading] = useState(false);

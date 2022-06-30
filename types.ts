@@ -25,12 +25,11 @@ export interface ProductWithPrice extends Product {
 
 export interface UserDetails {
   id: string /* primary key */;
-  first_name: string;
-  last_name: string;
-  full_name?: string;
   email: string;
+  full_name?: string;
   billing_address?: Stripe.Address;
   payment_method?: Stripe.PaymentMethod[Stripe.PaymentMethod.Type];
+  avatar_url?: string;
   plan?: number;
 }
 

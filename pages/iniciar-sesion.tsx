@@ -9,6 +9,7 @@ import LoadingDots from 'components/ui/LoadingDots';
 import Logo from 'components/icons/Logo';
 import { getURL } from '@/utils/helpers';
 import s from '../styles/css/Iniciar-sesion.module.css';
+import { updateEmail, updatePlan, updateUserName } from '@/utils/supabase-client';
 
 export interface UserData {
     email: string;
@@ -64,7 +65,7 @@ const SignIn = () => {
     }
 
     async function signInWithGoogle() {
-        const { user, session, error } = await supabaseClient.auth.signIn({
+        await supabaseClient.auth.signIn({
             provider: 'google',
         })
     }

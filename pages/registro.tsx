@@ -46,9 +46,9 @@ const Registro = () => {
             setMessage({ type: 'error', content: error.message });
         } else {
             if (createdUser) {
-                await updateUserName(createdUser, name);
+                /* await updateUserName(createdUser, name);
                 await updateEmail(createdUser, userData.email);
-                await updatePlan(createdUser, 0);
+                await updatePlan(createdUser, 0); */
                 setNewUser(createdUser);
             } else {
                 setMessage({

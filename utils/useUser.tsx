@@ -32,7 +32,9 @@ export const MyUserContextProvider = (props: Props) => {
   const [subscription, setSubscription] = useState<Subscription | null>(null);
 
   const getUserDetails = () =>
-    supabase.from<UserDetails>('users').select('*').single();
+    supabase.from<UserDetails>('users').select('*').eq("id", user!.id).single();
+
+
   const getSubscription = () =>
     supabase
       .from<Subscription>('subscriptions')
@@ -47,9 +49,9 @@ export const MyUserContextProvider = (props: Props) => {
         (results) => {
           const userDetailsPromise = results[0];
           const subscriptionPromise = results[1];
-
-          if (userDetailsPromise.status === 'fulfilled')
-            setUserDetails(userDetailsPromise.value.data);
+          if (userDetailsPromise.status === 'fulfilled') {
+              setUserDetails(userDetailsPromise.value.data);
+          }
 
           if (subscriptionPromise.status === 'fulfilled')
             setSubscription(subscriptionPromise.value.data);
