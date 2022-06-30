@@ -15,7 +15,7 @@ export default function Layout({ children, meta: pageMeta }: Props) {
     const meta = {
         title: 'HumanCopy - Servicio de contenido ilimitado',
         description: 'El #1 servicio de redacción premium ilimitada sin IA para empresas y emprendedores',
-        cardImage: '/og.png',
+        cardImage: '/og.jpg',
         ...pageMeta
     };
 
