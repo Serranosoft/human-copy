@@ -53,6 +53,7 @@
           justify-content: center;
   margin-top: 6rem;
   position: relative;
+  font-size: 1.15rem;
 }
 
 .root .info > div {
@@ -68,7 +69,7 @@
 .root .info table {
   width: 100%;
   margin: 0.5rem auto;
-  font-size: 1.1rem;
+  font-size: 1.3rem;
   border-spacing: 0;
 }
 

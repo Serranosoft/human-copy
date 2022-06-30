@@ -64,7 +64,7 @@ export default function Pricing({ products }: Props) {
             <div className={s.info}>
                 <div>
                     <FeatherSVG />
-                    <p>* Al ser escrito por personas y no por IA, los textos tardan en entregarse un tiempo variable dependiendo de la cantidad de palabras que solicites</p>
+                    <p>Al ser escrito por personas y no por IA, los textos tardan en entregarse un tiempo variable dependiendo de la cantidad de palabras que solicites</p>
                 </div>
                 <table>
                     <thead>
