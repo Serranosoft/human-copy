@@ -210,7 +210,7 @@ export default function Requests({ user }: { user: User }) {
 
     function renderRequests() {
         console.log(initialPlan);
-        
+
         if (allRequests !== null && allRequests.length < 1 && initialPlan !== undefined && initialPlan < 1) {
             // Si AllRequest no es nulo y allRequest.length < 1 entonces mostrar dummy data.
             let dummyData = Data.DummyRequests;
@@ -252,9 +252,9 @@ export default function Requests({ user }: { user: User }) {
         } else {
             // Si AllRequest es nulo entonces loading
             return (
-                <>
+                <div>
                     <LoadingDots />
-                </>
+                </div>
             )
         }
 
@@ -263,71 +263,73 @@ export default function Requests({ user }: { user: User }) {
     return (
 
         <section className={s.root}>
-            {plan !== undefined && plan !== null && initialPlan !== undefined && initialPlan !== undefined && allRequests !== null ?
-                <div>
-                    <ModalComponent
-                        open={open}
-                        closeModal={closeModal}
-                    >
-                        <form onSubmit={submitReq}>
+            <div>
+                {plan !== undefined && plan !== null && initialPlan !== undefined && initialPlan !== undefined && allRequests !== null ?
+                    <>
+                        <ModalComponent
+                            open={open}
+                            closeModal={closeModal}
+                        >
+                            <form onSubmit={submitReq}>
+                                <div>
+                                    <span>Palabras disponibles: {initialPlan === -1 ? "Ilimitado" : plan}</span>
+                                </div>
+                                <div>
+                                    <label>Título del artículo (h1)</label>
+                                    <Input name="title" onChange={handleChange}></Input>
+                                    <span className={s.muted}>Si no tienes claro un título, nosotros nos encargamos de redactar el más adecuado para el artículo</span>
+                                </div>
+                                <div>
+                                    <label>Cantidad de palabras en el artículo</label>
+                                    <span>{range} palabras</span>
+                                    <Range
+                                        id="request-words"
+                                        type="range"
+                                        min="0"
+                                        max={initialPlan !== -1 ? initialPlan!.toString() : "10000"}
+                                        value={range}
+                                        onChange={handleWords}
+                                        step="500"
+                                        name="words"
+                                    />
+                                    <span id="request-words-error" className="hide error">Como mínimo debe tener 500 palabras</span>
+                                </div>
+                                <div>
+                                    <label>Tema / Keyword principal del artículo</label>
+                                    <Input name="topic" onChange={handleChange}></Input>
+                                    <span id="request-topic-error" className="hide error">Debes especificar una temática</span>
+                                </div>
+                                <div>
+                                    <label>Descripción del artículo</label>
+                                    <textarea name="description" onChange={handleChange}></textarea>
+                                    <span id="request-description-error" className="hide error">Debes especificar una descripción</span>
+                                </div>
+                                <div>
+                                    <label>Prioridad</label>
+                                    <Select
+                                        onChange={handleChange}
+                                        name="priority"
+                                    >
+                                        <option value="true">Si</option>
+                                        <option value="false" selected>No</option>
+                                    </Select>
+                                    <span className={s.muted}>Si eliges 'Si', tendrémos en cuenta que el artículo es prioritario y será de los primeros textos en escribirse.</span>
+                                </div>
+                            </form>
                             <div>
-                                <span>Palabras disponibles: {initialPlan === -1 ? "Ilimitado" : plan}</span>
+                                <Button type="submit" onClick={submitReq}>Enviar artículo</Button>
                             </div>
-                            <div>
-                                <label>Título del artículo (h1)</label>
-                                <Input name="title" onChange={handleChange}></Input>
-                                <span className={s.muted}>Si no tienes claro un título, nosotros nos encargamos de redactar el más adecuado para el artículo</span>
-                            </div>
-                            <div>
-                                <label>Cantidad de palabras en el artículo</label>
-                                <span>{range} palabras</span>
-                                <Range
-                                    id="request-words"
-                                    type="range"
-                                    min="0"
-                                    max={initialPlan !== -1 ? initialPlan!.toString() : "10000"}
-                                    value={range}
-                                    onChange={handleWords}
-                                    step="500"
-                                    name="words"
-                                />
-                                <span id="request-words-error" className="hide error">Como mínimo debe tener 500 palabras</span>
-                            </div>
-                            <div>
-                                <label>Tema / Keyword principal del artículo</label>
-                                <Input name="topic" onChange={handleChange}></Input>
-                                <span id="request-topic-error" className="hide error">Debes especificar una temática</span>
-                            </div>
-                            <div>
-                                <label>Descripción del artículo</label>
-                                <textarea name="description" onChange={handleChange}></textarea>
-                                <span id="request-description-error" className="hide error">Debes especificar una descripción</span>
-                            </div>
-                            <div>
-                                <label>Prioridad</label>
-                                <Select
-                                    onChange={handleChange}
-                                    name="priority"
-                                >
-                                    <option value="true">Si</option>
-                                    <option value="false" selected>No</option>
-                                </Select>
-                                <span className={s.muted}>Si eliges 'Si', tendrémos en cuenta que el artículo es prioritario y será de los primeros textos en escribirse.</span>
-                            </div>
-                        </form>
-                        <div>
-                            <Button type="submit" onClick={submitReq}>Enviar artículo</Button>
-                        </div>
-                    </ModalComponent>
-                    <p>Cantidad de palabras restantes: <span>{initialPlan === -1 ? "Ilimitado" : plan}</span></p>
-                    <Button onClick={openModal}>Envíar un artículo</Button>
-                    {
-                        renderRequests()
-                    }
-                </div>
-                :
-                <LoadingDots />
-            }
+                        </ModalComponent>
+                        <p>Cantidad de palabras restantes: <span>{initialPlan === -1 ? "Ilimitado" : plan}</span></p>
+                        <Button onClick={openModal}>Envíar un artículo</Button>
+                        {
+                            renderRequests()
+                        }
+                    </>
+                    :
+                    <LoadingDots />
+                }
+            </div>
         </section>
     )
 

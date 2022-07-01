@@ -1,6 +1,5 @@
 .root {
   width: 100%;
-  min-height: 1120px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -11,10 +10,12 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  padding: 7rem 2rem;
 }
 
 .root > div {
+  width: 100%;
+  max-width: 1120px;
+  min-height: 700px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -22,12 +23,10 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  max-width: 1120px;
-  height: 100%;
 }
 
 .root > div > p {
-  margin: 0;
+  margin-top: 6rem;
 }
 
 .root > div > p span {
@@ -48,15 +47,6 @@
   -ms-grid-columns: (minmax(450px, 1fr))[auto-fill];
       grid-template-columns: repeat(auto-fill, minmax(450px, 1fr));
   gap: 2rem;
-  margin-top: 4rem;
+  margin: 4rem 0 7rem 0;
   border-radius: 6px;
-}
-
-.root > div > i {
-  margin-top: 15rem;
-}
-
-.root > div > i span {
-  color: white;
-  font-size: 80px;
 }
