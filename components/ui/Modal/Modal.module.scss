@@ -11,7 +11,7 @@
     display: grid;
     border: 1px solid white;
     & > span {
-        font-size: 1.25rem;
+        font-size: var(--font-size-base);
         justify-self: flex-end;
         margin-bottom: 1rem;
         cursor: pointer;
@@ -23,7 +23,7 @@
         & > div {
             display: grid;
             label {
-                font-size: 0.9rem;
+                font-size: var(--font-size-sm);
                 margin-bottom: 0.35rem;
             }
             input {
@@ -32,7 +32,7 @@
             }
             & > span {
                 color: rgb(175, 175, 175);
-                font-size: 0.8rem;
+                font-size: var(--font-size-sm);
                 justify-self: flex-end;
             }
         }
@@ -43,7 +43,7 @@
         margin-left: auto;
         gap: 1rem;
         button {
-            font-size: 1.1rem;
+            font-size: var(--font-size-base);
         }
         button:last-child {
             background-color: #6ece9d;

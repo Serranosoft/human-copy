@@ -26,7 +26,7 @@
 
 .root .wordsPerPrice {
   margin: 0.8rem auto 0 auto;
-  font-size: 0.9rem;
+  font-size: var(--font-size-base);
 }
 
 .root .rangeWrapper {
@@ -53,7 +53,7 @@
 }
 
 .root .rangeWrapper span {
-  font-size: 0.75rem;
+  font-size: var(--font-size-sm);
   color: lightgray;
 }
 
@@ -67,26 +67,26 @@
 }
 
 .root > div .name {
-  font-size: 1.8rem;
+  font-size: var(--font-size-md);
   justify-self: flex-start;
   font-weight: bold;
 }
 
 .root > div .description {
   margin-top: 2.1rem;
-  font-size: 1.05rem;
+  font-size: var(--font-size-base);
 }
 
 .root > div .price {
-  font-size: 3.65rem;
+  font-size: var(--font-size-xxl);
   font-weight: bold;
 }
 
 .root > div .price .period {
-  font-size: 1.05rem;
+  font-size: var(--font-size-base);
 }
 
 .root > div button {
   margin-top: 0.5rem;
-  font-size: 1.3rem;
+  font-size: var(--font-size-md);
 }

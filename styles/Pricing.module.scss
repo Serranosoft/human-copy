@@ -5,7 +5,7 @@
     width: 100%;
     margin-bottom: 5.5rem;
     h2 {
-        font-size: 3.35rem;
+        font-size: var(--font-size-xxl);
         margin: 1rem 0;
     }
     .planLayout {
@@ -27,7 +27,7 @@
         justify-content: center;
         margin-top: 6rem;
         position: relative;
-        font-size: 1.15rem;
+        font-size: var(--font-size-base);
         & > div {
             display: flex;
             gap: 1rem;
@@ -36,12 +36,12 @@
         table {
             width: 100%;
             margin: 0.5rem auto;
-            font-size: 1.3rem;
+            font-size: var(--font-size-base);
             border-spacing: 0;
             thead th {
                 text-align: start;
                 padding: 0.8rem 2rem;
-                font-size: 1.4rem;
+                font-size: var(--font-size-md);
                 border-bottom: 2px solid #6ece9d;
             }
             tbody tr td {

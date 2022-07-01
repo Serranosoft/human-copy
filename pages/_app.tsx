@@ -1,3 +1,4 @@
+import 'styles/variables.css';
 import 'styles/main.css';
 import 'styles/chrome-bug.css';
 import { useEffect } from 'react';

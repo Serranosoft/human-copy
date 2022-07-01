@@ -28,7 +28,7 @@
 }
 
 .root > div p {
-  font-size: 2rem;
+  font-size: var(--font-size-md);
   margin-bottom: 3rem;
 }
 

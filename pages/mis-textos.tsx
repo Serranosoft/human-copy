@@ -10,7 +10,6 @@ import LoadingDots from '@/components/ui/LoadingDots';
 import Range from '@/components/ui/Range';
 import RequestCard from '@/components/RequestCard';
 import Select from '@/components/ui/Select';
-import { useUser } from 'utils/useUser';
 import { Data } from '@/utils/data';
 
 export interface Request {
@@ -25,7 +24,7 @@ export interface Request {
 }
 
 export default function Requests({ user }: { user: User }) {
-    const { userDetails } = useUser();
+
     // Objeto con datos iniciales para cargar en las requests
     const initialValue: Request = {
         finished: false,

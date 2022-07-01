@@ -29,13 +29,13 @@
 }
 
 .root .hero .title {
-  font-size: 5.65rem;
+  font-size: var(--font-size-xxxl);
   letter-spacing: -2px;
 }
 
 .root .hero span {
   max-width: 768px;
-  font-size: 1.4rem;
+  font-size: var(--font-size-md);
   margin: 2rem 0;
 }
 
@@ -47,7 +47,7 @@
 }
 
 .root .hero > div button {
-  font-size: 1.62rem;
+  font-size: var(--font-size-md);
   font-weight: 500;
   letter-spacing: -1.4px;
   padding-left: 2rem;
@@ -140,7 +140,7 @@
           transform: translate(-50%, -50%);
   color: white;
   font-weight: bold;
-  font-size: 1.65rem;
+  font-size: var(--font-size-md);
   text-align: center;
 }
 
@@ -156,7 +156,7 @@
   text-align: center;
   border-bottom-left-radius: 16px;
   border-bottom-right-radius: 16px;
-  font-size: 1rem;
+  font-size: var(--font-size-sm);
   background-color: #0a0a0a;
 }
 
@@ -165,7 +165,7 @@
   -ms-grid-column-align: center;
       justify-self: center;
   padding-bottom: 0.35rem;
-  font-size: 1.35rem;
+  font-size: var(--font-size-md);
 }
 
 .root .stepByStep {
@@ -183,7 +183,7 @@
 }
 
 .root .stepByStep h1 {
-  font-size: 3.35rem;
+  font-size: var(--font-size-xxl);
   word-spacing: 0.55rem;
   letter-spacing: -2px;
   margin: 5.5rem 0;
@@ -226,7 +226,7 @@
 }
 
 .root .stepByStep > div > div:not(.stepLine) > div p {
-  font-size: 3rem;
+  font-size: var(--font-size-xl);
   word-spacing: -0.45px;
   letter-spacing: -2px;
   line-height: 3rem;
@@ -235,7 +235,7 @@
 }
 
 .root .stepByStep > div > div:not(.stepLine) > div span {
-  font-size: 1.15rem;
+  font-size: var(--font-size-base);
   color: lightgray;
   -ms-flex-item-align: center;
       -ms-grid-row-align: center;
@@ -261,7 +261,7 @@
 }
 
 .root .stepByStep > div > div:not(.stepLine):last-child p {
-  font-size: 3rem;
+  font-size: var(--font-size-xl);
   display: inline-block;
   -webkit-transform: rotate(-3deg);
           transform: rotate(-3deg);

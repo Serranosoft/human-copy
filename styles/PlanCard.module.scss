@@ -11,14 +11,9 @@
         border-radius: 12px;
 
     }
-    &.payment {
-        // order: 1;
-        
-        // transform: scale(0.9);
-    }
     .wordsPerPrice {
         margin: 0.8rem auto 0 auto;
-        font-size: 0.9rem;
+        font-size: var(--font-size-base);
     }
     .rangeWrapper {
         display: flex;
@@ -35,7 +30,7 @@
             padding: 0.25rem 0.5rem;
         }
         span {
-            font-size: 0.75rem;
+            font-size: var(--font-size-sm);
             color: lightgray;
         }
     }
@@ -47,24 +42,24 @@
         border-radius: 12px;
         gap: 1rem;
         .name {
-            font-size: 1.8rem;
+            font-size: var(--font-size-md);
             justify-self: flex-start;
             font-weight: bold;
         }
         .description {
             margin-top: 2.1rem;
-            font-size: 1.05rem;
+            font-size: var(--font-size-base);
         }
         .price {
-            font-size: 3.65rem;
+            font-size: var(--font-size-xxl);
             font-weight: bold;
             .period {
-                font-size: 1.05rem;
+                font-size: var(--font-size-base);
             }
         }
         button {
             margin-top: 0.5rem;
-            font-size: 1.3rem;
+            font-size: var(--font-size-md);
         }
     }
 }

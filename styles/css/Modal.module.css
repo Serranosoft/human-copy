@@ -15,7 +15,7 @@
 }
 
 .root > span {
-  font-size: 1.25rem;
+  font-size: var(--font-size-base);
   justify-self: flex-end;
   margin-bottom: 1rem;
   cursor: pointer;
@@ -38,7 +38,7 @@
 }
 
 .root form > div label {
-  font-size: 0.9rem;
+  font-size: var(--font-size-sm);
   margin-bottom: 0.35rem;
 }
 
@@ -49,7 +49,7 @@
 
 .root form > div > span {
   color: #afafaf;
-  font-size: 0.8rem;
+  font-size: var(--font-size-sm);
   justify-self: flex-end;
 }
 
@@ -63,7 +63,7 @@
 }
 
 .root > div button {
-  font-size: 1.1rem;
+  font-size: var(--font-size-base);
 }
 
 .root > div button:last-child {

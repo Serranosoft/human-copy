@@ -29,7 +29,7 @@
 }
 
 .root > div > h1 {
-  font-size: 3rem;
+  font-size: var(--font-size-xl);
   margin: 5rem 0 3.5rem 0;
 }
 
@@ -64,14 +64,14 @@
 
 .root > div .info > div p:first-child {
   font-weight: bold;
-  font-size: 1.55rem;
+  font-size: var(--font-size-md);
   text-align: start;
 }
 
 .root > div .info > div p:not(:first-child) {
   text-align: center;
   margin-top: 1rem;
-  font-size: 1.185rem;
+  font-size: var(--font-size-base);
 }
 
 .root > div .stripe {
@@ -90,5 +90,5 @@
 }
 
 .root > div .stripe p {
-  font-size: 1.25rem;
+  font-size: var(--font-size-base);
 }
