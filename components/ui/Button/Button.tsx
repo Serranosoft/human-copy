@@ -1,5 +1,4 @@
-import React, { forwardRef, useRef, ButtonHTMLAttributes } from 'react';
-import mergeRefs from 'react-merge-refs';
+import React, { forwardRef, ButtonHTMLAttributes } from 'react';
 import s from '../../../styles/css/Button.module.css';
 import LoadingDots from 'components/ui/LoadingDots';
 
@@ -10,7 +9,7 @@ interface Props extends ButtonHTMLAttributes<HTMLButtonElement> {
     Component?: React.ComponentType;
 }
 
-const Button = forwardRef<HTMLButtonElement, Props>((props, buttonRef) => {
+const Button = forwardRef<HTMLButtonElement, Props>((props) => {
     const {
         className,
         children,
@@ -23,12 +22,9 @@ const Button = forwardRef<HTMLButtonElement, Props>((props, buttonRef) => {
         ...rest
     } = props;
 
-    const ref = useRef(null);
-
     return (
         <Component
             aria-pressed={active}
-            ref={mergeRefs([ref, buttonRef])}
             className={s.root}
             disabled={disabled}
             style={{

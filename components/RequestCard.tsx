@@ -29,7 +29,7 @@ export default function RequestCard({request}:
     return (
         <div className={s.root}>
             <div className={s.header}>
-                <div /* style={{border: request.download !== null && request.download !== "" ? "1px solid #16c60c" : "1px solid gray"}} */>
+                <div>
                 {
                     request.download !== null && request.download !== "" ?
                         <span>✔️</span>
