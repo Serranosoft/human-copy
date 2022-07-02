@@ -5,6 +5,9 @@ import { supabaseClient } from '@supabase/supabase-auth-helpers/nextjs';
 import Button from 'components/ui/Button';
 import Input from 'components/ui/Input';
 import { User } from '@supabase/gotrue-js';
+import s from '../styles/css/login-register.module.css';
+import GoogleButton from '@/components/ui/Google/GoogleButton';
+import Link from 'next/link';
 
 export interface UserData {
     email: string;
@@ -70,47 +73,73 @@ const Registro = () => {
         });
     }
 
+    async function signInWithGoogle() {
+        await supabaseClient.auth.signIn({
+            provider: 'google',
+        })
+    }
+
     return (
-        <div>
-            <div>
-                <p>Crear una cuenta</p>
-                {message.content && (
-                    <span>
-                        {message.content === "Invalid login credentials" ? "Correo electrónico o contraseña incorrecta" : message.content}
-                    </span>
-                )}
-                <form onSubmit={handleSignup} className="flex flex-col space-y-4">
-                    <Input
-                        type="email"
-                        placeholder="Correo electrónico"
-                        onChange={handleChange}
-                        name="email"
-                        required
-                    />
-                    <Input
-                        type="name"
-                        placeholder="Nombre / Agencia"
-                        onChange={handleChange}
-                        name="name"
-                        required
-                    />
-                    <Input
-                        type="password"
-                        placeholder="Contraseña"
-                        onChange={handleChange}
-                        name="password"
-                        required
-                    />
-                    <Button
-                        type="submit"
-                        loading={loading}
-                        disabled={!userData.password.length || !userData.email.length}
-                    >
-                        Registro
-                    </Button>
-                </form>
+        <div className={s.root}>
+                <div className={s.credentials}>
+                    <p>Crear una cuenta</p>
+                    {message.content && (
+                        <span>
+                            {message.content === "Invalid login credentials" ? "Correo electrónico o contraseña incorrecta" : message.content}
+                        </span>
+                    )}
+                    <form onSubmit={handleSignup}>
+                        <div>
+                            <label>Correo electrónico</label>
+                            <Input
+                                type="email"
+                                onChange={handleChange}
+                                name="email"
+                                required
+                             />
+                        </div>
+                        <div>
+                            <label>Nombre</label>
+                            <Input
+                                type="name"
+                                onChange={handleChange}
+                                name="name"
+                                required
+                            />
+                        </div>
+                        <div>
+                            <label>Contraseña</label>
+                            <Input
+                                type="password"
+                                onChange={handleChange}
+                                name="password"
+                                required
+                            />
+                        </div>
+                        <Button
+                            type="submit"
+                            loading={loading}
+                            disabled={!userData.password.length || !userData.email.length}
+                        >
+                            Crear cuenta
+                        </Button>
+                    </form>
+                </div>
+                <div className={s.googleWrapper}>
+                    <span>Otros métodos para iniciar sesión</span>
+                    <div>
+                        <span className={s.separator}></span>
+                        <GoogleButton onClick={signInWithGoogle} />
+                        <span className={s.separator}></span>
+                    </div>
+                    <span>o</span>
+                    <div>
+                        <span className={s.separator}></span>
+                        <Link href="/iniciar-sesion"><a>Iniciar sesión con email</a></Link>
+                        <span className={s.separator}></span>
+                    </div>
+                </div>
             </div>
-        </div>
     );
 };
 

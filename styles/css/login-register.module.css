@@ -1,0 +1,139 @@
+.root {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 7rem 0;
+}
+
+.root .credentials {
+  width: 100%;
+  max-width: 300px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.root .credentials p {
+  font-size: var(--font-size-md);
+  margin-bottom: 3rem;
+}
+
+.root .credentials > span {
+  display: block;
+  border: 1px solid red;
+  padding: 1rem 0.5rem;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.root .credentials form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 1rem;
+  width: 100%;
+}
+
+.root .credentials form input,
+.root .credentials form button {
+  width: 100%;
+}
+
+.root .credentials form > * {
+  width: 100%;
+}
+
+.root .credentials form button {
+  border-radius: 0;
+}
+
+.root .credentials form label {
+  font-size: var(--font-size-sm);
+  color: lightgray;
+}
+
+.root .googleWrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  gap: 0.55rem;
+  width: 100%;
+  max-width: 580px;
+  text-align: center;
+  margin-top: 3.2rem;
+  color: lightgray;
+}
+
+.root .googleWrapper div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  gap: 1.1rem;
+}
+
+.root .googleWrapper div .separator {
+  width: 100%;
+  max-width: 120px;
+  border-top: 2px solid #777777;
+}
+
+.root .googleWrapper div button {
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+}
+
+.root .googleWrapper div a {
+  text-decoration: none;
+  color: black;
+  border-radius: 8px;
+  padding: 0.5rem 1.25rem;
+  background-color: lightgray;
+  width: 100%;
+  font-size: var(--font-size-base);
+  -webkit-transition: 0.25s ease-out;
+  transition: 0.25s ease-out;
+}
+
+.root .googleWrapper div a:hover {
+  -webkit-transform: translateY(-5px);
+          transform: translateY(-5px);
+}

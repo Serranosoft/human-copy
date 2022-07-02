@@ -8,8 +8,9 @@ import Input from 'components/ui/Input';
 import LoadingDots from 'components/ui/LoadingDots';
 import Logo from 'components/icons/Logo';
 import { getURL } from '@/utils/helpers';
-import s from '../styles/css/Iniciar-sesion.module.css';
+import s from '../styles/css/login-register.module.css';
 import { updateEmail, updatePlan, updateUserName } from '@/utils/supabase-client';
+import GoogleButton from '@/components/ui/Google/GoogleButton';
 
 export interface UserData {
     email: string;
@@ -22,9 +23,7 @@ const SignIn = () => {
         email: "",
         password: "",
     }
-
-    // const [email, setEmail] = useState('');
-    // const [password, setPassword] = useState('');
+    
     const [userData, setUserData] = useState<UserData | any>(initialValue);
     const [loading, setLoading] = useState(false);
     const [message, setMessage] = useState<{ type?: string; content?: string }>({
@@ -74,7 +73,7 @@ const SignIn = () => {
     if (!user)
         return (
             <div className={s.root}>
-                <div>
+                <div className={s.credentials}>
                     <p>Iniciar sesión</p>
                     {message.content && (
                         <span>
@@ -82,20 +81,26 @@ const SignIn = () => {
                         </span>
                     )}
                     <form onSubmit={handleSignin}>
-                        <Input
-                            type="email"
-                            placeholder="Correo electrónico"
-                            onChange={handleChange}
-                            name="email"
-                            required
-                        />
-                        <Input
-                            type="password"
-                            placeholder="Contraseña"
-                            onChange={handleChange}
-                            name="password"
-                            required
-                        />
+                        <div>
+                            <label>Correo electrónico</label>
+                            <Input
+                                type="email"
+                                // placeholder="Correo electrónico"
+                                onChange={handleChange}
+                                name="email"
+                                required
+                            />
+                        </div>
+                        <div>
+                            <label>Contraseña</label>
+                            <Input
+                                type="password"
+                                // placeholder="Contraseña"
+                                onChange={handleChange}
+                                name="password"
+                                required
+                            />
+                        </div>
                         <Button
                             className="mt-1"
                             type="submit"
@@ -105,11 +110,19 @@ const SignIn = () => {
                             Iniciar sesión
                         </Button>
                     </form>
+                </div>
+                <div className={s.googleWrapper}>
+                    <span>Puedes iniciar sesión con Google.</span>
                     <div>
-                        <p>También puedes iniciar sesión con Google.</p>
-                        <Button onClick={signInWithGoogle}>
-                            Iniciar sesión con Google
-                        </Button>
+                        <span className={s.separator}></span>
+                        <GoogleButton onClick={signInWithGoogle} />
+                        <span className={s.separator}></span>
+                    </div>
+                    <span>o</span>
+                    <div>
+                        <span className={s.separator}></span>
+                        <Link href="/registro"><a>Registrarte</a></Link>
+                        <span className={s.separator}></span>
                     </div>
                 </div>
             </div>
