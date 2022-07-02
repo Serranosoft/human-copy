@@ -6,6 +6,7 @@ import { postData } from 'utils/helpers';
 import s from '../styles/css/Cuenta.module.css';
 import { withAuthRequired } from '@supabase/supabase-auth-helpers/nextjs';
 import Head from 'next/head';
+import LoadingBar from '@/components/ui/LoadingBar';
 
 export const getServerSideProps = withAuthRequired({ redirectTo: '/iniciar-sesion' });
 
@@ -65,7 +66,7 @@ export default function Account() {
                             </div>
                         </>
                         :
-                        <LoadingDots />   
+                        <LoadingBar />   
                     }
                 </div>
             </section>

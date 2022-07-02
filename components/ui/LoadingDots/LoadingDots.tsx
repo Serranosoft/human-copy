@@ -1,15 +1,11 @@
 import s from '../../../styles/css/LoadingDots.module.css';
 
-const LoadingDots = ({big = true} : {big?: any}) => {
-    console.log(big);
+const LoadingDots = () => {
   return (
-    // <span className={s.root}>
-    //   <span>•</span>
-    //   <span>•</span>
-    //   <span>•</span>
-    // </span>
-    <span className={big ? "loader loader-xl" : "loader loader-sm"}>
-
+    <span className={s.root}>
+      <span>•</span>
+      <span>•</span>
+      <span>•</span>
     </span>
   );
 };

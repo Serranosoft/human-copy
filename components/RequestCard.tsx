@@ -1,6 +1,7 @@
 import s from '../styles/css/RequestCard.module.css';
 import LoadingDots from '@/components/ui/LoadingDots';
 import Button from './ui/Button';
+import LoadingBar from './ui/LoadingBar';
 
 export interface Request {
     finished: boolean | undefined;
@@ -33,7 +34,7 @@ export default function RequestCard({request}:
                     request.download !== null && request.download !== "" ?
                         <span>✔️</span>
                         :
-                        <LoadingDots big={false} />
+                        <LoadingBar big={false} />
                 }
                 </div>
                 <p className={s.date}>{`Entrega est. ${request.deliver_date}`}</p>

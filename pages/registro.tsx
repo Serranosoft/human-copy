@@ -61,7 +61,7 @@ const Registro = () => {
 
     useEffect(() => {
         if (newUser || user) {
-            router.replace('/cuenta');
+            router.replace('/');
         }
     }, [newUser, user]);
 

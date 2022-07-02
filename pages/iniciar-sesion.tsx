@@ -11,6 +11,7 @@ import { getURL } from '@/utils/helpers';
 import s from '../styles/css/login-register.module.css';
 import { updateEmail, updatePlan, updateUserName } from '@/utils/supabase-client';
 import GoogleButton from '@/components/ui/Google/GoogleButton';
+import LoadingBar from '@/components/ui/LoadingBar';
 
 export interface UserData {
     email: string;
@@ -130,7 +131,7 @@ const SignIn = () => {
 
     return (
         <div>
-            <LoadingDots />
+            <LoadingBar />
         </div>
     );
 };

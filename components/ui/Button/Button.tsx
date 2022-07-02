@@ -1,7 +1,6 @@
 import React, { forwardRef, useRef, ButtonHTMLAttributes } from 'react';
 import mergeRefs from 'react-merge-refs';
 import s from '../../../styles/css/Button.module.css';
-
 import LoadingDots from 'components/ui/LoadingDots';
 
 interface Props extends ButtonHTMLAttributes<HTMLButtonElement> {

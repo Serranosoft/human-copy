@@ -18,9 +18,7 @@ const Navbar = () => {
                 <nav>
                     {user && (
                         
-                        <>
-                            
-                        
+                        <>                        
                             <a href="/cuenta" className={s.link}>Mi cuenta</a>
                         </>
                        )}
@@ -38,17 +36,41 @@ const Navbar = () => {
                             <a className={s.link}>Administración</a>
                         </Link>
                     )}
-                    <span>
+
+                    <>
+                        {user ? 
+                            <Link href="/api/auth/logout">
+                                <a className={s.link}>Cerrar sesión</a>
+                            </Link>
+                         :
+                        <div>
+                            <Link href="/iniciar-sesion">
+                                <a className={s.link}>Iniciar sesión</a>
+                            </Link>
+                            <Link href="/registro">
+                                <a className={s.link}>Registro</a>
+                            </Link>
+                        </div>
+                        
+                    
+                        }
+                    </>
+                    {/* <span>
                         {user ? (
                             <Link href="/api/auth/logout">
                                 <a className={s.link}>Cerrar sesión</a>
                             </Link>
                         ) : (
-                            <Link href="/iniciar-sesion">
-                                <a className={s.link}>Iniciar sesión</a>
-                            </Link>
+                            <>
+                                <Link href="/iniciar-sesion">
+                                    <a className={s.link}>Iniciar sesión</a>
+                                </Link>
+                                <Link href="/registro">
+                                    <a className={s.link}>Registro</a>
+                                </Link>
+                            </>
                         )}
-                    </span>
+                    </span> */}
                  </nav>
             </div>
         </header>

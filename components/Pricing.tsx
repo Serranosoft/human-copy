@@ -19,11 +19,12 @@ export default function Pricing({ products }: Props) {
     const { user, isLoading, userDetails } = useUser();
     
     const handleCheckout = async (price: Price, mode: string) => {
-        setPriceIdLoading(price.id);;
+        setPriceIdLoading(price.id);
         if (!user) {
             return router.push('/iniciar-sesion');
         }
         if (userDetails!.plan === -1) {
+            alert("Ya tienes contratado la suscripción")
             return router.push('/');
         }
 

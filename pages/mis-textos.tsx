@@ -11,6 +11,7 @@ import Range from '@/components/ui/Range';
 import RequestCard from '@/components/RequestCard';
 import Select from '@/components/ui/Select';
 import { Data } from '@/utils/data';
+import LoadingBar from '@/components/ui/LoadingBar';
 
 export interface Request {
     finished: boolean | undefined;
@@ -253,7 +254,7 @@ export default function Requests({ user }: { user: User }) {
             // Si AllRequest es nulo entonces loading
             return (
                 <div>
-                    <LoadingDots />
+                    <LoadingBar />
                 </div>
             )
         }
@@ -327,7 +328,7 @@ export default function Requests({ user }: { user: User }) {
                         }
                     </>
                     :
-                    <LoadingDots />
+                    <LoadingBar />
                 }
             </div>
         </section>
