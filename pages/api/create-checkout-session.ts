@@ -32,6 +32,9 @@ const createCheckoutSession = async (
                             quantity
                         }
                     ],
+                    phone_number_collection: {
+                        enabled: true
+                    },
                     mode: "payment",
                     allow_promotion_codes: true,
                     success_url: `${getURL()}/`,
@@ -48,6 +51,9 @@ const createCheckoutSession = async (
                             quantity
                         }
                     ],
+                    phone_number_collection: {
+                        enabled: true
+                    },
                     mode: 'subscription',
                     allow_promotion_codes: true,
                     subscription_data: {
