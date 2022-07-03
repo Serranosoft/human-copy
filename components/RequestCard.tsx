@@ -1,5 +1,4 @@
 import s from '../styles/css/RequestCard.module.css';
-import LoadingDots from '@/components/ui/LoadingDots';
 import Button from './ui/Button';
 import LoadingBar from './ui/LoadingBar';
 
@@ -26,6 +25,8 @@ export default function RequestCard({request}:
         finished: boolean;
         priority: boolean;
     } }) {
+
+        console.log(request);
     return (
         <div className={s.root}>
             <div className={s.header}>
@@ -48,7 +49,10 @@ export default function RequestCard({request}:
                 <p>{request.description}</p>
             </div>
             <div>
-                <Button disabled={request.download === null || request.download === ""}>DESCARGAR</Button>
+                <Button disabled={request.download === null || request.download === ""}>
+                    <a href={request.download !== null || request.download !== "" ? request.download : ""}>DESCARGAR</a>
+                </Button>
+                <Button disabled={request.download === null || request.download === ""}>CORREGIR</Button>
                 <span>{request.priority === true && "Artículo prioritario"}</span>
             </div>
         </div>
