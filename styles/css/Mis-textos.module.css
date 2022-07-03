@@ -40,6 +40,48 @@
       align-self: flex-start;
 }
 
+.root > div .infobox {
+  display: block;
+  -webkit-box-shadow: 0px 0px 6px #494949;
+          box-shadow: 0px 0px 6px #494949;
+  margin: 2rem 0;
+  -ms-flex-item-align: start;
+      align-self: flex-start;
+  padding: 1rem;
+  border-radius: 8px;
+  background-color: #131313;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  gap: 1.15rem;
+  max-width: 650px;
+  width: 100%;
+}
+
+.root > div .infobox p {
+  font-size: var(--font-size-base);
+  font-weight: bold;
+}
+
+.root > div .infobox span {
+  font-size: var(--font-size-sm);
+  width: 100%;
+  word-wrap: break-word;
+}
+
+.root > div .infobox button {
+  width: auto;
+  -ms-flex-item-align: start;
+      align-self: flex-start;
+}
+
 .root > div .dashboard {
   max-width: 1120px;
   display: -ms-grid;
@@ -49,4 +91,14 @@
   gap: 2rem;
   margin: 4rem 0 7rem 0;
   border-radius: 6px;
+}
+
+@media (max-width: 768px) {
+  .root > div {
+    width: 95%;
+  }
+  .root > div .dashboard {
+    -ms-grid-columns: 1fr;
+        grid-template-columns: 1fr;
+  }
 }

@@ -96,4 +96,5 @@
 
 .root > div:last-child span {
   color: #9e8e00;
+  text-align: end;
 }

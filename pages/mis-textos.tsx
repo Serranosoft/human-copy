@@ -217,6 +217,11 @@ export default function Requests({ user }: { user: User }) {
             let dummyData = Data.DummyRequests;
             return (
                 <>
+                    <div className={s.infobox}>
+                        <p>No tienes contratado ningún plan.</p>
+                        <span>El contenido que estas viendo es ficticio. Para pedir artículos en HumanCopy debes contratar un plan.</span>
+                        <Button>Ver precios</Button>
+                    </div>
                     <div className={s.dashboard}>
                         {
                             dummyData.map(request => {
