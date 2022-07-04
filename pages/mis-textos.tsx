@@ -14,6 +14,7 @@ import { Data } from '@/utils/data';
 import LoadingBar from '@/components/ui/LoadingBar';
 
 export interface Request {
+    id: string;
     finished: boolean | undefined;
     title: string | undefined;
     topic: string | undefined;
@@ -28,6 +29,7 @@ export default function Requests({ user }: { user: User }) {
 
     // Objeto con datos iniciales para cargar en las requests
     const initialValue: Request = {
+        id: "",
         finished: false,
         title: "",
         topic: "",
@@ -66,9 +68,8 @@ export default function Requests({ user }: { user: User }) {
 
     // Obtenemos las requests del usuario
     async function getReq() {
-        const { data, error }: { data: any; error: any } = await supabase.from('requests').select('title, topic, description, finished, words, priority, deliver_date, download').eq("user_id", user.id);
+        const { data, error }: { data: any; error: any } = await supabase.from('requests').select('id, title, topic, description, finished, words, priority, deliver_date, download').eq("user_id", user.id);
         setAllRequests(data);
-        console.log(allRequests);
     }
 
     // Enviamos una request a la base de datos
@@ -210,8 +211,6 @@ export default function Requests({ user }: { user: User }) {
     }
 
     function renderRequests() {
-        console.log(initialPlan);
-
         if (allRequests !== null && allRequests.length < 1 && initialPlan !== undefined && initialPlan < 1) {
             // Si AllRequest no es nulo y allRequest.length < 1 entonces mostrar dummy data.
             let dummyData = Data.DummyRequests;
@@ -283,7 +282,7 @@ export default function Requests({ user }: { user: User }) {
                                 <div>
                                     <label>Título del artículo (h1)</label>
                                     <Input name="title" onChange={handleChange}></Input>
-                                    <span className={s.muted}>Si no tienes claro un título, nosotros nos encargamos de redactar el más adecuado para el artículo</span>
+                                    <span>Si no tienes claro un título, nosotros nos encargamos de redactar el más adecuado para el artículo</span>
                                 </div>
                                 <div>
                                     <label>Cantidad de palabras en el artículo</label>

@@ -93,6 +93,10 @@
   border-radius: 6px;
 }
 
+.root > div form {
+  border: 10px solid red;
+}
+
 @media (max-width: 768px) {
   .root > div {
     width: 95%;

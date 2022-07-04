@@ -98,3 +98,7 @@
   color: #9e8e00;
   text-align: end;
 }
+
+.root .bold {
+  font-weight: bold;
+}
