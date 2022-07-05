@@ -21,13 +21,14 @@ export interface Request {
 export default function RequestCard({ request }: { request: Request }) {
 
     const user = useUser();
-    // @ts-ignore
     const form = useRef();
 
     // Evento setModal para abrir el modal
     const [open, setModal] = useState(false);
     const [email, setUserEmail] = useState("");
     const [loading, setLoading] = useState(false);
+    const [review, setReview] = useState("");
+
     // Función para cerrar el modal de las requests
     function closeModal() {
         setModal(false);
@@ -42,23 +43,27 @@ export default function RequestCard({ request }: { request: Request }) {
         setUserEmail(user.user!.email!);
     }, [user])
 
-    const sendEmail = (e: any) => {
+    const sendEmail = (e: React.MouseEvent<HTMLButtonElement>) => {
         e.preventDefault();
-        if (document.querySelector("textarea")!.textContent!.length < 1) {
+        if (review === "") {
             alert("Está vacío");
         } else {
             alert("No está vacío");
+            setLoading(true);
+            emailjs.sendForm('gmail', 'revision-template', form.current!, '9dhtWpXmYtsl7bC1r')
+                .then((result: any) => {
+                    console.log(result.text);
+                    setModal(false);
+                    setLoading(false);
+                }, (error: any) => {
+                    console.log(error.text);
+                });
         }
-        setLoading(true);
-        // @ts-ignore
-        emailjs.sendForm('gmail', 'revision-template', form.current, '9dhtWpXmYtsl7bC1r')
-            .then((result: any) => {
-                console.log(result.text);
-                setModal(false)
-            }, (error: any) => {
-                console.log(error.text);
-            });
     };
+
+    function handleReview(e: { target: HTMLTextAreaElement; }) {
+        setReview(e.target!.value);
+    }
 
     return (
         <>
@@ -114,7 +119,7 @@ export default function RequestCard({ request }: { request: Request }) {
                         </div>
                         <div>
                             <label>Detalla la corrección</label>
-                            <textarea name="message"></textarea>
+                            <textarea onChange={handleReview} name="message"></textarea>
                         </div>
                         <Button disabled={loading === true} onClick={sendEmail}>Enviar corrección</Button>
                     </form>
