@@ -119,7 +119,7 @@ export default function Requests({ user }: { user: User }) {
                     break;
             }
             days != -1 && date.setDate(new Date().getDate() + days);
-            let deliver_date = `${date.getDate()}-${date.getMonth()}-${date.getFullYear()}`
+            let deliver_date = `${date.getDate().toString().padStart(2, "0")}/${(date.getMonth()+1).toString().padStart(2, "0")}/${date.getFullYear().toString().padStart(2, "0")}`
             const { data, error }: { data: any; error: any } = await supabase.from('requests').insert([{
                 id: Date.now(),
                 user_id: user.id,
