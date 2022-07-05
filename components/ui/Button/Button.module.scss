@@ -6,16 +6,35 @@
     border: 0;
     border-radius: 6px;
     font-family: 'DM Sans', sans-serif;
-    transition: 0.25s ease-out;
-    box-shadow: 5px 5px 0 #242424;
+    // transition: 0.2s ease-out;
+    // box-shadow: 5px 5px 0 #242424;
     &:not(:disabled):hover {
         cursor: pointer;
         background-color: #529c76;
-        transform: translateY(-5px);
-        box-shadow: 6.5px 5.5px 0 #303030;
+        transform: translateY(0px);
+        box-shadow: none;
+        &::before {
+            transition: all 0.4s ease-in-out;
+            transform-origin: center;
+            transform: scale(1.2, 1.55);
+            opacity: 0;
+        }
     }
     &:disabled {
         box-shadow: none;
+    }
+    &::before {
+        content: '';
+        z-index: -1;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        border: 1px solid #529c76;
+        border-radius: 6px;
+        transform-origin: center;
+        transform: scale(1);
     }
     a {
         text-decoration: none;
