@@ -48,7 +48,9 @@ export default function RequestCard({ request }: { request: Request }) {
     }
 
     useEffect(() => {
-        setUserEmail(user.user!.email!);
+        if (user.user) {
+            setUserEmail(user.user!.email!);
+        }
     }, [user])
 
     const sendEmail = (e: React.MouseEvent<HTMLButtonElement>) => {

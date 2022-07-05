@@ -1,4 +1,4 @@
-import React, { forwardRef, ButtonHTMLAttributes } from 'react';
+import React, { ButtonHTMLAttributes } from 'react';
 import s from '../../../styles/css/Button.module.css';
 import LoadingDots from 'components/ui/LoadingDots';
 
@@ -9,7 +9,7 @@ interface Props extends ButtonHTMLAttributes<HTMLButtonElement> {
     Component?: React.ComponentType;
 }
 
-const Button = forwardRef<HTMLButtonElement, Props>((props) => {
+const Button = (props: Props) => {
     const {
         className,
         children,
@@ -37,6 +37,6 @@ const Button = forwardRef<HTMLButtonElement, Props>((props) => {
             {loading && (<LoadingDots />)}
         </Component>
     );
-});
+};
 
 export default Button;

@@ -194,6 +194,7 @@ export default function Requests({ user }: { user: User }) {
                             dummyData.map(request => {
                                 return (
                                     <RequestCard
+                                        key={request.id}
                                         request={request}
                                     />
                                 )
@@ -213,6 +214,7 @@ export default function Requests({ user }: { user: User }) {
                                 allRequests.map(request => {
                                     return (
                                         <RequestCard
+                                            key={request.id}
                                             request={request}
                                         />
                                     )
@@ -281,9 +283,10 @@ export default function Requests({ user }: { user: User }) {
                                     <Select
                                         onChange={handleChange}
                                         name="priority"
+                                        defaultValue={"false"}
                                     >
                                         <option value="true">Si</option>
-                                        <option value="false" selected>No</option>
+                                        <option value="false">No</option>
                                     </Select>
                                     <span className={s.muted}>Si eliges 'Si', tendrémos en cuenta que el artículo es prioritario y será de los primeros textos en escribirse.</span>
                                 </div>
