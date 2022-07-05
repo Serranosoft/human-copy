@@ -13,6 +13,7 @@ import Select from '@/components/ui/Select';
 import { Data } from '@/utils/data';
 import LoadingBar from '@/components/ui/LoadingBar';
 import { clearErrors, setError } from '@/utils/helpers';
+import ErrorModalComponent from '@/components/ui/Error Modal/ErrorModalComponent';
 
 export interface Request {
     id: string;
@@ -47,6 +48,10 @@ export default function Requests({ user }: { user: User }) {
     const [allRequests, setAllRequests] = useState<Request[]>([]);
     // Evento setModal para abrir el modal
     const [open, setModal] = useState(false);
+    // Evento setModal para abrir el modal de error
+    const [openError, setErrorModal] = useState(false);
+    // Mensaje de error para el modal de error.
+    const [errorMsg, setErrorMsg] = useState("Ha ocurrido un error inesperado.")
     // Variable para almacenar el rango de palabras que el usuario ha escogido para el artículo
     const [range, applyRange] = useState<number>(0);
     // Variable para almacenar el plan actualizado tras enviar un artículo
@@ -110,7 +115,8 @@ export default function Requests({ user }: { user: User }) {
                 plan: plan
             }]).match({ id: user.id }).then(({ data, error }) => {
                 if (!data || error) {
-                    // WIP: Modal de error.
+                    setErrorModal(true);
+                    setErrorMsg("Ha ocurrido un error al actualizar tu plan. Ponte en contacto con nosotros.")
                 } else {
                     setInitialPlan(data![0].plan)
                 }
@@ -124,7 +130,8 @@ export default function Requests({ user }: { user: User }) {
                 setRequest(initialValue);
                 applyRange(0);
             } else {
-                // WIP: Modal de error.
+                setErrorModal(true);
+                setErrorMsg("Ha ocurrido un error al envíar el artículo. Ponte en contacto con nosotros.")
             }
         }
 
@@ -153,6 +160,11 @@ export default function Requests({ user }: { user: User }) {
     // Función para cerrar el modal de las requests
     function closeModal() {
         setModal(false);
+    }
+
+    // Función para cerrar el modal de las requests
+    function closeErrorModal() {
+        setErrorModal(false);
     }
 
     // Función para manipular la cantidad de palabras que el usuario ha elegido para un artículo, a su vez, actualiza el plan restante.z
@@ -218,7 +230,6 @@ export default function Requests({ user }: { user: User }) {
                 </div>
             )
         }
-
     }
 
     return (
@@ -291,6 +302,15 @@ export default function Requests({ user }: { user: User }) {
                     <LoadingBar />
                 }
             </div>
+            <ErrorModalComponent
+                open={openError}
+                closeErrorModal={closeErrorModal}
+            >
+                <div>
+                    <p>{errorMsg}</p>
+                </div>
+                <Button>Aceptar</Button>
+            </ErrorModalComponent>
         </section>
     )
 
