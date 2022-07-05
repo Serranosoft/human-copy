@@ -305,11 +305,7 @@ export default function Requests({ user }: { user: User }) {
             <ErrorModalComponent
                 open={openError}
                 closeErrorModal={closeErrorModal}
-            >
-                <div>
-                    <p>{errorMsg}</p>
-                </div>
-                <Button>Aceptar</Button>
+                msg={errorMsg}>
             </ErrorModalComponent>
         </section>
     )

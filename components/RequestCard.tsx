@@ -5,6 +5,7 @@ import LoadingBar from './ui/LoadingBar';
 import ModalComponent from './ui/Modal/ModalComponent';
 import emailjs from '@emailjs/browser';
 import { useUser } from '@/utils/useUser';
+import ErrorModalComponent from './ui/Error Modal/ErrorModalComponent';
 
 export interface Request {
     id: string;
@@ -28,10 +29,17 @@ export default function RequestCard({ request }: { request: Request }) {
     const [email, setUserEmail] = useState("");
     const [loading, setLoading] = useState(false);
     const [review, setReview] = useState("");
+    // Evento setModal para abrir el modal de error
+    const [openError, setErrorModal] = useState(false);
 
     // Función para cerrar el modal de las requests
     function closeModal() {
         setModal(false);
+    }
+
+    // Función para cerrar el modal de las requests
+    function closeErrorModal() {
+        setErrorModal(false);
     }
 
     // Función para abrir el modal de las requests
@@ -57,6 +65,7 @@ export default function RequestCard({ request }: { request: Request }) {
                     setLoading(false);
                 }, (error: any) => {
                     console.log(error.text);
+                    
                 });
         }
     };
@@ -125,6 +134,11 @@ export default function RequestCard({ request }: { request: Request }) {
                     </form>
                 </ModalComponent>
             }
+            <ErrorModalComponent
+                open={openError}
+                closeErrorModal={closeErrorModal}
+                msg="Ha ocurrido un error al mandar la corrección. Ponte en contacto con nosotros.">
+            </ErrorModalComponent>
         </>
     )
 }

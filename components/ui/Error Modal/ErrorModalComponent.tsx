@@ -1,9 +1,9 @@
 import React from 'react';
 import s from '../../../styles/css/ErrorModal.module.css';
 import Modal from 'react-modal';
+import Button from '../Button';
 
 export default function ErrorModalComponent(props: any) {
-    console.log(props);
     return (
         <>
             <Modal
@@ -12,7 +12,11 @@ export default function ErrorModalComponent(props: any) {
                 ariaHideApp={false}
             >
                 <span onClick={props.closeErrorModal}>x</span>
-                {props.children}
+                {/* {props.children} */}
+                <div>
+                    <p>{props.msg}</p>
+                </div>
+                <Button onClick={props.closeErrorModal}>Aceptar</Button>
             </Modal>
         </>
     )
