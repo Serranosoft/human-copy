@@ -146,7 +146,9 @@ export default function Requests({ user }: { user: User }) {
                 setModal(false)
                 getReq();
                 getPlan();
+                // Reiniciar valores del modal
                 setRequest(initialValue);
+                applyRange(0);
             } else {
                 // WIP: Modal de error.
             }
