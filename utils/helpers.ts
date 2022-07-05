@@ -49,3 +49,8 @@ export const removeChildElements = (parent: HTMLElement) => {
         child = parent.lastElementChild;
     }
 }
+
+export const setError = (element: HTMLElement) => {
+    element.classList.add("error");
+    element.classList.remove("hide");
+}

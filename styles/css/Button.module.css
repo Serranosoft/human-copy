@@ -1,10 +1,11 @@
 .root {
-  word-spacing: 1px;
-  font-size: var(--font-size-base);
+  position: relative;
   padding: 0.55rem 1.35rem;
-  outline: none;
   border: 0;
   border-radius: 6px;
+  word-spacing: 1px;
+  font-size: var(--font-size-base);
+  outline: none;
   font-family: 'DM Sans', sans-serif;
 }
 

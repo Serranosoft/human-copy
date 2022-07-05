@@ -12,6 +12,7 @@ import RequestCard from '@/components/RequestCard';
 import Select from '@/components/ui/Select';
 import { Data } from '@/utils/data';
 import LoadingBar from '@/components/ui/LoadingBar';
+import { setError } from '@/utils/helpers';
 
 export interface Request {
     id: string;
@@ -189,19 +190,6 @@ export default function Requests({ user }: { user: User }) {
         if (initialPlan !== -1) {
             // Restar cuando sube el rango y devolver el valor al plan cuando disminuye el rango
             setPlan(initialPlan! - parseInt(e.target.value));
-        }
-    }
-
-    function setError(element: HTMLElement) {
-        if (element.id === "request-words-error") {
-            element.classList.remove("hide");
-            element.classList.add("show");
-        } else if (element.id === "request-topic-error") {
-            element.classList.remove("hide");
-            element.classList.add("show");
-        } else if (element.id === "request-description-error") {
-            element.classList.remove("hide");
-            element.classList.add("show");
         }
     }
 
