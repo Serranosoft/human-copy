@@ -1,7 +1,7 @@
 import { supabase } from '@/utils/supabase-client';
 import { withAuthRequired } from '@supabase/supabase-auth-helpers/nextjs';
 import { User } from '@supabase/supabase-auth-helpers/react';
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import s from '../styles/css/Mis-textos.module.css';
 import ModalComponent from '@/components/ui/Modal/ModalComponent';
 import Input from '@/components/ui/Input';
@@ -12,7 +12,7 @@ import RequestCard from '@/components/RequestCard';
 import Select from '@/components/ui/Select';
 import { Data } from '@/utils/data';
 import LoadingBar from '@/components/ui/LoadingBar';
-import { setError } from '@/utils/helpers';
+import { clearErrors, setError } from '@/utils/helpers';
 
 export interface Request {
     id: string;
@@ -85,43 +85,16 @@ export default function Requests({ user }: { user: User }) {
         } else {
             // Limpiar errores
             clearErrors();
+
             let date = new Date();
-            let days = 0;
-            switch (request.words) {
-                case "500":
-                    days = 2;
-                    break;
-                case "1000":
-                    days = 2;
-                    break;
-                case "1500":
-                    days = 3;
-                    break;
-                case "3000":
-                    days = 3;
-                    break;
-                case "3500":
-                    days = 3;
-                    break;
-                case "4000":
-                    days = 4;
-                    break;
-                case "4500":
-                    days = 4;
-                    break;
-                case "5000":
-                    days = 5;
-                    break;
-                case "5500":
-                    days = 6;
-                    break;
-                default:
-                    days = -1;
-                    break;
+            let days = Data.getDeliveryTime(request.words!);
+            if (days != -1) {
+                date.setDate(new Date().getDate() + days);
             }
-            days != -1 && date.setDate(new Date().getDate() + days);
+
             let deliver_date = `${date.getDate().toString().padStart(2, "0")}/${(date.getMonth()+1).toString().padStart(2, "0")}/${date.getFullYear().toString().padStart(2, "0")}`
-            const { data, error }: { data: any; error: any } = await supabase.from('requests').insert([{
+            
+            const { data, error } = await supabase.from('requests').insert([{
                 id: Date.now(),
                 user_id: user.id,
                 title: request.title !== "" ? request.title : "HumanCopy redactará un título para este artículo",
@@ -191,13 +164,6 @@ export default function Requests({ user }: { user: User }) {
             // Restar cuando sube el rango y devolver el valor al plan cuando disminuye el rango
             setPlan(initialPlan! - parseInt(e.target.value));
         }
-    }
-
-    function clearErrors() {
-        document.querySelectorAll("span.error").forEach(span => {
-            span.classList.add("hide");
-            span.classList.remove("show");
-        })
     }
 
     function renderRequests() {

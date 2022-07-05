@@ -54,3 +54,10 @@ export const setError = (element: HTMLElement) => {
     element.classList.add("error");
     element.classList.remove("hide");
 }
+
+export const clearErrors = () => {
+    document.querySelectorAll("span.error").forEach(span => {
+        span.classList.add("hide");
+        span.classList.remove("show");
+    })
+}

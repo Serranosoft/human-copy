@@ -49,4 +49,33 @@ export class Data {
         },
 
     ]
+
+    public static Prices = [
+
+    ]
+
+    public static getDeliveryTime(words: string): number {
+        switch (words) {
+            case "500":
+                return 2;
+            case "1000":
+                return 2;
+            case "1500":
+                return 3;
+            case "3000":
+                return 3;
+            case "3500":
+                return 3;
+            case "4000":
+                return 4;
+            case "4500":
+                return 4;
+            case "5000":
+                return 5;
+            case "5500":
+                return 6;
+            default:
+                return -1;
+        }
+    }
 }
