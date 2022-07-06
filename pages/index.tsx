@@ -10,6 +10,7 @@ import RightLine from '@/components/icons/RightLine';
 import LeftLine from '@/components/icons/LeftLine';
 import MiddleLine from '@/components/icons/MiddleLine';
 import ClipSVG from '@/components/icons/Clip';
+import HeroSVG from '@/components/icons/Hero';
 
 interface Props {
     products: Product[];
@@ -20,14 +21,20 @@ export default function Home({ products }: Props) {
     return (
         <>
             <section className={s.root}>
+
                 <div className={s.hero}>
-                    <p className={s.title}>Lorem ipsum dolor sit amet.</p>
-                    <span>Pirsch is a simple, cookie-free, and open-source web analytics solution that easily integrates into your website or backend.</span>
                     <div>
-                        <Button><a href="#pricingPanel">Ver planes</a></Button>
-                        {!user && <Button><Link href="/iniciar-sesion"><a>Prueba una demo gratuita</a></Link></Button>}
+                        <p className={s.title}>Lorem ipsum dolor sit amet.</p>
+                        <span>Pirsch is a simple, cookie-free, and open-source web analytics solution that easily integrates into your website or backend.</span>
+                        <div>
+                            <Button><a href="#pricingPanel">Ver planes</a></Button>
+                            {!user && <Button><Link href="/iniciar-sesion"><a>Prueba una demo gratuita</a></Link></Button>}
+                        </div>  
                     </div>
+                    <HeroSVG />
                 </div>
+
+
                 <div className={s.bigImg}>
                     <ClipSVG />
                     <div>
