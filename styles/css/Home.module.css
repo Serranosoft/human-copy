@@ -20,6 +20,9 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   gap: 3rem;
   max-width: 1420px;
   width: 100%;
@@ -86,6 +89,8 @@
   display: grid;
   place-items: center;
   margin: 5rem 0;
+  max-width: 1550px;
+  width: 100%;
 }
 
 .root .bigImg h2 {
@@ -97,13 +102,12 @@
 .root .bigImg > div {
   width: 100%;
   padding: 2rem;
-  max-width: 1550px;
   border: 2px solid #474747;
   border-radius: 16px;
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: (minmax(400px, 1fr))[auto-fit];
-      grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  -ms-grid-columns: (minmax(360px, 1fr))[auto-fit];
+      grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
   gap: 3rem 1rem;
   position: relative;
 }
@@ -191,6 +195,7 @@
   grid-column: 1 / -1;
   -ms-grid-column-align: center;
       justify-self: center;
+  text-align: center;
   padding-bottom: 0.35rem;
   font-size: var(--font-size-md);
 }
@@ -301,4 +306,39 @@
   padding: 0 30%;
   border: 0;
   vertical-align: middle;
+}
+
+@media (max-width: 992px) {
+  .root .hero {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    position: relative;
+  }
+  .root .hero > div {
+    width: 100%;
+  }
+  .root .hero > div > div {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  .root .hero svg {
+    width: 65%;
+    position: absolute;
+    bottom: 0;
+    right: -30%;
+    opacity: 0.15;
+  }
+}
+
+@media (max-width: 520px) {
+  .root .hero > div div {
+    width: 100%;
+  }
+  .root .hero svg {
+    display: none;
+  }
 }
