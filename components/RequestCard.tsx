@@ -6,6 +6,8 @@ import ModalComponent from './ui/Modal/ModalComponent';
 import emailjs from '@emailjs/browser';
 import { useUser } from '@/utils/useUser';
 import ErrorModalComponent from './ui/Error Modal/ErrorModalComponent';
+import DownloadSVG from './icons/Download';
+import ReviewSVG from './icons/Review';
 
 export interface Request {
     id: string;
@@ -73,7 +75,7 @@ export default function RequestCard({ request, user }: { request: Request, user:
     function handleReview(e: { target: HTMLTextAreaElement; }) {
         setReview(e.target!.value);
     }
-    console.log("Finalizar render...");
+
     return (
         <>
             <div className={s.root}>
@@ -94,11 +96,24 @@ export default function RequestCard({ request, user }: { request: Request, user:
                     <p>{request.description}</p>
                 </div>
                 <div>
-                    <Button disabled={request.download === null || request.download === ""}>
-                        <a href={request.download === null || request.download === "" ? "javascript:void(0)" : request.download}>DESCARGAR</a>
-                    </Button>
-                    <Button disabled={request.download === null || request.download === ""} onClick={openModal}>CORREGIR</Button>
                     <span>{request.priority === true && "Artículo prioritario"}</span>
+                    {
+                        request.download !== null && request.download !== "" &&
+                        <>
+                            <div>
+                                <DownloadSVG>
+                                    <a href={request.download}>DESCARGAR</a>
+                                </DownloadSVG>
+                            </div>
+                            <div>
+                                <ReviewSVG onClick={openModal}></ReviewSVG >
+                            </div>
+                        </>
+                    }
+                    {/* <Button disabled={request.download === null || request.download === ""}>
+                        <a href={request.download === null || request.download === "" ? "javascript:void(0)" : request.download}>DESCARGAR</a>
+                    </Button> */}
+                    {/* <Button disabled={request.download === null || request.download === ""} onClick={openModal}>CORREGIR</Button> */}
                 </div>
             </div>
             {userEmail.current !== "" &&
