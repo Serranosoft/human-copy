@@ -67,9 +67,9 @@ export default function Requests({ user }: { user: User }) {
 
     // Obtenemos el plan del usuario
     async function getPlan() {
-        const { data, error }: { data: any; error: any } = await supabase.from('users').select('plan').eq("id", user.id)
-        setPlan(data[0].plan);
-        setInitialPlan(data[0].plan);
+        const { data, error } = await supabase.from('users').select('plan').eq("id", user.id)
+        setPlan(data![0].plan);
+        setInitialPlan(data![0].plan);
     }
 
     // Obtenemos las requests del usuario
@@ -97,8 +97,8 @@ export default function Requests({ user }: { user: User }) {
                 date.setDate(new Date().getDate() + days);
             }
 
-            let deliver_date = `${date.getDate().toString().padStart(2, "0")}/${(date.getMonth()+1).toString().padStart(2, "0")}/${date.getFullYear().toString().padStart(2, "0")}`
-            
+            let deliver_date = `${date.getDate().toString().padStart(2, "0")}/${(date.getMonth() + 1).toString().padStart(2, "0")}/${date.getFullYear().toString().padStart(2, "0")}`
+
             const { data, error } = await supabase.from('requests').insert([{
                 id: Date.now(),
                 user_id: user.id,
@@ -182,6 +182,7 @@ export default function Requests({ user }: { user: User }) {
         if (allRequests !== null && allRequests.length < 1 && initialPlan !== undefined && initialPlan < 1) {
             // Si AllRequest no es nulo y allRequest.length < 1 entonces mostrar dummy data.
             let dummyData = Data.DummyRequests;
+            // console.log("EEEMMM");
             return (
                 <>
                     <div className={s.infobox}>
@@ -192,10 +193,12 @@ export default function Requests({ user }: { user: User }) {
                     <div className={s.dashboard}>
                         {
                             dummyData.map(request => {
+                                console.log("Padre re render...");
                                 return (
                                     <RequestCard
                                         key={request.id}
                                         request={request}
+                                        user={user}
                                     />
                                 )
                             })
@@ -216,6 +219,7 @@ export default function Requests({ user }: { user: User }) {
                                         <RequestCard
                                             key={request.id}
                                             request={request}
+                                            user={user}
                                         />
                                     )
                                 })

@@ -13,6 +13,7 @@
   display: grid;
   border: 1px solid white;
   outline: 0;
+  z-index: 2;
 }
 
 .root > span {

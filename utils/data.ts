@@ -15,7 +15,7 @@ export class Data {
 
     public static DummyRequests: Request[] = [
         {
-            id: "",
+            id: "1",
             title: "Título de ejemplo",
             description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc elementum pretium varius. Nulla facilisi. Etiam et semper urna. Duis vel vestibulum justo.",
             topic: "qweqwe",
@@ -26,7 +26,7 @@ export class Data {
             priority: false
         },
         {
-            id: "",
+            id: "2",
             title: "Título de ejemplo",
             description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc elementum pretium varius. Nulla facilisi. Etiam et semper urna. Duis vel vestibulum justo.",
             topic: "qweqwe",
@@ -37,7 +37,7 @@ export class Data {
             priority: true
         },
         {
-            id: "",
+            id: "3",
             title: "Título de ejemplo",
             description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc elementum pretium varius. Nulla facilisi. Etiam et semper urna. Duis vel vestibulum justo.",
             topic: "qweqwe",

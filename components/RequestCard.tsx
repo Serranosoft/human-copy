@@ -19,18 +19,18 @@ export interface Request {
     deliver_date: string | undefined;
 }
 
-export default function RequestCard({ request }: { request: Request }) {
-
-    const user = useUser();
+export default function RequestCard({ request, user }: { request: Request, user: any }) {
     const form = useRef();
 
+    // Almacenar el email del usuario autenticado
+    const userEmail = useRef() as React.MutableRefObject<string>;;
     // Evento setModal para abrir el modal
     const [open, setModal] = useState(false);
-    const [email, setUserEmail] = useState("");
     const [loading, setLoading] = useState(false);
     const [review, setReview] = useState("");
     // Evento setModal para abrir el modal de error
     const [openError, setErrorModal] = useState(false);
+    const [errorMsg, setErrorMsg] = useState("Ha ocurrido un error inesperado. Ponte en contacto con nosotros.")
 
     // Función para cerrar el modal de las requests
     function closeModal() {
@@ -48,26 +48,24 @@ export default function RequestCard({ request }: { request: Request }) {
     }
 
     useEffect(() => {
-        if (user.user) {
-            setUserEmail(user.user!.email!);
-        }
+        userEmail.current! = user.email;
     }, [user])
 
     const sendEmail = (e: React.MouseEvent<HTMLButtonElement>) => {
         e.preventDefault();
         if (review === "") {
-            alert("Está vacío");
+            // setModal(false);
+            setErrorModal(true);
+            setErrorMsg("Indica las correcciones que necesitas en la caja de texto");
         } else {
-            alert("No está vacío");
             setLoading(true);
             emailjs.sendForm('gmail', 'revision-template', form.current!, '9dhtWpXmYtsl7bC1r')
                 .then((result: any) => {
-                    console.log(result.text);
                     setModal(false);
                     setLoading(false);
                 }, (error: any) => {
-                    console.log(error.text);
-                    
+                    setErrorModal(true);
+                    setErrorMsg("Ha ocurrido un error al envíar la corrección. Ponte en contacto con nosotros");
                 });
         }
     };
@@ -75,17 +73,14 @@ export default function RequestCard({ request }: { request: Request }) {
     function handleReview(e: { target: HTMLTextAreaElement; }) {
         setReview(e.target!.value);
     }
-
+    console.log("Finalizar render...");
     return (
         <>
             <div className={s.root}>
                 <div className={s.header}>
                     <div>
                         {
-                            request.download !== null && request.download !== "" ?
-                                <span>✔️</span>
-                                :
-                                <LoadingBar big={false} />
+                            request.download !== null && request.download !== "" ? <span>✔️</span> : <LoadingBar big={false} />
                         }
                     </div>
                     <p className={s.date}>{`Entrega est. ${request.deliver_date}`}</p>
@@ -100,13 +95,13 @@ export default function RequestCard({ request }: { request: Request }) {
                 </div>
                 <div>
                     <Button disabled={request.download === null || request.download === ""}>
-                        <a href={request.download !== null || request.download !== "" ? request.download : ""}>DESCARGAR</a>
+                        <a href={request.download === null || request.download === "" ? "javascript:void(0)" : request.download}>DESCARGAR</a>
                     </Button>
                     <Button disabled={request.download === null || request.download === ""} onClick={openModal}>CORREGIR</Button>
                     <span>{request.priority === true && "Artículo prioritario"}</span>
                 </div>
             </div>
-            {email !== "" &&
+            {userEmail.current !== "" &&
                 <ModalComponent
                     open={open}
                     closeModal={closeModal}
@@ -118,7 +113,7 @@ export default function RequestCard({ request }: { request: Request }) {
                         </div>
                         <div className="hide">
                             <label>Identificador del usuario</label>
-                            <input name="email" value={email} readOnly />
+                            <input name="email" value={userEmail.current} readOnly />
                         </div>
                         <div className="hide">
                             <label>Identificador del artículo</label>
@@ -139,7 +134,7 @@ export default function RequestCard({ request }: { request: Request }) {
             <ErrorModalComponent
                 open={openError}
                 closeErrorModal={closeErrorModal}
-                msg="Ha ocurrido un error al mandar la corrección. Ponte en contacto con nosotros.">
+                msg={errorMsg}>
             </ErrorModalComponent>
         </>
     )
