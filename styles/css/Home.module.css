@@ -82,10 +82,22 @@
 }
 
 .root .bigImg {
+  display: -ms-grid;
+  display: grid;
+  place-items: center;
+  margin: 5rem 0;
+}
+
+.root .bigImg h2 {
+  text-align: center;
+  font-size: var(--font-size-xxl);
+  font-weight: normal;
+}
+
+.root .bigImg > div {
   width: 100%;
   padding: 2rem;
   max-width: 1550px;
-  margin: 5rem 0;
   border: 2px solid #474747;
   border-radius: 16px;
   display: -ms-grid;
@@ -96,7 +108,7 @@
   position: relative;
 }
 
-.root .bigImg > svg {
+.root .bigImg > div > svg {
   position: absolute;
   top: -35px;
   left: -10px;
@@ -107,11 +119,11 @@
           transform: rotate(-7.5deg);
 }
 
-.root .bigImg > svg path {
+.root .bigImg > div > svg path {
   fill: #529c76;
 }
 
-.root .bigImg > div {
+.root .bigImg > div > div {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -121,18 +133,18 @@
           flex-direction: column;
 }
 
-.root .bigImg > div > div {
+.root .bigImg > div > div > div {
   width: 100%;
   height: 180px;
   position: relative;
   background-size: 100% 100%;
 }
 
-.root .bigImg > div > div:hover:after {
+.root .bigImg > div > div > div:hover:after {
   opacity: 1;
 }
 
-.root .bigImg > div > div::after {
+.root .bigImg > div > div > div::after {
   content: "";
   display: block;
   height: 100%;
@@ -141,12 +153,12 @@
   background: rgba(0, 0, 0, 0.83);
 }
 
-.root .bigImg > div > div:hover > span {
+.root .bigImg > div > div > div:hover > span {
   width: 100%;
   display: inline;
 }
 
-.root .bigImg > div > div > span {
+.root .bigImg > div > div > div > span {
   display: none;
   position: absolute;
   top: 50%;
@@ -159,11 +171,11 @@
   text-align: center;
 }
 
-.root .bigImg > div > div > span > span.highlight {
+.root .bigImg > div > div > div > span > span.highlight {
   color: #6ece9d;
 }
 
-.root .bigImg > div > span {
+.root .bigImg > div > div > span {
   padding: 1rem;
   border-left: 2px solid #474747;
   border-bottom: 2px solid #474747;
@@ -175,7 +187,7 @@
   background-color: #0a0a0a;
 }
 
-.root .bigImg > span {
+.root .bigImg > div > span {
   grid-column: 1 / -1;
   -ms-grid-column-align: center;
       justify-self: center;

@@ -10,12 +10,12 @@
       -ms-flex-align: center;
           align-items: center;
   width: 100%;
-  margin-bottom: 5.5rem;
+  margin: 5rem 0;
 }
 
 .root h2 {
   font-size: var(--font-size-xxl);
-  margin: 1rem 0;
+  font-weight: normal;
 }
 
 .root .planLayout {
