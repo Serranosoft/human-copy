@@ -78,7 +78,7 @@ textarea:focus {
 .highlight-medium,
 .highlight-long {
     position: relative;
-    z-index: -1;
+    z-index: 0;
 }
 
 .highlight-short::after {
