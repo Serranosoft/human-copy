@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react';
 import s from '../styles/css/PlanCard.module.css';
+import ArrowSVG from './icons/Arrow';
+import LeftLine from './icons/LeftLine';
 import Button from './ui/Button';
 import Range from './ui/Range';
 
@@ -69,8 +71,8 @@ export default function PaymentPlanCard({ product, isLoading, priceIdLoading, ha
 
     return (
         <div className={`${s.root} ${s.payment}`}>
-            <span className={s.wordsPerPrice}>{words} palabras</span>
             <div className={s.rangeWrapper}>
+                {/* <span className={s.wordsPerPrice}>{words} palabras</span> */}
                 <span>1000</span>
                 <Range
                     min="0"
@@ -81,9 +83,10 @@ export default function PaymentPlanCard({ product, isLoading, priceIdLoading, ha
                 />
                 <span>10000</span>
             </div>
+            <ArrowSVG className={s.stepLine}/>
             <div>
                 <span className={s.name}>{`${words} ${product.name}`}</span>
-                <p className={s.description}>{product.description}</p>
+                <p className={s.description}>{product.description}qqqqqqqqqqqqqq</p>
                 <p className={s.price}>{price}€</p>
                 <Button
                     type="button"

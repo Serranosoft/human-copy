@@ -12,6 +12,8 @@ export default function SubscriptionPlanCard({ product, isLoading, handleCheckou
 
     return (
         <div className={`${s.root} ${s.subscription}`}>
+            <span className={s.subscriptionAnimation}></span>
+        
             <div>
                 <span className={s.name}>{product.name}</span>
                 <p className={s.description}>{product.description}</p>

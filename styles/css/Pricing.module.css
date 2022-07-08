@@ -16,20 +16,20 @@
 .root h2 {
   font-size: var(--font-size-xxl);
   font-weight: normal;
+  margin-bottom: 11rem;
 }
 
 .root .planLayout {
   width: 100%;
-  max-width: 920px;
+  max-width: 980px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  -webkit-box-align: end;
-      -ms-flex-align: end;
-          align-items: flex-end;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
   gap: 3rem;
   margin-top: 1.5rem;
 }

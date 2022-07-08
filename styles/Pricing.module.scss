@@ -7,13 +7,14 @@
     h2 {
         font-size: var(--font-size-xxl);
         font-weight: normal;
+        margin-bottom: 11rem;
     }
     .planLayout {
         width: 100%;
-        max-width: 920px;
+        max-width: 980px;
         display: flex;
         justify-content: space-between;
-        align-items: flex-end;
+        flex-wrap: wrap;
         gap: 3rem;
         margin-top: 1.5rem;
     }

@@ -5,16 +5,87 @@
     justify-content: center;
     align-items: center;
     background-color: #0a0a0a;
+    position: relative;
+    z-index: 1;
+
+    .subscriptionAnimation {
+        width: 200px;
+        height: 140px;
+        background: #979794;
+        box-sizing: border-box;
+        position: absolute;
+        top: -80px;
+        border-radius: 8px;
+        perspective: 1000px;
+        transform: scale(0.35) rotate(-25deg);
+        left: -90px;
+        &:before {
+            content: '';
+            position: absolute;
+            left: 10px;
+            right: 10px;
+            top: 10px;
+            bottom: 10px;
+            border-radius: 8px;
+            background: #f5f5f5 no-repeat;
+            background-size: 60px 10px;
+            background-image: linear-gradient(#ddd 100px, transparent 0),
+                linear-gradient(#ddd 100px, transparent 0),
+                linear-gradient(#ddd 100px, transparent 0),
+                linear-gradient(#ddd 100px, transparent 0),
+                linear-gradient(#ddd 100px, transparent 0),
+                linear-gradient(#ddd 100px, transparent 0);
+
+            background-position: 15px 30px, 15px 60px, 15px 90px,
+                105px 30px, 105px 60px, 105px 90px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
+        }
+
+        &:after {
+            content: '';
+            position: absolute;
+            width: calc(50% - 10px);
+            right: 10px;
+            top: 10px;
+            bottom: 10px;
+            border-radius: 8px;
+            background: #fff no-repeat;
+            background-size: 60px 10px;
+            background-image: linear-gradient(#ddd 100px, transparent 0),
+                linear-gradient(#ddd 100px, transparent 0),
+                linear-gradient(#ddd 100px, transparent 0);
+            background-position: 50% 30px, 50% 60px, 50% 90px;
+            transform: rotateY(0deg);
+            transform-origin: left center;
+            animation: paging 1s linear infinite;
+        }
+    }
+
+    .stepLine {
+        position: absolute;
+        top: -30px;
+        right: 45px;
+        transform: scale(3.2);
+        border: 0;
+        z-index: -1;
+        filter: drop-shadow(7px 7px 0px #2f2f31);
+        path {
+            fill: #18181b;
+        }
+    }
+
     &.subscription {
         order: -1;
-        border: 3px solid #50b17f;
+        box-shadow: 0px 0px 10px #50b17f;
         border-radius: 12px;
 
     }
+
     .wordsPerPrice {
         margin: 0.8rem auto 0 auto;
         font-size: var(--font-size-base);
     }
+
     .rangeWrapper {
         display: flex;
         align-items: center;
@@ -24,42 +95,92 @@
         width: 100%;
         gap: 0.5rem;
         margin-bottom: 1rem;
+        position: absolute;
+        top: -102px;
+        left: 0;
+        // border: 2px solid #01592c;
+        
         input[type=range] {
             width: 100%;
             flex-grow: 1;
             padding: 0.25rem 0.5rem;
         }
+
         span {
             font-size: var(--font-size-sm);
             color: lightgray;
         }
     }
 
-    & > div {
+    &>div {
         display: grid;
         padding: 2rem;
         background-color: #18181b;
         border-radius: 12px;
         gap: 1rem;
+
         .name {
             font-size: var(--font-size-md);
             justify-self: flex-start;
             font-weight: bold;
         }
+
         .description {
             margin-top: 2.1rem;
             font-size: var(--font-size-base);
         }
+
         .price {
             font-size: var(--font-size-xxl);
             font-weight: bold;
+
             .period {
                 font-size: var(--font-size-base);
             }
         }
+
         button {
             margin-top: 0.5rem;
             font-size: var(--font-size-md);
         }
     }
+
+
+    @keyframes writeDown {
+        0% {
+            height: 0%;
+            opacity: 0;
+        }
+
+        20% {
+            height: 0%;
+            opacity: 1;
+        }
+
+        80% {
+            height: 65%;
+            opacity: 1;
+        }
+
+        100% {
+            height: 65%;
+            opacity: 0;
+        }
+    }
+
+    @keyframes paging {
+        to {
+            transform: rotateY(-180deg);
+        }
+    }
+
+    @keyframes heartBeat {
+        0% { transform: scale(0.95) }
+        5% { transform: scale(1.1) }
+        39% { transform: scale(0.85) }
+        45% { transform: scale(1) }
+        60% { transform: scale(0.95) }
+        100% { transform: scale(0.9) }
+      }
 }
+
