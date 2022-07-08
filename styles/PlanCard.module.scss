@@ -61,11 +61,11 @@
         }
     }
 
-    .stepLine {
+    .paymentArrow {
         position: absolute;
-        top: -30px;
+        top: -35px;
         right: 45px;
-        transform: scale(3.2);
+        transform: scale(3.25);
         border: 0;
         z-index: -1;
         filter: drop-shadow(7px 7px 0px #2f2f31);
@@ -96,10 +96,10 @@
         gap: 0.5rem;
         margin-bottom: 1rem;
         position: absolute;
-        top: -102px;
+        top: -110px;
         left: 0;
-        // border: 2px solid #01592c;
-        
+        box-shadow: -2px -8px 8px rgba(rgb(16, 61, 20), 0.3), 1px -1.5px 4px rgba(rgb(255, 255, 255), 0.3);
+
         input[type=range] {
             width: 100%;
             flex-grow: 1;
@@ -112,13 +112,13 @@
         }
     }
 
-    &>div {
+    & > div {
         display: grid;
         padding: 2rem;
         background-color: #18181b;
         border-radius: 12px;
         gap: 1rem;
-
+        flex: 1;
         .name {
             font-size: var(--font-size-md);
             justify-self: flex-start;

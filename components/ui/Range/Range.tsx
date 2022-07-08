@@ -1,5 +1,5 @@
 import React, { InputHTMLAttributes } from 'react';
-// import s from '../../../styles/css/Range.module.css';
+import s from '../../../styles/css/range.module.css';
 
 interface Props extends Omit<InputHTMLAttributes<any>, 'onChange'> {
     className?: string;
@@ -23,7 +23,7 @@ const Range = (props: Props) => {
         <>
             <input
                 type="range"
-                // className={s.root}
+                className={s.root}
                 onChange={handleOnChange}
                 min={min}
                 max={max}
