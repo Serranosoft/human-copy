@@ -19,7 +19,7 @@ export default function PaymentPlanCard({ product, isLoading, priceIdLoading, ha
     // Precio total del producto
     const [price, setPrice] = useState<number>();
     // Rango escogido por el usuario
-    const [rangeValue, setRangeValue] = useState(4);
+    const [rangeValue, setRangeValue] = useState(0);
     // Cantidad de palabras que el usuario comprará
     const [words, setWords] = useState("");
 
@@ -72,21 +72,21 @@ export default function PaymentPlanCard({ product, isLoading, priceIdLoading, ha
     return (
         <div className={`${s.root} ${s.payment}`}>
             <div className={s.rangeWrapper}>
-                {/* <span className={s.wordsPerPrice}>{words} palabras</span> */}
-                <span>1000</span>
+                <span>1.000</span>
                 <Range
                     min="0"
                     max="9"
                     value={rangeValue}
                     onChange={handleChange}
                     step="1"
+                    id="range"
                 />
-                <span>10000</span>
+                <span>10.000</span>
             </div>
-            <ArrowSVG className={s.stepLine}/>
+            <ArrowSVG className={s.paymentArrow}/>
             <div>
                 <span className={s.name}>{`${words} ${product.name}`}</span>
-                <p className={s.description}>{product.description}qqqqqqqqqqqqqq</p>
+                <p className={s.description}>{product.description}</p>
                 <p className={s.price}>{price}€</p>
                 <Button
                     type="button"

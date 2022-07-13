@@ -1,1 +1,73 @@
-/* No CSS */
+.root {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  width: 400px;
+  height: 60px;
+  padding: 20px;
+  background: #18181b;
+}
+
+.root:focus {
+  outline: none;
+}
+
+.root::-webkit-slider-thumb {
+  -webkit-appearance: none;
+}
+
+.root::-moz-range-thumb {
+  border: none;
+}
+
+.root::-webkit-slider-runnable-track {
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-align: center;
+          align-items: center;
+  height: 20px;
+  border-radius: 10px;
+  -webkit-box-shadow: inset -2px -2px 8px #103d14, inset 2px 2px 8px rgba(255, 255, 255, 0.5);
+          box-shadow: inset -2px -2px 8px #103d14, inset 2px 2px 8px rgba(255, 255, 255, 0.5);
+}
+
+.root::-webkit-slider-thumb {
+  position: relative;
+  top: -50%;
+  width: 40px;
+  height: 40px;
+  background-color: #0c550c;
+  background-image: linear-gradient(-45deg, rgba(255, 255, 255, 0.8), transparent);
+  border-radius: 50%;
+  -webkit-box-shadow: -1px -1px 2px white, 1px 1px 2px rgba(0, 0, 0, 0.3);
+          box-shadow: -1px -1px 2px white, 1px 1px 2px rgba(0, 0, 0, 0.3);
+  cursor: ew-resize;
+}
+
+.root::-moz-range-track {
+  display: flex;
+  align-items: center;
+  height: 20px;
+  border-radius: 10px;
+  box-shadow: inset -2px -2px 8px #103d14, inset 2px 2px 8px rgba(255, 255, 255, 0.5);
+}
+
+.root::-moz-range-thumb {
+  position: relative;
+  top: -50%;
+  width: 40px;
+  height: 40px;
+  background-color: #0c550c;
+  background-image: linear-gradient(-45deg, rgba(255, 255, 255, 0.8), transparent);
+  border-radius: 50%;
+  box-shadow: -1px -1px 2px white, 1px 1px 2px rgba(0, 0, 0, 0.3);
+  cursor: ew-resize;
+}
+
+.root::-moz-range-progress {
+  background-color: #43e5f7;
+}
+
+.root::-ms-fill-lower {
+  background-color: #43e5f7;
+}
