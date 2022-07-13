@@ -48,7 +48,14 @@
   letter-spacing: -2px;
 }
 
-.root .hero > div span {
+.root .hero > div .title span {
+  background-image: linear-gradient(160deg, #d0ffe3, #006600);
+  white-space: pre-wrap;
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+}
+
+.root .hero > div > span {
   max-width: 768px;
   font-size: var(--font-size-md);
   margin: 2rem 0;

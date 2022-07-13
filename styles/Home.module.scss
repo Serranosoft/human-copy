@@ -22,9 +22,15 @@
             .title {
                 font-size: var(--font-size-xxxl);
                 letter-spacing: -2px;
+                span {
+                    background-image: linear-gradient(160deg, rgb(208, 255, 227), rgb(0, 102, 0));
+                    white-space: pre-wrap;
+                    -webkit-text-fill-color: transparent;
+                    -webkit-background-clip: text;
+                }
             }
     
-            span {
+            & > span {
                 max-width: 768px;
                 font-size: var(--font-size-md);
                 margin: 2rem 0;
@@ -49,7 +55,6 @@
         }
         svg {
             width: 50%;
-            // border: 2px solid red;
             max-height: 30rem;
         }
     }
