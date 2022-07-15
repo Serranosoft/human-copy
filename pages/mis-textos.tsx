@@ -259,7 +259,7 @@ export default function Requests({ user }: { user: User }) {
                                 <div>
                                     <label>Cantidad de palabras en el artículo</label>
                                     <span>{range} palabras</span>
-                                    <Range
+                                    <input
                                         id="request-words"
                                         type="range"
                                         min="0"

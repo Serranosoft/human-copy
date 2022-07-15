@@ -8,6 +8,7 @@ import { User } from '@supabase/gotrue-js';
 import s from '../styles/css/login-register.module.css';
 import GoogleButton from '@/components/ui/Google/GoogleButton';
 import Link from 'next/link';
+import { updateUserName } from '@/utils/supabase-client';
 
 export interface UserData {
     email: string;
@@ -48,6 +49,7 @@ const Registro = () => {
             setMessage({ type: 'error', content: error.message });
         } else {
             if (createdUser) {
+                updateUserName(createdUser, name);
                 setNewUser(createdUser);
             } else {
                 setMessage({
