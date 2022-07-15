@@ -14,6 +14,7 @@ import { Data } from '@/utils/data';
 import LoadingBar from '@/components/ui/LoadingBar';
 import { clearErrors, setError } from '@/utils/helpers';
 import ErrorModalComponent from '@/components/ui/Error Modal/ErrorModalComponent';
+import Link from 'next/link';
 
 export interface Request {
     id: string;
@@ -182,18 +183,16 @@ export default function Requests({ user }: { user: User }) {
         if (allRequests !== null && allRequests.length < 1 && initialPlan !== undefined && initialPlan < 1) {
             // Si AllRequest no es nulo y allRequest.length < 1 entonces mostrar dummy data.
             let dummyData = Data.DummyRequests;
-            // console.log("EEEMMM");
             return (
                 <>
                     <div className={s.infobox}>
                         <p>No tienes contratado ningún plan.</p>
-                        <span>El contenido que estas viendo es ficticio. Para pedir artículos en HumanCopy debes contratar un plan.</span>
-                        <Button>Ver precios</Button>
+                        <span>El contenido que estas viendo es de prueba. Para pedir artículos y poder acceder a todas las funcionalidades <span>debes contratar un plan.</span></span>
+                        <Button><Link href="/#pricingPanel"><a>Ver precios</a></Link></Button>
                     </div>
                     <div className={s.dashboard}>
                         {
                             dummyData.map(request => {
-                                console.log("Padre re render...");
                                 return (
                                     <RequestCard
                                         key={request.id}

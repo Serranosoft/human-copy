@@ -25,13 +25,13 @@
             box-shadow: 0px 0px 6px #494949;
             margin: 2rem 0;
             align-self: flex-start;
-            padding: 1rem;
+            padding: 1.55rem 1.22rem;
             border-radius: 8px;
             background-color: #131313;
             display: flex;
             flex-direction: column;
             align-items: flex-start;
-            gap: 1.15rem;
+            gap: 1.35rem;
             max-width: 650px;
             width: 100%;
             p {
@@ -39,9 +39,16 @@
                 font-weight: bold;
             }
             span {
-                font-size: var(--font-size-sm);
+                font-size: calc(var(--font-size-sm) * 1.03);
                 width: 100%;
                 word-wrap: break-word;
+                span {
+                    background-image: linear-gradient(70deg, rgb(51, 255, 133), rgb(144, 248, 255));
+                    white-space: pre-wrap;
+                    -webkit-text-fill-color: transparent;
+                    -webkit-background-clip: text;
+                    font-weight: bold;
+                }
             }
             button {
                 width: auto;
