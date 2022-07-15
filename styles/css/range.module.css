@@ -65,7 +65,10 @@
 }
 
 .root::-moz-range-progress {
-  background-color: #43e5f7;
+  background-color: #0c550c;
+  height: 20px;
+  border-radius: 10px;
+  box-shadow: inset -2px -2px 8px #103d14, inset 2px 2px 8px rgba(255, 255, 255, 0.5);
 }
 
 .root::-ms-fill-lower {
