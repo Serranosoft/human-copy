@@ -163,6 +163,8 @@ export default function Requests({ user }: { user: User }) {
     // Función para cerrar el modal de las requests
     function closeModal() {
         setModal(false);
+        setPlan(initialPlan);
+        applyRange(0);
     }
 
     // Función para cerrar el modal de las requests
