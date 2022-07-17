@@ -9,6 +9,7 @@ import { UserProvider } from '@supabase/supabase-auth-helpers/react';
 import { supabaseClient } from '@supabase/supabase-auth-helpers/nextjs';
 import { AppProps } from 'next/app';
 import { MyUserContextProvider } from 'utils/useUser';
+import ScrollObserver from "../utils/scroll-observer"
 
 export default function MyApp({ Component, pageProps }: AppProps) {
     useEffect(() => {
@@ -18,9 +19,11 @@ export default function MyApp({ Component, pageProps }: AppProps) {
     return (
         <UserProvider supabaseClient={supabaseClient}>
             <MyUserContextProvider supabaseClient={supabaseClient}>
-                <Layout>
-                    <Component {...pageProps} />
-                </Layout>
+                <ScrollObserver>
+                    <Layout>
+                        <Component {...pageProps} />
+                    </Layout>
+                </ScrollObserver>
             </MyUserContextProvider>
         </UserProvider>
     );

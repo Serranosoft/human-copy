@@ -11,6 +11,8 @@ import LeftLine from '@/components/icons/LeftLine';
 import MiddleLine from '@/components/icons/MiddleLine';
 import ClipSVG from '@/components/icons/Clip';
 import HeroSVG from '@/components/icons/Hero';
+import { useContext, useRef } from 'react';
+import { ScrollContext } from '@/utils/scroll-observer';
 
 interface Props {
     products: Product[];
@@ -18,11 +20,22 @@ interface Props {
 
 export default function Home({ products }: Props) {
     const { user, isLoading } = useUser();
+
+    const refContainer = useRef<HTMLDivElement>(null);
+    const { scrollY } = useContext(ScrollContext);
+
+    let progress = 0;
+    const {current: elContainer} = refContainer;
+
+    if (elContainer) {
+        progress = Math.min(1, scrollY / elContainer.clientHeight);
+    }
+    
     return (
         <>
             <section className={s.root}>
 
-                <div className={s.hero}>
+                <div className={s.hero} ref={refContainer} style={{transform:`translateY(-${progress * 30}vh`}}>
                     <div>
                         <p className={s.title}>Lorem ipsum <span>dolor</span> sit amet.</p>
                         <span>Pirsch is a simple, cookie-free, and open-source web analytics solution that easily integrates into your website or backend.</span>
