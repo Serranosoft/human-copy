@@ -62,8 +62,10 @@ export default function Requests({ user }: { user: User }) {
 
     // Al obtener el usuario, se obtiene sus requests y su plan
     useEffect(() => {
-        getReq();
-        getPlan();
+        if (user) {
+            getReq();
+            getPlan();
+        }
     }, [user])
 
     // Obtenemos el plan del usuario

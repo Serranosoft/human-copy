@@ -1,0 +1,46 @@
+.description {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 1110px;
+    gap: 1.35rem;
+    font-size: var(--font-size-base);
+    margin: 7rem 0 8.5rem 0;
+    h2 {
+        font-size: var(--font-size-xxl);
+        font-weight: normal;
+        margin: 0;
+    }
+    & > p {
+        text-align: center;
+        font-size: var(--font-size-base);
+        span {
+            background-image: linear-gradient(70deg, rgb(208, 255, 227), rgb(92, 102, 0));
+            white-space: pre-wrap;
+            -webkit-text-fill-color: transparent;
+            -webkit-background-clip: text;
+        }
+    }
+    & > div {
+        width: 100%;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 5rem;
+        justify-content: space-around;
+        margin-top: 5rem;
+        div {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            p {
+                font-weight: bold;
+                text-align: center;
+                font-size: var(--font-size-md);
+            }
+            span {
+                text-align: center;
+                font-size: var(--font-size-sm);
+            }
+        }
+    }
+}

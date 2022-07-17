@@ -1,0 +1,68 @@
+.description {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  max-width: 1110px;
+  gap: 1.35rem;
+  font-size: var(--font-size-base);
+  margin: 7rem 0 8.5rem 0;
+}
+
+.description h2 {
+  font-size: var(--font-size-xxl);
+  font-weight: normal;
+  margin: 0;
+}
+
+.description > p {
+  text-align: center;
+  font-size: var(--font-size-base);
+}
+
+.description > p span {
+  background-image: linear-gradient(70deg, #d0ffe3, #5c6600);
+  white-space: pre-wrap;
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+}
+
+.description > div {
+  width: 100%;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (minmax(200px, 1fr))[auto-fit];
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 5rem;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  margin-top: 5rem;
+}
+
+.description > div div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 1rem;
+}
+
+.description > div div p {
+  font-weight: bold;
+  text-align: center;
+  font-size: var(--font-size-md);
+}
+
+.description > div div span {
+  text-align: center;
+  font-size: var(--font-size-sm);
+}
