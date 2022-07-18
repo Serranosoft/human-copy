@@ -100,13 +100,13 @@ export default function RequestCard({ request, user }: { request: Request, user:
                     {
                         request.download !== null && request.download !== "" &&
                         <>
-                            <div>
-                                <DownloadSVG>
-                                    <a href={request.download}>DESCARGAR</a>
-                                </DownloadSVG>
-                            </div>
-                            <div>
-                                <ReviewSVG onClick={openModal}></ReviewSVG >
+                            {/* <div> */}
+                                    <a href={request.download}>
+                                        <DownloadSVG />
+                                    </a>
+                            {/* </div> */}
+                            <div onClick={openModal}>
+                                <ReviewSVG></ReviewSVG >
                             </div>
                         </>
                     }

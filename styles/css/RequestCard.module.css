@@ -89,7 +89,7 @@
   gap: 1rem;
 }
 
-.root > div:last-child div {
+.root > div:last-child div, .root > div:last-child a {
   padding: 0.65rem 0.65rem 0.3rem 0.65rem;
   border-radius: 6px;
   background-color: #262626;
@@ -99,22 +99,22 @@
   border: 1px solid transparent;
 }
 
-.root > div:last-child div:last-child {
+.root > div:last-child div:last-child, .root > div:last-child a:last-child {
   padding-right: 0.5rem;
 }
 
-.root > div:last-child div:hover {
+.root > div:last-child div:hover, .root > div:last-child a:hover {
   -webkit-transform: scale(0.95);
           transform: scale(0.95);
   border: 1px solid green;
 }
 
-.root > div:last-child div svg {
+.root > div:last-child div svg, .root > div:last-child a svg {
   -webkit-transform: scale(1.1);
           transform: scale(1.1);
 }
 
-.root > div:last-child div svg:disabled path {
+.root > div:last-child div svg:disabled path, .root > div:last-child a svg:disabled path {
   fill: red !important;
 }
 

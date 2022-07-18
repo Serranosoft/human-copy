@@ -6,8 +6,6 @@ import s from '../styles/css/Mis-textos.module.css';
 import ModalComponent from '@/components/ui/Modal/ModalComponent';
 import Input from '@/components/ui/Input';
 import Button from '@/components/ui/Button';
-import LoadingDots from '@/components/ui/LoadingDots';
-import Range from '@/components/ui/Range';
 import RequestCard from '@/components/RequestCard';
 import Select from '@/components/ui/Select';
 import { Data } from '@/utils/data';

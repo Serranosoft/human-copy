@@ -54,7 +54,7 @@
         justify-content: flex-end;
         align-items: center;
         gap: 1rem;
-        div {
+        div, a {
             padding: 0.65rem 0.65rem 0.3rem 0.65rem;
             &:last-child {
                 padding-right: 0.5rem;
