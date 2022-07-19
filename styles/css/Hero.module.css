@@ -75,3 +75,12 @@
   width: 50%;
   max-height: 30rem;
 }
+
+@media (max-width: 768px) {
+  .hero > div {
+    width: 100%;
+  }
+  .hero svg {
+    display: none;
+  }
+}

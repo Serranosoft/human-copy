@@ -100,7 +100,6 @@
             text-align: center;
             padding-bottom: 0.35rem;
             font-size: var(--font-size-md);
-            ;
         }
     }
 }
@@ -124,4 +123,17 @@
       filter: blur(0);
       opacity: 1;
     }
+}
+
+@media (max-width: 768px) {
+    .bigImg {
+        h2 {
+            margin-bottom: 5rem;
+        }
+        & > div {
+            padding: 0.5rem;
+            display: flex;
+            flex-direction: column;
+        }
+    } 
 }

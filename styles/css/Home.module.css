@@ -13,29 +13,9 @@
   padding: 0 2rem;
 }
 
-@media (max-width: 992px) {
-  .root .hero {
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
-    position: relative;
-  }
-  .root .hero > div {
-    width: 100%;
-  }
-  .root .hero > div > div {
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
-  }
-  .root .hero svg {
-    width: 65%;
-    position: absolute;
-    bottom: 0;
-    right: -30%;
-    opacity: 0.15;
+@media (max-width: 768px) {
+  .root {
+    padding: 0 0.5rem;
   }
 }
 

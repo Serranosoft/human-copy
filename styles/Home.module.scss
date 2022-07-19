@@ -7,26 +7,9 @@
 
 }
 
-@media (max-width: 992px) {
+@media (max-width: 768px) {
     .root {
-        .hero {
-            flex-direction: column;
-            position: relative;
-            & > div {
-                width: 100%;
-                & > div {
-                    flex-direction: column;
-                    
-                }
-            }
-            svg {
-                width: 65%;
-                position: absolute;
-                bottom: 0;
-                right: -30%;
-                opacity: 0.15;
-            }
-        }
+        padding: 0 0.5rem;
     }
 }
 

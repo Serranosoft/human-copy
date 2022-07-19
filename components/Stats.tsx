@@ -6,7 +6,7 @@ export default function Stats() {
 
     return (
         <div className={s.bigImg}>
-            <h2><span className="highlight-long">Estadísticas</span> de nuestros trabajos</h2>
+            <h2><span>Estadísticas</span> de nuestros trabajos</h2>
             <div className="on-scroll">
                 <ClipSVG />
                 <div>

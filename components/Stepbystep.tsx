@@ -7,7 +7,7 @@ export default function Stepbystep() {
 
     return (
         <div className={s.stepByStep}>
-            <h1>¿Cómo funciona <span className="highlight-long">HumanCopy?</span></h1>
+            <h1>¿Cómo funciona <span>HumanCopy?</span></h1>
             <div>
                 <div>
                     <img src="/step1-home.jpg" alt="Vercel.com Logo" />

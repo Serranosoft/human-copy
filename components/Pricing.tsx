@@ -45,6 +45,7 @@ export default function Pricing({ products }: Props) {
     return (
         <section id="pricingPanel" className={s.root}>
             <h2>Escoge un <span className="highlight-short">plan</span></h2>
+            <p>Adquiere el plan ilimitado o una cantidad de palabras y solicita artículos. <span>Mínimo 500 palabras por artículo</span></p>
             <div className={s.planLayout}>
 
                 <PaymentPlanCard 

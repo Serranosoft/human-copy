@@ -32,7 +32,7 @@ export default function Layout({ children, meta: pageMeta }: Props) {
             
             windowHeight = window.innerHeight;
             elementTop = onScrollEls[i].getBoundingClientRect().top;
-            elementVisible = 100;
+            elementVisible = 20;
             if (elementTop < windowHeight - elementVisible) {
                 console.log("Añadir active");
                 onScrollEls[i].classList.add("active");
