@@ -27,12 +27,6 @@
   margin-bottom: 1rem;
 }
 
-.root .header .date {
-  font-size: var(--font-size-sm);
-  font-weight: bold;
-  color: white;
-}
-
 .root .header div {
   display: -webkit-box;
   display: -ms-flexbox;

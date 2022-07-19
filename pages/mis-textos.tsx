@@ -75,7 +75,7 @@ export default function Requests({ user }: { user: User }) {
             setErrorMsg("Ha ocurrido un error al obtener tus datos. Actualiza la página o ponte en contacto con nosotros.")
         }
     }
-    
+
     // Obtenemos las requests del usuario
     async function getReq() {
         const { data, error }: { data: any; error: any } = await supabase.from('requests').select('id, title, topic, description, finished, words, priority, download').eq("user_id", user.id);
@@ -290,7 +290,49 @@ export default function Requests({ user }: { user: User }) {
                             </div>
                         </ModalComponent>
                         <p>Cantidad de palabras restantes: <span>{initialPlan === -1 ? "Ilimitado" : plan}</span></p>
-                        <Button onClick={()=> setModal(true)}>Envíar un artículo</Button>
+                        <Button onClick={() => setModal(true)}>Envíar un artículo</Button>
+                        <div className={s.delivery}>
+                            <h1>Tiempos de entrega.</h1>
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Palabras</th>
+                                        <th>Tiempo</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>1000</td>
+                                        <td>1 día</td>
+                                    </tr>
+                                    <tr>
+                                        <td>2000</td>
+                                        <td>1 día</td>
+                                    </tr>
+                                    <tr>
+                                        <td>3000</td>
+                                        <td>2 días</td>
+                                    </tr>
+                                    <tr>
+                                        <td>4000</td>
+                                        <td>2 - 3 días</td>
+                                    </tr>
+                                    <tr>
+                                        <td>5000</td>
+                                        <td>3 días</td>
+                                    </tr>
+                                    <tr>
+                                        <td>6000</td>
+                                        <td>4-5 días</td>
+                                    </tr>
+                                    <tr>
+                                        <td>+6000</td>
+                                        <td>+6 días</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <p>El tiempo de entrega de cada artículo puede variar ya que <span>esta sujeto a la cantidad de artículos que solicite.</span></p>
+                        </div>
                         {
                             renderRequests()
                         }
