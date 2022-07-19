@@ -23,7 +23,6 @@ export interface Request {
     download: string | undefined;
     words: string | undefined;
     priority: boolean;
-    deliver_date: string | undefined;
 }
 
 export default function Requests({ user }: { user: User }) {
@@ -37,8 +36,7 @@ export default function Requests({ user }: { user: User }) {
         description: "",
         download: "/",
         words: "0",
-        priority: false,
-        deliver_date: ""
+        priority: false
     }
 
     // Objeto request para cargar una request a la bd
@@ -80,7 +78,7 @@ export default function Requests({ user }: { user: User }) {
     
     // Obtenemos las requests del usuario
     async function getReq() {
-        const { data, error }: { data: any; error: any } = await supabase.from('requests').select('id, title, topic, description, finished, words, priority, deliver_date, download').eq("user_id", user.id);
+        const { data, error }: { data: any; error: any } = await supabase.from('requests').select('id, title, topic, description, finished, words, priority, download').eq("user_id", user.id);
         if (!error) {
             setAllRequests(data);
         } else {
@@ -102,14 +100,6 @@ export default function Requests({ user }: { user: User }) {
             // Limpiar errores
             clearErrors();
 
-            let date = new Date();
-            let days = Data.getDeliveryTime(request.words!);
-            if (days != -1) {
-                date.setDate(new Date().getDate() + days);
-            }
-
-            let deliver_date = `${date.getDate().toString().padStart(2, "0")}/${(date.getMonth() + 1).toString().padStart(2, "0")}/${date.getFullYear().toString().padStart(2, "0")}`
-
             const { data, error } = await supabase.from('requests').insert([{
                 id: Date.now(),
                 user_id: user.id,
@@ -118,8 +108,7 @@ export default function Requests({ user }: { user: User }) {
                 description: request.description,
                 finished: false,
                 words: request.words,
-                priority: request.priority,
-                deliver_date: days !== -1 ? deliver_date : "más de 6 días"
+                priority: request.priority
             }]);
 
             await supabase.from("users").update([{
@@ -249,7 +238,7 @@ export default function Requests({ user }: { user: User }) {
                             open={open}
                             closeModal={closeModal}
                         >
-                            <form onSubmit={submitReq}>
+                            <form>
                                 <div>
                                     <span>Palabras disponibles: {initialPlan === -1 ? "Ilimitado" : plan}</span>
                                 </div>

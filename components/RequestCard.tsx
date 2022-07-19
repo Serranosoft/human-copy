@@ -17,8 +17,7 @@ export interface Request {
     description: string | undefined;
     download: string | undefined;
     words: string | undefined;
-    priority: boolean;
-    deliver_date: string | undefined;
+    priority: boolean
 }
 
 export default function RequestCard({ request, user }: { request: Request, user: any }) {
@@ -85,7 +84,6 @@ export default function RequestCard({ request, user }: { request: Request, user:
                             request.download !== null && request.download !== "" ? <span>✔️</span> : <LoadingBar big={false} />
                         }
                     </div>
-                    <p className={s.date}>{`Entrega est. ${request.deliver_date}`}</p>
                 </div>
                 <div className={s.info}>
                     <p className={s.title}>{request.title}</p>
@@ -100,20 +98,14 @@ export default function RequestCard({ request, user }: { request: Request, user:
                     {
                         request.download !== null && request.download !== "" &&
                         <>
-                            {/* <div> */}
-                                    <a href={request.download}>
-                                        <DownloadSVG />
-                                    </a>
-                            {/* </div> */}
+                            <a href={request.download}>
+                                <DownloadSVG />
+                            </a>
                             <div onClick={openModal}>
                                 <ReviewSVG></ReviewSVG >
                             </div>
                         </>
                     }
-                    {/* <Button disabled={request.download === null || request.download === ""}>
-                        <a href={request.download === null || request.download === "" ? "javascript:void(0)" : request.download}>DESCARGAR</a>
-                    </Button> */}
-                    {/* <Button disabled={request.download === null || request.download === ""} onClick={openModal}>CORREGIR</Button> */}
                 </div>
             </div>
             {userEmail.current !== "" &&
