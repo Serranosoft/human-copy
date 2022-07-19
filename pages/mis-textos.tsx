@@ -68,15 +68,25 @@ export default function Requests({ user }: { user: User }) {
 
     // Obtenemos el plan del usuario
     async function getPlan() {
-        const { data, error } = await supabase.from('users').select('plan').eq("id", user.id)
-        setPlan(data![0].plan);
-        setInitialPlan(data![0].plan);
+        const { data, error } = await supabase.from('users').select('plan').eq("id", user.id).single();
+        if (!error) {
+            setPlan(data.plan);
+            setInitialPlan(data.plan);
+        } else {
+            setErrorModal(true);
+            setErrorMsg("Ha ocurrido un error al obtener tus datos. Actualiza la página o ponte en contacto con nosotros.")
+        }
     }
-
+    
     // Obtenemos las requests del usuario
     async function getReq() {
         const { data, error }: { data: any; error: any } = await supabase.from('requests').select('id, title, topic, description, finished, words, priority, deliver_date, download').eq("user_id", user.id);
-        setAllRequests(data);
+        if (!error) {
+            setAllRequests(data);
+        } else {
+            setErrorModal(true);
+            setErrorMsg("Ha ocurrido un error al obtener tus datos. Actualiza la página o ponte en contacto con nosotros.")
+        }
     }
 
     // Enviamos una request a la base de datos
@@ -114,12 +124,12 @@ export default function Requests({ user }: { user: User }) {
 
             await supabase.from("users").update([{
                 plan: plan
-            }]).match({ id: user.id }).then(({ data, error }) => {
+            }]).match({ id: user.id }).single().then(({ data, error }) => {
                 if (!data || error) {
                     setErrorModal(true);
                     setErrorMsg("Ha ocurrido un error al actualizar tu plan. Ponte en contacto con nosotros.")
                 } else {
-                    setInitialPlan(data![0].plan)
+                    setInitialPlan(data.plan)
                 }
             });
 
@@ -153,21 +163,11 @@ export default function Requests({ user }: { user: User }) {
         });
     }
 
-    // Función para abrir el modal de las requests
-    function openModal() {
-        setModal(true);
-    }
-
     // Función para cerrar el modal de las requests
     function closeModal() {
         setModal(false);
         setPlan(initialPlan);
         applyRange(0);
-    }
-
-    // Función para cerrar el modal de las requests
-    function closeErrorModal() {
-        setErrorModal(false);
     }
 
     // Función para manipular la cantidad de palabras que el usuario ha elegido para un artículo, a su vez, actualiza el plan restante.z
@@ -301,7 +301,7 @@ export default function Requests({ user }: { user: User }) {
                             </div>
                         </ModalComponent>
                         <p>Cantidad de palabras restantes: <span>{initialPlan === -1 ? "Ilimitado" : plan}</span></p>
-                        <Button onClick={openModal}>Envíar un artículo</Button>
+                        <Button onClick={()=> setModal(true)}>Envíar un artículo</Button>
                         {
                             renderRequests()
                         }
@@ -312,7 +312,7 @@ export default function Requests({ user }: { user: User }) {
             </div>
             <ErrorModalComponent
                 open={openError}
-                closeErrorModal={closeErrorModal}
+                closeErrorModal={() => setErrorModal(false)}
                 msg={errorMsg}>
             </ErrorModalComponent>
         </section>
