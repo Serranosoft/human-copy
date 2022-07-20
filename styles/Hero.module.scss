@@ -54,8 +54,26 @@
     svg {
         width: 50%;
         max-height: 30rem;
+        animation: mymove 4s infinite;
+
     }
 }
+
+@keyframes mymove {
+    0% {
+        transform: translateY(0px);
+    }
+    33% {
+        transform: translateY(5px) translateX(2px);
+    }
+    66% {
+        transform: translateY(-6.5px) translateX(-3.5px);
+    }
+    99% {
+        transform: translateY(0px) translateX(-2px);
+    }
+
+  }
 
 @media (max-width: 768px) {
     .hero {
