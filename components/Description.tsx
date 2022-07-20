@@ -6,7 +6,7 @@ import HenWithNoBoard from './icons/HenWithNoBoard';
 export default function Description() {
     return (
         <div className={s.description}>
-            <h2>5 minutos y ahorra horas de trabajo</h2>
+            <h2>5 minutos y ahorra<span className="on-scroll"> horas de trabajo</span></h2>
             <p><i>HumanCopy</i> se basa en un sistema programado que <span>facilita todo el trabajo de búsqueda de redactores, petición de artículos y correcciones</span> ofreciendo un panel con todas las funcionalidades necesarias.</p>
             <p>Regístrate, contrata un plan y comienza a pedir artículos. Nosotros nos encargamos de la búsqueda de talento, redacción, corrección y posterior publicación en tu panel personal</p>
             <div>
