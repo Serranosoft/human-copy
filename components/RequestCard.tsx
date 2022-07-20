@@ -64,9 +64,11 @@ export default function RequestCard({ request, user }: { request: Request, user:
                 .then((result: any) => {
                     setModal(false);
                     setLoading(false);
+                    console.log(result);
                 }, (error: any) => {
                     setErrorModal(true);
                     setErrorMsg("Ha ocurrido un error al envíar la corrección. Ponte en contacto con nosotros");
+                    console.log(error);
                 });
         }
     };
@@ -116,7 +118,7 @@ export default function RequestCard({ request, user }: { request: Request, user:
                     {/* @ts-ignore */}
                     <form ref={form}>
                         <div>
-                            <p>{request.title}</p>
+                            <p>Artículo: {request.title}</p>
                         </div>
                         <div className="hide">
                             <label>Identificador del usuario</label>

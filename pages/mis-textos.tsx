@@ -111,18 +111,18 @@ export default function Requests({ user }: { user: User }) {
                 priority: request.priority
             }]);
 
-            await supabase.from("users").update([{
-                plan: plan
-            }]).match({ id: user.id }).single().then(({ data, error }) => {
-                if (!data || error) {
-                    setErrorModal(true);
-                    setErrorMsg("Ha ocurrido un error al actualizar tu plan. Ponte en contacto con nosotros.")
-                } else {
-                    setInitialPlan(data.plan)
-                }
-            });
-
+            
             if (!error) {
+                await supabase.from("users").update([{
+                    plan: plan
+                }]).match({ id: user.id }).single().then(({ data, error }) => {
+                    if (!data || error) {
+                        setErrorModal(true);
+                        setErrorMsg("Ha ocurrido un error al actualizar tu plan. Ponte en contacto con nosotros.")
+                    } else {
+                        setInitialPlan(data.plan)
+                    }
+                });
                 setModal(false)
                 getReq();
                 getPlan();

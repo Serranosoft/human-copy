@@ -1,23 +1,29 @@
 import s from '../styles/css/Description.module.css';
-
+import HenConfused from './icons/HenConfused';
+import HenWithLove from './icons/HenWithLove';
+import HenWithNoBoard from './icons/HenWithNoBoard';
 
 export default function Description() {
     return (
         <div className={s.description}>
-            <h2>Lorem Ipsum <span>dolor sit amet</span></h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. <span>Donec neque enim</span>, elementum eu varius sed, vestibulum non tellus. Aenean massa nunc, fermentum ac enim vitae, porttitor interdum lectus. Integer et tortor laoreet, varius lacus nec, feugiat quam</p>
+            <h2>5 minutos y ahorra horas de trabajo</h2>
+            <p><i>HumanCopy</i> se basa en un sistema programado que <span>facilita todo el trabajo de búsqueda de redactores, petición de artículos y correcciones</span> ofreciendo un panel con todas las funcionalidades necesarias.</p>
+            <p>Regístrate, contrata un plan y comienza a pedir artículos. Nosotros nos encargamos de la búsqueda de talento, redacción, corrección y posterior publicación en tu panel personal</p>
             <div>
                 <div>
-                    <p>Lorem ipsum dolor sit amet.</p>
-                    <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse suscipit elementum urna, sit amet efficitur neque.</span>
+                    <HenConfused />
+                    <p>Evita comunicaciones innecesarias.</p>
+                    <span>No pierdas el tiempo poniendote en contacto con redactores. Manda una solicitud desde tu panel y recibe tus artículos en el tiempo establecido.</span>
                 </div>
                 <div>
-                    <p>Lorem ipsum dolor sit amet.</p>
-                    <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse suscipit elementum urna, sit amet efficitur neque.</span>
+                    <HenWithLove />
+                    <p>Redacción a mano de la temática que desees</p>
+                    <span>Todas las redacciones entregadas por <i>HumanCopy</i> son originales y corregidas por nosotros antes de enviarlo a tu cuenta.</span>
                 </div>
                 <div>
-                    <p>Lorem ipsum dolor sit amet.</p>
-                    <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse suscipit elementum urna, sit amet efficitur neque.</span>
+                    <HenWithNoBoard />
+                    <p>Pide todas las correcciones que quieras</p>
+                    <span>Cada proyecto tiene sus necesidades, nosotros lo entendemos y no aplicamos ningún cobro adicional por cada corrección.</span>
                 </div>
             </div>
         </div>

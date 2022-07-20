@@ -40,10 +40,17 @@
   -webkit-background-clip: text;
 }
 
-.hero > div > span {
+.hero > div > p:not(.title) {
   max-width: 768px;
   font-size: var(--font-size-md);
   margin: 2rem 0;
+}
+
+.hero > div > p:not(.title) span {
+  background-image: linear-gradient(160deg, #d0ffe3, #006600);
+  white-space: pre-wrap;
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
 }
 
 .hero > div > div {

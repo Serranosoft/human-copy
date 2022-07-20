@@ -10,16 +10,20 @@
         font-size: var(--font-size-xxl);
         font-weight: normal;
         margin: 0;
+        text-align: center;
     }
     & > p {
         text-align: center;
         font-size: var(--font-size-base);
         span {
-            background-image: linear-gradient(70deg, rgb(208, 255, 227), rgb(92, 102, 0));
+            background-image: linear-gradient(70deg, rgb(208, 255, 227), rgb(39, 197, 0));
             white-space: pre-wrap;
             -webkit-text-fill-color: transparent;
             -webkit-background-clip: text;
         }
+    }
+    svg {
+        height: 5.5rem;
     }
     & > div {
         width: 100%;

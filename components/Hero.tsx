@@ -22,8 +22,8 @@ export default function Hero() {
     return (
         <div className={s.hero} ref={refContainer} style={{ transform: `translateY(-${progress * 20}vh` }}>
             <div>
-                <p className={s.title}>Lorem ipsum <span>dolor</span> sit amet.</p>
-                <span>Pirsch is a simple, cookie-free, and open-source web analytics solution that easily integrates into your website or backend.</span>
+                <p className={s.title}>Somos tu mayor competencia.</p>
+                <p>Se inteligente. No luches y únete a nosotros. Consigue el mejor contenido para <span>vender y posicionar en Google.</span></p>
                 <div>
                     <Button><a href="#pricingPanel">Ver planes</a></Button>
                     {!user && !isLoading && <Button><Link href="/iniciar-sesion"><a>Prueba una demo gratuita</a></Link></Button>}
