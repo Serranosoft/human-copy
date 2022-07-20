@@ -10,7 +10,7 @@ export default function Stepbystep() {
             <h1>¿Cómo funciona <span>HumanCopy?</span></h1>
             <div>
                 <div>
-                    <img src="/step1-home.jpg" alt="Vercel.com Logo" />
+                    <img className="on-scroll" src="/step1-home.jpg" alt="Vercel.com Logo" />
                     <div>
                         <p>Escoge un plan</p>
                         <span>
@@ -26,11 +26,11 @@ export default function Stepbystep() {
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi purus quam, semper id nulla nec, interdum interdum nulla. Sed efficitur orci in sem maximus vehicula. Vestibulum euismod ante velit.
                         </span>
                     </div>
-                    <img src="/step24-home.jpg" alt="Vercel.com Logo" />
+                    <img className="on-scroll" src="/step24-home.jpg" alt="Vercel.com Logo" />
                 </div>
                 <LeftLine className={s.stepLine} />
                 <div>
-                    <img src="/step3-home.jpg" alt="Vercel.com Logo" />
+                    <img className="on-scroll" src="/step3-home.jpg" alt="Vercel.com Logo" />
                     <div>
                         <p>Supervisa y descarga tus pedidos</p>
                         <span>
