@@ -289,8 +289,13 @@ export default function Requests({ user }: { user: User }) {
                                 <Button type="submit" onClick={submitReq}>Enviar artículo</Button>
                             </div>
                         </ModalComponent>
-                        <p>Cantidad de palabras restantes: <span>{initialPlan === -1 ? "Ilimitado" : plan}</span></p>
-                        <Button onClick={() => setModal(true)}>Envíar un artículo</Button>
+                        <div>
+                            <p>Cantidad de palabras restantes: <span>{initialPlan === -1 ? "Ilimitado" : plan}</span></p>
+                            <Button onClick={() => setModal(true)}>Envíar un artículo</Button>
+                        </div>
+                        {
+                            renderRequests()
+                        }
                         <div className={s.delivery}>
                             <h1>Tiempos de entrega.</h1>
                             <table>
@@ -333,9 +338,6 @@ export default function Requests({ user }: { user: User }) {
                             </table>
                             <p>El tiempo de entrega de cada artículo puede variar ya que <span>esta sujeto a la cantidad de artículos que solicite.</span></p>
                         </div>
-                        {
-                            renderRequests()
-                        }
                     </>
                     :
                     <LoadingBar />
