@@ -26,7 +26,7 @@ export default function Hero() {
                 <p>Se inteligente. No luches y únete a nosotros. Consigue el mejor contenido para <span>vender y posicionar en Google.</span></p>
                 <div>
                     <Button><a href="#pricingPanel">Ver planes</a></Button>
-                    {!user && !isLoading && <Button><Link href="/iniciar-sesion"><a>Prueba una demo gratuita</a></Link></Button>}
+                    {!user && !isLoading && <Button><Link href="/registro"><a>Acceder al panel es gratis</a></Link></Button>}
                 </div>
             </div>
             <HeroSVG />
