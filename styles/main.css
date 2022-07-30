@@ -38,6 +38,7 @@ p {
 
 .ReactModal__Overlay {
     background-color: rgb(0, 0, 0, 0.6) !important;
+    z-index: 1000;
 }
 
 textarea {

@@ -1,34 +1,16 @@
 import React, { forwardRef, SelectHTMLAttributes } from 'react';
 import s from '../../../styles/css/Select.module.css';
 
-interface Props extends SelectHTMLAttributes<HTMLSelectElement> {
-    active?: boolean;
-    width?: number;
-    Component?: React.ComponentType;
-}
-
-const Select = forwardRef<HTMLButtonElement, Props>((props, buttonRef) => {
-    const {
-        className,
-        active,
-        disabled = false,
-        style = {},
-        Component = "select",
-        ...rest
-    } = props;
-
+const Select = React.forwardRef((props: any, ref: any) => {
     return (
-        <Component
-            aria-pressed={active}
+        <select
+            ref={ref}
             className={s.root}
-            disabled={disabled}
-            style={{
-                ...style
-            }}
-            {...rest}
+            disabled={props.disabled}
+            onChange={props.onChange}
         >
-        </Component>
-    );
-});
+        </select>
+    )
+})
 
 export default Select;

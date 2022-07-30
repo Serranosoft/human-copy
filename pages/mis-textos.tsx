@@ -265,7 +265,8 @@ export default function Requests({ user }: { user: User }) {
                                 <div>
                                     <label>Tema / Keyword principal del artículo</label>
                                     <Input name="topic" onChange={handleChange}></Input>
-                                    <span id="request-topic-error" className="hide error">Debes especificar una temática</span>
+                                    <span></span>
+                                    <span id="request-topic-error" className="hide error">Debes especificar una temática</span>                                
                                 </div>
                                 <div>
                                     <label>Descripción del artículo</label>

@@ -2,7 +2,7 @@
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 500px;
+  width: 720px;
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
   background-color: black;
@@ -12,30 +12,34 @@
   display: -ms-grid;
   display: grid;
   border: 1px solid white;
-  z-index: 1;
+  z-index: 1001;
 }
 
 .root > span {
-  font-size: var(--font-size-base);
+  font-size: var(--font-size-md);
   justify-self: flex-end;
   margin-bottom: 1rem;
   cursor: pointer;
+  padding: 0.5rem;
 }
 
 .root form {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  gap: 1.85rem;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 1fr;
+      grid-template-columns: 1fr 1fr;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  gap: 3rem 1.5rem;
 }
 
 .root form > div {
   display: -ms-grid;
   display: grid;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .root form > div label {
@@ -50,8 +54,46 @@
 
 .root form > div > span {
   color: #afafaf;
-  font-size: var(--font-size-sm);
+  font-size: calc(var(--font-size-sm) / 1.1);
   justify-self: flex-end;
+  margin-top: 0.2rem;
+}
+
+.root form > div:nth-child(3) {
+  -webkit-box-ordinal-group: 0;
+      -ms-flex-order: -1;
+          order: -1;
+}
+
+.root form > div:nth-child(2) {
+  grid-column: 1 / -1;
+}
+
+.root form > div:nth-child(5) {
+  -webkit-box-ordinal-group: 6;
+      -ms-flex-order: 5;
+          order: 5;
+  grid-column: 1 / -1;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.root form > div:nth-child(5) textarea {
+  width: 87%;
+}
+
+.root form > div:nth-child(6) {
+  -webkit-box-ordinal-group: 5;
+      -ms-flex-order: 4;
+          order: 4;
 }
 
 .root > div {

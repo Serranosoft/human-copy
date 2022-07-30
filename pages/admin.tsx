@@ -1,32 +1,49 @@
+import LoadingBar from '@/components/ui/LoadingBar';
 import Select from '@/components/ui/Select';
 import { removeChildElements } from '@/utils/helpers';
 import { supabase } from '@/utils/supabase-client';
+import { useUser } from '@/utils/useUser';
 import { Button } from '@supabase/ui';
-import { useEffect, useState } from 'react';
+import Router from 'next/router';
+import { useEffect, useRef, useState } from 'react';
 import s from '../styles/css/Admin.module.css';
 
 export default function Account({ users }: any) {
-    const [userId, setUserId] = useState<any[]>([]);
+    const [userId, setUserId] = useState("");
     const [selectedRequest, setSelectedRequest] = useState<string>("");
     const [requests, setRequests] = useState<any>(null);
+    const { userDetails } = useUser();
+    const [initialData, setInitialData] = useState(false);
+    
+    const uploadFileUuids = useRef<HTMLSelectElement | null>(null);
+    const uploadFileReqIds = useRef<HTMLSelectElement | null>(null);
 
-    // Carga los usuarios cuando recibe el objeto users
+    // Si el usuario no es administrador, echarlo a la home.
     useEffect(() => {
-        let select = document.getElementById("upload-file-uuids")! as HTMLSelectElement;
-        let option = document.createElement("option");
-        option.textContent = `Elige un usuario`;
-        select.appendChild(option);
-        users.forEach((el: { full_name: any; id: string; }) => {
-            let option = document.createElement("option");
-            option.textContent = `${el.full_name} con el ID: ${el.id}`;
-            option.value = el.id;
-            select.appendChild(option);
-        })
-    }, [users])
+        if (userDetails) {
+            if (userDetails.id !== "9eb85418-49fa-4646-835f-1dfdd349f98c") {
+                Router.push("/");
+            }
+        }
+    }, [userDetails])
+
+    // Chequear si toda la data está ready.
+    useEffect(() => {
+        if (users && uploadFileUuids.current && uploadFileReqIds.current) {
+            setInitialData(true);
+        }
+    })
+
+    // Carga usuarios y requests cuando toda la data está ready.
+    useEffect(() => {
+        if (initialData) {
+            fillUsers();
+        }
+    }, [initialData])
 
     // Si ha escogido un usuario, se cargan los requests
     useEffect(() => {
-        if (userId) {
+        if (userId !== "") {
             getRequests();
         }
     }, [userId])
@@ -34,29 +51,47 @@ export default function Account({ users }: any) {
     // Obtiene las requests y las agrega al state
     async function getRequests() {
         await supabase.from('requests').select().eq("user_id", userId).eq("finished", false).then((requests) => {
-            setRequests(requests.body)
+            setRequests(requests.body);
         });
     }
 
-    // Cuando los requests se han cargado y son mas de 0, se muestran en el selector
+    // Carga los usuarios en el selector
+    function fillUsers() {
+        let select = uploadFileUuids.current;
+        let option = document.createElement("option");
+        option.textContent = `Elige un usuario`;
+        select!.appendChild(option);
+        users.forEach((el: { full_name: any; id: string; }) => {
+            let option = document.createElement("option");
+            option.textContent = `${el.full_name} con el ID: ${el.id}`;
+            option.value = el.id;
+            select!.appendChild(option);
+        })
+    }
+
     useEffect(() => {
         if (requests && requests.length > 0) {
-            let select = document.getElementById("upload-file-req-ids")! as HTMLSelectElement;
-            let option = document.createElement("option");
-            option.textContent = `Elige una petición`;
-            select.appendChild(option);
-            requests.forEach((el: { title: any; id: string; user_id: string }) => {
-                let option = document.createElement("option");
-                option.textContent = `Petición: ${el.title} para el usuario: ${el.user_id}`;
-                option.value = el.id;
-                select.appendChild(option);
-            })
+            fillRequests();
         }
     }, [requests])
 
+    // Carga las requests del usuario que ha escogido
+    function fillRequests() {
+        let select = uploadFileReqIds.current;
+        let option = document.createElement("option");
+        option.textContent = `Elige una petición`;
+        select!.appendChild(option);
+        requests.forEach((el: { title: any; id: string; user_id: string }) => {
+            let option = document.createElement("option");
+            option.textContent = `Petición: ${el.title} para el usuario: ${el.user_id}`;
+            option.value = el.id;
+            select!.appendChild(option);
+        })
+    }
+
     // Agrega el usuario escogido al state y limpia el selector de requests
     function setSelectedUser(e: any) {
-        removeChildElements(document.getElementById("upload-file-req-ids")!);
+        removeChildElements(uploadFileReqIds.current!);
         setUserId(e.target.value);
     }
 
@@ -88,27 +123,33 @@ export default function Account({ users }: any) {
         }
     }
 
-    // IDEA: CARGAR LAS OPCIONES COMO UN STATE, AL ACTUALIZARLO LAS OPCIONES SE CARGAN DE NUEVO (?)
     return (
-        <section className={s.root}>
-            <form onSubmit={onSubmit}>
-                <Select 
-                    onChange={setSelectedUser} 
-                    id="upload-file-uuids"
-                    disabled={userId ? false : true}
-                >
-                </Select>
-                <Select 
-                    onChange={setSelectedReq} 
-                    id="upload-file-req-ids"
-                    disabled={requests === null || requests.length < 1 ? true : false}
-                >
-                </Select>
-                
-                <input id="pdf-file" type="file" />
-                <Button>Enviar</Button>
-            </form>
-        </section>
+        <>
+            {userDetails === null || userDetails.id !== "9eb85418-49fa-4646-835f-1dfdd349f98c" && !initialData ?
+            <LoadingBar />
+            :
+            <section className={s.root}>
+                <form onSubmit={onSubmit}>
+                    <Select
+                        ref={uploadFileUuids}
+                        onChange={setSelectedUser} 
+                        id="upload-file-uuids"
+                    >
+                    </Select>
+                    <Select
+                        ref={uploadFileReqIds}
+                        onChange={setSelectedReq} 
+                        id="upload-file-req-ids"
+                        disabled={requests === null || requests.length < 1 ? true : false}
+                    >
+                    </Select>
+                    
+                    <input id="pdf-file" type="file" />
+                    <Button>Enviar</Button>
+                </form>
+            </section>
+        }
+        </>
     )
 
 }
