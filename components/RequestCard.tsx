@@ -100,7 +100,7 @@ export default function RequestCard({ request, user }: { request: Request, user:
                     {
                         request.download !== null && request.download !== "" &&
                         <>
-                            <a href={request.download}>
+                            <a href={request.download} title={`Descargar ${request.title}.pdf`} target="_blank" download={`${request.title}`}>
                                 <DownloadSVG />
                             </a>
                             <div onClick={openModal}>
