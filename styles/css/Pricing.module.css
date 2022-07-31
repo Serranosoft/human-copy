@@ -10,13 +10,13 @@
       -ms-flex-align: center;
           align-items: center;
   width: 100%;
-  margin: 5rem 0;
 }
 
 .root h2 {
   font-size: var(--font-size-xxl);
   font-weight: normal;
   margin-bottom: 1.5rem;
+  margin: 8rem 0 5.5rem 0;
 }
 
 .root > p {

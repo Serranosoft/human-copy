@@ -27,9 +27,14 @@ const Navbar = () => {
                             <a>Mis textos</a>
                         </Link>)}
                         {!user && (
-                            <Link href="/#pricingPanel">
-                                <a>Precios</a>
-                            </Link>
+                            <>
+                                <Link href="/#stepbystep">
+                                    <a>¿Cómo funciona?</a>
+                                </Link>
+                                <Link href="/#pricingPanel">
+                                    <a>Precios</a>
+                                </Link>
+                            </>
                         )}
                         {user && user.id === "53597006-79cf-4428-9bab-131fd11e3b43" && (
                         <Link href="/admin">

@@ -79,25 +79,6 @@
   margin: 1.5rem 0;
 }
 
-.stepByStep > div > div:not(.stepLine):last-child {
-  margin-top: 1.5rem;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  text-align: center;
-}
-
-.stepByStep > div > div:not(.stepLine):last-child p, .stepByStep > div > div:not(.stepLine):last-child span {
-  grid-column: 1 / -1;
-}
-
-.stepByStep > div > div:not(.stepLine):last-child p {
-  font-size: var(--font-size-xl);
-  display: inline-block;
-  -webkit-transform: rotate(-3deg);
-          transform: rotate(-3deg);
-}
-
 .stepByStep > div .stepLine {
   max-width: 100%;
   display: inline-block;

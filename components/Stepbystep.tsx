@@ -6,7 +6,7 @@ import RightLine from './icons/RightLine';
 export default function Stepbystep() {
 
     return (
-        <div className={s.stepByStep}>
+        <div id="stepbystep" className={s.stepByStep}>
             <h1>¿Cómo funciona <span>HumanCopy?</span></h1>
             <div>
                 <div>
@@ -41,11 +41,6 @@ están pendientes.<br /><br /> Si algo no te ha convencido presiona el botón de
 que debemos cambiar y se te entregará de nuevo en el menor tiempo posible.
                         </span>
                     </div>
-                </div>
-                <MiddleLine className={s.stepLine} />
-                <div>
-                    <p>Hablar sobre las correcciones</p>
-                    <span>Descripción de las correcciones</span>
                 </div>
             </div>
         </div>

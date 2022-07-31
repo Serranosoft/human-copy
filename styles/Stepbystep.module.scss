@@ -49,19 +49,6 @@
                 grid-template-columns: 1fr 1.25fr;
                 margin: 1.5rem 0;
             }
-            &:last-child {
-                margin-top: 1.5rem;
-                align-items: center;
-                text-align: center;
-                p, span {
-                    grid-column: 1 / -1;
-                }
-                p {
-                    font-size: var(--font-size-xl);;
-                    display: inline-block;
-                    transform: rotate(-3deg);
-                }
-            }
         }
         .stepLine {
             max-width: 100%;

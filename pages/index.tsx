@@ -7,6 +7,8 @@ import Hero from '@/components/Hero';
 import Stats from '@/components/Stats';
 import Description from '@/components/Description';
 import Stepbystep from '@/components/Stepbystep';
+import HowWeWork from '@/components/HowWeWork';
+import WhoWeAre from '@/components/WhoWeAre';
 
 interface Props {
     products: Product[];
@@ -20,15 +22,20 @@ export default function Home({ products }: Props) {
                 <Hero />
 
                 <Stats />
+                
+                <WhoWeAre />
+
+                <HowWeWork />
 
                 <Description />
 
+                
+                <Stepbystep />
+
+               
                 <Pricing
                     products={products}
                 />
-                
-                <Stepbystep />
-               
             </section>
         </>
 

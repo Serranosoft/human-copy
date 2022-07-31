@@ -3,11 +3,12 @@
     flex-direction: column;
     align-items: center;
     width: 100%;
-    margin: 5rem 0;
+    // margin: 5.5rem 0;
     h2 {
         font-size: var(--font-size-xxl);
         font-weight: normal;
         margin-bottom: 1.5rem;
+        margin: 8rem 0 5.5rem 0;
     }
     & > p {
         font-size: var(--font-size-base);
