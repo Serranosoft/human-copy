@@ -2,7 +2,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    max-width: 1110px;
+    max-width: 1220px;
     gap: 1.35rem;
     font-size: var(--font-size-base);
     margin: 7rem 0 8.5rem 0;
@@ -14,7 +14,8 @@
     }
     & > p {
         text-align: center;
-        font-size: var(--font-size-base);
+        font-size: calc(var(--font-size-base)*1.15);
+        margin: 3rem 0;
         span {
             background-image: linear-gradient(70deg, rgb(208, 255, 227), rgb(39, 197, 0));
             white-space: pre-wrap;
@@ -22,20 +23,25 @@
             -webkit-background-clip: text;
         }
     }
-    svg {
-        height: 5.5rem;
-    }
     & > div {
         width: 100%;
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-        gap: 5rem;
-        justify-content: space-around;
-        margin-top: 5rem;
+        grid-template-columns: 1fr 50px 1fr 50px 1fr;
+        gap: 3rem;
+        justify-content: center;
         div {
             display: flex;
             flex-direction: column;
             gap: 1rem;
+            .index {
+                font-family: 'Crimson Text', serif;
+                font-size: var(--font-size-xxl);
+                text-align: center;
+                background-image: linear-gradient(70deg, rgb(208, 255, 227), rgb(39, 197, 0));
+                white-space: pre-wrap;
+                -webkit-text-fill-color: transparent;
+                -webkit-background-clip: text;
+            }
             p {
                 font-weight: bold;
                 text-align: center;
@@ -45,6 +51,10 @@
                 text-align: center;
                 font-size: var(--font-size-sm);
             }
+        }
+        svg {
+            align-self: center;
+            justify-self: center;
         }
     }
 }

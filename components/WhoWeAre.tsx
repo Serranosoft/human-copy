@@ -19,6 +19,7 @@ export default function WhoWeAre() {
                         </div>
                         <div className={s.socialBar}>
                             <a target="_blank" href="https://twitter.com/hugmelevi"><img src="/twitter.svg" /></a>
+                            <a target="_blank" href="https://www.linkedin.com/in/paula-quintana-36856b204/"><img src="/linkedin.svg" /></a>
                         </div>
                     </div>
                     <div className={s.avatar}>
@@ -30,6 +31,7 @@ export default function WhoWeAre() {
                         </div>
                         <div className={s.socialBar}>
                             <a target="_blank" href="https://twitter.com/ImScholz"><img src="/twitter.svg" /></a>
+                            <a target="_blank" href="https://www.linkedin.com/in/manuel-serrano-scholz/"><img src="/linkedin.svg" /></a>
                         </div>
                     </div>
                     <div className={s.avatar}>

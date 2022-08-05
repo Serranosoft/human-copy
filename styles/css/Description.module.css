@@ -9,7 +9,7 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  max-width: 1110px;
+  max-width: 1220px;
   gap: 1.35rem;
   font-size: var(--font-size-base);
   margin: 7rem 0 8.5rem 0;
@@ -24,7 +24,8 @@
 
 .description > p {
   text-align: center;
-  font-size: var(--font-size-base);
+  font-size: calc(var(--font-size-base)*1.15);
+  margin: 3rem 0;
 }
 
 .description > p span {
@@ -34,20 +35,16 @@
   -webkit-background-clip: text;
 }
 
-.description svg {
-  height: 5.5rem;
-}
-
 .description > div {
   width: 100%;
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: (minmax(200px, 1fr))[auto-fit];
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 5rem;
-  -ms-flex-pack: distribute;
-      justify-content: space-around;
-  margin-top: 5rem;
+  -ms-grid-columns: 1fr 50px 1fr 50px 1fr;
+      grid-template-columns: 1fr 50px 1fr 50px 1fr;
+  gap: 3rem;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 .description > div div {
@@ -61,6 +58,16 @@
   gap: 1rem;
 }
 
+.description > div div .index {
+  font-family: 'Crimson Text', serif;
+  font-size: var(--font-size-xxl);
+  text-align: center;
+  background-image: linear-gradient(70deg, #d0ffe3, #27c500);
+  white-space: pre-wrap;
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+}
+
 .description > div div p {
   font-weight: bold;
   text-align: center;
@@ -70,6 +77,14 @@
 .description > div div span {
   text-align: center;
   font-size: var(--font-size-sm);
+}
+
+.description > div svg {
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+  -ms-grid-column-align: center;
+      justify-self: center;
 }
 
 .description :global .on-scroll {
