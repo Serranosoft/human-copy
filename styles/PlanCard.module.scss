@@ -7,7 +7,7 @@
     background-color: #0a0a0a;
     position: relative;
     z-index: 1;
-
+    justify-self: flex-end;
     .subscriptionAnimation {
         width: 200px;
         height: 140px;
@@ -78,6 +78,7 @@
         order: -1;
         box-shadow: 0px 0px 10px #50b17f;
         border-radius: 12px;
+        justify-self: flex-start;
 
     }
 
@@ -184,3 +185,11 @@
       }
 }
 
+@media (max-width: 768px) {
+    .root {
+        max-width: unset;
+        &.subscription {
+            margin-bottom: 10rem;
+        }
+    }
+}

@@ -36,14 +36,13 @@
 .root .planLayout {
   width: 100%;
   max-width: 980px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 1fr;
+      grid-template-columns: 1fr 1fr;
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
   gap: 3rem;
   margin-top: 1.5rem;
 }
@@ -103,4 +102,16 @@
 
 .root .info svg path {
   fill: #529c76;
+}
+
+@media (max-width: 768px) {
+  .root > p {
+    margin-bottom: 5rem;
+  }
+  .root .planLayout {
+    max-width: unset;
+    padding: 0 2rem;
+    -ms-grid-columns: 1fr;
+        grid-template-columns: 1fr;
+  }
 }

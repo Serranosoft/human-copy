@@ -20,7 +20,6 @@
     }
     form {
         // BUSCAR YA LA FUCKING MANERA DE TENER MODALES CON ESTILOS PERSONALIZADOS EN CADA MODULO
-        &:global 
         display: grid;
         grid-template-columns: 1fr 1fr;
         align-items: flex-start;

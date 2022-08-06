@@ -2,7 +2,6 @@ import Link from 'next/link';
 import s from '../../../styles/css/Navbar.module.css';
 import Logo from 'components/icons/Logo';
 import { useUser } from 'utils/useUser';
-import Image from 'next/image';
 import { useEffect, useRef } from 'react';
 
 const Navbar = () => {

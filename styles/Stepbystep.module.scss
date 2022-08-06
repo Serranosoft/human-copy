@@ -9,6 +9,7 @@
         letter-spacing: -2px;
         margin: 5.5rem 0;
         font-weight: 400;
+        text-align: center;
     }
     & > div {
         display: grid;
@@ -61,25 +62,47 @@
     }
 }
 
-.stepByStep :global {
-    .on-scroll {
-        transition: 0.85s;
-        transition-delay: 0.5s;
-        animation-duration: 0.85s;
-        animation-timing-function: cubic-bezier(0.230, 1.000, 0.320, 1.000) ;
-        animation-fill-mode: both;
-
-
-        transform: scale(2);
-      transform-origin: 50% 0%;
-      filter: blur(4px);
-      opacity: 0;
-        
+@media (max-width: 768px) {
+    .stepByStep {
+        & > div {
+            gap: 3rem;
+            & > div/* :not(.stepLine) */ {
+                grid-template-columns: 1fr !important;
+                div {
+                    gap: 1.5rem;
+                    order: -1;
+                    margin-bottom: 3rem;
+                }
+            }
+            .stepLine {
+                display: none;
+            }
+        }
     }
-    .on-scroll.active {
-        transform: scale(1);
-        transform-origin: 50% 0%;
-        filter: blur(0px);
-        opacity: 1;
-    }
+}
+
+@media (min-width: 768px) {
+    
+    .stepByStep :global {
+        .on-scroll {
+            transition: 0.85s;
+            transition-delay: 0.5s;
+            animation-duration: 0.85s;
+            animation-timing-function: cubic-bezier(0.230, 1.000, 0.320, 1.000) ;
+            animation-fill-mode: both;
+    
+    
+            transform: scale(2);
+          transform-origin: 50% 0%;
+          filter: blur(4px);
+          opacity: 0;
+            
+        }
+        .on-scroll.active {
+            transform: scale(1);
+            transform-origin: 50% 0%;
+            filter: blur(0px);
+            opacity: 1;
+        }
+    }   
 }

@@ -74,3 +74,14 @@
     }
 }
 
+@media (max-width: 768px) {
+    .description {
+
+        & > div {
+            grid-template-columns: 1fr;
+            svg {
+                display: none;
+            }
+        }
+    }
+}

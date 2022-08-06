@@ -91,6 +91,7 @@
   gap: 0.55rem;
   width: 100%;
   max-width: 580px;
+  padding: 0 1rem;
   text-align: center;
   margin-top: 3.2rem;
   color: lightgray;
@@ -103,32 +104,31 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  gap: 1.1rem;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  gap: 0.5rem;
 }
 
 .root .googleWrapper div .separator {
-  width: 100%;
+  width: 40px;
   max-width: 120px;
   border-top: 2px solid #777777;
 }
 
 .root .googleWrapper div button {
-  -webkit-box-flex: 1;
-      -ms-flex-positive: 1;
-          flex-grow: 1;
+  font-size: calc(var(--font-size-base) * 0.95);
+  width: 300px;
 }
 
 .root .googleWrapper div a {
+  font-size: calc(var(--font-size-base) * 0.95);
+  width: 300px;
   text-decoration: none;
   color: black;
   border-radius: 8px;
   padding: 0.5rem 1.25rem;
   background-color: lightgray;
-  width: 100%;
-  font-size: var(--font-size-base);
   -webkit-transition: 0.25s ease-out;
   transition: 0.25s ease-out;
 }
@@ -136,4 +136,10 @@
 .root .googleWrapper div a:hover {
   -webkit-transform: translateY(-5px);
           transform: translateY(-5px);
+}
+
+@media (max-width: 768px) {
+  .root .googleWrapper {
+    max-width: 680px;
+  }
 }

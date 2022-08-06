@@ -3,7 +3,6 @@
     flex-direction: column;
     align-items: center;
     width: 100%;
-    // margin: 5.5rem 0;
     h2 {
         font-size: var(--font-size-xxl);
         font-weight: normal;
@@ -25,9 +24,9 @@
     .planLayout {
         width: 100%;
         max-width: 980px;
-        display: flex;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
         justify-content: space-between;
-        flex-wrap: wrap;
         gap: 3rem;
         margin-top: 1.5rem;
     }
@@ -61,14 +60,24 @@
             }
         }
         svg {
-            // position: absolute;
-            // top: 0;
-            // left: 0;
             height: 7.5rem;
             z-index: 1;
             path {
                 fill: #529c76;
             }
+        }
+    }
+}
+
+@media (max-width: 768px) {
+    .root {
+        & > p {
+            margin-bottom: 5rem;
+        }
+        .planLayout {
+            max-width: unset;
+            padding: 0 2rem;
+            grid-template-columns: 1fr;
         }
     }
 }

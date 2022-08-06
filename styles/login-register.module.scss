@@ -4,7 +4,6 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    // height: 70vh;
     margin: 7rem 0;
     .credentials {
         width: 100%;
@@ -60,35 +59,44 @@
         gap: 0.55rem;
         width: 100%;
         max-width: 580px;
+        padding: 0 1rem;
         text-align: center;
         margin-top: 3.2rem;
         color: lightgray;
         div {
             display: flex;
             align-items: center;
-            justify-content: space-between;
-            gap: 1.1rem;    
+            justify-content: center;
+            gap: 0.5rem;    
             .separator {
-                width: 100%;
+                width: 40px;
                 max-width: 120px;
                 border-top: 2px solid rgb(119, 119, 119);
             }
             button {
-                flex-grow: 1;
+                font-size: calc(var(--font-size-base) * 0.95);
+                // flex-grow: 1;
+                width: 300px;
             }
             a {
+                font-size: calc(var(--font-size-base) * 0.95);
+                width: 300px;
                 text-decoration: none;
                 color: black;
                 border-radius: 8px;
                 padding: 0.5rem 1.25rem;
                 background-color: lightgray;
-                width: 100%;
-                font-size: var(--font-size-base);
                 transition: 0.25s ease-out;
                 &:hover {
                     transform: translateY(-5px);
                 }
             }
         }
+    }
+}
+
+@media (max-width: 768px) {
+    .root .googleWrapper {
+        max-width: 680px;
     }
 }

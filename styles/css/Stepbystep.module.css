@@ -18,6 +18,7 @@
   letter-spacing: -2px;
   margin: 5.5rem 0;
   font-weight: 400;
+  text-align: center;
 }
 
 .stepByStep > div {
@@ -88,32 +89,53 @@
   vertical-align: middle;
 }
 
-.stepByStep :global .on-scroll {
-  -webkit-transition: 0.85s;
-  transition: 0.85s;
-  -webkit-transition-delay: 0.5s;
-          transition-delay: 0.5s;
-  -webkit-animation-duration: 0.85s;
-          animation-duration: 0.85s;
-  -webkit-animation-timing-function: cubic-bezier(0.23, 1, 0.32, 1);
-          animation-timing-function: cubic-bezier(0.23, 1, 0.32, 1);
-  -webkit-animation-fill-mode: both;
-          animation-fill-mode: both;
-  -webkit-transform: scale(2);
-          transform: scale(2);
-  -webkit-transform-origin: 50% 0%;
-          transform-origin: 50% 0%;
-  -webkit-filter: blur(4px);
-          filter: blur(4px);
-  opacity: 0;
+@media (max-width: 768px) {
+  .stepByStep > div {
+    gap: 3rem;
+  }
+  .stepByStep > div > div {
+    -ms-grid-columns: 1fr !important;
+        grid-template-columns: 1fr !important;
+  }
+  .stepByStep > div > div div {
+    gap: 1.5rem;
+    -webkit-box-ordinal-group: 0;
+        -ms-flex-order: -1;
+            order: -1;
+    margin-bottom: 3rem;
+  }
+  .stepByStep > div .stepLine {
+    display: none;
+  }
 }
 
-.stepByStep :global .on-scroll.active {
-  -webkit-transform: scale(1);
-          transform: scale(1);
-  -webkit-transform-origin: 50% 0%;
-          transform-origin: 50% 0%;
-  -webkit-filter: blur(0px);
-          filter: blur(0px);
-  opacity: 1;
+@media (min-width: 768px) {
+  .stepByStep :global .on-scroll {
+    -webkit-transition: 0.85s;
+    transition: 0.85s;
+    -webkit-transition-delay: 0.5s;
+            transition-delay: 0.5s;
+    -webkit-animation-duration: 0.85s;
+            animation-duration: 0.85s;
+    -webkit-animation-timing-function: cubic-bezier(0.23, 1, 0.32, 1);
+            animation-timing-function: cubic-bezier(0.23, 1, 0.32, 1);
+    -webkit-animation-fill-mode: both;
+            animation-fill-mode: both;
+    -webkit-transform: scale(2);
+            transform: scale(2);
+    -webkit-transform-origin: 50% 0%;
+            transform-origin: 50% 0%;
+    -webkit-filter: blur(4px);
+            filter: blur(4px);
+    opacity: 0;
+  }
+  .stepByStep :global .on-scroll.active {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+    -webkit-transform-origin: 50% 0%;
+            transform-origin: 50% 0%;
+    -webkit-filter: blur(0px);
+            filter: blur(0px);
+    opacity: 1;
+  }
 }
