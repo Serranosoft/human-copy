@@ -9,7 +9,7 @@
     top: 0px;
     z-index: 9;
     background-color: #0a0a0a;
-    & > div {
+    .header {
         width: 100%;
         max-width: 1550px;
         display: flex;
@@ -42,7 +42,6 @@
         }
         a {
             color: white;
-            text-decoration: none;
             svg {
                 display: block;
                 height: 2.5rem;
@@ -53,4 +52,55 @@
             }
         }
     }
+    .mobileOpen {
+        display: none;
+    }
+    .mobileHeader {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 0;
+        background-color: #0a0a0a;
+        transition: width 0.3s;
+        overflow: hidden;
+        height: 100vh;
+        box-shadow: 7px 0px 5px #2b2b2b;
+        &.show {
+            width: 70%;
+        }
+        & > div {
+            display: flex;
+            flex-direction: column;
+            padding: 2rem 1rem;
+            gap: 1.35rem;
+            a {
+                color: white;
+                svg {
+                    display: block;
+                    height: 2.5rem;
+                    margin-top: 0.5rem;
+                }
+            }
+            img {
+                height: 2rem;
+                margin-left: auto;
+                cursor: pointer;
+            }
+        }
+    
+    }
+}
+
+@media (max-width: 768px) {
+    .root {
+        .header {
+            display: none;
+        }
+        .mobileOpen {
+            display: block;
+            margin-right: auto;
+            height: 2rem;
+            cursor: pointer;
+        }
+    } 
 }

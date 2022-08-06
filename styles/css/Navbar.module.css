@@ -16,7 +16,7 @@
   background-color: #0a0a0a;
 }
 
-.root > div {
+.root .header {
   width: 100%;
   max-width: 1550px;
   display: -webkit-box;
@@ -30,7 +30,7 @@
           justify-content: space-between;
 }
 
-.root > div > div:first-child {
+.root .header > div:first-child {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -40,7 +40,7 @@
   gap: 5rem;
 }
 
-.root > div nav {
+.root .header nav {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -50,7 +50,7 @@
           align-items: center;
 }
 
-.root > div nav div {
+.root .header nav div {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -60,7 +60,7 @@
   gap: 1.5rem;
 }
 
-.root > div nav div .register {
+.root .header nav div .register {
   padding: 0.3rem 1rem;
   background-color: #6ece9d;
   border-radius: 12px;
@@ -68,21 +68,82 @@
   text-decoration: none;
 }
 
-.root > div nav div .register:hover {
+.root .header nav div .register:hover {
   background-color: #529c76;
 }
 
-.root > div a {
+.root .header a {
   color: white;
-  text-decoration: none;
 }
 
-.root > div a svg {
+.root .header a svg {
   display: block;
   height: 2.5rem;
   margin-top: 0.5rem;
 }
 
-.root > div a:hover {
+.root .header a:hover {
   text-decoration: underline;
+}
+
+.root .mobileOpen {
+  display: none;
+}
+
+.root .mobileHeader {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  background-color: #0a0a0a;
+  -webkit-transition: width 0.3s;
+  transition: width 0.3s;
+  overflow: hidden;
+  height: 100vh;
+  -webkit-box-shadow: 7px 0px 5px #2b2b2b;
+          box-shadow: 7px 0px 5px #2b2b2b;
+}
+
+.root .mobileHeader.show {
+  width: 70%;
+}
+
+.root .mobileHeader > div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  padding: 2rem 1rem;
+  gap: 1.35rem;
+}
+
+.root .mobileHeader > div a {
+  color: white;
+}
+
+.root .mobileHeader > div a svg {
+  display: block;
+  height: 2.5rem;
+  margin-top: 0.5rem;
+}
+
+.root .mobileHeader > div img {
+  height: 2rem;
+  margin-left: auto;
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .root .header {
+    display: none;
+  }
+  .root .mobileOpen {
+    display: block;
+    margin-right: auto;
+    height: 2rem;
+    cursor: pointer;
+  }
 }

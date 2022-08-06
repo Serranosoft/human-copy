@@ -2,12 +2,36 @@ import Link from 'next/link';
 import s from '../../../styles/css/Navbar.module.css';
 import Logo from 'components/icons/Logo';
 import { useUser } from 'utils/useUser';
+import Image from 'next/image';
+import { useEffect, useRef } from 'react';
 
 const Navbar = () => {
     const { user } = useUser();
+    const open = useRef<HTMLImageElement | null>(null);
+    const collapser = useRef<HTMLImageElement | null>(null);
+    const mobileHeader = useRef<HTMLDivElement | null>(null);
+
+    useEffect(() => {
+        if (open.current && mobileHeader.current) {
+            open.current.addEventListener("click", () => {
+                mobileHeader.current!.classList.add(s["show"]);
+            })
+
+            collapser.current?.addEventListener("click", () => {
+                mobileHeader.current!.classList.remove(s["show"]);
+            })
+
+            document.querySelectorAll("a").forEach(el => {
+                el.addEventListener("click", () => {
+                    mobileHeader.current!.classList.remove(s["show"]);
+                })
+            })
+        }
+    }, [])
+
     return (
         <header className={s.root}>
-            <div>
+            <div className={s.header}>
                 <div>
                     <Link href="/">
                         <a className={s.logo} aria-label="Logo">
@@ -17,48 +41,96 @@ const Navbar = () => {
                 </div>
                 <nav>
                     {user && (
-                        
-                        <>                        
+                        <>
                             <a href="/cuenta">Mi cuenta</a>
                         </>
-                       )}
-                        {user && (
+                    )}
+                    {user && (
                         <Link href="/mis-textos">
                             <a>Mis textos</a>
                         </Link>)}
-                        {!user && (
-                            <>
-                                <Link href="/#stepbystep">
-                                    <a>¿Cómo funciona?</a>
-                                </Link>
-                                <Link href="/#pricingPanel">
-                                    <a>Precios</a>
-                                </Link>
-                            </>
-                        )}
-                        {user && user.id === "53597006-79cf-4428-9bab-131fd11e3b43" && (
+                    {!user && (
+                        <>
+                            <Link href="/#stepbystep">
+                                <a>¿Cómo funciona?</a>
+                            </Link>
+                            <Link href="/#pricingPanel">
+                                <a>Precios</a>
+                            </Link>
+                        </>
+                    )}
+                    {user && user.id === "53597006-79cf-4428-9bab-131fd11e3b43" && (
                         <Link href="/admin">
                             <a>Administración</a>
                         </Link>
                     )}
 
                     <>
-                        {user ? 
+                        {user ?
                             <Link href="/api/auth/logout">
                                 <a>Cerrar sesión</a>
                             </Link>
-                         :
-                        <div>
-                            <Link href="/iniciar-sesion">
-                                <a>Iniciar sesión</a>
-                            </Link>
-                            <Link href="/registro">
-                                <a className={s.register}>Registro</a>
-                            </Link>
-                        </div>                    
+                            :
+                            <div>
+                                <Link href="/iniciar-sesion">
+                                    <a>Iniciar sesión</a>
+                                </Link>
+                                <Link href="/registro">
+                                    <a className={s.register}>Registro</a>
+                                </Link>
+                            </div>
                         }
                     </>
-                 </nav>
+                </nav>
+            </div>
+            <img ref={open} className={s.mobileOpen} src="/menu.svg" />
+            <div className={s.mobileHeader} ref={mobileHeader}>
+                <div>
+                    <img ref={collapser} src="/close.svg" />
+                    <Link href="/">
+                        <a>Inicio</a>
+                    </Link>
+                    {user && (
+                        <>
+                            <a href="/cuenta">Mi cuenta</a>
+                        </>
+                    )}
+                    {user && (
+                        <Link href="/mis-textos">
+                            <a>Mis textos</a>
+                        </Link>)}
+                    {!user && (
+                        <>
+                            <Link href="/#stepbystep">
+                                <a>¿Cómo funciona?</a>
+                            </Link>
+                            <Link href="/#pricingPanel">
+                                <a>Precios</a>
+                            </Link>
+                        </>
+                    )}
+                    {user && user.id === "53597006-79cf-4428-9bab-131fd11e3b43" && (
+                        <Link href="/admin">
+                            <a>Administración</a>
+                        </Link>
+                    )}
+                    <>
+                        {user ?
+                            <Link href="/api/auth/logout">
+                                <a>Cerrar sesión</a>
+                            </Link>
+                            :
+                            <>
+                                <Link href="/iniciar-sesion">
+                                    <a>Iniciar sesión</a>
+                                </Link>
+                                <Link href="/registro">
+                                    <a className={s.register}>Registro</a>
+                                </Link>
+                            </>
+                        }
+                    </>
+                </div>
             </div>
         </header>
     );
