@@ -10,20 +10,20 @@ export default function Description() {
             <div>
                 <div>
                     <span className={s.index}>1.</span>
-                    <p>Evita comunicaciones innecesarias</p>
-                    <span>No esperes la respuesta de tu redactor. Manda una solicitud desde tu panel y tendrás tus artículos lo más pronto posible</span>
+                    <p>Sin perder el tiempo</p>
+                    <span>No pierdas el tiempo buscando y hablando con redactores. Sube las indicaciones a nuestro panel y nos pondremos a trabajar.</span>
                 </div>
                 <ArrowCurvedRight />
                 <div>
                     <span className={s.index}>2.</span>
-                    <p>Redacción manual, original y especializada</p>
-                    <span>Nuestras redacciones son escritas a mano (sin IA) y tenemos redactores especializados en diversidad de sectores</span>
+                    <p>Redacción especializada</p>
+                    <span>Escribimos el contenido siguiendo tus indicaciones de manera manual (sin IA) con redactores especializados</span>
                 </div>
                 <ArrowCurvedRight />
                 <div>
                     <span className={s.index}>3.</span>
-                    <p>Correcciones ilimitadas incluidas</p>
-                    <span>Si el artículo no era como esperabas, puedes pedir los cambios que quieras de manera ilimitada y sin costes adicionales</span>
+                    <p>Correcciones ilimitadas</p>
+                    <span>Si el artículo no era como esperabas puedes pedir los cambios que quieras de manera ilimitada y sin costes adicionales</span>
                 </div>
             </div>
         </div>

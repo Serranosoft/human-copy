@@ -76,7 +76,7 @@
 
 .description > div div span {
   text-align: center;
-  font-size: var(--font-size-sm);
+  font-size: calc(var(--font-size-sm) * 1.28);
 }
 
 .description > div svg {

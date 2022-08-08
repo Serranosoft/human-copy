@@ -29,7 +29,7 @@
 }
 
 .hero > div .title {
-  font-size: var(--font-size-xxxl);
+  font-size: calc(var(--font-size-xxl)*1.18);
   letter-spacing: -2px;
 }
 

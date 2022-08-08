@@ -15,7 +15,8 @@ export default function WhoWeAre() {
                         <div className={s.description}>
                             <h3>Paula Quintana Gonzalez</h3>
                             <p>SEO & Copywriter</p>
-                            <span>Lorem ipsum dolor sit amet consectetur adipisicing elit.</span>
+                            <span>Investigación, organización, esquematización y revisión. Soy la persona encargada de optimizar tu contenido para que consigas el máximo beneficio posible.</span>
+                            <span>Después de mucha experiencia redactando en mis proyectos quiero ayudar a crear contenidos de calidad y con proyección.</span>
                         </div>
                         <div className={s.socialBar}>
                             <a target="_blank" href="https://twitter.com/hugmelevi"><img src="/twitter.svg" /></a>
@@ -27,7 +28,8 @@ export default function WhoWeAre() {
                         <div className={s.description}>
                             <h3>Manuel Serrano Scholz</h3>
                             <p>SEO & Programador</p>
-                            <span>Lorem ipsum dolor sit amet consectetur adipisicing elit.</span>
+                            <span>Investigación, organización, esquematización y revisión. Soy la persona encargada de optimizar tu contenido para que consigas el máximo beneficio posible.</span>
+                            <span>Después de mucha experiencia redactando en mis proyectos quiero ayudar a crear contenidos de calidad y con proyección.</span>
                         </div>
                         <div className={s.socialBar}>
                             <a target="_blank" href="https://twitter.com/ImScholz"><img src="/twitter.svg" /></a>
