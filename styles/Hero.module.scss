@@ -14,12 +14,6 @@
         .title {
             font-size: calc(var(--font-size-xxl)*1.18);
             letter-spacing: -2px;
-            span {
-                background-image: linear-gradient(160deg, rgb(208, 255, 227), rgb(0, 102, 0));
-                white-space: pre-wrap;
-                -webkit-text-fill-color: transparent;
-                -webkit-background-clip: text;
-            }
         }
 
         & > p:not(.title) {
@@ -27,7 +21,7 @@
             font-size: var(--font-size-md);
             margin: 2rem 0;
             span {
-                background-image: linear-gradient(160deg, rgb(208, 255, 227), rgb(0, 102, 0));
+                background-image: linear-gradient(160deg, rgb(208, 255, 227), rgb(37, 202, 37));
                 white-space: pre-wrap;
                 -webkit-text-fill-color: transparent;
                 -webkit-background-clip: text;

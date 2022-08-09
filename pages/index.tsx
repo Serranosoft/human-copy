@@ -44,7 +44,7 @@ export default function Home({ products }: Props) {
 
 export async function getStaticProps(): Promise<GetStaticPropsResult<Props>> {
     const products = await getActiveProductsWithPrices();
-
+    console.log(products);
     return {
         props: {
             products

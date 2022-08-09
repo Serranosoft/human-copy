@@ -87,24 +87,6 @@
       justify-self: center;
 }
 
-.description :global .on-scroll {
-  -webkit-transition: 0.7s;
-  transition: 0.7s;
-  -webkit-transition-delay: 1.2s;
-          transition-delay: 1.2s;
-  -webkit-animation-duration: 0.7s;
-          animation-duration: 0.7s;
-  -webkit-animation-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
-          animation-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  -webkit-animation-fill-mode: both;
-          animation-fill-mode: both;
-  text-shadow: 0 0 #555555, 0 0 #555555, 0 0 #555555, 0 0 #555555, 0 0 #555555, 0 0 #555555, 0 0 #555555, 0 0 #555555;
-}
-
-.description :global .on-scroll.active {
-  text-shadow: 0 -1px #555555, 0 -1px #555555, 0 -1px #555555, 0 -1.5px #555555, 0 -3px #555555, 0 -3px #555555, 0 -3.5px #555555, 0 -4.3px #555555;
-}
-
 @media (max-width: 768px) {
   .description > div {
     -ms-grid-columns: 1fr;

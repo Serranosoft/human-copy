@@ -14,6 +14,9 @@ interface Props {
 }
 
 export default function Pricing({ products }: Props) {
+
+    console.log(products);
+
     const router = useRouter();
     const [priceIdLoading, setPriceIdLoading] = useState<string>();
     const { user, isLoading, userDetails } = useUser();

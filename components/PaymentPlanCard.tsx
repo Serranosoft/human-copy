@@ -14,6 +14,8 @@ interface Props {
 
 export default function PaymentPlanCard({ product, isLoading, priceIdLoading, handleCheckout }: Props) {
 
+
+    console.log(product);
     // Id del precio a mandar a checkout
     const [priceItem, setPriceItem] = useState<any>();
     // Precio total del producto
