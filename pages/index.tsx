@@ -32,10 +32,13 @@ export default function Home({ products }: Props) {
                 
                 <Stepbystep />
 
+               {products && products.length > 0 &&
                
                 <Pricing
                     products={products}
                 />
+               
+               }
             </section>
         </>
 
