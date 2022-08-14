@@ -1,13 +1,18 @@
 import ClipSVG from "./icons/Clip";
 import s from '../styles/css/Stats.module.css';
+import { motion } from "framer-motion";
 
 export default function Stats() {
 
 
     return (
         <div className={s.bigImg}>
-            <h2><span>Estadísticas</span> de nuestros trabajos</h2>
-            <div className="on-scroll">
+            <h2>Estadísticas de <motion.span initial={{ opacity: 0 }} whileInView={{textShadow: "0 0 25px #34b3c1, 0 0 30px #4dbbc7", opacity: 1}} viewport={{ once: true }} transition={{delay: 0.25}}>nuestros trabajos</motion.span></h2>
+            <motion.div
+            viewport={{ once: true }}
+            transition={{duration: 0.5}}
+            whileInView={{x: [-100, 0], y: [500, 0]}}
+            >
                 <ClipSVG />
                 <div>
                     <div style={{ backgroundImage: "url(/sc-nt.jpg)" }}>
@@ -46,7 +51,7 @@ export default function Stats() {
                     </div>
                     <span>+1250% durante 2 meses y medio</span>
                 </div>
-            </div>
+            </motion.div>
 
         </div>
     )
