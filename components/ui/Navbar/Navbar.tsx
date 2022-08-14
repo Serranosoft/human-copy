@@ -48,17 +48,17 @@ const Navbar = () => {
                         <Link href="/mis-textos">
                             <a>Mis textos</a>
                         </Link>)}
+                        <Link href="/#pricingPanel">
+                            <a>Precios</a>
+                        </Link>
                     {!user && (
                         <>
                             <Link href="/#stepbystep">
                                 <a>¿Cómo funciona?</a>
                             </Link>
-                            <Link href="/#pricingPanel">
-                                <a>Precios</a>
-                            </Link>
                         </>
                     )}
-                    {user && user.id === "53597006-79cf-4428-9bab-131fd11e3b43" && (
+                    {user && user.id === "9a649806-b145-40dc-a45c-fb885fcadb41" && (
                         <Link href="/admin">
                             <a>Administración</a>
                         </Link>
@@ -108,7 +108,7 @@ const Navbar = () => {
                             </Link>
                         </>
                     )}
-                    {user && user.id === "53597006-79cf-4428-9bab-131fd11e3b43" && (
+                    {user && user.id === "9a649806-b145-40dc-a45c-fb885fcadb41" && (
                         <Link href="/admin">
                             <a>Administración</a>
                         </Link>

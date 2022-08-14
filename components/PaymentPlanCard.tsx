@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import s from '../styles/css/PlanCard.module.css';
 import ArrowSVG from './icons/Arrow';
-import LeftLine from './icons/LeftLine';
 import Button from './ui/Button';
 import Range from './ui/Range';
 
@@ -35,35 +34,20 @@ export default function PaymentPlanCard({ product, isLoading, priceIdLoading, ha
     useEffect(() => {
         if (price) {
             switch (price) {
-                case 10:
+                case 20:
                     setWords("1000");
                     break;
-                case 20:
+                case 35:
                     setWords("2000");
                     break;
-                case 30:
+                case 50:
                     setWords("3000");
                     break;
-                case 40:
+                case 65:
                     setWords("4000");
                     break;
-                case 50:
-                    setWords("5000");
-                    break;
-                case 60:
-                    setWords("6000");
-                    break;
-                case 70:
-                    setWords("7000");
-                    break;
                 case 80:
-                    setWords("8000");
-                    break;
-                case 90:
-                    setWords("9000");
-                    break;
-                case 100:
-                    setWords("10000");
+                    setWords("5000");
                     break;
             }
         }
@@ -75,13 +59,13 @@ export default function PaymentPlanCard({ product, isLoading, priceIdLoading, ha
                 <span>1.000</span>
                 <Range
                     min="0"
-                    max="9"
+                    max="4"
                     value={rangeValue}
                     onChange={handleChange}
                     step="1"
                     id="range"
                 />
-                <span>10.000</span>
+                <span>5.000</span>
             </div>
             <ArrowSVG className={s.paymentArrow}/>
             <div>
