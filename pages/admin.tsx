@@ -21,7 +21,7 @@ export default function Account({ users }: any) {
     // Si el usuario no es administrador, echarlo a la home.
     useEffect(() => {
         if (userDetails) {
-            if (userDetails.id !== "9eb85418-49fa-4646-835f-1dfdd349f98c") {
+            if (userDetails.id !== "9a649806-b145-40dc-a45c-fb885fcadb41") {
                 Router.push("/");
             }
         }
