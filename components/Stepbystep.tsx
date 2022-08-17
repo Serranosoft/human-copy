@@ -28,7 +28,7 @@ artículo).<br /><br /> Sólo necesitamos el tema principal y una pequeña descr
 Puedes elegir a qué artículos darle prioridad en el tiempo.
                         </span>
                     </div>
-                    <img className="on-scroll" src="/step24-home.jpg" alt="Vercel.com Logo" />
+                    <img className="on-scroll" src="/step2-home.jpg" alt="Vercel.com Logo" />
                 </div>
                 <LeftLine className={s.stepLine} />
                 <div>
