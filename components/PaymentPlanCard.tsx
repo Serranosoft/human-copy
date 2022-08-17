@@ -36,19 +36,19 @@ export default function PaymentPlanCard({ product, isLoading, priceIdLoading, ha
     useEffect(() => {
         if (price) {
             switch (price) {
-                case 20:
+                case 25:
                     setWords("1000");
                     break;
-                case 35:
+                case 40:
                     setWords("2000");
                     break;
-                case 50:
+                case 55:
                     setWords("3000");
                     break;
-                case 65:
+                case 70:
                     setWords("4000");
                     break;
-                case 80:
+                case 85:
                     setWords("5000");
                     break;
             }

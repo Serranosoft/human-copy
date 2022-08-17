@@ -49,19 +49,20 @@ export default function Pricing({ products }: Props) {
             <p>Adquiere el plan ilimitado o una cantidad de palabras y solicita artículos. <span>Mínimo 500 palabras por artículo</span></p>
             <div className={s.planLayout}>
 
-                <PaymentPlanCard 
+                <SubscriptionPlanCard
                     product={products[1]}
                     isLoading={isLoading}
                     handleCheckout={handleCheckout}
                     priceIdLoading={priceIdLoading}
                 />
 
-                <SubscriptionPlanCard
+                <PaymentPlanCard 
                     product={products[0]}
                     isLoading={isLoading}
                     handleCheckout={handleCheckout}
                     priceIdLoading={priceIdLoading}
                 />
+
 
             </div>
             <div className={s.info}>
@@ -83,7 +84,7 @@ export default function Pricing({ products }: Props) {
                         </tr>
                         <tr>
                             <td>2000</td>
-                            <td>1 día</td>
+                            <td>2 días</td>
                         </tr>
                         <tr>
                             <td>3000</td>
