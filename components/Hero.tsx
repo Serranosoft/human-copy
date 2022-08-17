@@ -23,7 +23,7 @@ export default function Hero() {
     return (
         <div className={s.hero} ref={refContainer} style={{ transform: `translateY(-${progress * 20}vh` }}>
             <div>
-                <p className={s.title}>Redactamos <motion.span transition={{delay: 0.4, duration: 1.5}} animate={{ textShadow: "0 0 25px #34b3c1, 0 0 30px #4dbbc7"}}> contenido</motion.span> para que tú no tengas que hacerlo</p>
+                <p className={s.title}>Redactamos <motion.span transition={{delay: 0.4, duration: 1.5}} animate={{ textShadow: "0 0 25px #6ece9d, 0 0 30px #6ece9d"}}> contenido</motion.span> para que tú no tengas que hacerlo</p>
                 <motion.p
                     animate={{
                         opacity: [0, 1]

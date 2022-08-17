@@ -48,13 +48,13 @@ const Navbar = () => {
                         <Link href="/mis-textos">
                             <a>Mis textos</a>
                         </Link>)}
+                        <Link href="/#pricingPanel">
+                            <a>Precios</a>
+                        </Link>
                     {!user && (
                         <>
                             <Link href="/#stepbystep">
                                 <a>¿Cómo funciona?</a>
-                            </Link>
-                            <Link href="/#pricingPanel">
-                                <a>Precios</a>
                             </Link>
                         </>
                     )}

@@ -15,8 +15,6 @@ interface Props {
 
 export default function Pricing({ products }: Props) {
 
-    console.log(products);
-
     const router = useRouter();
     const [priceIdLoading, setPriceIdLoading] = useState<string>();
     const { user, isLoading, userDetails } = useUser();
@@ -52,14 +50,14 @@ export default function Pricing({ products }: Props) {
             <div className={s.planLayout}>
 
                 <PaymentPlanCard 
-                    product={products[0]}
+                    product={products[1]}
                     isLoading={isLoading}
                     handleCheckout={handleCheckout}
                     priceIdLoading={priceIdLoading}
                 />
 
                 <SubscriptionPlanCard
-                    product={products[1]}
+                    product={products[0]}
                     isLoading={isLoading}
                     handleCheckout={handleCheckout}
                     priceIdLoading={priceIdLoading}
