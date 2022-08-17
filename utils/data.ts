@@ -4,7 +4,9 @@ export interface Request {
     title: string | undefined;
     topic: string | undefined;
     description: string | undefined;
-    download: string | undefined;
+    download_odt: string | undefined;
+    download_word: string | undefined;
+    download_pdf: string | undefined;
     words: string | undefined;
     priority: boolean;
     deliver_date: string | undefined;
@@ -21,7 +23,9 @@ export class Data {
             topic: "qweqwe",
             words: "500", 
             deliver_date: "14/11/2022",
-            download: "",
+            download_pdf: "",
+            download_odt: "",
+            download_word: "",
             finished: false,
             priority: false
         },
@@ -32,7 +36,9 @@ export class Data {
             topic: "qweqwe",
             words: "1500", 
             deliver_date: "02/12/2022",
-            download: "",
+            download_odt: "",
+            download_word: "",
+            download_pdf: "",
             finished: false,
             priority: false
         },
@@ -43,7 +49,9 @@ export class Data {
             topic: "qweqwe",
             words: "2000",
             deliver_date: "11/11/2022",
-            download: "",
+            download_odt: "",
+            download_word: "",
+            download_pdf: "",
             finished: false,
             priority: false
         },

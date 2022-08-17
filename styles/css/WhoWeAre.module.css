@@ -70,6 +70,9 @@
   justify-self: center;
   gap: 0.2rem;
   text-align: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .root > div > div .avatar:last-child > div {
@@ -77,9 +80,6 @@
 }
 
 .root > div > div .avatar > img {
-  -ms-flex-item-align: center;
-      -ms-grid-row-align: center;
-      align-self: center;
   width: 70px;
   border-radius: 100%;
 }

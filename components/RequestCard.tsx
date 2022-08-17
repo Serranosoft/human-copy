@@ -4,10 +4,7 @@ import Button from './ui/Button';
 import LoadingBar from './ui/LoadingBar';
 import ModalComponent from './ui/Modal/ModalComponent';
 import emailjs from '@emailjs/browser';
-import { useUser } from '@/utils/useUser';
 import ErrorModalComponent from './ui/Error Modal/ErrorModalComponent';
-import DownloadSVG from './icons/Download';
-import ReviewSVG from './icons/Review';
 
 export interface Request {
     id: string;
@@ -15,7 +12,9 @@ export interface Request {
     title: string | undefined;
     topic: string | undefined;
     description: string | undefined;
-    download: string | undefined;
+    download_odt: string | undefined;
+    download_pdf: string | undefined;
+    download_word: string | undefined;
     words: string | undefined;
     priority: boolean
 }
@@ -83,7 +82,7 @@ export default function RequestCard({ request, user }: { request: Request, user:
                 <div className={s.header}>
                     <div>
                         {
-                            request.download !== null && request.download !== "" ? <span>✔️</span> : <LoadingBar big={false} />
+                            request.finished ? <span>✔️</span> : <LoadingBar big={false} />
                         }
                     </div>
                 </div>
@@ -95,18 +94,39 @@ export default function RequestCard({ request, user }: { request: Request, user:
                     <p>Descripción</p>
                     <p>{request.description}</p>
                 </div>
-                <div>
-                    <span>{request.priority === true && "Artículo prioritario"}</span>
-                    {
-                        request.download !== null && request.download !== "" &&
-                        <>
-                            <a href={request.download} title={`Descargar ${request.title}.pdf`} target="_blank" download={`${request.title}`}>
-                                <DownloadSVG />
-                            </a>
-                            <div onClick={openModal}>
-                                <ReviewSVG></ReviewSVG >
+                <div className={s.actionBar}>
+                    <div className={s.revise}>
+                        <span>{request.priority === true && "Artículo prioritario"}</span>
+                        {request.finished &&
+                            <div>
+                                <div className={s.reviseWrapper} onClick={openModal}>
+                                    <img src="/edit.svg" />
+                                </div>
+                                <span>Corregir</span>
                             </div>
-                        </>
+                        }
+                    </div>
+                    {request.finished &&
+                        <div className={s.downloadBar}>
+                            <div>
+                                <a href={request.download_word} title={`Descargar ${request.title}`} target="_blank" download={`${request.title}`}>
+                                    <img src="/download_word.svg" />
+                                </a>
+                                <span>Word</span>
+                            </div>
+                            <div>
+                                <a href={request.download_odt} title={`Descargar ${request.title}.odt`} target="_blank" download={`${request.title}`}>
+                                    <img src="/download_odt.svg" />
+                                </a>
+                                <span>ODT</span>
+                            </div>
+                            <div>
+                                <a href={request.download_pdf} title={`Descargar ${request.title}.pdf`} target="_blank" download={`${request.title}`}>
+                                    <img src="/download_pdf.svg" />
+                                </a>
+                                <span>PDF</span>
+                            </div>
+                        </div>
                     }
                 </div>
             </div>

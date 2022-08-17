@@ -45,37 +45,81 @@
             margin-bottom: 0.25rem;
         }
     }
-    & > div:last-child {
+    .actionBar {
         display: flex;
-        justify-content: flex-end;
+        justify-content: space-between;
         align-items: center;
         gap: 1rem;
-        div, a {
-            padding: 0.65rem 0.65rem 0.3rem 0.65rem;
-            &:last-child {
-                padding-right: 0.5rem;
+        margin-top: 1.5rem;
+        & > div {
+            display: flex;
+            align-items: center;
+        }
+
+        .revise {
+            & > span {
+                margin-right: 0.5rem;
             }
-            border-radius: 6px;
-            background-color: #262626;
-            transition: all 0.15s;
-            cursor: pointer;
-            border: 1px solid transparent;
-            &:hover {
-                transform: scale(0.95);
-                border: 1px solid green;
-            }
-            svg {
-                transform: scale(1.1);
-                &:disabled {
-                    path {
-                        fill: red !important;
+            & > div {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 0.5rem;
+                span {
+                    text-align: center;
+                    font-size: var(--font-size-sm);
+                }
+                .reviseWrapper {
+                    padding: 0.65rem 0.65rem 0.3rem 0.65rem;
+                    border-radius: 6px;
+                    background-color: #262626;
+                    cursor: pointer;
+                    border: 1px solid transparent;
+                    &:hover {
+                        transform: scale(0.95);
+                        border: 1px solid green;
                     }
-                }   
+                    img {
+                        width: 100%;
+                        height: 2rem;
+                    }
+                }
+
             }
         }
-        span {
-            color: rgb(158, 142, 0);
-            text-align: end;
+
+        .downloadBar {
+            gap: 1rem;
+            div {
+                display: flex;
+                flex-direction: column;
+                gap: 0.5rem;
+                a {
+                    padding: 0.65rem 0.65rem 0.3rem 0.65rem;
+                    border-radius: 6px;
+                    background-color: #262626;
+                    transition: all 0.15s;
+                    cursor: pointer;
+                    border: 1px solid transparent;
+                    &:hover {
+                        transform: scale(0.95);
+                        border: 1px solid green;
+                    }
+                    img {
+                        width: 100%;
+                        height: 2rem;
+                        &:disabled {
+                            path {
+                                fill: red !important;
+                            }
+                        }   
+                    }
+                }
+                span {
+                    text-align: center;
+                    font-size: var(--font-size-sm)
+                }
+            }
         }
     }
 

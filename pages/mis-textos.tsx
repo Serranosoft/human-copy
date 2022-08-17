@@ -20,7 +20,9 @@ export interface Request {
     title: string | undefined;
     topic: string | undefined;
     description: string | undefined;
-    download: string | undefined;
+    download_pdf: string | undefined;
+    download_odt: string | undefined;
+    download_word: string | undefined;
     words: string | undefined;
     priority: boolean;
 }
@@ -34,7 +36,9 @@ export default function Requests({ user }: { user: User }) {
         title: "",
         topic: "",
         description: "",
-        download: "/",
+        download_pdf: "/",
+        download_odt: "/",
+        download_word: "/",
         words: "0",
         priority: false
     }
@@ -78,7 +82,7 @@ export default function Requests({ user }: { user: User }) {
 
     // Obtenemos las requests del usuario
     async function getReq() {
-        const { data, error }: { data: any; error: any } = await supabase.from('requests').select('id, title, topic, description, finished, words, priority, download').eq("user_id", user.id);
+        const { data, error }: { data: any; error: any } = await supabase.from('requests').select('id, title, topic, description, finished, words, priority, download_pdf, download_odt, download_word').eq("user_id", user.id);
         if (!error) {
             setAllRequests(data);
         } else {

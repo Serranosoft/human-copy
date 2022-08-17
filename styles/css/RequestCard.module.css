@@ -71,20 +71,87 @@
   margin-bottom: 0.25rem;
 }
 
-.root > div:last-child {
+.root .actionBar {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: end;
-      -ms-flex-pack: end;
-          justify-content: flex-end;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
   gap: 1rem;
+  margin-top: 1.5rem;
 }
 
-.root > div:last-child div, .root > div:last-child a {
+.root .actionBar > div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.root .actionBar .revise > span {
+  margin-right: 0.5rem;
+}
+
+.root .actionBar .revise > div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 0.5rem;
+}
+
+.root .actionBar .revise > div span {
+  text-align: center;
+  font-size: var(--font-size-sm);
+}
+
+.root .actionBar .revise > div .reviseWrapper {
+  padding: 0.65rem 0.65rem 0.3rem 0.65rem;
+  border-radius: 6px;
+  background-color: #262626;
+  cursor: pointer;
+  border: 1px solid transparent;
+}
+
+.root .actionBar .revise > div .reviseWrapper:hover {
+  -webkit-transform: scale(0.95);
+          transform: scale(0.95);
+  border: 1px solid green;
+}
+
+.root .actionBar .revise > div .reviseWrapper img {
+  width: 100%;
+  height: 2rem;
+}
+
+.root .actionBar .downloadBar {
+  gap: 1rem;
+}
+
+.root .actionBar .downloadBar div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 0.5rem;
+}
+
+.root .actionBar .downloadBar div a {
   padding: 0.65rem 0.65rem 0.3rem 0.65rem;
   border-radius: 6px;
   background-color: #262626;
@@ -94,28 +161,24 @@
   border: 1px solid transparent;
 }
 
-.root > div:last-child div:last-child, .root > div:last-child a:last-child {
-  padding-right: 0.5rem;
-}
-
-.root > div:last-child div:hover, .root > div:last-child a:hover {
+.root .actionBar .downloadBar div a:hover {
   -webkit-transform: scale(0.95);
           transform: scale(0.95);
   border: 1px solid green;
 }
 
-.root > div:last-child div svg, .root > div:last-child a svg {
-  -webkit-transform: scale(1.1);
-          transform: scale(1.1);
+.root .actionBar .downloadBar div a img {
+  width: 100%;
+  height: 2rem;
 }
 
-.root > div:last-child div svg:disabled path, .root > div:last-child a svg:disabled path {
+.root .actionBar .downloadBar div a img:disabled path {
   fill: red !important;
 }
 
-.root > div:last-child span {
-  color: #9e8e00;
-  text-align: end;
+.root .actionBar .downloadBar div span {
+  text-align: center;
+  font-size: var(--font-size-sm);
 }
 
 .root .bold {
