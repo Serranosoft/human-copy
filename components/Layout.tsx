@@ -34,11 +34,9 @@ export default function Layout({ children, meta: pageMeta }: Props) {
             elementTop = onScrollEls[i].getBoundingClientRect().top;
             elementVisible = 20;
             if (elementTop < windowHeight - elementVisible) {
-                console.log("Añadir active");
                 onScrollEls[i].classList.add("active");
 
             } else {
-                console.log("Eliminar active");
                 onScrollEls[i].classList.remove("active");
             }
         }

@@ -9,6 +9,7 @@ import Description from '@/components/Description';
 import Stepbystep from '@/components/Stepbystep';
 import HowWeWork from '@/components/HowWeWork';
 import WhoWeAre from '@/components/WhoWeAre';
+import Faq from '@/components/FAQ';
 
 interface Props {
     products: Product[];
@@ -37,8 +38,10 @@ export default function Home({ products }: Props) {
                 <Pricing
                     products={products}
                 />
-               
-               }
+
+                
+            }
+            <Faq />
             </section>
         </>
 
@@ -47,7 +50,6 @@ export default function Home({ products }: Props) {
 
 export async function getStaticProps(): Promise<GetStaticPropsResult<Props>> {
     const products = await getActiveProductsWithPrices();
-    console.log(products);
     return {
         props: {
             products
