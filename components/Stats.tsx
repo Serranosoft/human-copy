@@ -24,7 +24,7 @@ export default function Stats() {
                     <div style={{ backgroundImage: "url(/sc-tst.jpg)" }}>
                         <span>Página web de <span className={s.highlight}>series en inglés</span></span>
                     </div>
-                    <span>+70% impresiones en el último mes</span>
+                    <span>+7000% impresiones y clics en los últimos 3 meses</span>
                 </div>
                 <div>
                     <div style={{ backgroundImage: "url(/sc-ce.jpg)" }}>

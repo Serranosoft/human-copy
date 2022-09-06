@@ -28,7 +28,7 @@ export default function WhoWeAre() {
                         <div className={s.description}>
                             <h3>Manuel Serrano Scholz</h3>
                             <p>SEO & Programador</p>
-                            <span>Programador y SEO con 5 años de experiencia en total. Soy el encargado de brindar una plataforma que facilite el trabajo de webmasters y SEOs</span>
+                            <span>Programador y SEO con 5 años de experiencia. Soy el encargado de brindar una plataforma que facilite el trabajo de webmasters y SEOs</span>
                             <span>Tras desarrollar con éxito negocios digitales aplicando SEO generando miles de visitas, leads y remuneración he desarrollado junto con mi compañera esta plataforma para ayudarte a alcanzar tus objetivos</span>
                         </div>
                         <div className={s.socialBar}>
