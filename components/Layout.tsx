@@ -15,7 +15,7 @@ export default function Layout({ children, meta: pageMeta }: Props) {
     const meta = {
         title: 'HumanCopy - Servicio de contenido ilimitado',
         description: 'El #1 servicio de redacción premium ilimitada sin IA para empresas y emprendedores',
-        cardImage: '/og.jpg',
+        cardImage: 'https://humancopy.es/og.jpg',
         ...pageMeta
     };
 
@@ -50,7 +50,7 @@ export default function Layout({ children, meta: pageMeta }: Props) {
                 <link href="/HC_1.svg" rel="shortcut icon" />
                 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet" />
                 <meta content={meta.description} name="description" />
-                <meta property="og:url" content={`https://subscription-starter.vercel.app${router.asPath}`} />
+                <meta property="og:url" content={`https://humancopy.es`} />
                 <meta property="og:type" content="website" />
                 <meta property="og:site_name" content={meta.title} />
                 <meta property="og:description" content={meta.description} />
