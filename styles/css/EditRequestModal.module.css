@@ -1,0 +1,47 @@
+.root {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  padding: 0 1.5rem;
+  max-height: calc(100vh - 10rem);
+}
+
+.root form {
+  max-width: 35rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 2.75rem;
+  padding: 2rem;
+  overflow-y: auto;
+}
+
+.root form div {
+  display: -ms-grid;
+  display: grid;
+  gap: 0.55rem;
+}
+
+.root form div .muted {
+  margin-top: 0.15rem;
+  font-size: var(--font-size-sm);
+  color: #6ece9d;
+}
+
+.root > div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  padding-top: 1rem;
+}

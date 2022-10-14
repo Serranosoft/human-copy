@@ -35,7 +35,6 @@ export default function Account({ users }: any) {
     // Carga usuarios y requests cuando toda la data está ready.
     useEffect(() => {
         if (ready) {
-            console.log("Iepale.");
             fillUsers();
         }
     }, [ready])

@@ -1,7 +1,7 @@
-import s from '../styles/css/Stepbystep.module.css';
-import LeftLine from './icons/LeftLine';
-import MiddleLine from './icons/MiddleLine';
-import RightLine from './icons/RightLine';
+import s from '../../styles/css/Stepbystep.module.css';
+import LeftLine from '../icons/LeftLine';
+import MiddleLine from '../icons/MiddleLine';
+import RightLine from '../icons/RightLine';
 
 export default function Stepbystep() {
 

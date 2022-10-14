@@ -1,5 +1,5 @@
-import s from '../styles/css/PlanCard.module.css';
-import Button from './ui/Button';
+import s from '../../styles/css/PlanCard.module.css';
+import Button from '../ui/Button';
 
 interface Props {
     product: any;

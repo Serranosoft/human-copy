@@ -1,5 +1,5 @@
-import ClipSVG from "./icons/Clip";
-import s from '../styles/css/Stats.module.css';
+import ClipSVG from "../icons/Clip";
+import s from '../../styles/css/Stats.module.css';
 import { motion } from "framer-motion";
 
 export default function Stats() {

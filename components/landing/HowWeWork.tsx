@@ -1,7 +1,7 @@
 
 import Image from 'next/image';
-import s from '../styles/css/HowWeWork.module.css';
-import ArrowRightSVG from './icons/ArrowRight';
+import s from '../../styles/css/HowWeWork.module.css';
+import ArrowRightSVG from '../icons/ArrowRight';
 import { motion } from "framer-motion";
 
 export default function HowWeWork() {

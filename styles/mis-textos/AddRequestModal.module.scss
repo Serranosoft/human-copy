@@ -1,0 +1,29 @@
+.root {
+    display: flex;
+    flex-direction: column;
+    padding: 0 1.5rem;
+    height: 100%;
+    max-height: calc(100vh - 10rem);
+
+    form {
+        max-width: 30rem;
+        display: flex;
+        flex-direction: column;
+        gap: 2.75rem;
+        padding: 2rem;
+        overflow-y: auto;
+        div {
+            display: grid;
+            gap: 0.55rem;
+            .muted {
+                margin-top: 0.25rem;
+                font-size: var(--font-size-sm);
+            }
+        }
+    }
+    & > div {
+        display: flex;
+        justify-content: flex-end;
+        padding-top: 1rem;
+    }
+}

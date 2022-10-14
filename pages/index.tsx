@@ -2,20 +2,24 @@ import { getActiveProductsWithPrices } from 'utils/supabase-client';
 import { Product } from 'types';
 import { GetStaticPropsResult } from 'next';
 import s from '../styles/css/Home.module.css';
-import Pricing from '@/components/Pricing';
-import Hero from '@/components/Hero';
-import Stats from '@/components/Stats';
-import Description from '@/components/Description';
-import Stepbystep from '@/components/Stepbystep';
-import HowWeWork from '@/components/HowWeWork';
-import WhoWeAre from '@/components/WhoWeAre';
-import Faq from '@/components/FAQ';
+import Pricing from '@/components/landing/Pricing';
+import Hero from '@/components/landing/Hero';
+import Stats from '@/components/landing/Stats';
+import Description from '@/components/landing/Description';
+import Stepbystep from '@/components/landing/Stepbystep';
+import HowWeWork from '@/components/landing/HowWeWork';
+import WhoWeAre from '@/components/landing/WhoWeAre';
+import Faq from '@/components/landing/FAQ';
+import { useEffect, useState } from 'react';
 
 interface Props {
     products: Product[];
 }
 
 export default function Home({ products }: Props) {
+
+
+
     return (
         <>
             <section className={s.root}>
@@ -38,10 +42,10 @@ export default function Home({ products }: Props) {
                 <Pricing
                     products={products}
                 />
+                }
 
-                
-            }
-            <Faq />
+                <Faq />
+
             </section>
         </>
 

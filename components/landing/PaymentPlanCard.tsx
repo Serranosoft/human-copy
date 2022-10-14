@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
-import s from '../styles/css/PlanCard.module.css';
-import ArrowSVG from './icons/Arrow';
-import Button from './ui/Button';
-import Range from './ui/Range';
+import s from '../../styles/css/PlanCard.module.css';
+import ArrowSVG from '../icons/Arrow';
+import Button from '../ui/Button';
+import Range from '../ui/Range';
 
 interface Props {
     product: any;

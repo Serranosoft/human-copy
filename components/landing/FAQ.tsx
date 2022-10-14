@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react';
-import s from '../styles/css/Faq.module.css';
+import s from '../../styles/css/Faq.module.css';
 
 export default function Faq() {
 
@@ -7,7 +7,6 @@ export default function Faq() {
     useEffect(() => {
 
         document.querySelectorAll("div.question").forEach(question => {
-            console.log(question);
             question.addEventListener("click", () => {
                 question.querySelector(".questionAnswer")!.classList.toggle(s["show"]);
             })

@@ -4,10 +4,10 @@ import { postData } from 'utils/helpers';
 import { getStripe } from 'utils/stripe-client';
 import { useUser } from 'utils/useUser';
 import { Price, ProductWithPrice } from 'types';
-import s from '../styles/css/Pricing.module.css';
+import s from '../../styles/css/Pricing.module.css';
 import PaymentPlanCard from './PaymentPlanCard';
 import SubscriptionPlanCard from './SubscriptionPlanCard';
-import FeatherSVG from './icons/Feather';
+import FeatherSVG from '../icons/Feather';
 
 interface Props {
     products: ProductWithPrice[];

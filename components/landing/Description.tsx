@@ -1,5 +1,5 @@
-import s from '../styles/css/Description.module.css';
-import ArrowCurvedRight from './icons/ArrowCurvedRight';
+import s from '../../styles/css/Description.module.css';
+import ArrowCurvedRight from '../icons/ArrowCurvedRight';
 import { motion } from "framer-motion";
 
 export default function Description() {

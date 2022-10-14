@@ -3,7 +3,7 @@ import { useRouter } from 'next/router';
 import Navbar from 'components/ui/Navbar';
 import Footer from 'components/ui/Footer';
 import { ReactNode, useEffect } from 'react';
-import { PageMeta } from '../types';
+import { PageMeta } from '../../types';
 
 interface Props {
     children: ReactNode;

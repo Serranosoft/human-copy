@@ -46,11 +46,12 @@ textarea {
     font-family: 'DM Sans', sans-serif;
     border: 2px solid white;
     resize: none;
-    height: 13rem;
+    height: 11rem;
     color: white;
     padding: 0.5rem 1rem;
     text-align: justify;
     outline: none;
+    font-size: var(--font-size-base);
 }
 
 textarea:focus {

@@ -1,6 +1,6 @@
 
-import s from '../styles/css/WhoWeAre.module.css';
-import ArrowDownSVG from './icons/ArrowDown';
+import s from '../../styles/css/WhoWeAre.module.css';
+import ArrowDownSVG from '../icons/ArrowDown';
 
 export default function WhoWeAre() {
 

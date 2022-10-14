@@ -1,12 +1,11 @@
 import HeroSVG from '@/components/icons/Hero';
 import Link from 'next/link';
 import Button from '@/components/ui/Button';
-import s from '../styles/css/Hero.module.css';
-import { useContext, useRef } from 'react';
+import s from '../../styles/css/Hero.module.css';
+import { useContext, useEffect, useRef, useState } from 'react';
 import { ScrollContext } from '@/utils/scroll-observer';
 import { useUser } from '@supabase/supabase-auth-helpers/react';
 import { motion } from 'framer-motion';
-
 export default function Hero() {
 
     const { user, isLoading } = useUser();

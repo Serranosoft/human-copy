@@ -1,5 +1,51 @@
 .root {
-    position: absolute;
+    display: none;
+    position: fixed;
+    inset: 0;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0,0,0,0.8);
+    cursor: default;
+    z-index: 999;
+    &.show {
+        display: flex;
+    }
+    .modal {
+        display: none;
+        width: fit-content;
+        height: fit-content;
+        background-color: #18181b;
+        color: white;
+        border-radius: 0.25rem;
+        padding: 1.5rem;
+        font-size: 1.1rem;
+        flex-direction: column;
+        box-shadow: 0.4rem 0.4rem 0 #2d2d2e;
+        box-sizing: content-box;
+        margin: 0 0.5rem;
+        outline: none;
+        max-height: calc(100vh - 5rem);
+        margin: auto;
+        &.show {
+            display: flex;
+        }
+        & > span:first-child {
+            text-align: end;
+            cursor: pointer;
+        }
+
+        form {
+            input, textarea {
+                border: 0;
+            }
+            input:not(:disabled), textarea {
+                background-color: #4c4c52;
+                border-radius: 0.25rem;
+                color: white;
+            }
+        }
+    }
+    /* position: absolute;
     top: 50%;
     left: 50%;
     width: 720px;
@@ -84,6 +130,6 @@
                 background-color: #50b17f;
             }
         }
-    }
+    } */
     
 }

@@ -1,5 +1,5 @@
 .root {
-  padding: 0.5rem 0.75rem;
+  padding: 0.3rem 0.5rem;
   background-color: transparent;
   border: 1px solid white;
   outline: none;
@@ -10,4 +10,9 @@
 
 .root:focus {
   border: 1px solid #6ece9d;
+}
+
+.root:disabled {
+  background-color: #232327;
+  color: gray;
 }
