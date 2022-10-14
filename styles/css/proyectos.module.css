@@ -60,12 +60,12 @@
   gap: 1rem;
   padding: 2rem;
   border-radius: 0.5rem;
-  -webkit-box-shadow: 5px 7px 8px #474747;
-          box-shadow: 5px 7px 8px #474747;
 }
 
 .root > div > div > div span {
   font-size: calc(var(--font-size-md)*1.5);
+  font-weight: bold;
+  line-height: 1.1;
 }
 
 .root > div > div > div img {
@@ -87,18 +87,19 @@
   margin: 0;
   line-height: 1.5;
   display: -webkit-box;
-  -webkit-line-clamp: 4;
+  -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
+  text-align: justify;
 }
 
 .root > div > div > div button {
   margin-top: 1rem;
-  padding-left: 0;
-  padding-right: 0;
+  padding: 0;
 }
 
 .root > div > div > div button a {
   display: block;
   width: 100%;
+  padding: 0.55rem 1.35rem;
 }

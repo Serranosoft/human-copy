@@ -27,6 +27,7 @@ export async function getPostBySlug(slug: string) {
       post(id: "/proyectos/${slug}", idType: SLUG) {
         title
         content
+        slug
         featuredImage {
           node {
             sourceUrl

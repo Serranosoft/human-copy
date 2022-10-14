@@ -19,7 +19,7 @@ interface Props {
 export default function Home({ products }: Props) {
 
 
-
+    
     return (
         <>
             <section className={s.root}>
