@@ -24,7 +24,7 @@ export async function getPostBySlug(slug: string) {
   const data = await fetchAPI(
     `
     {
-      post(id: "/curriculums/${slug}", idType: SLUG) {
+      post(id: "/proyectos/${slug}", idType: SLUG) {
         title
         content
         featuredImage {
@@ -62,4 +62,31 @@ export async function getAllSlugs() {
     }
   `)
   return data?.posts
+}
+
+
+export async function getAllPosts() {
+  const data = await fetchAPI(
+    `
+      query AllPosts {
+        posts(first: 100, where: { orderby: { field: DATE, order: DESC } }) {
+          edges {
+            node {
+              id
+              title
+              excerpt
+              slug
+              featuredImage {
+                node {
+                  sourceUrl
+                }
+              }
+            }
+          }
+        }
+      }
+    `
+  );
+
+  return data?.posts;
 }

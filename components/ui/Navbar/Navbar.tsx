@@ -39,6 +39,9 @@ const Navbar = () => {
                     </Link>
                 </div>
                 <nav>
+                    <>
+                        <a href="/proyectos">Proyectos</a>
+                    </>
                     {user && (
                         <>
                             <a href="/cuenta">Mi cuenta</a>

@@ -1,0 +1,132 @@
+.root {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  padding: 8rem 0;
+}
+
+.root > div {
+  max-width: 880px;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.root > div h1 {
+  font-size: var(--font-size-xl);
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.root > div img {
+  width: 70%;
+  height: auto;
+  margin: 1rem auto;
+  border-radius: 0.5rem;
+}
+
+.root > div > div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  font-size: calc(var(--font-size-base)*1.08);
+}
+
+.root > div > div p, .root > div > div ul li, .root > div > div ol li {
+  margin: 26.5px 0;
+  color: #cfcfcf;
+}
+
+.root > div > div p strong, .root > div > div ul li strong, .root > div > div ol li strong {
+  color: #e9e9e9;
+  font-weight: 600;
+}
+
+.root > div > div img {
+  width: 100%;
+  height: auto;
+  -webkit-box-shadow: 4px 4px 0 #6ece9ca9;
+          box-shadow: 4px 4px 0 #6ece9ca9;
+}
+
+.root > div > div h2 {
+  font-size: var(--font-size-md);
+  text-align: center;
+  padding: 2rem;
+  width: 100%;
+  background-color: #afd3bf;
+  color: black;
+}
+
+.root > div > div iframe {
+  margin: 0 auto;
+}
+
+.root figure {
+  margin: 0;
+  padding: 0;
+}
+
+.root :global .wp-block-image.medium {
+  width: 50%;
+  margin: 0 auto;
+}
+
+.root :global .highlight-box-wp {
+  width: 75%;
+  border: 5px solid #6ece9ca9;
+  position: relative;
+  margin: 5rem auto;
+  padding: 1rem;
+}
+
+.root :global .highlight-box-wp > div {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 1rem;
+}
+
+.root :global .highlight-box-wp > div p {
+  margin: 0;
+}
+
+.root :global .highlight-box-wp > div p:first-of-type {
+  margin-top: 2rem;
+}
+
+.root :global .highlight-box-wp > div svg {
+  position: absolute;
+  top: -50px;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  width: 5rem;
+  height: 5rem;
+  padding: 0.5rem;
+  border-radius: 100%;
+  border: 5px solid white;
+  z-index: 10;
+  fill: #6ece9d;
+  background-color: black;
+}

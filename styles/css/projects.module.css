@@ -1,0 +1,104 @@
+.root {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  padding: 3rem 0;
+}
+
+.root > div {
+  max-width: 1250px;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: relative;
+}
+
+.root > div > svg {
+  width: 25rem;
+}
+
+.root > div > p {
+  text-align: center;
+  font-size: var(--font-size-md);
+  margin-bottom: 6.5rem;
+}
+
+.root > div > p span {
+  background-image: linear-gradient(70deg, #d0ffe3, #27c500);
+  white-space: pre-wrap;
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+}
+
+.root > div > div {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 1fr;
+      grid-template-columns: 1fr 1fr;
+  gap: 10rem;
+}
+
+.root > div > div > div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 1rem;
+  padding: 2rem;
+  border-radius: 0.5rem;
+  -webkit-box-shadow: 5px 7px 8px #474747;
+          box-shadow: 5px 7px 8px #474747;
+}
+
+.root > div > div > div span {
+  font-size: calc(var(--font-size-md)*1.5);
+}
+
+.root > div > div > div img {
+  width: 100%;
+  height: auto;
+  border-radius: 0.5rem;
+  -webkit-box-shadow: 4px 4px 4px lightgray;
+          box-shadow: 4px 4px 4px lightgray;
+}
+
+.root > div > div > div div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.root > div > div > div div p {
+  font-size: var(--font-size-base);
+  margin: 0;
+  line-height: 1.5;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.root > div > div > div button {
+  margin-top: 1rem;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.root > div > div > div button a {
+  display: block;
+  width: 100%;
+}
