@@ -77,6 +77,7 @@
             gap: 1rem;
             p {
                 margin: 0;
+                text-align: center;
                 &:first-of-type {
                     margin-top: 2rem;
                 }
@@ -95,6 +96,28 @@
                 fill: #6ece9d;
                 background-color: #0a0a0a;
             }
+        }
+    }
+}
+
+@media (max-width: 768px) {
+    .root {
+        & > div {
+            & > img {
+                width: 95%;
+            }
+            & > div {
+                padding: 0 16px;
+            }
+        }
+    }
+
+    .root :global {
+        .wp-block-image.medium {
+            width: 80%;
+        }
+        .highlight-box-wp {
+            width: 100%
         }
     }
 }
