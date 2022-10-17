@@ -93,10 +93,14 @@
 }
 
 @media (max-width: 980px) {
-    .root > div > div {
-        grid-template-columns: 1fr;
-        .avatar:last-child {
-            width: 100%;
+    .root > div {
+        padding: 0;
+        border-radius: 40px;
+        & > div {
+            grid-template-columns: 1fr;
+            .avatar:last-child {
+                width: 100%;
+            }
         }
     }
 }
