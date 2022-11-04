@@ -282,6 +282,11 @@
   .root {
     max-width: unset;
   }
+  .root .subscriptionAnimation {
+    left: 50%;
+    -webkit-transform: translateX(-50%) scale(0.35) rotate(-25deg);
+            transform: translateX(-50%) scale(0.35) rotate(-25deg);
+  }
   .root.subscription {
     margin-bottom: 10rem;
   }

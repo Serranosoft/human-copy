@@ -188,6 +188,10 @@
 @media (max-width: 768px) {
     .root {
         max-width: unset;
+        .subscriptionAnimation {
+            left: 50%;
+            transform: translateX(-50%) scale(0.35) rotate(-25deg);
+        }
         &.subscription {
             margin-bottom: 10rem;
         }

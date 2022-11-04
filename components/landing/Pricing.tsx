@@ -65,6 +65,11 @@ export default function Pricing({ products }: Props) {
 
 
             </div>
+            <div className={s.paymentInfo}>
+                <p>El pago se procesará a través de la pasarela de pagos de Stripe con tarjeta de crédito o débito</p>
+                <p>Si necesitas pagar con otro método de pago mándanos un correo a <a href="mailto:humancopyes@gmail.com">humancopyes@gmail.com</a></p>
+            </div>
+            
             <div className={s.info}>
                 <div>
                     <FeatherSVG />

@@ -47,6 +47,25 @@
   margin-top: 1.5rem;
 }
 
+.root .paymentInfo {
+  width: 100%;
+  margin-top: 3rem;
+  max-width: 980px;
+  background-color: #18181b;
+  padding: 2rem;
+  border-radius: 12px;
+  -webkit-box-shadow: 2px 3px 0px #50b17f;
+          box-shadow: 2px 3px 0px #50b17f;
+}
+
+.root .paymentInfo p {
+  font-size: var(--font-size-base);
+}
+
+.root .paymentInfo p a {
+  color: #50b17f;
+}
+
 .root .info {
   max-width: 650px;
   display: -webkit-box;
@@ -62,7 +81,7 @@
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  margin-top: 6rem;
+  margin-top: 5rem;
   position: relative;
   font-size: var(--font-size-base);
 }
@@ -110,7 +129,6 @@
   }
   .root .planLayout {
     max-width: unset;
-    padding: 0 2rem;
     -ms-grid-columns: 1fr;
         grid-template-columns: 1fr;
   }

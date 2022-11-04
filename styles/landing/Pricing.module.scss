@@ -30,13 +30,30 @@
         gap: 3rem;
         margin-top: 1.5rem;
     }
+
+    .paymentInfo {
+        width: 100%;
+        margin-top: 3rem;
+        max-width: 980px;
+        background-color: #18181b;
+        padding: 2rem;
+        border-radius: 12px;
+        box-shadow: 2px 3px 0px #50b17f;
+        p {
+            font-size: var(--font-size-base);
+            a {
+                color: #50b17f
+            }
+        }
+    }
+
     .info {
         max-width: 650px;
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        margin-top: 6rem;
+        margin-top: 5rem;
         position: relative;
         font-size: var(--font-size-base);
         & > div {
@@ -76,7 +93,6 @@
         }
         .planLayout {
             max-width: unset;
-            padding: 0 2rem;
             grid-template-columns: 1fr;
         }
     }
