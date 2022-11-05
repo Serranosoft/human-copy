@@ -28,17 +28,17 @@ export default function Home({ products }: Props) {
 
                 <Stats />
                 
+                <Description />
+                
                 <WhoWeAre />
 
                 <HowWeWork />
 
-                <Description />
-
                 
                 <Stepbystep />
 
-               {products && products.length > 0 &&
-               
+                {products && products.length > 0 &&
+                
                 <Pricing
                     products={products}
                 />
