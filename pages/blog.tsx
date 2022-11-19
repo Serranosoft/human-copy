@@ -1,5 +1,5 @@
 import { getAllPosts } from "pages/api/wordpress";
-import s from '@/styles/css/proyectos.module.css';
+import s from '@/styles/css/blogs.module.css';
 import Link from "next/link";
 import Button from "@/components/ui/Button";
 import Logo from 'components/icons/Logo';
@@ -10,7 +10,7 @@ export default function proyectos({data}: {data: any}) {
         <section className={s.root}>
             <div>
                 <Logo />
-                <p>Nuestros <span>proyectos</span></p>
+                <p>Nuestro <span>blog</span></p>
                 <div>
                     {
                         data.edges.map((blog: any) => {
@@ -20,7 +20,7 @@ export default function proyectos({data}: {data: any}) {
                                     {
                                         blog.node.featuredImage &&
                                         <>
-                                            <Link href={`/proyectos/${blog.node.slug}`}>
+                                            <Link href={`/blog/${blog.node.slug}`}>
                                                 <a>
                                                     <img src={blog.node.featuredImage.node.sourceUrl} />
                                                 </a>
@@ -28,7 +28,7 @@ export default function proyectos({data}: {data: any}) {
                                         </>
                                     }
                                     <div dangerouslySetInnerHTML={{ __html: blog.node.excerpt }} />
-                                    <Button><Link href={`/proyectos/${blog.node.slug}`}><a>Ver estadísticas y caso de estudio</a></Link></Button>
+                                    <Button><Link href={`/blog/${blog.node.slug}`}><a>Leer</a></Link></Button>
                                 </div>
                             )
                         })
@@ -40,7 +40,7 @@ export default function proyectos({data}: {data: any}) {
 }
 
 export const getStaticProps = async () => {
-    const data = await getAllPosts("proyectos");
+    const data = await getAllPosts("blog");
     return {
         props: {
             data

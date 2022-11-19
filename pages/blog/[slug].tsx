@@ -1,5 +1,5 @@
 import { getAllSlugs, getPostBySlug } from "pages/api/wordpress";
-import s from '@/styles/css/proyecto.module.css';
+import s from '@/styles/css/blog.module.css';
 import Head from "next/head";
 
 export default function slug({ data }: { data: any }) {
@@ -30,14 +30,14 @@ export const getStaticPaths = async () => {
 
     const allPosts = await getAllSlugs();
     return {
-        paths: allPosts.edges.map(({ node }: { node: any }) => `/proyectos/${node.slug}`),
+        paths: allPosts.edges.map(({ node }: { node: any }) => `/blog/${node.slug}`),
         fallback: false
     }
 }
 
 export const getStaticProps = async (context: any) => {
 
-    const data = await getPostBySlug("proyectos", context.params.slug)
+    const data = await getPostBySlug("blog", context.params.slug)
     return {
         props: {
             data

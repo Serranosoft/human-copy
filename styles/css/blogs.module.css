@@ -66,6 +66,7 @@
   font-size: calc(var(--font-size-md)*1.5);
   font-weight: bold;
   line-height: 1.1;
+  text-align: center;
 }
 
 .root > div > div > div img {
@@ -90,7 +91,7 @@
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
-  text-align: justify;
+  text-align: start;
 }
 
 .root > div > div > div button {

@@ -1,0 +1,77 @@
+.root {
+    display: flex;
+    justify-content: center;
+    padding: 3rem 0;
+    & > div {
+        max-width: 1250px;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        position: relative;
+        & > svg {
+            width: 25rem;
+        }
+        & > p {
+            text-align: center;
+            font-size: var(--font-size-md);
+            margin-bottom: 6.5rem;
+            span {
+                background-image: linear-gradient(70deg, rgb(208, 255, 227), rgb(39, 197, 0));
+                white-space: pre-wrap;
+                -webkit-text-fill-color: transparent;
+                -webkit-background-clip: text;
+            }
+        }
+
+        & > div {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem 10rem;
+            & > div {
+                display: flex;
+                flex-direction: column;
+                gap: 1rem;
+                padding: 2rem;
+                border-radius: 0.5rem;
+                span {
+                    font-size: calc(var(--font-size-md)*1.5);
+                    font-weight: bold;
+                    line-height: 1.1;
+                    text-align: center;
+                }
+                img {
+                    width: 100%;
+                    height: auto;
+                    border-radius: 0.5rem;
+                    box-shadow: 4px 4px 4px lightgray;
+                }
+                div {
+                    display: flex;
+                    p {
+                        font-size: var(--font-size-base);
+                        margin: 0;
+                        line-height: 1.5;
+                        display: -webkit-box;
+                        -webkit-line-clamp: 3;
+                        -webkit-box-orient: vertical;
+                        overflow: hidden;
+                        text-align: start;
+                    }
+                }
+                button {
+                    margin-top: 1rem;
+                    padding: 0;
+                    a {
+                        display: block;
+                        width: 100%;
+                        padding: 0.55rem 1.35rem;
+                    }
+                }
+                 
+                
+            }
+        }
+    }
+    
+}
