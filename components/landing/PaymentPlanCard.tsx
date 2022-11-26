@@ -71,7 +71,12 @@ export default function PaymentPlanCard({ product, isLoading, priceIdLoading, ha
             <ArrowSVG className={s.paymentArrow}/>
             <div>
                 <span className={s.name}>{`${words} ${product.name}`}</span>
-                <p className={s.description}>{product.description}</p>
+                
+                <ul className={s.description}>
+                    <li>Redacción SEO</li>
+                    <li>Artículos (mínimo de 500 palabras)</li>
+                    <li>Correcciones sin límites</li>
+                </ul>
                 <p className={s.price}>{price}€</p>
                 <Button
                     type="button"

@@ -38,12 +38,15 @@
   max-width: 980px;
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: 1fr 1fr;
-      grid-template-columns: 1fr 1fr;
+  -ms-grid-columns: 400px 400px;
+      grid-template-columns: 400px 400px;
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  gap: 3rem;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 0 3rem;
   margin-top: 1.5rem;
 }
 
@@ -120,6 +123,28 @@
 }
 
 .root .info svg path {
+  fill: #529c76;
+}
+
+.root .copyInfo {
+  max-width: 650px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 1rem;
+  margin-top: 2.25rem;
+  font-size: var(--font-size-base);
+}
+
+.root .copyInfo svg {
+  height: 7.5rem;
+  z-index: 1;
+}
+
+.root .copyInfo svg path {
   fill: #529c76;
 }
 

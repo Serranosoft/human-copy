@@ -1,5 +1,4 @@
 .root {
-    max-width: 375px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -8,6 +7,7 @@
     position: relative;
     z-index: 1;
     justify-self: flex-end;
+    width: 100%;
     .subscriptionAnimation {
         width: 200px;
         height: 140px;
@@ -79,7 +79,6 @@
         box-shadow: 0px 0px 10px #50b17f;
         border-radius: 12px;
         justify-self: flex-start;
-
     }
 
     .wordsPerPrice {
@@ -114,6 +113,7 @@
     }
 
     & > div {
+        width: 100%;
         display: grid;
         padding: 2rem;
         background-color: #18181b;
@@ -127,8 +127,15 @@
         }
 
         .description {
-            margin-top: 2.1rem;
+            margin-top: 1.2rem;
             font-size: var(--font-size-base);
+            li {
+                margin: 8px 0;
+            }
+        }
+
+        span {
+            font-size: var(--font-size-sm);
         }
 
         .price {

@@ -8,6 +8,7 @@ import s from '../../styles/css/Pricing.module.css';
 import PaymentPlanCard from './PaymentPlanCard';
 import SubscriptionPlanCard from './SubscriptionPlanCard';
 import FeatherSVG from '../icons/Feather';
+// import CopywritingSVG from '../icons/Copywriting';
 
 interface Props {
     products: ProductWithPrice[];
@@ -63,7 +64,6 @@ export default function Pricing({ products }: Props) {
                     priceIdLoading={priceIdLoading}
                 />
 
-
             </div>
             <div className={s.paymentInfo}>
                 <p>El pago se procesará a través de la pasarela de pagos de Stripe con tarjeta de crédito o débito</p>
@@ -79,41 +79,34 @@ export default function Pricing({ products }: Props) {
                     <thead>
                         <tr>
                             <th>Palabras</th>
-                            <th>Tiempo</th>
+                            <th>Tiempo aproximado</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
                             <td>1000</td>
-                            <td>1 día</td>
+                            <td>2 días</td>
                         </tr>
                         <tr>
                             <td>2000</td>
-                            <td>2 días</td>
-                        </tr>
-                        <tr>
-                            <td>3000</td>
-                            <td>2 días</td>
-                        </tr>
-                        <tr>
-                            <td>4000</td>
-                            <td>2 - 3 días</td>
-                        </tr>
-                        <tr>
-                            <td>5000</td>
                             <td>3 días</td>
                         </tr>
                         <tr>
-                            <td>6000</td>
-                            <td>4-5 días</td>
+                            <td>3000</td>
+                            <td>4 días</td>
                         </tr>
                         <tr>
-                            <td>+6000</td>
-                            <td>+6 días</td>
+                            <td>4000</td>
+                            <td>5 días</td>
                         </tr>
                     </tbody>
                 </table>
             </div>
+
+            <div className={s.copyInfo}>
+                <p>Si decide incluir copywriting en algún momento, debe tener en cuenta que los tiempos de entrega serán mayores.</p>
+            </div>
+            
         </section>
     )
 }

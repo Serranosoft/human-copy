@@ -25,9 +25,10 @@
         width: 100%;
         max-width: 980px;
         display: grid;
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: 400px 400px;
         justify-content: space-between;
-        gap: 3rem;
+        align-items: center;
+        gap: 0 3rem;
         margin-top: 1.5rem;
     }
 
@@ -76,6 +77,22 @@
                 padding: 0.6em 2rem;
             }
         }
+        svg {
+            height: 7.5rem;
+            z-index: 1;
+            path {
+                fill: #529c76;
+            }
+        }
+    }
+
+    .copyInfo {
+        max-width: 650px;
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        margin-top: 2.25rem;
+        font-size: var(--font-size-base);
         svg {
             height: 7.5rem;
             z-index: 1;
