@@ -23,14 +23,14 @@ export default function SubscriptionPlanCard({ product, isLoading, handleCheckou
                     <li>Artículos ilimitados</li>
                     <li>Correcciones sin límites</li>
                 </ul>
-                <p className={s.price}>{product.prices![0].unit_amount / 100}€<span className={s.period}>/mes</span></p>
-                <Button
+                <p className={s.price}>{product.prices![0].unit_amount / 100}€<span className={s.period}>/mes (IVA incl.)</span></p>
+                {/* <Button
                     type="button"
                     disabled={isLoading}
                     loading={priceIdLoading === product.prices![0].id}
                     onClick={() => handleCheckout(product.prices![0], "subscription")}>
                     Suscribirse
-                </Button>
+                </Button> */}
             </div>
         </div>
     )
