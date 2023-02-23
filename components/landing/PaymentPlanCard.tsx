@@ -35,19 +35,19 @@ export default function PaymentPlanCard({ product, isLoading, priceIdLoading, ha
     useEffect(() => {
         if (price) {
             switch (price) {
-                case 25:
+                case 30:
                     setWords("1000");
                     break;
-                case 40:
+                case 48:
                     setWords("2000");
                     break;
-                case 55:
+                case 66:
                     setWords("3000");
                     break;
-                case 70:
+                case 85:
                     setWords("4000");
                     break;
-                case 85:
+                case 103:
                     setWords("5000");
                     break;
             }
@@ -77,15 +77,15 @@ export default function PaymentPlanCard({ product, isLoading, priceIdLoading, ha
                     <li>Artículos (mínimo de 500 palabras)</li>
                     <li>Correcciones sin límites</li>
                 </ul>
-                <p className={s.price}>{price}€</p>
-                <Button
+                <p className={s.price}>{price}€<span className={s.period}>/IVA incl.</span></p>
+                {/* <Button
                     type="button"
                     disabled={isLoading}
                     loading={priceIdLoading === product.prices[rangeValue].id}
                     onClick={() => handleCheckout(priceItem, "payment")}
                 >
                     Comprar palabras
-                </Button>
+                </Button> */}
             </div>
         </div>
     )
